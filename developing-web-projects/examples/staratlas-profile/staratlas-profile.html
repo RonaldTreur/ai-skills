@@ -1,0 +1,39 @@
+<astral-data-panel title="Player Profile" class="panel" collapsible open>
+	<div class="panel__content">
+		<div class="profile">
+			<figure class="profile__avatar-wrapper">
+				<img id="profile-avatar" class="profile__avatar" alt="Profile Avatar">
+			</figure>
+			<div class="profile__details">
+				<div id="profile-name" class="profile__name"></div>
+				<div id="profile-key" class="profile__key"></div>
+				<div class="profile__faction">
+					<img id="faction-logo" class="faction__icon" alt="Faction Logo">
+				</div>
+			</div>
+			<ul id="dac-list" class="profile__dac-list"></ul>
+		</div>
+		<ol id="subprofile-container" class="subprofile-list"></ol>
+	</div>
+</astral-data-panel>
+<template id="staratlas-profile-template">
+	<li class="subprofile__item">
+		<div class="subprofile__number"></div>
+		<div class="subprofile__details">
+			<div class="subprofile__name"></div>
+			<div class="subprofile__key"></div>
+		</div>
+		<div class="subprofile__faction">
+			<img class="faction__icon" alt="Faction Logo">
+		</div>
+		<ul class="subprofile__dacs"></ul>
+	</li>
+</template>
+<template id="dac-item-template">
+	<li>
+		<img class="dac__logo" alt="DAC Logo">
+	</li>
+</template>
+<template id="dac-surplus-template">
+	<li class="dac__surplus"></li>
+</template>

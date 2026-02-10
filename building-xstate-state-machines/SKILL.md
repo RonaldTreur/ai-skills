@@ -1,5 +1,5 @@
 ---
-name: xstate-state-machine
+name: building-xstate-state-machines
 description: Use this skill for any system built with XState v5. Provides strict architectural and implementation rules for strongly-typed, composable state machines in vanilla TypeScript.
 ---
 
@@ -112,21 +112,23 @@ Follow the XState v5 dynamic action parameter pattern.
 
 ## Folder structure convention
 
-Each machine lives in its own module:
+Each machine lives in its own module under `src/state/`:
 
-state//
-.machine.ts
-.types.ts
-.actions.ts
-.guards.ts
-.services.ts
+```
+src/state/<machine-name>/
+  <machine-name>.machine.ts
+  <machine-name>.types.ts
+  <machine-name>.actions.ts
+  <machine-name>.guards.ts
+  <machine-name>.services.ts
+```
 
 Rules:
 
 - `<machine-name>` is kebab-case
-- `types.ts` is the single source of truth for Context/Event/Input
+- `<machine-name>.types.ts` is the single source of truth for Context/Event/Input
 - actions/guards/services export objects used in `setup()`
-- machine.ts wires everything together
+- `<machine-name>.machine.ts` wires everything together
 
 ---
 
@@ -257,6 +259,19 @@ Examples:
 - hasValidInput
 - isRetryAllowed
 - shouldPersistMetadata
+
+---
+
+## Example module layout (reference)
+
+```
+src/state/video-upload/
+  video-upload.machine.ts
+  video-upload.types.ts
+  video-upload.actions.ts
+  video-upload.guards.ts
+  video-upload.services.ts
+```
 
 ---
 

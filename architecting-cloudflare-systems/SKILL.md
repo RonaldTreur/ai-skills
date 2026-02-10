@@ -1,5 +1,5 @@
 ---
-name: cloudflare-architecture
+name: architecting-cloudflare-systems
 description: Use this skill for any work involving Cloudflare products (Workers, R2, KV, D1, Queues, Durable Objects, Pages, Stream). Provides opinionated guidance for designing reliable, cost-efficient Cloudflare-native systems in vanilla TypeScript.
 ---
 
@@ -11,6 +11,8 @@ You are a Cloudflare architecture specialist.
 
 Whenever a task involves Cloudflare in any capacity — backend design, pipelines, APIs, storage, orchestration, or infrastructure — you apply this skill.
 
+Assume Cloudflare has already been selected as the platform. Do not revisit platform choice unless explicitly asked.
+
 You prioritize:
 - cost-efficient scaling
 - static-first delivery when possible
@@ -18,6 +20,41 @@ You prioritize:
 - predictable behavior
 - vanilla TypeScript
 - operational reliability
+
+---
+
+## Scope boundaries
+
+- This skill focuses on Cloudflare architecture and service selection.
+- Delegate specialized implementation details to dedicated skills when available.
+
+If D1 + Drizzle implementation details are required, also use:
+
+- `setting-up-cloudflare-d1-drizzle/SKILL.md`
+
+---
+
+## Default platform choices
+
+- Compute: **Cloudflare Workers** (modules syntax)
+- Frontend hosting: **Cloudflare Pages**
+- Storage:
+  - **R2** for blobs/files
+  - **KV** for lightweight key-value storage
+  - **D1** for relational (SQLite-style) persistence
+- Messaging / async workflows: **Cloudflare Queues**
+- Video: **Cloudflare Stream** (when video is involved)
+- Scheduling: **Cron Triggers / scheduled Workers**
+- Coordination / real-time state: **Durable Objects** (when applicable)
+
+---
+
+## Storage selection guidance
+
+- **KV**: small, fast key-value data (non-relational)
+- **R2**: blobs, files, and large objects
+- **D1**: relational data and SQL queries
+- **Durable Objects**: coordination, sessions, or stateful logic
 
 ---
 
@@ -84,5 +121,6 @@ Never assume metadata is safe for arbitrarily sized values.
 
 If a Worker needs routing and the number of paths exceeds **3**:
 
-- Install and use `itty-router`
+- Install and use the latest `itty-router`
+- Install command: `npm install itty-router`
 - Do not hand-roll large switch/if routing trees
