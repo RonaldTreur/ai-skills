@@ -50,6 +50,10 @@ If the work involves **Web Components**, use the dedicated skill:
 
 That skill is the source of truth for the base component, decorators, file structure, and examples. Only apply it when the task actually includes Web Components.
 
+Unless the user explicitly asks not to, create tests and run them. For test coverage standards and tooling, also use:
+
+- `enforcing-test-coverage-vitest-playwright/SKILL.md`
+
 ## TypeScript Preferences
 - TypeScript is the default
 - Avoid `any`
