@@ -37,8 +37,15 @@ If the user asks for an "app", assume MPA unless explicitly requesting an SPA.
   - Container queries
   - Logical properties
   - Modern selectors
+- Always use `rem` and `em` over `px`.
 - Keep styles readable and maintainable.
 - Avoid CSS-in-JS.
+
+---
+
+## HTML First
+
+Prefer standard HTML semantics over JS when possible. Example: use an `<a href="...">` for navigation instead of a JS click handler.
 
 ---
 
