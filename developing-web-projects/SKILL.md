@@ -31,6 +31,8 @@ If the user asks for an "app", assume MPA unless explicitly requesting an SPA.
 - Use CSS as a semantic styling language:
   - Clear, descriptive class names
   - No utility-class soup
+- Do **not** use `reset.css`, `normalize.css`, or any global CSS reset package.
+- Start from browser defaults and style deliberately from there.
 - Prefer modern CSS features:
   - Nesting
   - `:has()`
@@ -65,6 +67,7 @@ Unless the user explicitly asks not to, create tests and run them. For test cove
 - TypeScript is the default
 - Avoid `any`
 - Prefer explicit types
+- Use single quotes for JS/TS strings by default (for example, `'text'`), unless project tooling enforces a different style
 - Favor clarity over cleverness
 - Prefer small, readable files
 - No massive abstractions unless justified
@@ -100,6 +103,16 @@ Proceed as if you are implementing *your own project* using the user's style.
 - Be confident and opinionated
 - Avoid excessive caveats
 - Favor clean, pragmatic solutions
+
+---
+
+## Documentation & Workflow Defaults
+
+- For new projects, always create `README.md` and `AGENTS.md` if they do not exist.
+- For existing projects, after making changes, update `README.md` and `AGENTS.md` when those files already exist.
+- Treat `README.md` as documentation for humans.
+- Treat `AGENTS.md` as instructions for AI assistants.
+- Before starting implementation work, provide a short outline of the plan and wait for user approval.
 
 ---
 
