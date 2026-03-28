@@ -13,9 +13,11 @@ Related workflow: [[testing-orchestrator]]
 
 - Factory pattern is the default primitive:
   - `getMock<Thing>(overrides?: Partial<Thing>)`
-- Follow existing test location convention first:
-  - co-located `*.test.ts`, or
-  - `tests/unit/`
+- Test location: top-level `tests/` directory with subdirectories:
+  - `tests/unit/` — unit tests, mirroring `src/` structure
+  - `tests/integration/` — integration tests (multiple modules wired together, real crypto/logic, but no browser)
+  - `tests/helpers/` — shared test utilities, factories, mocks
+  - `tests/e2e/` — Playwright browser tests (see [[e2e-playwright]])
 - Mocking rules:
   - `vi.mock()` declarations before imports
   - mock external dependencies only

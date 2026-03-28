@@ -11,7 +11,7 @@ Create a test plan **before** writing tests or feature code.
 
 1. Read `BRIEF.md` (requirements and constraints)
 2. Scan source files (`src/`, workers, utilities, web components)
-3. Scan existing tests (`tests/`, co-located `*.test.ts`, `*.spec.ts`)
+3. Scan existing tests (`tests/unit/`, `tests/integration/`, `tests/e2e/`, `tests/helpers/`)
 4. Produce `TEST_PLAN.md` using `templates/test-plan.md`
 5. If project already exists, produce `coverage-gap.md` notes using `templates/coverage-gap.md`
 

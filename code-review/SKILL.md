@@ -115,6 +115,18 @@ Check:
 - Boundary issues (null/undefined, empty collections, coercion)
 - TypeScript quality (`any`, loose generics, missing return types)
 
+### 5b) Spec Compliance (if applicable)
+
+When the change implements a specific issue, ticket, or spec:
+
+1. Read the issue/spec (e.g. `gh issue view <number>`)
+2. For each acceptance criterion or requirement in the spec, verify the implementation actually delivers it
+3. Flag any **missing**, **incomplete**, or **divergent** behavior as at least **P1**
+4. Pay attention to the *intent* behind the spec, not just the literal text — if the spec says "tag users" and the code adds mentions that won't render (e.g. inside embed fields), that's a miss even if the code "adds mentions"
+5. If the spec references a conversation or original feedback, check that too — specs can lose nuance from the original request
+
+This step catches the gap between "code works" and "code does what was asked."
+
 ### 6) Output
 
 Use template: `templates/review-output.md`
@@ -144,6 +156,7 @@ Rules:
 A complete review must include:
 1. Scope summary (files/lines)
 2. Prioritized findings (P0–P3)
-3. Test coverage assessment
-4. Convention compliance checklist
-5. Actionable next-step options
+3. Spec compliance assessment (if applicable — list each acceptance criterion and pass/fail)
+4. Test coverage assessment
+5. Convention compliance checklist
+6. Actionable next-step options
