@@ -37,6 +37,8 @@ In those cases, move to this skill once changes stabilize.
 - Always classify findings by severity (P0–P3)
 - Include exploitability + impact for security findings
 - Enforce project conventions from [[developing-web-projects]]
+- Watch for **layering over symptoms**: repeated narrow patches, geometric/event hacks, defensive conditionals, or duplicated interaction logic that mask the real cause instead of fixing it
+- When you detect symptom-layering, explicitly say so and recommend backing up to the last clean design point before more fixes pile on
 
 ## 6-Step Workflow
 
@@ -114,6 +116,14 @@ Check:
 - Performance issues (N+1, large imports, missing pagination)
 - Boundary issues (null/undefined, empty collections, coercion)
 - TypeScript quality (`any`, loose generics, missing return types)
+- Symptom-layering smells:
+  - multiple small patches in the same interaction flow without simplifying the design
+  - document-level listeners added to compensate for broken local event handling
+  - coordinate or bounding-box hit testing used where DOM/event-path semantics should decide behavior
+  - duplicated close/open/restore-focus logic spread across handlers
+  - tests that only prove synthetic handler invocation while the real browser interaction path remains unverified
+
+If these appear, treat them as a maintainability/correctness risk, not just style. Usually this is at least **P1** when the patch changes behavior, and **P2** when it mainly increases fragility.
 
 ### 5b) Spec Compliance (if applicable)
 
@@ -159,4 +169,5 @@ A complete review must include:
 3. Spec compliance assessment (if applicable — list each acceptance criterion and pass/fail)
 4. Test coverage assessment
 5. Convention compliance checklist
-6. Actionable next-step options
+6. Symptom-layering assessment when relevant (is this fixing a cause or stacking workarounds?)
+7. Actionable next-step options
