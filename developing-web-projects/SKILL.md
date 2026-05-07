@@ -87,6 +87,7 @@ You should:
 2. Scaffold files following the user's conventions
 3. Use vanilla browser APIs by default
 4. Only introduce frameworks if the user explicitly asks
+5. If the project is not yet implemented, or is only scaffolded, follow the development instructions in [[testing-orchestrator]] as well
 
 Do **not**:
 - Suggest React/Vue/Svelte automatically

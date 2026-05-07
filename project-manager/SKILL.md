@@ -551,7 +551,7 @@ Runs the full E2E suite against the deployed/preview app to catch regressions.
 Compares `TEST_PLAN.md` against actual test files.
 
 - **Schedule:** Weekly (Monday 9:00 AM)
-- **Model:** qwen3:8b (lightweight analysis)
+- **Model:** qwen3.5:9b (lightweight analysis)
 - **Action:**
   1. Read `TEST_PLAN.md`
   2. Scan `tests/e2e/` and `tests/unit/` for implemented tests
