@@ -1,6 +1,6 @@
 interface:
   display_name: "Issue-Driven Delivery Loop"
   short_description: "Work GitHub issues in dependency order"
-  default_prompt: "Use $issue-driven-delivery-loop for this repo: inspect planning files, order GitHub issues by dependencies and priority, follow $developing-web-projects when it is web-based, then work the next ready slice."
+  default_prompt: "Use $issue-driven-delivery-loop to implement this project from its repo docs and GitHub Issues."
 policy:
   allow_implicit_invocation: true
