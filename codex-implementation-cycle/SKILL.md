@@ -83,6 +83,8 @@ He should not need to specify checkpoints manually unless the task needs special
 - delegate the implementation to Codex ACP
 - keep the task focused and concrete
 - include the relevant project skill(s) when they apply
+- for web-project implementation, explicitly use the `developing-web-projects` skill by default
+- include any additional relevant domain/project skills alongside it when needed
 - require a branch/commit/PR artifact, not just analysis
 
 ### 2) Self-verify
@@ -98,6 +100,8 @@ If browser verification is expected and feasible, do it.
 ### 3) Review
 
 Use the `code-review` skill for the review pass.
+
+This is required, not optional.
 
 Review should look for at least:
 
