@@ -34,6 +34,48 @@ For this workflow:
 
 If ACP is blocked or broken, state the blocker plainly instead of silently falling back to a different coding path.
 
+## Checkpointed execution (default for longer work)
+
+For longer coding tasks, do **not** rely on one final completion callback as the source of truth.
+
+Default to **checkpointed execution**.
+
+This means the workflow should produce or verify intermediate reality-based checkpoints instead of only waiting for a final “done” message.
+
+### Default checkpoints
+
+Use these checkpoints unless Ronald explicitly asks for a different gate:
+
+1. **Implementation artifact**
+   - branch, commit, changed files, or PR artifact exists
+2. **Self-verification complete**
+   - browser check, test run, build, lint, or other direct proof
+3. **Review complete**
+   - review findings summarized
+4. **P0-P3 fixes applied**
+   - follow-up artifact and recheck evidence
+5. **Merge complete**
+   - merge commit, merged PR, or equivalent final artifact
+
+### Operational rule
+
+For long Codex/Vectrix work:
+
+- prefer checkpoint-style progress over silence
+- do not trust the first status line as final truth
+- if the final handoff is missing or suspicious, inspect repo state, child transcript, commits, tests, and artifacts before reporting status
+- report the furthest verified checkpoint reached
+
+### User shorthand
+
+If Ronald says **"checkpointed"**, interpret that as:
+
+- use the normal implementation cycle
+- require checkpoint-style progress
+- avoid brittle fire-and-forget delegation
+
+He should not need to specify checkpoints manually unless the task needs special gates.
+
 ## Step-by-step guidance
 
 ### 1) Implement
