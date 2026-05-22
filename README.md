@@ -19,3 +19,9 @@ Skills are modular, filesystem-based capabilities for agents. A Skill packages m
 
 - https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview
 - https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices
+
+## Methodology Adaptation
+
+The `methodology/` folder tracks discipline-by-discipline reviews of external agent-methodology sources and the attribution trail for ideas adapted into this repository.
+
+Use the `external-skill-adaptation` skill when comparing third-party skills, prompts, or instruction repos against these local skills.
