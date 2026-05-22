@@ -2,14 +2,17 @@
 
 - Source URL: https://github.com/mattpocock/skills
 - License: MIT
-- Commit/tag/release reviewed: pending discipline pass
-- Retrieved: pending
-- Reviewer: pending
-- Local clone/path, if any: pending
+- Commit/tag/release reviewed: `b8be62ffacb0118fa3eaa29a0923c87c8c11985c`
+- Retrieved: 2026-05-22 via shallow local clone
+- Reviewer: Vectrix
+- Local clone/path, if any: `/tmp/external-skill-sources/matt-pocock-skills`
 
 ## Scope Reviewed
 
-Pending source inventory.
+- `README.md`
+- `skills/engineering/README.md`
+- `skills/engineering/diagnose/SKILL.md`
+- `skills/engineering/tdd/SKILL.md`
 
 ## Relevant Disciplines
 
@@ -22,7 +25,11 @@ Pending source inventory.
 
 ## Strong Ideas
 
-Pending discipline-specific review.
+- Build a fast, deterministic feedback loop before theorizing.
+- Treat the debug loop itself as a product: faster, sharper, more deterministic.
+- Require falsifiable hypotheses and targeted probes instead of diffuse logging.
+- Cleanup discipline: tagged debug logs, rerun original repro, note the winning
+  hypothesis in commit/PR history.
 
 ## Adoption Risks
 

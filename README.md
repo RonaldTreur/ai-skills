@@ -25,3 +25,5 @@ Skills are modular, filesystem-based capabilities for agents. A Skill packages m
 The `methodology/` folder tracks discipline-by-discipline reviews of external agent-methodology sources and the attribution trail for ideas adapted into this repository.
 
 Use the `external-skill-adaptation` skill when comparing third-party skills, prompts, or instruction repos against these local skills.
+
+The repo now includes a dedicated `debugging/` skill for investigation-first bug fixing with a trivial-bug fast path and hard verification gates.

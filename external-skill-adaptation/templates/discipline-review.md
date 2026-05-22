@@ -53,6 +53,22 @@ List concrete adoption questions that affect workflow, friction, or behavior pol
 
 For each recommendation, include intended local target and provenance entry id.
 
+## Skill-Level Attribution
+
+For each local skill created or changed, create a source-influence artifact at
+`<skill>/PROVENANCE.md` and link it from that skill.
+
+If repository structure makes that exact path impossible, record the exception
+and the chosen path here. Do not silently choose a different location.
+
+Include:
+
+- source URL, reviewed ref, reviewed paths, and license
+- what was taken from each source
+- why the idea fit locally
+- how it was adapted
+- important rejected material
+
 ## Rejections And Deferrals
 
 Record rejected and deferred ideas with rationale.
