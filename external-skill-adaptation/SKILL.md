@@ -18,7 +18,9 @@ The goal is not to vendor external skills. The goal is to compare sources by dis
 5. Keep rejected ideas. A future re-review needs to know why something did not land.
 6. Do one discipline at a time unless Ronald explicitly asks for a broader pass.
 7. Ask Ronald discipline-specific questions before finalizing adoption choices when the tradeoff is taste, workflow friction, or behavior policy rather than a clear technical correctness issue.
-8. Do not install or activate third-party skills, hooks, daemons, telemetry, or auto-update systems as part of this workflow.
+8. When a discipline produces or changes a local skill, add a concise source-influence artifact at `<skill>/PROVENANCE.md`.
+9. Keep attribution and rebuild notes out of runtime `SKILL.md` files unless Ronald explicitly asks for them there.
+10. Do not install or activate third-party skills, hooks, daemons, telemetry, or auto-update systems as part of this workflow.
 
 ## Workflow
 
@@ -86,8 +88,32 @@ When adopting an idea:
 - remove assumptions that belong to the external tool, platform, or agent runtime
 - include only the minimum procedural detail needed for reliable behavior
 - keep activation triggers conservative enough that routine work does not become ceremonial
+- keep runtime skill text operational; move rebuild notes and source-by-source attribution into the adjacent source-influence artifact, not into `SKILL.md`
 
-### 6. Update Provenance
+### 6. Add Skill-Level Attribution
+
+When a discipline produces or materially changes a local skill, create or update
+`<skill>/PROVENANCE.md`. This path is mandatory.
+
+If a local skill cannot have a sibling `PROVENANCE.md` because of repository
+structure, do not improvise another location silently. Record the exception and
+the chosen path in the discipline review before closing the task.
+
+The skill-level provenance artifact must include:
+
+- a short rebuild recipe for the adopted behavior
+- one concise section per external source
+- source URL, reviewed ref, reviewed file paths, and license when known
+- what was taken from that source
+- why those ideas fit locally
+- how the idea was adapted to Ronald's conventions
+- important rejected material when the rejection explains the final shape
+- a pointer back to `methodology/ADAPTATION_LOG.md` and the relevant discipline review
+
+Keep this artifact concise enough to read quickly, but complete enough to rebuild
+the skill close to its current form without rereading every external source.
+
+### 7. Update Provenance
 
 Every adoption, rejection, or deferred decision gets an entry in `methodology/ADAPTATION_LOG.md`.
 
@@ -102,13 +128,15 @@ Categories:
 - `deferred`: useful but not ready, blocked, or needs more evidence
 - `superseded`: old local guidance replaced by a better source or internal lesson
 
-### 7. Verify
+### 8. Verify
 
 Before closing the task:
 
 - run basic skill validation for new or changed skills when available
 - inspect `git diff` for accidental copied text, missing attribution, or unrelated changes
 - ensure every changed local skill has a matching log entry
+- ensure every changed local skill has `<skill>/PROVENANCE.md`, or the discipline review records the structural exception and chosen path
+- ensure runtime `SKILL.md` files do not contain provenance-only notes
 - summarize branch, files changed, source commits reviewed, and open questions
 
 ## Output Shape
@@ -118,6 +146,7 @@ For a complete discipline pass, produce:
 - source inventory updates in `methodology/sources/`
 - one discipline review in `methodology/disciplines/`
 - provenance entries in `methodology/ADAPTATION_LOG.md`
+- a concise skill-level source-influence artifact at `<skill>/PROVENANCE.md` for every adopted local skill
 - skill changes or draft skill files when adoption is approved
 - a concise summary with recommended next discipline
 
