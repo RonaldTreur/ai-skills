@@ -7,8 +7,7 @@ description: "Implement one selected GitHub issue or ready backlog slice from re
 
 Use this skill for active implementation of one ready issue or backlog slice.
 
-This is the canonical active-issue implementation workflow. It supersedes the old
-`codex-implementation-cycle` alias, which has been removed.
+This is the canonical active-issue implementation workflow.
 
 ## Ownership Boundary
 
