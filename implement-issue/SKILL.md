@@ -108,13 +108,16 @@ private structure unless the structure is itself the contract.
 Prefer Vectrix for substantial implementation unless Ronald explicitly asks for
 another runtime or Vectrix is blocked.
 
-When delegating:
+When handing work to Vectrix or another implementation agent/runtime:
 
-- give the sub-agent the exact issue, branch, repo path, relevant docs, active
+- give it the exact issue, branch, repo path, relevant docs, active
   skills, and current checkpoint
 - keep the write scope clear
 - state that other agents may also be working in the repo
 - require a report with changed files, tests run, status, blockers, and concerns
+
+Use "subagent" only for actual spawned Codex/OpenClaw subagents, not for
+Vectrix.
 
 Use these statuses:
 

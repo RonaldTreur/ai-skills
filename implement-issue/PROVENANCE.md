@@ -31,13 +31,14 @@ Keep these behaviors:
 - License: MIT
 
 What we took:
-- Fresh subagent per task when delegation helps.
+- Fresh implementation agents or subagents when delegation helps.
 - Status vocabulary: done, done-with-concerns, needs-context, blocked.
 - Review order: spec compliance before quality review.
 - Escalate instead of forcing through uncertainty.
 
 Local adaptation:
-- Kept delegation optional and Vectrix-first.
+- Kept delegation optional and Vectrix-first, while reserving "subagent" for
+  actual spawned Codex/OpenClaw subagents.
 - Replaced SuperPowers-specific TodoWrite/worktree mechanics with local branch,
   `DELIVERY_STATE.md`, GitHub issue/PR, Codex review, and Claude-review gates.
 
