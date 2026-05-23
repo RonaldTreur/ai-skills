@@ -192,7 +192,7 @@ Do not create or mutate labels in bulk without approval.
 
 ## Stop Conditions
 
-Stop and ask Ronald when:
+Stop and ask the user when:
 
 - project direction or scope is unclear
 - issue creation would encode a product decision

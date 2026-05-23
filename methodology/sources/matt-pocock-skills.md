@@ -42,7 +42,7 @@
 
 ## Adoption Risks
 
-Generally low blast radius, but still adapt tone, trigger rules, and questioning behavior to Ronald's workflow and OpenClaw conventions.
+Generally low blast radius, but still adapt tone, trigger rules, and questioning behavior to the user's workflow and OpenClaw conventions.
 
 ## Re-Review Trigger
 

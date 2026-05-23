@@ -3,7 +3,8 @@
 - Source URL: https://github.com/garrytan/gstack
 - License: MIT
 - Commit/tag/release reviewed: `61c9a20bd2e3a579c3d6184ed2fc95b51a528f7c`
-- Retrieved: 2026-05-22 via shallow local clone
+- Retrieved: 2026-05-22 via shallow local clone; `qa/SKILL.md` re-read via raw
+  GitHub at the reviewed commit on 2026-05-23
 - Reviewer: Vectrix
 - Local clone/path, if any: `/tmp/external-skill-sources/gstack`
 
@@ -12,6 +13,8 @@
 - `AGENTS.md`
 - `investigate/SKILL.md`
 - `qa/SKILL.md` (debugging and regression-test sections)
+- `qa/SKILL.md` (browser QA workflow, modes, defect evidence, severity, and
+  report/fix boundaries)
 - `review/SKILL.md`
 - `review/checklist.md`
 - Selected files in `review/specialists/`: API contract, data migration,

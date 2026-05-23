@@ -11,6 +11,7 @@ Use this map to review external sources against the real project-development rou
 - Implementation planning
 - Implementation
 - Implementation lifecycle
+- Browser QA
 - Debugging
 - Testing and QA
 - Code review
@@ -21,7 +22,7 @@ Use this map to review external sources against the real project-development rou
 ## Meta-Behavior Disciplines
 
 - When to slow down
-- When to ask Ronald
+- When to ask the user
 - When to act without asking
 - When to delegate
 - When to stop digging and answer
@@ -34,6 +35,7 @@ Use this map to review external sources against the real project-development rou
 - Skill review
 - Code review
 - Implementation lifecycle
+- Browser QA
 
 ## Next Candidate Slices
 

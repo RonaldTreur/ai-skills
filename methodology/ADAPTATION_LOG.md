@@ -29,6 +29,126 @@ next_review:
 ## Entries
 
 ```yaml
+id: 2026-05-24-browser-qa-controlled-profile
+date: 2026-05-24
+discipline: browser-qa
+status: adopted
+source: local user QA workflow decision
+source_url: local Discord discussion
+source_ref: 2026-05-24 #claw-enhance conversation
+source_path: n/a
+license: repository-local decision
+local_target: browser-qa/SKILL.md; browser-qa/PROVENANCE.md
+influence_type: behavioral
+summary: Browser QA should default to the active agent's own controlled browser profile unless instructed otherwise.
+local_adaptation: Added setup guidance to use the agent-controlled profile by default and avoid personal or project-specific profiles unless explicitly requested.
+rationale: Automated browser QA needs a profile the agent can control reliably; switching to other profiles can break flows through missing extensions, permissions, or private state.
+credit_note: Local QA policy decision from the user.
+reviewer: Merlin
+next_review: When browser tooling adds first-class multi-profile support
+```
+
+```yaml
+id: 2026-05-23-browser-qa-implementation-testability
+date: 2026-05-23
+discipline: browser-qa
+status: adopted
+source: Local ai-skills implementation lifecycle review
+source_url: local repository
+source_ref: PR #7 review on 2026-05-23
+source_path: implement-issue/SKILL.md; browser-qa/SKILL.md
+license: repository-local guidance
+local_target: implement-issue/SKILL.md; implement-issue/PROVENANCE.md; browser-qa/SKILL.md
+influence_type: structural
+summary: Implementation must make user-visible web features browser-QA-able, including protected authenticated flows.
+local_adaptation: Added QA access to implementation intake, vertical slices, verification gates, merge criteria, and stop conditions. Missing safe auth setup for changed protected flows is now an implementation blocker before merge.
+rationale: The user clarified that QA blockers should be prevented while building testable features, not merely discovered after the fact by browser QA.
+credit_note: Internal workflow refinement from the user's review of the browser QA adaptation.
+reviewer: Merlin
+next_review: When project-manager or project-kickoff defines standard project setup requirements
+```
+
+```yaml
+id: 2026-05-23-browser-qa-auth-blockers
+date: 2026-05-23
+discipline: browser-qa
+status: adapted
+source: GStack
+source_url: https://github.com/garrytan/gstack
+source_ref: 61c9a20bd2e3a579c3d6184ed2fc95b51a528f7c
+source_path: qa/SKILL.md
+license: MIT
+local_target: browser-qa/SKILL.md
+influence_type: behavioral
+summary: Browser QA for protected areas requires an explicit auth path; CAPTCHA, login, and missing test data can block meaningful coverage.
+local_adaptation: Added an authenticated-QA hierarchy: documented non-production test accounts or seeded users first, approved secret stores only, ignored local storage state when supported, production-disabled dev auth paths only when documented, and explicit QA infrastructure blockers when no safe auth path exists.
+rationale: The user identified auth as a practical blocker for full QA; making it a browser-qa rule prevents silent partial coverage and points project setup toward reusable test accounts or fixtures.
+credit_note: Adapted from GStack's browser QA authentication/blocker handling and localized to local safety rules.
+reviewer: Merlin
+next_review: When project setup skills define standard seeded users or preview auth conventions
+```
+
+```yaml
+id: 2026-05-23-browser-qa-gstack-browser-first
+date: 2026-05-23
+discipline: browser-qa
+status: adapted
+source: GStack
+source_url: https://github.com/garrytan/gstack
+source_ref: 61c9a20bd2e3a579c3d6184ed2fc95b51a528f7c
+source_path: qa/SKILL.md
+license: MIT
+local_target: browser-qa/SKILL.md
+influence_type: behavioral
+summary: Browser QA should actually exercise the app in a browser, scale by mode, check console/responsive/user flows, and report defects with evidence.
+local_adaptation: Created a focused browser-qa skill with quick, focused, post-merge, and full modes; defect evidence and P0-P3 priority; and explicit output shape.
+rationale: The user identified scattered browser/post-merge QA references in implement-issue; a dedicated skill provides clearer ownership without bloating the implementation workflow.
+credit_note: Adapted from GStack's browser-first QA workflow, with GStack runtime machinery removed.
+reviewer: Merlin
+next_review: After the skill has been used on several web PRs
+```
+
+```yaml
+id: 2026-05-23-browser-qa-gstack-heavy-runtime
+date: 2026-05-23
+discipline: browser-qa
+status: rejected
+source: GStack
+source_url: https://github.com/garrytan/gstack
+source_ref: 61c9a20bd2e3a579c3d6184ed2fc95b51a528f7c
+source_path: qa/SKILL.md
+license: MIT
+local_target: browser-qa/SKILL.md
+influence_type: negative-example
+summary: GStack combines QA, auto-fixing, per-fix commits, health scoring, telemetry, setup checks, persistent reports, and test-framework bootstrap in one large workflow.
+local_adaptation: Rejected those mechanics for default ai-skills behavior; kept only lightweight browser verification, triage, and reporting.
+rationale: The user's workflow needs a smart browser QA specialist, not another broad lifecycle owner or runtime-specific system.
+credit_note: Reviewed GStack QA and intentionally did not adopt its heavier runtime and report machinery.
+reviewer: Merlin
+next_review: Revisit only if the user wants formal QA reports or health scoring as a productized workflow
+```
+
+```yaml
+id: 2026-05-23-browser-qa-implement-issue-specialist
+date: 2026-05-23
+discipline: browser-qa
+status: adopted
+source: Local ai-skills implementation lifecycle review
+source_url: local repository
+source_ref: PR #6 merged 2026-05-23
+source_path: implement-issue/SKILL.md
+license: repository-local guidance
+local_target: implement-issue/SKILL.md; implement-issue/PROVENANCE.md
+influence_type: structural
+summary: The implementation workflow should call a browser QA specialist instead of defining vague browser/post-merge QA inline.
+local_adaptation: Updated implement-issue to reference [[browser-qa]] for user-visible browser checks, repeated UI/routing verification, and post-merge QA.
+rationale: This preserves implement-issue as one-issue execution while giving QA a clear owner and reducing inline workflow bloat.
+credit_note: Internal refinement prompted by the user's review of PR #6.
+reviewer: Merlin
+next_review: When project-manager and testing-orchestrator are revisited
+```
+
+```yaml
 id: 2026-05-23-implementation-superpowers-delegation
 date: 2026-05-23
 discipline: implementation-lifecycle
@@ -42,7 +162,7 @@ local_target: implement-issue/SKILL.md
 influence_type: behavioral
 summary: Delegated implementation should include explicit context, clear write scope, escalation statuses, and review before completion.
 local_adaptation: Added Vectrix-first delegation guidance and DONE/DONE_WITH_CONCERNS/NEEDS_CONTEXT/BLOCKED status handling to the implement-issue skill.
-rationale: Ronald's workflow uses multiple agents, but fresh agents need bounded context and explicit escalation rather than inherited assumptions.
+rationale: The user's workflow uses multiple agents, but fresh agents need bounded context and explicit escalation rather than inherited assumptions.
 credit_note: Adapted from SuperPowers subagent-driven development.
 reviewer: Merlin
 next_review: When OpenClaw delegation semantics or Vectrix ownership changes
@@ -113,7 +233,7 @@ id: 2026-05-23-implementation-project-manager-boundary
 date: 2026-05-23
 discipline: implementation-lifecycle
 status: adopted
-source: Ronald local workflow decision
+source: local user workflow decision
 source_url: local Discord discussion
 source_ref: 2026-05-23 #claw-enhance conversation
 source_path: n/a
@@ -123,7 +243,7 @@ influence_type: ownership-boundary
 summary: Project management should own lifecycle, backlog, dependencies, status, and issue selection, not per-issue code execution.
 local_adaptation: Reworked project-manager into the lifecycle owner and made it hand selected issues to implement-issue with compact context.
 rationale: The old broad project-manager skill was unused because it overlapped too much with implementation and testing skills.
-credit_note: Local policy decision from Ronald.
+credit_note: Local policy decision from the user.
 reviewer: Merlin
 next_review: When project-manager is first used on a real project end to end
 ```
@@ -143,7 +263,7 @@ influence_type: deletion
 summary: The old Codex-specific implementation-cycle skill duplicated the newer implement-issue skill.
 local_adaptation: Removed codex-implementation-cycle and made implement-issue the canonical active-issue implementation workflow.
 rationale: Keeping both would preserve duplicate ownership and stale Codex-specific framing.
-credit_note: Local repository cleanup decision from Ronald and Merlin.
+credit_note: Local repository cleanup decision from the user and implementing agent.
 reviewer: Merlin
 next_review: If external tooling still references the old skill name
 ```
@@ -193,7 +313,7 @@ id: 2026-05-23-implementation-template-adopted-changes
 date: 2026-05-23
 discipline: external-skill-adaptation
 status: adopted
-source: Ronald local workflow decision
+source: local user workflow decision
 source_url: local Discord discussion
 source_ref: 2026-05-23 #claw-enhance conversation
 source_path: external-skill-adaptation/templates/discipline-review.md
@@ -203,7 +323,7 @@ influence_type: documentation
 summary: The discipline review template should distinguish implemented changes from future recommendations.
 local_adaptation: Renamed `Recommended Adaptations` to `Adopted Changes` and directed deferred ideas to rejections/deferrals.
 rationale: The old heading was ambiguous once recommendations had already been implemented.
-credit_note: Local policy decision from Ronald.
+credit_note: Local policy decision from the user.
 reviewer: Merlin
 next_review: When the next discipline review template change lands
 ```
@@ -265,7 +385,7 @@ local_adaptation: Added risk-scaled depth guidance and concrete finding evidence
 rationale: This keeps small reviews lightweight while forcing deeper scrutiny on auth, data, public APIs, migrations, shell execution, and LLM trust boundaries.
 credit_note: Inspired by Compound Engineering's confidence-gated review synthesis.
 reviewer: Merlin
-next_review: When Ronald decides whether code reviews should use specialist subagents by default
+next_review: When the user decides whether code reviews should use specialist subagents by default
 ```
 
 ```yaml
@@ -302,7 +422,7 @@ local_target: code-review/SKILL.md
 influence_type: policy
 summary: Review-mode autofix and mode parsing were reviewed and rejected for the generic local code-review skill.
 local_adaptation: Preserved the existing rule: do not auto-fix without approval.
-rationale: Ronald asked for review behavior as a quality gate; automatic edits during review blur the contract and can hide reviewer uncertainty.
+rationale: The user asked for review behavior as a quality gate; automatic edits during review blur the contract and can hide reviewer uncertainty.
 credit_note: Reviewed but intentionally not adopted.
 reviewer: Merlin
 next_review: Revisit only if a separate fix-review or auto-remediation skill is created
@@ -426,7 +546,7 @@ local_adaptation: None; only the investigation-first and evidence habits remain 
 rationale: These behaviors are too tied to GStack's own runtime, storage, and QA workflow to make sense as default ai-skills debugging rules.
 credit_note: Reviewed GStack for debugging ideas; rejected its heavier workflow overhead for ai-skills.
 reviewer: Vectrix
-next_review: Revisit only if Ronald wants a browser-first QA/debugging discipline
+next_review: Revisit only if the user wants a browser-first QA/debugging discipline
 ```
 
 ```yaml
@@ -514,7 +634,7 @@ id: 2026-05-23-skill-review-local-wiki-links
 date: 2026-05-23
 discipline: skill-review
 status: adopted
-source: Ronald local integration decision
+source: local user integration decision
 source_url: local Discord discussion
 source_ref: 2026-05-23 #claw-enhance conversation
 source_path: n/a
@@ -524,7 +644,7 @@ influence_type: behavioral
 summary: Do not flag `[[skill-name]]` references between local skills during skill review.
 local_adaptation: Added a review exception for local wiki-style skill references because this repository's skills are designed to work together.
 rationale: Treating these links as portability defects creates false positives and pushes the repo toward isolated skills, which is not the intended design.
-credit_note: Local policy decision from Ronald.
+credit_note: Local policy decision from the user.
 reviewer: Merlin
 next_review: If the repo changes how skills reference each other
 ```
@@ -534,7 +654,7 @@ id: 2026-05-23-external-skill-adaptation-review-gate
 date: 2026-05-23
 discipline: external-skill-adaptation
 status: adopted
-source: Skill Review discipline and Ronald local workflow decision
+source: Skill Review discipline and local user workflow decision
 source_url: local repository skill-review workflow
 source_ref: feat/external-skill-adaptation as of 2026-05-23
 source_path: skill-review/SKILL.md; external-skill-adaptation/SKILL.md
@@ -544,7 +664,7 @@ influence_type: workflow
 summary: End every created or changed runtime skill with a skill-review pass.
 local_adaptation: Added a final `[[skill-review]]` gate to the external skill adaptation workflow and discipline-review template.
 rationale: Skill adaptation should not finish before checking trigger accuracy, context cost, progressive disclosure, safety, and behavior.
-credit_note: Local policy decision from Ronald, implemented via the new skill-review discipline.
+credit_note: Local policy decision from the user, implemented via the new skill-review discipline.
 reviewer: Merlin
 next_review: After the next full discipline adaptation pass exercises the new gate
 ```

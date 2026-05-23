@@ -28,7 +28,7 @@ Recent debugging work exposed the gap:
   did not help the model debug anything.
 - The rewritten debugging skill needed review for verbosity, repetition,
   trigger accuracy, and source fidelity.
-- Ronald explicitly prioritized what works for models over local house style.
+- The user explicitly prioritized what works for models over local house style.
 
 The local baseline now needs a skill-review owner that can judge:
 
@@ -150,7 +150,7 @@ The skill-review discipline is now adopted with these rules:
    Critical/Important/Polish and PASS/NEEDS WORK/FAIL.
    Provenance entry id:
    `2026-05-23-skill-review-community-verdict-shape`
-4. Treat Ronald's local integration decision as a standing review exception:
+4. Treat the user's local integration decision as a standing review exception:
    do not flag wiki-style links to other local skills.
    Provenance entry id:
    `2026-05-23-skill-review-local-wiki-links`

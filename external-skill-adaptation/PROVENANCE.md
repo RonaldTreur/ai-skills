@@ -55,7 +55,7 @@ What we took:
 - Treat local wiki-style skill links as valid integration points, not defects.
 
 Why:
-- Ronald explicitly prioritized what works for models over local style and asked
+- The user explicitly prioritized what works for models over local style and asked
   for skill review to become part of this workflow.
 
 ### Implementation Lifecycle Discipline
@@ -73,7 +73,7 @@ What we took:
 - Future recommendations belong under rejections/deferrals as `deferred`.
 
 Why:
-- Ronald noticed that `Recommended Adaptations` was ambiguous after an
+- The user noticed that `Recommended Adaptations` was ambiguous after an
   adaptation had already been implemented. The new wording makes the audit trail
   clearer.
 
