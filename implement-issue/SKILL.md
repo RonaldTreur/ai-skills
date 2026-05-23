@@ -1,20 +1,20 @@
 ---
-name: issue-driven-delivery-loop
-description: "Execute a GitHub issue or ready backlog slice from repo context through branch, vertical behavior-first tests, implementation, verification, code review, optional Claude review, PR merge into dev, and post-merge QA. Use when asked to build, fix, continue, or autonomously work a specific ready issue or the next ready issue in a GitHub-backed software project."
+name: implement-issue
+description: "Implement one selected GitHub issue or ready backlog slice from repo context through branch, vertical behavior-first tests, code changes, verification, code review, optional Claude review, PR merge into dev, and post-merge QA. Use when asked to build, fix, continue, or implement a specific ready issue in a GitHub-backed software project."
 ---
 
-# Issue-Driven Delivery Loop
+# Implement Issue
 
-Use this skill for active implementation of a ready issue or backlog slice.
+Use this skill for active implementation of one ready issue or backlog slice.
 
-This is the canonical implementation loop. It supersedes the old
+This is the canonical active-issue implementation workflow. It supersedes the old
 `codex-implementation-cycle` alias, which has been removed.
 
 ## Ownership Boundary
 
 - [[project-manager]] owns project lifecycle, issue decomposition, backlog
   ordering, and status across many issues.
-- `issue-driven-delivery-loop` owns one active implementation slice at a time:
+- `implement-issue` owns one active implementation slice at a time:
   issue selection, branch, tests, implementation, verification, review, PR,
   merge, and post-merge QA.
 - [[developing-web-projects]] governs web architecture and implementation
@@ -67,15 +67,15 @@ Ask before:
    - relevant tests/checks
    - likely risk areas
 
-If no issue is named, use [[project-manager]] rules to choose the next ready
-issue before entering this loop.
+If no issue is named, use [[project-manager]] rules to select one ready issue
+before entering this workflow.
 
 ## Branch And State
 
 Use `dev` as the integration branch.
 
 1. Ensure `origin/dev` exists; create it from the default branch only when the
-   repo policy allows and the user has authorized the delivery loop to do so.
+   repo policy allows and the user has authorized this workflow to do so.
 2. Create a focused branch from `dev`, such as `issue-12-short-title`.
 3. Update `DELIVERY_STATE.md` with issue, branch, checkpoint, checks, blockers,
    and next action.
@@ -174,7 +174,7 @@ Merge into `dev` only when:
 
 After merge, run post-merge QA against `dev` or the closest available preview.
 If QA finds defects, create follow-up issues with priority/dependencies and
-continue with [[project-manager]] or the next ready issue.
+return to [[project-manager]] for the next work decision.
 
 ## Phase Heads-Ups
 

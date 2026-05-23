@@ -12,7 +12,7 @@ Keep these behaviors:
 3. Decompose approved project docs into small, dependency-aware issues.
 4. Recommend next ready work from priority, dependencies, milestone, size, and
    age.
-5. Delegate active build execution to `issue-driven-delivery-loop`.
+5. Delegate active build execution to `implement-issue`.
 6. Ask before bulk GitHub mutations, project-scope changes, or product
    decisions.
 
@@ -31,7 +31,7 @@ What we took:
 
 Local adaptation:
 - `project-manager` now manages durable project structure and hands active work
-  to `issue-driven-delivery-loop`.
+  to `implement-issue`.
 
 ### SuperPowers
 
@@ -52,12 +52,12 @@ Local adaptation:
 ### Existing Local Skills
 
 - `project-kickoff/SKILL.md`
-- `issue-driven-delivery-loop/SKILL.md`
+- `implement-issue/SKILL.md`
 - `test-planning/SKILL.md`
 - `developing-web-projects/SKILL.md`
 
 What we took:
-- Kickoff docs, test-plan approvals, web defaults, and delivery-loop handoff
+- Kickoff docs, test-plan approvals, web defaults, and implementation handoff
   boundaries.
 
 ## Formal Trail

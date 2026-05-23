@@ -13,8 +13,8 @@ Conductor skill for end-to-end testing workflow across:
 ## Scope Boundary
 
 This skill owns testing method and tooling for web projects. It does not own
-GitHub issue ordering, branch/PR mechanics, merge gates, or delivery-loop state.
-Use [[issue-driven-delivery-loop]] for active per-issue execution.
+GitHub issue ordering, branch/PR mechanics, merge gates, or implementation state.
+Use [[implement-issue]] for active per-issue execution.
 
 ## Outside-in workflow (default)
 

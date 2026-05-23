@@ -4,7 +4,7 @@
 - Reviewer: Merlin
 - Branch: `feat/implementation-lifecycle-methodology`
 - Local files reviewed: `project-manager/SKILL.md`,
-  `issue-driven-delivery-loop/SKILL.md`,
+  `implement-issue/SKILL.md`,
   `codex-implementation-cycle/SKILL.md`, `developing-web-projects/SKILL.md`,
   `testing-orchestrator/SKILL.md`, `test-planning/SKILL.md`,
   `external-skill-adaptation/templates/discipline-review.md`
@@ -16,9 +16,9 @@
 
 Before this pass, implementation behavior was split across several overlapping
 skills. `project-manager` described a full lifecycle but was too broad for
-active issue execution. `issue-driven-delivery-loop` already represented the
+active issue execution. `implement-issue` already represented the
 newer GitHub-issue execution path. `codex-implementation-cycle` was an older
-Codex-specific implementation loop that overlapped with the issue-driven loop.
+Codex-specific implementation workflow that overlapped with implement-issue.
 `developing-web-projects`, `testing-orchestrator`, and `test-planning`
 contained implementation-adjacent rules that needed clearer ownership
 boundaries.
@@ -70,7 +70,8 @@ boundaries.
   `skills/deprecated/request-refactor-plan/SKILL.md`
 - Useful patterns: behavior-first TDD through public interfaces, vertical
   tracer bullets, and small refactor plans.
-- Conflicts or risks: low risk; adapt language to the local issue-driven loop
+- Conflicts or risks: low risk; adapt language to the local implement-issue
+  workflow
   and avoid making every issue a heavy ceremony.
 - Adoption recommendation: adopt vertical behavior-first slices in active
   implementation and outside-in testing.
@@ -78,7 +79,7 @@ boundaries.
 ## Questions For Ronald
 
 - Should `codex-implementation-cycle` remain as a compatibility alias?
-  Decision: no; `issue-driven-delivery-loop` supersedes it.
+  Decision: no; `implement-issue` supersedes it.
 - Should `project-manager` become more assertive now that it has not been used?
   Decision: yes; narrow it to project lifecycle and backlog ownership.
 - Should outside-in development align with Matt's behavior-first TDD?
@@ -87,13 +88,13 @@ boundaries.
 
 ## Adopted Changes
 
-- `issue-driven-delivery-loop/SKILL.md`
+- `implement-issue/SKILL.md`
   - Provenance entries:
     `2026-05-23-implementation-superpowers-delegation`,
     `2026-05-23-implementation-matt-vertical-tdd`,
     `2026-05-23-implementation-compound-guardrails`,
     `2026-05-23-implementation-remove-codex-alias`
-  - Became the canonical per-issue implementation loop.
+  - Became the canonical active-issue implementation workflow.
 - `project-manager/SKILL.md`
   - Provenance entries:
     `2026-05-23-implementation-project-manager-boundary`,
@@ -104,7 +105,7 @@ boundaries.
   - Removed as an obsolete Codex-specific alias.
 - `developing-web-projects/SKILL.md`
   - Provenance entry: `2026-05-23-implementation-web-boundary`
-  - Clarified that web defaults are not delivery state management.
+  - Clarified that web defaults are not implementation state management.
 - `testing-orchestrator/SKILL.md`
   - Provenance entry: `2026-05-23-implementation-matt-vertical-tdd`
   - Aligned outside-in testing with vertical behavior slices.
@@ -120,7 +121,7 @@ boundaries.
 
 Created or updated:
 
-- `issue-driven-delivery-loop/PROVENANCE.md`
+- `implement-issue/PROVENANCE.md`
 - `project-manager/PROVENANCE.md`
 - `developing-web-projects/PROVENANCE.md`
 - `testing-orchestrator/PROVENANCE.md`
@@ -141,7 +142,7 @@ Created or updated:
 ## Verification Notes
 
 - `[[skill-review]]` result for changed runtime skills: PASS.
-  - Reviewed `project-manager`, `issue-driven-delivery-loop`,
+  - Reviewed `project-manager`, `implement-issue`,
     `developing-web-projects`, `testing-orchestrator`, and `test-planning`.
   - No Critical or Important findings remained.
   - Local `[[skill-name]]` references were intentionally ignored as approved

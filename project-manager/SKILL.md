@@ -1,6 +1,6 @@
 ---
 name: project-manager
-description: "Manage GitHub-backed project lifecycle: kickoff handoff, repo setup, planning docs, issue decomposition, dependency ordering, project status, and delegation into the issue-driven delivery loop. Use when starting a new project, organizing an active project, creating issues from plans, checking progress, or deciding what should be built next."
+description: "Manage GitHub-backed project lifecycle: kickoff handoff, repo setup, planning docs, issue decomposition, dependency ordering, project status, and selection of issues for the implement-issue skill. Use when starting a new project, organizing an active project, creating issues from plans, checking progress, or deciding what should be built next."
 ---
 
 # Project Manager
@@ -9,22 +9,22 @@ Use this skill to keep a software project organized across its full lifecycle.
 
 This skill owns project structure, issue hygiene, dependency ordering, status,
 and handoff. It does **not** own per-issue implementation. Active issue
-execution is delegated to [[issue-driven-delivery-loop]].
+execution is delegated to [[implement-issue]].
 
 ## Ownership Boundary
 
 - [[project-kickoff]] owns initial brief, design, planning, and decisions.
 - `project-manager` owns repo/project setup, planning docs, issue decomposition,
   dependency graph, status, and human approval gates.
-- [[issue-driven-delivery-loop]] owns active per-issue build execution.
+- [[implement-issue]] owns active per-issue build execution.
 - [[developing-web-projects]] owns web architecture, platform, styling, and
   implementation defaults.
 - [[test-planning]] and [[testing-orchestrator]] own testing strategy and
   outside-in test workflow.
 - [[code-review]] owns P0-P3 review gates.
 
-When this skill reaches "build this issue", stop orchestrating details here and
-invoke [[issue-driven-delivery-loop]] with the selected issue and repo context.
+When this skill reaches "build this issue", stop orchestrating code details and
+invoke [[implement-issue]] with the selected issue and repo context.
 
 ## Core Principles
 
@@ -53,7 +53,7 @@ Ask before:
 - creating or mutating GitHub Projects/labels in bulk
 - creating many issues from a plan
 - changing project scope, design direction, or product behavior
-- merging/releasing/deploying unless already covered by an invoked delivery loop
+- merging/releasing/deploying unless already covered by an invoked implementation workflow
 
 ## Repo Intake
 
@@ -148,7 +148,7 @@ When asked "what is next?", "next sprint", or "start building":
 4. Ask for approval only when changing the backlog, project scope, or a GitHub
    project/label state.
 5. Once an issue is selected for active implementation, invoke
-   [[issue-driven-delivery-loop]].
+   [[implement-issue]].
 
 ### 5. Status And Recovery
 

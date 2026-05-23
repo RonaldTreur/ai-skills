@@ -12,7 +12,7 @@ Keep these behaviors:
    behavior slices.
 3. Avoid horizontal "all tests first, all code later" unless explicitly running
    a test-only pass.
-4. Delegate delivery state and PR mechanics to `issue-driven-delivery-loop`.
+4. Delegate implementation state and PR mechanics to `implement-issue`.
 
 ## Source Influence
 

@@ -31,6 +31,6 @@ The repo now includes a dedicated `debugging/` skill for investigation-first bug
 The repo also includes a dedicated `skill-review/` skill for reviewing skills as model-facing runtime artifacts: activation accuracy, context cost, progressive disclosure, safety, and realistic behavior checks.
 
 The active implementation lifecycle is split across `project-manager/` for
-project/backlog orchestration and `issue-driven-delivery-loop/` for per-issue
-implementation. The old `codex-implementation-cycle/` alias was removed after
-being superseded by the issue-driven delivery loop.
+project/backlog orchestration and `implement-issue/` for one selected issue at
+a time. The old `codex-implementation-cycle/` alias was removed after being
+superseded by the implement-issue skill.

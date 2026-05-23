@@ -1,13 +1,13 @@
-# Issue-Driven Delivery Loop Provenance
+# Implement Issue Provenance
 
 This document records the source material that shaped
-`issue-driven-delivery-loop/SKILL.md`.
+`implement-issue/SKILL.md`.
 
 ## Rebuild Recipe
 
 Keep these behaviors:
 
-1. Treat this skill as the canonical active implementation loop.
+1. Treat this skill as the canonical active-issue implementation workflow.
 2. Execute one ready GitHub issue or backlog slice at a time.
 3. Use `dev` as the integration target.
 4. Use vertical behavior-first TDD: behavior, failing test, minimal code,
@@ -54,7 +54,7 @@ What we took:
 - Use vertical tracer bullets: one failing test, minimal implementation, repeat.
 
 Local adaptation:
-- Applied this inside the issue delivery loop while still preserving a
+- Applied this inside the issue implementation workflow while still preserving a
   higher-level `TEST_PLAN.md` and issue acceptance criteria.
 
 ### Compound Engineering
@@ -71,7 +71,7 @@ What we took:
   them.
 
 Local adaptation:
-- The loop reads plans and tests as guardrails but does not require
+- The workflow reads plans and tests as guardrails but does not require
   pre-written code snippets or micromanaged implementation steps.
 
 ### GStack

@@ -38,10 +38,10 @@ source_url: https://github.com/obra/superpowers
 source_ref: f2cbfbefebbfef77321e4c9abc9e949826bea9d7
 source_path: skills/subagent-driven-development/SKILL.md; skills/subagent-driven-development/implementer-prompt.md
 license: MIT
-local_target: issue-driven-delivery-loop/SKILL.md
+local_target: implement-issue/SKILL.md
 influence_type: behavioral
 summary: Delegated implementation should include explicit context, clear write scope, escalation statuses, and review before completion.
-local_adaptation: Added Vectrix-first delegation guidance and DONE/DONE_WITH_CONCERNS/NEEDS_CONTEXT/BLOCKED status handling to the issue-driven delivery loop.
+local_adaptation: Added Vectrix-first delegation guidance and DONE/DONE_WITH_CONCERNS/NEEDS_CONTEXT/BLOCKED status handling to the implement-issue skill.
 rationale: Ronald's workflow uses multiple agents, but fresh agents need bounded context and explicit escalation rather than inherited assumptions.
 credit_note: Adapted from SuperPowers subagent-driven development.
 reviewer: Merlin
@@ -58,14 +58,14 @@ source_url: https://github.com/mattpocock/skills
 source_ref: b8be62ffacb0118fa3eaa29a0923c87c8c11985c
 source_path: skills/engineering/tdd/SKILL.md
 license: MIT
-local_target: issue-driven-delivery-loop/SKILL.md; testing-orchestrator/SKILL.md
+local_target: implement-issue/SKILL.md; testing-orchestrator/SKILL.md
 influence_type: behavioral
 summary: TDD should proceed in vertical behavior slices through public interfaces, not horizontal all-tests-then-all-code batches.
-local_adaptation: Added vertical behavior-first slices to the issue delivery loop and outside-in testing workflow.
+local_adaptation: Added vertical behavior-first slices to the issue implementation workflow and outside-in testing workflow.
 rationale: The approach preserves outside-in discipline while keeping each implementation slice small and learnable.
 credit_note: Inspired by Matt Pocock's TDD skill, adapted for ai-skills.
 reviewer: Merlin
-next_review: After several issue-driven implementation PRs exercise this loop
+next_review: After several implement-issue PRs exercise this workflow
 ```
 
 ```yaml
@@ -78,10 +78,10 @@ source_url: https://github.com/everyinc/compound-engineering-plugin
 source_ref: 5297a9440fa009822ceef8052b9e644e782281e1
 source_path: docs/skills/ce-plan.md
 license: MIT
-local_target: project-manager/SKILL.md; issue-driven-delivery-loop/SKILL.md
+local_target: project-manager/SKILL.md; implement-issue/SKILL.md
 influence_type: structural
 summary: Plans should capture guardrails, decisions, scope, risks, units, and tests without pre-writing stale implementation choreography.
-local_adaptation: Project management issues now describe behavior, dependencies, tests, and affected areas while leaving code-level decisions to the active delivery loop.
+local_adaptation: Project management issues now describe behavior, dependencies, tests, and affected areas while leaving code-level decisions to the active implementation workflow.
 rationale: This keeps plans useful for fresh agents without making them brittle when the codebase shifts.
 credit_note: Adapted from Compound Engineering planning guidance.
 reviewer: Merlin
@@ -121,7 +121,7 @@ license: repository-local decision
 local_target: project-manager/SKILL.md
 influence_type: ownership-boundary
 summary: Project management should own lifecycle, backlog, dependencies, and status, not per-issue code execution.
-local_adaptation: Reworked project-manager into the lifecycle owner and made it delegate active builds to issue-driven-delivery-loop.
+local_adaptation: Reworked project-manager into the lifecycle owner and made it delegate active builds to implement-issue.
 rationale: The old broad project-manager skill was unused because it overlapped too much with implementation and testing skills.
 credit_note: Local policy decision from Ronald.
 reviewer: Merlin
@@ -136,12 +136,12 @@ status: superseded
 source: Local ai-skills implementation workflow
 source_url: local repository policy
 source_ref: feat/implementation-lifecycle-methodology on 2026-05-23
-source_path: codex-implementation-cycle/SKILL.md; issue-driven-delivery-loop/SKILL.md
+source_path: codex-implementation-cycle/SKILL.md; implement-issue/SKILL.md
 license: repository-local process
-local_target: codex-implementation-cycle/SKILL.md; issue-driven-delivery-loop/SKILL.md
+local_target: codex-implementation-cycle/SKILL.md; implement-issue/SKILL.md
 influence_type: deletion
-summary: The old Codex-specific implementation-cycle skill duplicated the newer issue-driven delivery loop.
-local_adaptation: Removed codex-implementation-cycle and made issue-driven-delivery-loop the canonical active implementation loop.
+summary: The old Codex-specific implementation-cycle skill duplicated the newer implement-issue skill.
+local_adaptation: Removed codex-implementation-cycle and made implement-issue the canonical active-issue implementation workflow.
 rationale: Keeping both would preserve duplicate ownership and stale Codex-specific framing.
 credit_note: Local repository cleanup decision from Ronald and Merlin.
 reviewer: Merlin
@@ -160,12 +160,12 @@ source_path: developing-web-projects/SKILL.md
 license: repository-local process
 local_target: developing-web-projects/SKILL.md
 influence_type: ownership-boundary
-summary: Web project guidance should own architecture and implementation defaults, not issue sequencing or delivery state.
-local_adaptation: Added a scope boundary and adjusted the approval checkpoint for approved issue-driven runs.
-rationale: Web defaults should constrain implementation, while the delivery loop should own branch, issue, PR, and QA flow.
+summary: Web project guidance should own architecture and implementation defaults, not issue sequencing or implementation state.
+local_adaptation: Added a scope boundary and adjusted the approval checkpoint for approved implement-issue runs.
+rationale: Web defaults should constrain implementation, while the implementation workflow should own branch, issue, PR, and QA flow.
 credit_note: Local repository ownership clarification.
 reviewer: Merlin
-next_review: When the web project skill is next exercised inside issue-driven delivery
+next_review: When the web project skill is next exercised inside implement-issue
 ```
 
 ```yaml

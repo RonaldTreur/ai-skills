@@ -63,7 +63,7 @@ Why:
 - Source: local implementation-lifecycle consolidation
 - Reviewed ref: `feat/implementation-lifecycle-methodology` on 2026-05-23
 - Reviewed material: `methodology/disciplines/implementation-lifecycle.md`,
-  `project-manager/SKILL.md`, `issue-driven-delivery-loop/SKILL.md`, and
+  `project-manager/SKILL.md`, `implement-issue/SKILL.md`, and
   `external-skill-adaptation/templates/discipline-review.md`
 - License: repository-local process
 

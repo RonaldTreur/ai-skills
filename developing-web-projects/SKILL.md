@@ -18,8 +18,8 @@ TypeScript style, dependencies, documentation expectations, and when a web
 decision needs human approval.
 
 It does not own GitHub issue sequencing, branch/PR mechanics, review gates, or
-long-running delivery state. Use [[project-manager]] for project lifecycle and
-[[issue-driven-delivery-loop]] for active per-issue implementation.
+long-running implementation state. Use [[project-manager]] for project lifecycle and
+[[implement-issue]] for active per-issue implementation.
 
 ---
 
@@ -125,7 +125,7 @@ Proceed as if you are implementing *your own project* using the user's style.
 - Treat `AGENTS.md` as instructions for AI assistants.
 - For standalone web implementation requests, provide a short outline before
   editing and wait for approval.
-- Inside an approved [[issue-driven-delivery-loop]] run, the short outline is a
+- Inside an approved [[implement-issue]] run, the short outline is a
   checkpoint/status update rather than a blocking approval request unless the
   work would deviate from these web defaults or change user-visible scope beyond
   the issue/spec.
