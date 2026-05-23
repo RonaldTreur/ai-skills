@@ -29,6 +29,186 @@ next_review:
 ## Entries
 
 ```yaml
+id: 2026-05-23-implementation-superpowers-delegation
+date: 2026-05-23
+discipline: implementation-lifecycle
+status: adapted
+source: SuperPowers
+source_url: https://github.com/obra/superpowers
+source_ref: f2cbfbefebbfef77321e4c9abc9e949826bea9d7
+source_path: skills/subagent-driven-development/SKILL.md; skills/subagent-driven-development/implementer-prompt.md
+license: MIT
+local_target: issue-driven-delivery-loop/SKILL.md
+influence_type: behavioral
+summary: Delegated implementation should include explicit context, clear write scope, escalation statuses, and review before completion.
+local_adaptation: Added Vectrix-first delegation guidance and DONE/DONE_WITH_CONCERNS/NEEDS_CONTEXT/BLOCKED status handling to the issue-driven delivery loop.
+rationale: Ronald's workflow uses multiple agents, but fresh agents need bounded context and explicit escalation rather than inherited assumptions.
+credit_note: Adapted from SuperPowers subagent-driven development.
+reviewer: Merlin
+next_review: When OpenClaw delegation semantics or Vectrix ownership changes
+```
+
+```yaml
+id: 2026-05-23-implementation-matt-vertical-tdd
+date: 2026-05-23
+discipline: implementation-lifecycle
+status: adopted
+source: Matt Pocock Skills
+source_url: https://github.com/mattpocock/skills
+source_ref: b8be62ffacb0118fa3eaa29a0923c87c8c11985c
+source_path: skills/engineering/tdd/SKILL.md
+license: MIT
+local_target: issue-driven-delivery-loop/SKILL.md; testing-orchestrator/SKILL.md
+influence_type: behavioral
+summary: TDD should proceed in vertical behavior slices through public interfaces, not horizontal all-tests-then-all-code batches.
+local_adaptation: Added vertical behavior-first slices to the issue delivery loop and outside-in testing workflow.
+rationale: The approach preserves outside-in discipline while keeping each implementation slice small and learnable.
+credit_note: Inspired by Matt Pocock's TDD skill, adapted for ai-skills.
+reviewer: Merlin
+next_review: After several issue-driven implementation PRs exercise this loop
+```
+
+```yaml
+id: 2026-05-23-implementation-compound-guardrails
+date: 2026-05-23
+discipline: implementation-lifecycle
+status: adapted
+source: Compound Engineering
+source_url: https://github.com/everyinc/compound-engineering-plugin
+source_ref: 5297a9440fa009822ceef8052b9e644e782281e1
+source_path: docs/skills/ce-plan.md
+license: MIT
+local_target: project-manager/SKILL.md; issue-driven-delivery-loop/SKILL.md
+influence_type: structural
+summary: Plans should capture guardrails, decisions, scope, risks, units, and tests without pre-writing stale implementation choreography.
+local_adaptation: Project management issues now describe behavior, dependencies, tests, and affected areas while leaving code-level decisions to the active delivery loop.
+rationale: This keeps plans useful for fresh agents without making them brittle when the codebase shifts.
+credit_note: Adapted from Compound Engineering planning guidance.
+reviewer: Merlin
+next_review: When planning artifacts are evaluated against real project builds
+```
+
+```yaml
+id: 2026-05-23-implementation-gstack-plan-review
+date: 2026-05-23
+discipline: implementation-lifecycle
+status: adapted
+source: GStack
+source_url: https://github.com/garrytan/gstack
+source_ref: 61c9a20bd2e3a579c3d6184ed2fc95b51a528f7c
+source_path: autoplan/SKILL.md; plan-ceo-review; plan-design-review; plan-devex-review; plan-eng-review; plan-tune
+license: MIT
+local_target: project-manager/SKILL.md; methodology/disciplines/implementation-lifecycle.md
+influence_type: review-policy
+summary: Planning review should surface unresolved decisions, close calls, and cross-functional risk before implementation proceeds.
+local_adaptation: Adopted the decision/risk focus into project-manager readiness and discipline review, while rejecting GStack runtime scaffolding.
+rationale: The useful part is the planning judgment, not the source's session/runtime machinery.
+credit_note: Adapted from GStack plan review patterns.
+reviewer: Merlin
+next_review: If a dedicated project lifecycle monitoring skill is created
+```
+
+```yaml
+id: 2026-05-23-implementation-project-manager-boundary
+date: 2026-05-23
+discipline: implementation-lifecycle
+status: adopted
+source: Ronald local workflow decision
+source_url: local Discord discussion
+source_ref: 2026-05-23 #claw-enhance conversation
+source_path: n/a
+license: repository-local decision
+local_target: project-manager/SKILL.md
+influence_type: ownership-boundary
+summary: Project management should own lifecycle, backlog, dependencies, and status, not per-issue code execution.
+local_adaptation: Reworked project-manager into the lifecycle owner and made it delegate active builds to issue-driven-delivery-loop.
+rationale: The old broad project-manager skill was unused because it overlapped too much with implementation and testing skills.
+credit_note: Local policy decision from Ronald.
+reviewer: Merlin
+next_review: When project-manager is first used on a real project end to end
+```
+
+```yaml
+id: 2026-05-23-implementation-remove-codex-alias
+date: 2026-05-23
+discipline: implementation-lifecycle
+status: superseded
+source: Local ai-skills implementation workflow
+source_url: local repository policy
+source_ref: feat/implementation-lifecycle-methodology on 2026-05-23
+source_path: codex-implementation-cycle/SKILL.md; issue-driven-delivery-loop/SKILL.md
+license: repository-local process
+local_target: codex-implementation-cycle/SKILL.md; issue-driven-delivery-loop/SKILL.md
+influence_type: deletion
+summary: The old Codex-specific implementation-cycle skill duplicated the newer issue-driven delivery loop.
+local_adaptation: Removed codex-implementation-cycle and made issue-driven-delivery-loop the canonical active implementation loop.
+rationale: Keeping both would preserve duplicate ownership and stale Codex-specific framing.
+credit_note: Local repository cleanup decision from Ronald and Merlin.
+reviewer: Merlin
+next_review: If external tooling still references the old skill name
+```
+
+```yaml
+id: 2026-05-23-implementation-web-boundary
+date: 2026-05-23
+discipline: implementation-lifecycle
+status: adopted
+source: Local skill ownership review
+source_url: local repository policy
+source_ref: feat/implementation-lifecycle-methodology on 2026-05-23
+source_path: developing-web-projects/SKILL.md
+license: repository-local process
+local_target: developing-web-projects/SKILL.md
+influence_type: ownership-boundary
+summary: Web project guidance should own architecture and implementation defaults, not issue sequencing or delivery state.
+local_adaptation: Added a scope boundary and adjusted the approval checkpoint for approved issue-driven runs.
+rationale: Web defaults should constrain implementation, while the delivery loop should own branch, issue, PR, and QA flow.
+credit_note: Local repository ownership clarification.
+reviewer: Merlin
+next_review: When the web project skill is next exercised inside issue-driven delivery
+```
+
+```yaml
+id: 2026-05-23-implementation-test-planning-boundary
+date: 2026-05-23
+discipline: implementation-lifecycle
+status: adopted
+source: Local skill ownership review and Matt Pocock behavior-first testing
+source_url: local repository policy; https://github.com/mattpocock/skills
+source_ref: feat/implementation-lifecycle-methodology on 2026-05-23; b8be62ffacb0118fa3eaa29a0923c87c8c11985c
+source_path: test-planning/SKILL.md; testing-orchestrator/SKILL.md; skills/engineering/tdd/SKILL.md
+license: repository-local process; MIT
+local_target: test-planning/SKILL.md; testing-orchestrator/SKILL.md
+influence_type: ownership-boundary
+summary: Test planning owns strategy and approval gates; active implementation adds issue-local tests in vertical behavior slices.
+local_adaptation: Clarified approval boundaries in test-planning and changed testing-orchestrator's outside-in loop to one behavior at a time.
+rationale: This keeps high-level test strategy deliberate while allowing approved implementation issues to move without unnecessary pauses.
+credit_note: Local ownership clarification with behavior-slice influence from Matt Pocock's TDD skill.
+reviewer: Merlin
+next_review: During the dedicated test-planning/testing-orchestrator discipline pass
+```
+
+```yaml
+id: 2026-05-23-implementation-template-adopted-changes
+date: 2026-05-23
+discipline: external-skill-adaptation
+status: adopted
+source: Ronald local workflow decision
+source_url: local Discord discussion
+source_ref: 2026-05-23 #claw-enhance conversation
+source_path: external-skill-adaptation/templates/discipline-review.md
+license: repository-local decision
+local_target: external-skill-adaptation/templates/discipline-review.md; external-skill-adaptation/PROVENANCE.md
+influence_type: documentation
+summary: The discipline review template should distinguish implemented changes from future recommendations.
+local_adaptation: Renamed `Recommended Adaptations` to `Adopted Changes` and directed deferred ideas to rejections/deferrals.
+rationale: The old heading was ambiguous once recommendations had already been implemented.
+credit_note: Local policy decision from Ronald.
+reviewer: Merlin
+next_review: When the next discipline review template change lands
+```
+
+```yaml
 id: 2026-05-23-code-review-matt-two-axis
 date: 2026-05-23
 discipline: code-review

@@ -140,7 +140,7 @@ The debugging discipline is now approved for local adoption with these rules:
    explicitly said to continue or stopping would leave the system in a bad
    half-fixed state.
 
-## Recommended Adaptations
+## Adopted Changes
 
 1. Add a dedicated debugging skill with this skeleton:
    feedback loop → reproduce → targeted hypotheses when useful → targeted probes

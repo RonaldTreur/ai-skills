@@ -17,6 +17,8 @@ To reconstruct the skill, keep these behaviors:
 6. End every created or changed runtime skill with a `[[skill-review]]` pass.
 7. Ignore local `[[skill-name]]` references during skill review because this
    repository's skills are designed to work together.
+8. In discipline reviews, record implemented changes under `Adopted Changes`.
+   Use rejections/deferrals for ideas that are not implemented yet.
 
 ## Source Influence
 
@@ -56,10 +58,30 @@ Why:
 - Ronald explicitly prioritized what works for models over local style and asked
   for skill review to become part of this workflow.
 
+### Implementation Lifecycle Discipline
+
+- Source: local implementation-lifecycle consolidation
+- Reviewed ref: `feat/implementation-lifecycle-methodology` on 2026-05-23
+- Reviewed material: `methodology/disciplines/implementation-lifecycle.md`,
+  `project-manager/SKILL.md`, `issue-driven-delivery-loop/SKILL.md`, and
+  `external-skill-adaptation/templates/discipline-review.md`
+- License: repository-local process
+
+What we took:
+- The discipline review template now uses `Adopted Changes` for changes that
+  have actually landed.
+- Future recommendations belong under rejections/deferrals as `deferred`.
+
+Why:
+- Ronald noticed that `Recommended Adaptations` was ambiguous after an
+  adaptation had already been implemented. The new wording makes the audit trail
+  clearer.
+
 ## Formal Trail
 
 The fuller methodology record lives in:
 
 - `methodology/disciplines/skill-review.md`
+- `methodology/disciplines/implementation-lifecycle.md`
 - `methodology/ADAPTATION_LOG.md`
 - `skill-review/PROVENANCE.md`

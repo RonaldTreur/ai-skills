@@ -134,7 +134,7 @@ The skill-review discipline is now adopted with these rules:
 9. Ignore local `[[skill-name]]` references between repository skills. They are
    intended integration points, not portability defects.
 
-## Recommended Adaptations
+## Adopted Changes
 
 1. Add a dedicated `skill-review/` skill that reviews skill packages and
    `SKILL.md` files for activation, context cost, progressive disclosure,

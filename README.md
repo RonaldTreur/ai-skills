@@ -29,3 +29,8 @@ Use the `external-skill-adaptation` skill when comparing third-party skills, pro
 The repo now includes a dedicated `debugging/` skill for investigation-first bug fixing with a trivial-bug fast path and hard verification gates.
 
 The repo also includes a dedicated `skill-review/` skill for reviewing skills as model-facing runtime artifacts: activation accuracy, context cost, progressive disclosure, safety, and realistic behavior checks.
+
+The active implementation lifecycle is split across `project-manager/` for
+project/backlog orchestration and `issue-driven-delivery-loop/` for per-issue
+implementation. The old `codex-implementation-cycle/` alias was removed after
+being superseded by the issue-driven delivery loop.

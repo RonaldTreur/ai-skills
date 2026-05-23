@@ -1,6 +1,6 @@
 ---
 name: developing-web-projects
-description: Use when creating websites or web applications. Enforces the user's personal web development philosophy: vanilla web, MPAs, semantic CSS, and minimal frameworks.
+description: "Use when creating websites or web applications. Enforces the user's personal web development philosophy: vanilla web, MPAs, semantic CSS, and minimal frameworks."
 ---
 
 # Personal Web Development Skill
@@ -10,6 +10,16 @@ When active, you should default to these principles unless the user explicitly r
 
 You should **not** ask many exploratory questions.  
 Instead, you should confidently proceed using these defaults, just as the user would.
+
+## Scope Boundary
+
+This skill owns web implementation defaults: architecture, platform, HTML/CSS,
+TypeScript style, dependencies, documentation expectations, and when a web
+decision needs human approval.
+
+It does not own GitHub issue sequencing, branch/PR mechanics, review gates, or
+long-running delivery state. Use [[project-manager]] for project lifecycle and
+[[issue-driven-delivery-loop]] for active per-issue implementation.
 
 ---
 
@@ -113,7 +123,12 @@ Proceed as if you are implementing *your own project* using the user's style.
 - For existing projects, after making changes, update `README.md` and `AGENTS.md` when those files already exist.
 - Treat `README.md` as documentation for humans.
 - Treat `AGENTS.md` as instructions for AI assistants.
-- Before starting implementation work, provide a short outline of the plan and wait for user approval.
+- For standalone web implementation requests, provide a short outline before
+  editing and wait for approval.
+- Inside an approved [[issue-driven-delivery-loop]] run, the short outline is a
+  checkpoint/status update rather than a blocking approval request unless the
+  work would deviate from these web defaults or change user-visible scope beyond
+  the issue/spec.
 
 ---
 

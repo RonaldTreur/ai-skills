@@ -12,6 +12,7 @@
 - `README.md`
 - `docs/skills/ce-debug.md`
 - `docs/skills/ce-code-review.md`
+- `docs/skills/ce-plan.md`
 - `docs/skills/ce-resolve-pr-feedback.md`
 - `plugins/compound-engineering/skills/ce-compound/SKILL.md`
 - `plugins/compound-engineering/skills/ce-code-review/SKILL.md`
@@ -38,10 +39,16 @@
 - Diff-aware code review depth based on risk and blast radius.
 - Confidence-gated review synthesis: drop unanchored findings, dedupe findings,
   and separate severity from action ownership.
+- Plans should capture guardrails, decisions, scope, units, risks, and test
+  scenarios, not brittle implementation choreography.
+- Stable implementation-unit identity and clear planning-time vs
+  implementation-time decisions prevent stale plans from breaking execution.
 
 ## Adoption Risks
 
-The workflow assumes a heavier engineering-organization loop with many specialist agents. Adapt selectively to avoid ceremony and duplication with existing OpenClaw roles.
+The workflow assumes a heavier engineering-organization loop with many
+specialist agents. Adapt selectively to avoid ceremony and duplication with
+existing OpenClaw roles.
 
 ## Re-Review Trigger
 

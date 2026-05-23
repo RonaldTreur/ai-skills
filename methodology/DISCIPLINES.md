@@ -10,6 +10,7 @@ Use this map to review external sources against the real project-development rou
 - Architecture
 - Implementation planning
 - Implementation
+- Implementation lifecycle
 - Debugging
 - Testing and QA
 - Code review
@@ -27,8 +28,15 @@ Use this map to review external sources against the real project-development rou
 - How to preserve attribution and provenance
 - How to revisit external sources after they change
 
-## First Recommended Vertical Slice
+## Completed Vertical Slices
 
-Start with debugging.
+- Debugging
+- Skill review
+- Code review
+- Implementation lifecycle
 
-Reason: debugging has clear failure modes, strong candidate source material, and obvious ROI. A good debugging discipline can prevent speculative fixes, missing repros, weak verification, and forgotten cleanup.
+## Next Candidate Slices
+
+- Test planning / testing orchestrator
+- Project kickoff
+- Project lifecycle monitoring

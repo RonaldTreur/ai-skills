@@ -7,6 +7,10 @@ description: Generate a TEST_PLAN.md before writing any test code. Use when star
 
 Create a test plan **before** writing tests or feature code.
 
+This skill owns test strategy, not delivery orchestration. For active
+GitHub-issue implementation, [[issue-driven-delivery-loop]] decides when to
+execute the plan and how to update delivery state.
+
 ## What this skill does
 
 1. Read `BRIEF.md` (requirements and constraints)
@@ -38,7 +42,12 @@ Link downstream execution skills:
 
 ## Workflow rules
 
-- Human reviews and approves `TEST_PLAN.md` **before any test code is written**.
+- For new projects or standalone planning, human reviews and approves
+  `TEST_PLAN.md` **before any test code is written**.
+- Inside an approved [[issue-driven-delivery-loop]] run, existing issue
+  acceptance criteria and standing delivery authority may count as approval for
+  issue-local test additions. Ask only when the test plan would change product
+  scope or user-visible behavior beyond the issue/spec.
 - After implementation, update `TEST_PLAN.md` with:
   - checkmarks per planned item
   - current coverage percentages

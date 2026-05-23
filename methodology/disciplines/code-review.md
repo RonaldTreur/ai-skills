@@ -135,7 +135,7 @@ The code-review discipline is now adopted with these rules:
 9. Keep local wiki-style links between skills; they are valid integration
    points.
 
-## Recommended Adaptations
+## Adopted Changes
 
 1. Update `code-review/SKILL.md` with review axes, preflight source discovery,
    critical-first scanning, evidence rules, and risk-scaled depth.
