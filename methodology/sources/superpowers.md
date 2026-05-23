@@ -14,6 +14,10 @@
 - `skills/systematic-debugging/defense-in-depth.md`
 - `skills/dispatching-parallel-agents/SKILL.md`
 - `skills/test-driven-development/SKILL.md`
+- `skills/requesting-code-review/SKILL.md`
+- `skills/requesting-code-review/code-reviewer.md`
+- `skills/subagent-driven-development/code-quality-reviewer-prompt.md`
+- `skills/subagent-driven-development/spec-reviewer-prompt.md`
 
 ## Relevant Disciplines
 
@@ -31,6 +35,9 @@
   thrash.
 - Conditional defense-in-depth after identifying a real root-cause pattern.
 - Parallel investigation for clearly independent failures.
+- Code review should be independent: do not trust implementation reports; read
+  the actual diff.
+- Separate spec compliance review from code-quality review.
 
 ## Adoption Risks
 

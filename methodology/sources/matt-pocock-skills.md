@@ -13,6 +13,9 @@
 - `skills/engineering/README.md`
 - `skills/engineering/diagnose/SKILL.md`
 - `skills/engineering/tdd/SKILL.md`
+- `skills/in-progress/review/SKILL.md`
+- `skills/engineering/grill-with-docs/SKILL.md`
+- `skills/engineering/improve-codebase-architecture/SKILL.md`
 
 ## Relevant Disciplines
 
@@ -30,6 +33,9 @@
 - Require falsifiable hypotheses and targeted probes instead of diffuse logging.
 - Cleanup discipline: tagged debug logs, rerun original repro, note the winning
   hypothesis in commit/PR history.
+- Split code review into standards compliance and spec compliance axes.
+- Pin the review fixed point and discover spec/standards sources before judging
+  the diff.
 
 ## Adoption Risks
 

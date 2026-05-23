@@ -12,6 +12,10 @@
 - `AGENTS.md`
 - `investigate/SKILL.md`
 - `qa/SKILL.md` (debugging and regression-test sections)
+- `review/SKILL.md`
+- `review/checklist.md`
+- Selected files in `review/specialists/`: API contract, data migration,
+  maintainability, performance, red team, security, and testing
 
 ## Relevant Disciplines
 
@@ -30,6 +34,11 @@
   and regression coverage for verified fixes.
 - Stop looping when the same diagnostic path is failing repeatedly; reassess or
   escalate instead of thrashing.
+- Review critical risks before informational findings: data safety, races, LLM
+  trust boundaries, shell injection, enum completeness, API contracts,
+  migrations, performance, and testing.
+- Suppress speculative, style-only, harmless, or already-addressed review
+  comments.
 
 ## Adoption Risks
 

@@ -12,23 +12,6 @@ This skill is a **quality gate**:
 - [[code-review]] verifies architecture, security, maintainability, and conventions
 - [[developing-web-projects]] conventions are enforced during review
 
-## When to use
-
-Use this skill when:
-- A feature/refactor is implemented and ready for review
-- Before opening/merging a PR
-- Auditing an existing codebase for risk and debt
-- Performing targeted security or architecture checks
-
-## Avoid when
-
-Avoid this skill when:
-- You are still rapidly prototyping throwaway code
-- Requirements are still being discovered and code is intentionally temporary
-- There is no concrete diff/snapshot to review yet
-
-In those cases, move to this skill once changes stabilize.
-
 ## Review posture
 
 - Be direct and specific
@@ -37,10 +20,28 @@ In those cases, move to this skill once changes stabilize.
 - Always classify findings by severity (P0–P3)
 - Include exploitability + impact for security findings
 - Enforce project conventions from [[developing-web-projects]]
+- Separate the review axes: **spec compliance**, **repo standards**, and **risk/quality**. A pass on one axis does not excuse a miss on another.
+- Scale review depth with risk: small isolated diffs get a focused pass; auth, data, migrations, public APIs, shell execution, LLM output handling, and broad refactors get a deeper pass.
 - Watch for **layering over symptoms**: repeated narrow patches, geometric/event hacks, defensive conditionals, or duplicated interaction logic that mask the real cause instead of fixing it
 - When you detect symptom-layering, explicitly say so and recommend backing up to the last clean design point before more fixes pile on
 
-## 6-Step Workflow
+## Evidence Rules
+
+Report only findings you can anchor to the code or the governing spec/standard.
+
+Every finding needs:
+- `file:line` or the closest precise anchor available
+- the concrete failure mode or violated requirement
+- why it matters
+- the smallest useful fix
+
+Suppress:
+- speculative best-practice notes without a real failure mode
+- unchanged pre-existing issues unless the diff makes them worse
+- style-only preferences not backed by project standards
+- findings already addressed elsewhere in the diff
+
+## Workflow
 
 ### 1) Preflight Context
 
@@ -50,15 +51,46 @@ Commands:
 - `git status -sb`
 - `git diff --stat`
 - `git diff`
+- `git log --oneline <base>..HEAD` when reviewing a branch
 - `rg` / `grep` for related modules and dependencies
 
 Checklist:
+- Identify the base range or fixed point for the review
+- Identify the spec source: issue, PR description, ticket, design doc, `TEST_PLAN.md`, or user request
+- Identify standards sources: `AGENTS.md`, `README.md`, `CONTRIBUTING.md`, ADRs, package scripts, lint/test config, and relevant local skills
 - Identify entry points and critical paths (auth, payments, data writes)
 - Verify whether `TEST_PLAN.md` exists
 - Verify tests exist for the change
 - If tests or `TEST_PLAN.md` coverage are missing, flag at least **P1**
 
-### 2) Architecture & Conventions
+### 2) Critical-First Scan
+
+Before broad maintainability review, look for merge-blocking risk:
+
+- security vulnerabilities and auth/authz gaps
+- data loss, schema drift, unsafe migrations, or missing rollback paths
+- public API contract breaks
+- command injection, shell interpolation, and secret exposure
+- LLM or external-output trust boundary mistakes
+- concurrency, race, and TOCTOU bugs
+- incomplete enum/value handling and impossible states
+- missing negative-path tests for high-risk behavior
+
+Only continue into polish after the dangerous paths are understood.
+
+### 3) Spec Compliance
+
+When the change implements a specific issue, ticket, or spec:
+
+1. Read the issue/spec (e.g. `gh issue view <number>`)
+2. For each acceptance criterion or requirement, verify the implementation actually delivers it
+3. Flag any **missing**, **incomplete**, or **divergent** behavior as at least **P1**
+4. Pay attention to intent, not just literal text. If the spec says "tag users" and the code adds mentions that will not render, that is still a miss.
+5. If the spec references a conversation or original feedback, check that too; specs can lose nuance from the original request.
+
+This catches the gap between "code works" and "code does what was asked."
+
+### 4) Architecture & Conventions
 
 Load: `references/architecture.md`
 
@@ -76,7 +108,7 @@ Check:
 Output expectation:
 - Propose **incremental** refactor steps with clear risk/benefit
 
-### 3) Removal Candidates
+### 5) Removal Candidates
 
 Load: `references/removal-plan.md`
 
@@ -90,7 +122,7 @@ Classify as:
 - Safe delete now
 - Defer with plan (with blocker + target date)
 
-### 4) Security & Reliability
+### 6) Security & Reliability
 
 Load: `references/security.md`
 
@@ -107,7 +139,7 @@ Always report:
 - Impact
 - Minimal mitigation path
 
-### 5) Code Quality
+### 7) Code Quality
 
 Load: `references/quality.md`
 
@@ -125,26 +157,15 @@ Check:
 
 If these appear, treat them as a maintainability/correctness risk, not just style. Usually this is at least **P1** when the patch changes behavior, and **P2** when it mainly increases fragility.
 
-### 5b) Spec Compliance (if applicable)
-
-When the change implements a specific issue, ticket, or spec:
-
-1. Read the issue/spec (e.g. `gh issue view <number>`)
-2. For each acceptance criterion or requirement in the spec, verify the implementation actually delivers it
-3. Flag any **missing**, **incomplete**, or **divergent** behavior as at least **P1**
-4. Pay attention to the *intent* behind the spec, not just the literal text — if the spec says "tag users" and the code adds mentions that won't render (e.g. inside embed fields), that's a miss even if the code "adds mentions"
-5. If the spec references a conversation or original feedback, check that too — specs can lose nuance from the original request
-
-This step catches the gap between "code works" and "code does what was asked."
-
-### 6) Output
+### 8) Output
 
 Use template: `templates/review-output.md`
 
 Rules:
 - Use P0–P3 severities
 - Do not auto-fix without approval
-- End with numbered next-step options
+- Lead with findings, then open questions, then secondary summary
+- End with numbered next-step options when action is needed
 
 ## Severity Levels
 
@@ -166,8 +187,9 @@ Rules:
 A complete review must include:
 1. Scope summary (files/lines)
 2. Prioritized findings (P0–P3)
-3. Spec compliance assessment (if applicable — list each acceptance criterion and pass/fail)
-4. Test coverage assessment
-5. Convention compliance checklist
-6. Symptom-layering assessment when relevant (is this fixing a cause or stacking workarounds?)
-7. Actionable next-step options
+3. Spec compliance assessment when applicable
+4. Standards/convention compliance assessment
+5. Test coverage assessment
+6. Risk/depth notes for critical paths reviewed
+7. Symptom-layering assessment when relevant (is this fixing a cause or stacking workarounds?)
+8. Actionable next-step options
