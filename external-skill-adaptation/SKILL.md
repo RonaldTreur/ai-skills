@@ -18,8 +18,9 @@ The goal is not to vendor external skills. The goal is to compare sources by dis
 5. Keep rejected ideas. A future re-review needs to know why something did not land.
 6. Do one discipline at a time unless Ronald explicitly asks for a broader pass.
 7. Ask Ronald discipline-specific questions before finalizing adoption choices when the tradeoff is taste, workflow friction, or behavior policy rather than a clear technical correctness issue.
-8. When a discipline produces or changes a local skill, add a concise source-influence artifact at `<skill>/PROVENANCE.md` and link it from the skill.
-9. Do not install or activate third-party skills, hooks, daemons, telemetry, or auto-update systems as part of this workflow.
+8. When a discipline produces or changes a local skill, add a concise source-influence artifact at `<skill>/PROVENANCE.md`.
+9. Keep attribution and rebuild notes out of runtime `SKILL.md` files unless Ronald explicitly asks for them there.
+10. Do not install or activate third-party skills, hooks, daemons, telemetry, or auto-update systems as part of this workflow.
 
 ## Workflow
 
@@ -87,7 +88,7 @@ When adopting an idea:
 - remove assumptions that belong to the external tool, platform, or agent runtime
 - include only the minimum procedural detail needed for reliable behavior
 - keep activation triggers conservative enough that routine work does not become ceremonial
-- keep runtime skill text operational; move rebuild notes and source-by-source attribution into the adjacent source-influence artifact
+- keep runtime skill text operational; move rebuild notes and source-by-source attribution into the adjacent source-influence artifact, not into `SKILL.md`
 
 ### 6. Add Skill-Level Attribution
 
@@ -134,7 +135,8 @@ Before closing the task:
 - run basic skill validation for new or changed skills when available
 - inspect `git diff` for accidental copied text, missing attribution, or unrelated changes
 - ensure every changed local skill has a matching log entry
-- ensure every changed local skill links to `<skill>/PROVENANCE.md`, or the discipline review records the structural exception and chosen path
+- ensure every changed local skill has `<skill>/PROVENANCE.md`, or the discipline review records the structural exception and chosen path
+- ensure runtime `SKILL.md` files do not contain provenance-only notes
 - summarize branch, files changed, source commits reviewed, and open questions
 
 ## Output Shape
