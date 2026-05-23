@@ -22,6 +22,8 @@ To reconstruct the skill, keep these behaviors:
    before declaring success.
 6. Add defense-in-depth only for recurring or high-impact bug classes.
 7. After 3 failed fix attempts, stop and ask by default unless told otherwise.
+8. Keep activation guidance in the frontmatter description rather than
+   duplicating it in the loaded runtime body.
 
 ## Source Influence
 
@@ -132,6 +134,29 @@ What we rejected:
 Local adaptation:
 - GStack influenced the investigation-first stance, but its heavier workflow
   machinery remains out of scope for this repository's generic debugging skill.
+
+### Skill Review Discipline
+
+- Source: local `skill-review/SKILL.md`
+- Reviewed ref: `feat/external-skill-adaptation` on 2026-05-23
+- Reviewed material: `skill-review/SKILL.md`, first skill-review pass on
+  `debugging/SKILL.md`
+- License: repository-local process
+
+What we took:
+- Runtime skill bodies should avoid duplicate trigger guidance once the
+  frontmatter description already covers activation.
+- Local `[[skill-name]]` references are valid integration points and should not
+  be treated as portability defects.
+
+Why:
+- This keeps the debugging skill focused on behavior after activation while
+  preserving cross-skill integration.
+
+Local adaptation:
+- Removed the loaded-body "Use this skill when" section.
+- Kept the integration links to `[[testing-orchestrator]]`, `[[unit-vitest]]`,
+  `[[e2e-playwright]]`, and `[[code-review]]`.
 
 ## Existing Local Baseline
 

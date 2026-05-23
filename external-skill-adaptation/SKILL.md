@@ -21,6 +21,7 @@ The goal is not to vendor external skills. The goal is to compare sources by dis
 8. When a discipline produces or changes a local skill, add a concise source-influence artifact at `<skill>/PROVENANCE.md`.
 9. Keep attribution and rebuild notes out of runtime `SKILL.md` files unless Ronald explicitly asks for them there.
 10. Do not install or activate third-party skills, hooks, daemons, telemetry, or auto-update systems as part of this workflow.
+11. End every created or changed runtime skill with a `[[skill-review]]` pass before closing.
 
 ## Workflow
 
@@ -133,10 +134,14 @@ Categories:
 Before closing the task:
 
 - run basic skill validation for new or changed skills when available
+- run `[[skill-review]]` against every created or changed runtime `SKILL.md`
+  and apply or report the findings
 - inspect `git diff` for accidental copied text, missing attribution, or unrelated changes
 - ensure every changed local skill has a matching log entry
 - ensure every changed local skill has `<skill>/PROVENANCE.md`, or the discipline review records the structural exception and chosen path
 - ensure runtime `SKILL.md` files do not contain provenance-only notes
+- ignore local `[[skill-name]]` references during the review; these skills are
+  meant to work together, not in isolation
 - summarize branch, files changed, source commits reviewed, and open questions
 
 ## Output Shape

@@ -29,7 +29,9 @@ authority.
    repeatedly reimplemented operations.
 6. Check file hygiene. Keep only files that directly support the skill at
    runtime or required repository provenance. Runtime `SKILL.md` files should
-   not link to provenance-only artifacts unless the user explicitly asks.
+   not link to provenance-only artifacts unless the user explicitly asks. Do
+   not flag local `[[skill-name]]` references between skills in this repository;
+   they are intended integration points.
 7. Check safety and scope. Flag secrets, unsafe defaults, hidden external
    actions, broad tool grants, production-impacting steps, and skills that try
    to own unrelated workflows.

@@ -207,3 +207,63 @@ credit_note: Inspired by community skill-review tools, subordinated to official 
 reviewer: Merlin
 next_review: If the repo adds an automated skill validator or eval harness
 ```
+
+```yaml
+id: 2026-05-23-skill-review-local-wiki-links
+date: 2026-05-23
+discipline: skill-review
+status: adopted
+source: Ronald local integration decision
+source_url: local Discord discussion
+source_ref: 2026-05-23 #claw-enhance conversation
+source_path: n/a
+license: repository-local decision
+local_target: skill-review/SKILL.md
+influence_type: behavioral
+summary: Do not flag `[[skill-name]]` references between local skills during skill review.
+local_adaptation: Added a review exception for local wiki-style skill references because this repository's skills are designed to work together.
+rationale: Treating these links as portability defects creates false positives and pushes the repo toward isolated skills, which is not the intended design.
+credit_note: Local policy decision from Ronald.
+reviewer: Merlin
+next_review: If the repo changes how skills reference each other
+```
+
+```yaml
+id: 2026-05-23-external-skill-adaptation-review-gate
+date: 2026-05-23
+discipline: external-skill-adaptation
+status: adopted
+source: Skill Review discipline and Ronald local workflow decision
+source_url: local repository skill-review workflow
+source_ref: feat/external-skill-adaptation as of 2026-05-23
+source_path: skill-review/SKILL.md; external-skill-adaptation/SKILL.md
+license: repository-local decision
+local_target: external-skill-adaptation/SKILL.md
+influence_type: workflow
+summary: End every created or changed runtime skill with a skill-review pass.
+local_adaptation: Added a final `[[skill-review]]` gate to the external skill adaptation workflow and discipline-review template.
+rationale: Skill adaptation should not finish before checking trigger accuracy, context cost, progressive disclosure, safety, and behavior.
+credit_note: Local policy decision from Ronald, implemented via the new skill-review discipline.
+reviewer: Merlin
+next_review: After the next full discipline adaptation pass exercises the new gate
+```
+
+```yaml
+id: 2026-05-23-debugging-trigger-dedup
+date: 2026-05-23
+discipline: debugging
+status: adapted
+source: Skill Review discipline
+source_url: local repository skill-review workflow
+source_ref: feat/external-skill-adaptation as of 2026-05-23
+source_path: skill-review/SKILL.md; debugging/SKILL.md
+license: repository-local decision
+local_target: debugging/SKILL.md
+influence_type: context-hygiene
+summary: Remove redundant post-load trigger guidance from the debugging runtime skill.
+local_adaptation: Deleted the loaded-body "Use this skill when" section because the frontmatter description already carries trigger guidance.
+rationale: Once a skill is loaded, duplicate activation guidance spends context without improving debugging behavior.
+credit_note: Follow-up from the first skill-review pass on debugging.
+reviewer: Merlin
+next_review: When debugging trigger behavior is next revised
+```

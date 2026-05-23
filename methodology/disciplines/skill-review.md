@@ -131,6 +131,8 @@ The skill-review discipline is now adopted with these rules:
 7. Validate with realistic prompts, including should-trigger and
    should-not-trigger cases. Use fresh contexts when practical.
 8. Use severity tiers and a final verdict, but avoid numeric scoring by default.
+9. Ignore local `[[skill-name]]` references between repository skills. They are
+   intended integration points, not portability defects.
 
 ## Recommended Adaptations
 
@@ -148,6 +150,10 @@ The skill-review discipline is now adopted with these rules:
    Critical/Important/Polish and PASS/NEEDS WORK/FAIL.
    Provenance entry id:
    `2026-05-23-skill-review-community-verdict-shape`
+4. Treat Ronald's local integration decision as a standing review exception:
+   do not flag wiki-style links to other local skills.
+   Provenance entry id:
+   `2026-05-23-skill-review-local-wiki-links`
 
 ## Rejections And Deferrals
 

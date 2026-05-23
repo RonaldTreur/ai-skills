@@ -79,3 +79,7 @@ Record rejected and deferred ideas with rationale.
 ## Verification Notes
 
 List checks run, diffs inspected, and remaining risks.
+
+Include the final `[[skill-review]]` result for every created or changed runtime
+`SKILL.md`. Ignore local `[[skill-name]]` references between repository skills
+during that review.

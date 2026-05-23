@@ -19,6 +19,8 @@ To reconstruct the skill, keep these behaviors:
 6. Use realistic should-trigger, should-not-trigger, and edge-case prompts.
 7. Prefer official Claude/Agent Skills and Codex guidance over community taste.
 8. Keep provenance outside runtime context unless explicitly requested there.
+9. Do not treat local `[[skill-name]]` references as defects; this repository's
+   skills are intended to work together.
 
 ## Source Influence
 
@@ -132,6 +134,25 @@ What we rejected:
 Local adaptation:
 - The runtime skill uses Critical/Important/Polish and PASS/NEEDS WORK/FAIL,
   but keeps the checklist compact and behavior-first.
+
+### Local Integration Decision
+
+- Source: Ronald's review feedback in `#claw-enhance`
+- Reviewed ref: 2026-05-23 conversation
+- Reviewed material: instruction to ignore wiki-style references between local
+  skills
+- License: repository-local decision
+
+What we took:
+- Local `[[skill-name]]` references should not be flagged during skill review.
+
+Why:
+- These skills are not meant to work in isolation. Wiki-style references are a
+  deliberate integration affordance inside this repository.
+
+Local adaptation:
+- Added an explicit exception in `skill-review/SKILL.md` so future review passes
+  do not produce false positives for local skill references.
 
 ## Formal Trail
 

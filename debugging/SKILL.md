@@ -7,11 +7,6 @@ description: Investigate and fix bugs without guesswork. Use when behavior is br
 
 Default discipline for investigating and fixing active failures.
 
-Use this skill when:
-- behavior is broken, flaky, or regressed
-- a test is failing and the cause is not already known
-- the user asks to debug, diagnose, or find the cause
-
 ## Non-negotiables
 
 - Build the smallest reliable repro or feedback loop before non-trivial fixes.
