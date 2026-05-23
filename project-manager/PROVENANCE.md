@@ -12,7 +12,7 @@ Keep these behaviors:
 3. Decompose approved project docs into small, dependency-aware issues.
 4. Recommend next ready work from priority, dependencies, milestone, size, and
    age.
-5. Delegate active build execution to `implement-issue`.
+5. Hand selected issues to `implement-issue` with compact context.
 6. Ask before bulk GitHub mutations, project-scope changes, or product
    decisions.
 
@@ -30,8 +30,8 @@ What we took:
 - Separate planning ownership from execution ownership.
 
 Local adaptation:
-- `project-manager` now manages durable project structure and hands active work
-  to `implement-issue`.
+- `project-manager` now manages durable project structure and hands selected
+  issues to `implement-issue` with compact context.
 
 ### SuperPowers
 

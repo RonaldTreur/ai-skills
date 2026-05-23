@@ -32,5 +32,4 @@ The repo also includes a dedicated `skill-review/` skill for reviewing skills as
 
 The active implementation lifecycle is split across `project-manager/` for
 project/backlog orchestration and `implement-issue/` for one selected issue at
-a time. The old `codex-implementation-cycle/` alias was removed after being
-superseded by the implement-issue skill.
+a time.

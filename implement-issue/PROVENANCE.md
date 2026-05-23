@@ -17,6 +17,8 @@ Keep these behaviors:
 6. Run P0-P3 review and, for non-trivial PRs, one independent review pass.
 7. Maintain `DELIVERY_STATE.md` and GitHub issue/PR state for recovery.
 8. Keep project lifecycle concerns in `project-manager`.
+9. Avoid rereading broad planning docs already summarized by `project-manager`
+   unless the selected issue needs them.
 
 ## Source Influence
 
@@ -74,6 +76,8 @@ What we took:
 Local adaptation:
 - The workflow reads plans and tests as guardrails but does not require
   pre-written code snippets or micromanaged implementation steps.
+- Runtime intake reads only issue-relevant project docs when a compact
+  `project-manager` handoff already exists.
 
 ### GStack
 

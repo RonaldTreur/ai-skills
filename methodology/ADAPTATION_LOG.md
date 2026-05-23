@@ -120,8 +120,8 @@ source_path: n/a
 license: repository-local decision
 local_target: project-manager/SKILL.md
 influence_type: ownership-boundary
-summary: Project management should own lifecycle, backlog, dependencies, and status, not per-issue code execution.
-local_adaptation: Reworked project-manager into the lifecycle owner and made it delegate active builds to implement-issue.
+summary: Project management should own lifecycle, backlog, dependencies, status, and issue selection, not per-issue code execution.
+local_adaptation: Reworked project-manager into the lifecycle owner and made it hand selected issues to implement-issue with compact context.
 rationale: The old broad project-manager skill was unused because it overlapped too much with implementation and testing skills.
 credit_note: Local policy decision from Ronald.
 reviewer: Merlin

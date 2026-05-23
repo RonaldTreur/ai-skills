@@ -20,7 +20,7 @@ This is the canonical active-issue implementation workflow.
   defaults.
 - [[testing-orchestrator]], [[test-planning]], [[e2e-playwright]], and
   [[unit-vitest]] govern testing method and tooling.
-- [[code-review]] governs P0-P3 review findings.
+- [[code-review]] defines review method and P0-P3 severity for diff review.
 - [[debugging]] governs non-trivial failures discovered during implementation.
 
 ## Default Authority
@@ -33,8 +33,8 @@ When invoked for a ready issue, assume the agent may:
 - update `DELIVERY_STATE.md`
 - run local checks, tests, build, lint, browser QA, and relevant migrations
 - commit, push, open/update a PR targeting `dev`
-- run review gates and fix valid P0-P3 findings
-- merge into `dev` when checks and review gates are clean
+- run review checks and fix valid P0-P3 findings
+- merge into `dev` when checks and review are clean
 - create follow-up issues for defects, blockers, or out-of-scope work
 
 Ask before:
@@ -51,15 +51,21 @@ Ask before:
    - `git status -sb`
    - `git remote -v`
    - `git branch --show-current`
-2. Resolve the GitHub repo and selected issue.
-3. Read repo-local instructions and project memory:
+2. Resolve the selected issue and current handoff context.
+3. Read repo-local instructions that govern the agent:
    - `AGENTS.md`
-   - `README.md`
-   - `BRIEF.md`, `DESIGN.md`, `PLAN.md`, `IMPLEMENTATION_PLAN.md`
-   - `TEST_PLAN.md`, `DECISIONS.md`, `DELIVERY_STATE.md`
-   - relevant `docs/`, `specs/`, ADRs, and linked issue/PR context
-4. For web projects, load [[developing-web-projects]] before writing code.
-5. Identify the implementation slice:
+   - `.github/copilot-instructions.md`
+   - `.codex/*`
+4. Read only the project docs needed for this issue:
+   - the selected issue and linked issue/PR context
+   - `DELIVERY_STATE.md` when present
+   - doc sections named in the handoff
+   - `BRIEF.md`, `DESIGN.md`, `PLAN.md`, `IMPLEMENTATION_PLAN.md`,
+     `TEST_PLAN.md`, `DECISIONS.md`, `docs/`, `specs/`, or ADRs only when
+     they are linked, missing from the handoff, stale, or needed to resolve a
+     concrete implementation question
+5. For web projects, load [[developing-web-projects]] before writing code.
+6. Identify the implementation slice:
    - issue number and acceptance criteria
    - dependencies
    - affected user behavior
@@ -68,6 +74,10 @@ Ask before:
 
 If no issue is named, use [[project-manager]] rules to select one ready issue
 before entering this workflow.
+
+Avoid rereading broad planning documents already summarized by [[project-manager]]
+unless the handoff is incomplete, inconsistent with the repo, or directly
+insufficient for the selected issue.
 
 ## Branch And State
 

@@ -21,10 +21,10 @@ execution is delegated to [[implement-issue]].
   implementation defaults.
 - [[test-planning]] and [[testing-orchestrator]] own testing strategy and
   outside-in test workflow.
-- [[code-review]] owns P0-P3 review gates.
+- [[code-review]] defines review method and P0-P3 severity for diff review.
 
 When this skill reaches "build this issue", stop orchestrating code details and
-invoke [[implement-issue]] with the selected issue and repo context.
+invoke [[implement-issue]] with a compact handoff.
 
 ## Core Principles
 
@@ -147,8 +147,19 @@ When asked "what is next?", "next sprint", or "start building":
 3. Identify what can run in parallel without merge conflict.
 4. Ask for approval only when changing the backlog, project scope, or a GitHub
    project/label state.
-5. Once an issue is selected for active implementation, invoke
-   [[implement-issue]].
+5. Once an issue is selected for active implementation, invoke [[implement-issue]]
+   with a compact handoff.
+
+The handoff should include:
+
+- repo path and integration branch
+- selected issue number, URL, and acceptance criteria
+- relevant dependency/blocker state
+- linked or relevant doc sections, not whole planning docs unless needed
+- known test/build commands
+- active constraints from repo instructions
+- current `DELIVERY_STATE.md` checkpoint when present
+- known blockers or human decisions
 
 ### 5. Status And Recovery
 

@@ -95,11 +95,14 @@ boundaries.
     `2026-05-23-implementation-compound-guardrails`,
     `2026-05-23-implementation-remove-codex-alias`
   - Became the canonical active-issue implementation workflow.
+  - Reads broad project docs only when they are linked, missing from handoff,
+    stale, or needed for a concrete implementation question.
 - `project-manager/SKILL.md`
   - Provenance entries:
     `2026-05-23-implementation-project-manager-boundary`,
     `2026-05-23-implementation-compound-guardrails`
-  - Became the lifecycle/backlog/status owner and now delegates active builds.
+  - Became the lifecycle/backlog/status owner and now hands selected issues to
+    `implement-issue` with compact context.
 - `codex-implementation-cycle/SKILL.md`
   - Provenance entry: `2026-05-23-implementation-remove-codex-alias`
   - Removed as an obsolete Codex-specific alias.
@@ -145,6 +148,9 @@ Created or updated:
   - Reviewed `project-manager`, `implement-issue`,
     `developing-web-projects`, `testing-orchestrator`, and `test-planning`.
   - No Critical or Important findings remained.
+  - Follow-up review removed runtime history, runtime-specific review labels,
+    imprecise Vectrix/subagent wording, README history, and duplicate broad-doc
+    intake.
   - Local `[[skill-name]]` references were intentionally ignored as approved
     repository integration points.
 - Validation:
