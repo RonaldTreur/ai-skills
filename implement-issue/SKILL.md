@@ -1,6 +1,6 @@
 ---
 name: implement-issue
-description: "Implement one selected GitHub issue or ready backlog slice from repo context through branch, vertical behavior-first tests, code changes, verification, code review, optional Claude review, PR merge into dev, and post-merge QA. Use when asked to build, fix, continue, or implement a specific ready issue in a GitHub-backed software project."
+description: "Implement one selected GitHub issue or ready backlog slice from repo context through branch, vertical behavior-first tests, code changes, verification, code review, optional independent review, PR merge into dev, and post-merge QA. Use when asked to build, fix, continue, or implement a specific ready issue in a GitHub-backed software project."
 ---
 
 # Implement Issue
@@ -139,7 +139,7 @@ Before review:
 - run browser QA for user-visible browser behavior when feasible
 - inspect the diff for unrelated changes
 
-Then run the Codex review loop:
+Then run the review loop:
 
 1. Review the diff with [[code-review]].
 2. Fix all valid P0-P3 findings.
@@ -147,9 +147,9 @@ Then run the Codex review loop:
 4. Repeat until no valid P0-P3 findings remain, or rejected findings are
    explicitly justified in the PR/issue.
 
-Run one independent Claude-review pass when available for non-trivial PRs.
-Codex then evaluates those findings, fixes valid P0-P3 items, and documents any
-rejected findings with rationale.
+Run one independent review pass when available for non-trivial PRs. The
+coordinating agent then evaluates those findings, fixes valid P0-P3 items, and
+documents any rejected findings with rationale.
 
 After review fixes, rerun the checks most likely to catch regressions. If UI or
 routing changed, repeat browser QA.
@@ -187,8 +187,8 @@ For visible long-running work, send compact updates at these transitions:
 - behavior/test slice started
 - implementation delegated or started
 - self-verification
-- Codex review
-- Claude-review
+- code review
+- independent review
 - review fixes
 - CI/PR gate
 - merge

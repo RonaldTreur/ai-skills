@@ -12,10 +12,9 @@ Keep these behaviors:
 3. Use `dev` as the integration target.
 4. Use vertical behavior-first TDD: behavior, failing test, minimal code,
    verification, refactor while green, repeat.
-5. Prefer Vectrix for substantial implementation, with Codex coordinating,
+5. Prefer Vectrix for substantial implementation, with a coordinating agent
    reviewing, fixing, and verifying when appropriate.
-6. Run Codex P0-P3 review and, for non-trivial PRs, one independent
-   Claude-review pass.
+6. Run P0-P3 review and, for non-trivial PRs, one independent review pass.
 7. Maintain `DELIVERY_STATE.md` and GitHub issue/PR state for recovery.
 8. Keep project lifecycle concerns in `project-manager`.
 
@@ -40,7 +39,8 @@ Local adaptation:
 - Kept delegation optional and Vectrix-first, while reserving "subagent" for
   actual spawned Codex/OpenClaw subagents.
 - Replaced SuperPowers-specific TodoWrite/worktree mechanics with local branch,
-  `DELIVERY_STATE.md`, GitHub issue/PR, Codex review, and Claude-review gates.
+  `DELIVERY_STATE.md`, GitHub issue/PR, code review, and independent review
+  gates.
 
 ### Matt Pocock Skills
 
