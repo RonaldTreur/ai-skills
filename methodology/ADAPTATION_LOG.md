@@ -127,3 +127,83 @@ credit_note: Reviewed GStack for debugging ideas; rejected its heavier workflow 
 reviewer: Vectrix
 next_review: Revisit only if Ronald wants a browser-first QA/debugging discipline
 ```
+
+```yaml
+id: 2026-05-23-skill-review-claude-official-guidance
+date: 2026-05-23
+discipline: skill-review
+status: adopted
+source: Claude Agent Skills Documentation and Agent Skills Open Standard
+source_url: https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices
+source_ref: live documentation retrieved 2026-05-23
+source_path: Claude Code skills docs; Claude skill authoring best practices; Claude.ai skills docs; agentskills.io overview/spec/evaluation docs
+license: public documentation; guidance only
+local_target: skill-review/SKILL.md
+influence_type: structural
+summary: Review skills according to model-facing activation, concise runtime context, progressive disclosure, focused workflows, and realistic behavior testing.
+local_adaptation: Adopted as the top-level review order for activation, context value, progressive disclosure, instruction freedom, safety, and realistic prompt probes.
+rationale: Claude and the Agent Skills standard are the highest-trust sources for how skill metadata and runtime bodies are consumed by models.
+credit_note: Based on official Claude/Agent Skills authoring and evaluation guidance.
+reviewer: Merlin
+next_review: When official Claude or Agent Skills guidance changes materially
+```
+
+```yaml
+id: 2026-05-23-skill-review-codex-skill-creator
+date: 2026-05-23
+discipline: skill-review
+status: adopted
+source: Codex system skill-creator
+source_url: local Codex system skill
+source_ref: local file reviewed 2026-05-23
+source_path: /Users/merlin/.openclaw/agents/main/agent/codex-home/skills/.system/skill-creator/SKILL.md
+license: local system-provided instructions; guidance only
+local_target: skill-review/SKILL.md
+influence_type: behavioral
+summary: Treat context as scarce, assume Codex is already capable, match instruction specificity to task fragility, and protect validation integrity.
+local_adaptation: Adopted as context-value review, instruction-freedom review, validation prompt hygiene, and the rule against expanding skills just to satisfy checklists.
+rationale: This is Codex's own guidance for creating skills Codex can discover and use reliably.
+credit_note: Adapted from the local Codex system skill-creator guidance.
+reviewer: Merlin
+next_review: When the Codex system skill-creator changes materially
+```
+
+```yaml
+id: 2026-05-23-skill-review-provenance-placement
+date: 2026-05-23
+discipline: skill-review
+status: adapted
+source: Codex system skill-creator plus local external-skill-adaptation policy
+source_url: local Codex system skill and local repository policy
+source_ref: local files reviewed 2026-05-23
+source_path: skill-creator/SKILL.md; external-skill-adaptation/SKILL.md
+license: mixed local guidance
+local_target: skill-review/SKILL.md; skill-review/PROVENANCE.md
+influence_type: structural
+summary: Avoid extraneous runtime files while preserving required adaptation provenance outside SKILL.md.
+local_adaptation: Created skill-level `PROVENANCE.md`, but kept all attribution and rebuild notes out of the runtime skill text.
+rationale: Provenance is necessary for this repository's adaptation workflow, but it does not help the model perform skill review during activation.
+credit_note: Local adaptation of Codex file-hygiene guidance to ai-skills provenance requirements.
+reviewer: Merlin
+next_review: When repository provenance policy changes
+```
+
+```yaml
+id: 2026-05-23-skill-review-community-verdict-shape
+date: 2026-05-23
+discipline: skill-review
+status: adapted
+source: Community skill review tools
+source_url: https://skillstore.io/skills/softaworks-skill-judge
+source_ref: live web pages retrieved 2026-05-23
+source_path: skill-judge summaries; review-skill summary; skill-validator repository summary
+license: mixed/marketplace sources; comparison only
+local_target: skill-review/SKILL.md
+influence_type: output-shape
+summary: Use severity tiers and a categorical verdict to make skill review findings actionable.
+local_adaptation: Adopted Critical/Important/Polish severities and PASS/NEEDS WORK/FAIL verdicts while rejecting default numeric scoring.
+rationale: Severity and verdicts help actionability; numeric scoring risks false precision and checklist gaming.
+credit_note: Inspired by community skill-review tools, subordinated to official Claude/Codex guidance.
+reviewer: Merlin
+next_review: If the repo adds an automated skill validator or eval harness
+```
