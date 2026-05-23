@@ -16,6 +16,10 @@
 - `skills/test-driven-development/SKILL.md`
 - `skills/requesting-code-review/SKILL.md`
 - `skills/requesting-code-review/code-reviewer.md`
+- `skills/writing-plans/SKILL.md`
+- `skills/executing-plans/SKILL.md`
+- `skills/subagent-driven-development/SKILL.md`
+- `skills/subagent-driven-development/implementer-prompt.md`
 - `skills/subagent-driven-development/code-quality-reviewer-prompt.md`
 - `skills/subagent-driven-development/spec-reviewer-prompt.md`
 
@@ -38,10 +42,16 @@
 - Code review should be independent: do not trust implementation reports; read
   the actual diff.
 - Separate spec compliance review from code-quality review.
+- For implementation plans, define scope, files, tests, and tasks clearly.
+- For delegated implementation, use fresh subagents, explicit context, status
+  reporting, and spec-compliance review before code-quality review.
 
 ## Adoption Risks
 
-Hook-driven and always-on skill activation patterns may be too forceful for Merlin/main. Adapt the methodology, not the bootstrap posture, unless explicitly approved.
+Hook-driven and always-on skill activation patterns may be too forceful for
+Merlin/main. The source also leans toward highly choreographed plans with exact
+steps and code snippets; adapt the delegation/status/review discipline without
+copying brittle implementation choreography.
 
 ## Re-Review Trigger
 

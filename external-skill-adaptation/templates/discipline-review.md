@@ -49,9 +49,11 @@ Summarize how this discipline currently works in ai-skills/OpenClaw.
 
 List concrete adoption questions that affect workflow, friction, or behavior policy.
 
-## Recommended Adaptations
+## Adopted Changes
 
-For each recommendation, include intended local target and provenance entry id.
+For each implemented change, include the local target and provenance entry id.
+If an idea is only recommended for future work, record it under Rejections And
+Deferrals as `deferred`.
 
 ## Skill-Level Attribution
 

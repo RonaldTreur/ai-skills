@@ -1,0 +1,6 @@
+interface:
+  display_name: "Implement Issue"
+  short_description: "Implement one GitHub issue through tests, review, QA, and dev merge"
+  default_prompt: "Use $implement-issue to implement a selected GitHub issue from repo docs and issue context."
+policy:
+  allow_implicit_invocation: true

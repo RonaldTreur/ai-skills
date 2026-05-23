@@ -1,6 +1,0 @@
-interface:
-  display_name: "Issue-Driven Delivery Loop"
-  short_description: "Work GitHub issues through Vectrix, review, QA, and dev merges"
-  default_prompt: "Use $issue-driven-delivery-loop to implement this project from its repo docs and GitHub Issues."
-policy:
-  allow_implicit_invocation: true

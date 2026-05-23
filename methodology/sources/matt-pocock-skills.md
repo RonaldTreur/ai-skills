@@ -36,6 +36,9 @@
 - Split code review into standards compliance and spec compliance axes.
 - Pin the review fixed point and discover spec/standards sources before judging
   the diff.
+- TDD should proceed in vertical behavior slices: one failing test, minimal
+  implementation, repeat. Avoid horizontal "all tests first, all code later"
+  sequencing.
 
 ## Adoption Risks
 

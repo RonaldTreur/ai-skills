@@ -16,6 +16,9 @@
 - `review/checklist.md`
 - Selected files in `review/specialists/`: API contract, data migration,
   maintainability, performance, red team, security, and testing
+- `autoplan/SKILL.md`
+- plan review skill family: `plan-ceo-review`, `plan-design-review`,
+  `plan-devex-review`, `plan-eng-review`, `plan-tune`
 
 ## Relevant Disciplines
 
@@ -39,10 +42,15 @@
   migrations, performance, and testing.
 - Suppress speculative, style-only, harmless, or already-addressed review
   comments.
+- Plan-review pipelines can surface close calls and decision points before work
+  proceeds.
 
 ## Adoption Risks
 
-High blast radius if installed wholesale: daemon/tooling assumptions, browser automation, tunneling, telemetry/update behavior, and platform-specific runtime expectations need explicit review before any adaptation.
+High blast radius if installed wholesale: daemon/tooling assumptions, browser
+automation, tunneling, telemetry/update behavior, generated preambles, local
+session stores, and platform-specific runtime expectations need explicit review
+before any adaptation.
 
 ## Re-Review Trigger
 

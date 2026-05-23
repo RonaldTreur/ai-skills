@@ -10,12 +10,33 @@ Conductor skill for end-to-end testing workflow across:
 - [[e2e-playwright]]
 - [[unit-vitest]]
 
+## Scope Boundary
+
+This skill owns testing method and tooling for web projects. It does not own
+GitHub issue ordering, branch/PR mechanics, merge gates, or implementation state.
+Use [[implement-issue]] for active per-issue execution.
+
 ## Outside-in workflow (default)
-1. **Test plan**: spawn E2E Planner role to produce markdown scenarios in `specs/`
-2. **E2E generation**: spawn E2E Generator role to create failing/target E2E tests from plan
-3. **Unit tests**: generate focused unit tests with [[unit-vitest]] for core logic/branches
-4. **Implement**: write production code to satisfy unit + E2E expectations
-5. **Heal**: spawn E2E Healer role to stabilize failures/flakes and verify correctness
+
+Use a plan before coding, but execute implementation in vertical behavior
+slices. Avoid horizontal "write all tests first, then all code" unless the user
+explicitly asks for a full test-only pass.
+
+Default loop:
+
+1. **Test plan**: create or read markdown scenarios in `specs/` or
+   `TEST_PLAN.md`
+2. **Choose one behavior**: pick the next user-visible flow, API behavior, or
+   internal contract
+3. **E2E/integration test**: create the smallest failing test that proves that
+   behavior when user-visible
+4. **Unit tests**: add focused unit coverage for domain logic exposed by that
+   behavior
+5. **Implement**: write the minimal production code to pass
+6. **Verify and refactor**: run narrow checks, refactor only while green, then
+   move to the next behavior
+7. **Heal**: use the E2E healer role only for real failures/flakes after the
+   behavior slice exists
 
 ## 3-phase E2E pattern (explicit role order)
 Always orchestrate E2E in this sequence:
