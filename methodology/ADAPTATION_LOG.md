@@ -29,6 +29,127 @@ next_review:
 ## Entries
 
 ```yaml
+id: 2026-05-23-code-review-matt-two-axis
+date: 2026-05-23
+discipline: code-review
+status: adopted
+source: Matt Pocock Skills
+source_url: https://github.com/mattpocock/skills
+source_ref: b8be62ffacb0118fa3eaa29a0923c87c8c11985c
+source_path: skills/in-progress/review/SKILL.md
+license: MIT
+local_target: code-review/SKILL.md
+influence_type: structural
+summary: Split review into spec compliance and standards compliance, with an explicit fixed point and source discovery.
+local_adaptation: Adopted as separate review axes for spec compliance, repo standards, and risk/quality inside one local workflow.
+rationale: This prevents clean code from passing review when it misses the request, and prevents correct behavior from hiding local-standard violations.
+credit_note: Inspired by Matt Pocock's review skill, adapted for ai-skills.
+reviewer: Merlin
+next_review: When the repo adds automated review harnesses or branch-wide review orchestration
+```
+
+```yaml
+id: 2026-05-23-code-review-gstack-critical-first
+date: 2026-05-23
+discipline: code-review
+status: adapted
+source: GStack
+source_url: https://github.com/garrytan/gstack
+source_ref: 61c9a20bd2e3a579c3d6184ed2fc95b51a528f7c
+source_path: review/checklist.md; review/specialists/
+license: MIT
+local_target: code-review/SKILL.md
+influence_type: behavioral
+summary: Review critical risks before informational findings and suppress speculative review noise.
+local_adaptation: Added a compact critical-first scan and evidence/suppression rules to the local code-review workflow.
+rationale: The review skill should bias toward merge-blocking risk and avoid noisy checklist comments.
+credit_note: Adapted from GStack's review checklist and specialist review categories.
+reviewer: Merlin
+next_review: When local code-review output quality is evaluated against real PRs
+```
+
+```yaml
+id: 2026-05-23-code-review-compound-evidence-gate
+date: 2026-05-23
+discipline: code-review
+status: adapted
+source: Compound Engineering
+source_url: https://github.com/everyinc/compound-engineering-plugin
+source_ref: 5297a9440fa009822ceef8052b9e644e782281e1
+source_path: docs/skills/ce-code-review.md; plugins/compound-engineering/skills/ce-code-review/SKILL.md
+license: MIT
+local_target: code-review/SKILL.md
+influence_type: behavioral
+summary: Scale review depth with diff risk and drop findings that are not anchored to the actual code.
+local_adaptation: Added risk-scaled depth guidance and concrete finding evidence requirements.
+rationale: This keeps small reviews lightweight while forcing deeper scrutiny on auth, data, public APIs, migrations, shell execution, and LLM trust boundaries.
+credit_note: Inspired by Compound Engineering's confidence-gated review synthesis.
+reviewer: Merlin
+next_review: When Ronald decides whether code reviews should use specialist subagents by default
+```
+
+```yaml
+id: 2026-05-23-code-review-superpowers-independent-review
+date: 2026-05-23
+discipline: code-review
+status: adapted
+source: SuperPowers
+source_url: https://github.com/obra/superpowers
+source_ref: f2cbfbefebbfef77321e4c9abc9e949826bea9d7
+source_path: skills/requesting-code-review/SKILL.md; skills/requesting-code-review/code-reviewer.md; skills/subagent-driven-development/spec-reviewer-prompt.md
+license: MIT
+local_target: code-review/SKILL.md
+influence_type: behavioral
+summary: Treat review as an independent gate based on the actual diff, not the implementer's report.
+local_adaptation: Strengthened preflight source discovery and kept spec compliance as a first-class review step.
+rationale: A review that trusts summaries can miss both omitted requirements and unintended behavior.
+credit_note: Adapted from SuperPowers code-review and spec-review prompts.
+reviewer: Merlin
+next_review: When local review workflows decide how often to require subagent review
+```
+
+```yaml
+id: 2026-05-23-code-review-autofix-rejected
+date: 2026-05-23
+discipline: code-review
+status: rejected
+source: GStack and Compound Engineering
+source_url: https://github.com/garrytan/gstack; https://github.com/everyinc/compound-engineering-plugin
+source_ref: 61c9a20bd2e3a579c3d6184ed2fc95b51a528f7c; 5297a9440fa009822ceef8052b9e644e782281e1
+source_path: review/SKILL.md; docs/skills/ce-code-review.md
+license: MIT
+local_target: code-review/SKILL.md
+influence_type: policy
+summary: Review-mode autofix and mode parsing were reviewed and rejected for the generic local code-review skill.
+local_adaptation: Preserved the existing rule: do not auto-fix without approval.
+rationale: Ronald asked for review behavior as a quality gate; automatic edits during review blur the contract and can hide reviewer uncertainty.
+credit_note: Reviewed but intentionally not adopted.
+reviewer: Merlin
+next_review: Revisit only if a separate fix-review or auto-remediation skill is created
+```
+
+```yaml
+id: 2026-05-23-code-review-provenance
+date: 2026-05-23
+discipline: code-review
+status: adopted
+source: Local external-skill-adaptation policy
+source_url: local repository policy
+source_ref: feat/external-skill-adaptation on 2026-05-23
+source_path: external-skill-adaptation/SKILL.md
+license: repository-local process
+local_target: code-review/PROVENANCE.md
+influence_type: structural
+summary: Material skill changes require a sibling provenance artifact.
+local_adaptation: Added code-review/PROVENANCE.md and kept source attribution out of runtime code-review/SKILL.md.
+rationale: Provenance is necessary for adaptation review and public explanation, but it should not consume runtime context during code review.
+credit_note: Local repository policy.
+reviewer: Merlin
+next_review: When repository provenance policy changes
+```
+
+
+```yaml
 id: 2026-05-22-debugging-matt-feedback-loop
 date: 2026-05-22
 discipline: debugging

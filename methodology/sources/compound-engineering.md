@@ -11,8 +11,12 @@
 
 - `README.md`
 - `docs/skills/ce-debug.md`
+- `docs/skills/ce-code-review.md`
 - `docs/skills/ce-resolve-pr-feedback.md`
 - `plugins/compound-engineering/skills/ce-compound/SKILL.md`
+- `plugins/compound-engineering/skills/ce-code-review/SKILL.md`
+- Selected reviewer agents under
+  `plugins/compound-engineering/skills/ce-code-review/agents/`
 
 ## Relevant Disciplines
 
@@ -31,6 +35,9 @@
 - Assumption audit before testing hypotheses.
 - Diagnose-only outcomes and escalation to design work when the "bug" is really
   a product or architecture problem.
+- Diff-aware code review depth based on risk and blast radius.
+- Confidence-gated review synthesis: drop unanchored findings, dedupe findings,
+  and separate severity from action ownership.
 
 ## Adoption Risks
 
