@@ -51,6 +51,7 @@ them to the user only when they affect a decision or explain a stall.
 
 ### 3. Probe deliberately
 
+- Before probing, name the assumption the probe is meant to test.
 - Add the smallest probe that separates likely causes.
 - Prefer targeted logs, focused assertions, binary search, narrow test edits, or
   smaller fixtures.
