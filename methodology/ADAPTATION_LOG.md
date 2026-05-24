@@ -29,6 +29,46 @@ next_review:
 ## Entries
 
 ```yaml
+id: 2026-05-24-testing-qa-auth-readiness
+date: 2026-05-24
+discipline: testing-and-qa
+status: adopted
+source: local project lifecycle and browser QA decisions
+source_url: local Discord discussion
+source_ref: 2026-05-24 #claw-enhance conversation
+source_path: n/a
+license: repository-local decision
+local_target: test-planning/SKILL.md; testing-orchestrator/SKILL.md; test-planning/PROVENANCE.md; testing-orchestrator/PROVENANCE.md; methodology/disciplines/testing-and-qa.md
+influence_type: structural
+summary: Testing strategy must plan browser-QA scope, safe auth, seed data, fixtures, CI, and blocked coverage before feature issues depend on them.
+local_adaptation: Added auth/test-data/browser-QA/CI sections to TEST_PLAN expectations and added readiness checks to the testing orchestrator workflow.
+rationale: Full QA and durable tests are not possible if protected flows, fixtures, or preview commands are discovered as blockers only after implementation.
+credit_note: Local testing policy decision from the user and prior PR #7/#8 outcomes.
+reviewer: Merlin
+next_review: When e2e-playwright and unit-vitest receive their own focused pass
+```
+
+```yaml
+id: 2026-05-24-testing-qa-flexible-e2e-roles
+date: 2026-05-24
+discipline: testing-and-qa
+status: adapted
+source: Matt Pocock Skills
+source_url: https://github.com/mattpocock/skills
+source_ref: b8be62ffacb0118fa3eaa29a0923c87c8c11985c
+source_path: skills/engineering/tdd/SKILL.md
+license: MIT
+local_target: testing-orchestrator/SKILL.md; testing-orchestrator/PROVENANCE.md
+influence_type: behavioral
+summary: Testing should move in vertical behavior slices rather than mandatory horizontal phases.
+local_adaptation: Kept the Playwright planner/generator/healer roles for durable scenario generation, but stopped requiring the full sequence for tiny issue-local changes where one focused failing test is enough.
+rationale: A rigid full E2E role pipeline can add ceremony and delay feedback; vertical slices preserve discipline while keeping the loop tight.
+credit_note: Adapted from Matt Pocock's TDD guidance.
+reviewer: Merlin
+next_review: After several issue implementations exercise the lighter path
+```
+
+```yaml
 id: 2026-05-24-project-manager-testable-readiness
 date: 2026-05-24
 discipline: project-lifecycle-monitoring
