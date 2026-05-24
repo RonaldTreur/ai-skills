@@ -5,8 +5,10 @@
 - Branch: `feat/testing-methodology`
 - Local files reviewed: `test-planning/SKILL.md`,
   `testing-orchestrator/SKILL.md`, `e2e-playwright/SKILL.md`,
-  `unit-vitest/SKILL.md`, `browser-qa/SKILL.md`,
-  `project-manager/SKILL.md`, `implement-issue/SKILL.md`
+  `unit-vitest/SKILL.md`,
+  `enforcing-test-coverage-vitest-playwright/SKILL.md`,
+  `browser-qa/SKILL.md`, `project-manager/SKILL.md`,
+  `implement-issue/SKILL.md`
 - External sources reviewed: Matt Pocock Skills, GStack
 - Status: implemented
 
@@ -21,6 +23,9 @@ browser-QA scope were not first-class in the testing plan.
 `testing-orchestrator` also treated the E2E planner/generator/healer sequence as
 mandatory. That was too rigid for small issue-local changes where
 `implement-issue` can add a focused failing test directly.
+
+`e2e-playwright`, `unit-vitest`, and the coverage-enforcement skill also needed
+to reflect the same auth/fixture/readiness and behavior-over-metric policy.
 
 ## Source Comparison
 
@@ -56,14 +61,26 @@ mandatory. That was too rigid for small issue-local changes where
     instead of mandatory for every small change.
   - Clarified coverage policy: strict defaults, explicit exclusions, public
     behavior over private structure.
+- `e2e-playwright/SKILL.md`
+  - Clarified that the role sequence is for durable scenario-driven E2E
+    generation and repair, not mandatory ceremony for every tiny issue-local
+    test.
+  - Added safe auth, storage-state, fixture, and setup-blocker guidance.
+- `unit-vitest/SKILL.md`
+  - Clarified public module/API contracts, meaningful integration boundaries,
+    mocking boundaries, and justified coverage exclusions.
+- `enforcing-test-coverage-vitest-playwright/SKILL.md`
+  - Aligned coverage enforcement with `TEST_PLAN.md` exclusions, semantic
+    Playwright locators, safe auth/fixture requirements, CI parity, and browser
+    QA fallback when durable E2E is deferred.
 
 ## Rejections And Deferrals
 
 - Rejected pretending protected flows are covered when auth or seed data blocks
   the test or browser-QA path.
 - Rejected mandatory full E2E role orchestration for tiny issue-local changes.
-- Deferred deeper changes to `e2e-playwright` and `unit-vitest`; this slice keeps
-  their current role/reference guidance intact.
+- Deferred only deeper guide-level rewrites for individual locator, mocking,
+  network, and Cloudflare testing references.
 
 ## Verification Notes
 
@@ -73,8 +90,10 @@ mandatory. That was too rigid for small issue-local changes where
 - `[[skill-review]]` for `testing-orchestrator/SKILL.md`: PASS. No Critical or
   Important findings after clarifying that the implementation step belongs to
   `[[implement-issue]]` during active issue work.
+- Focused hardening review for `e2e-playwright`, `unit-vitest`, and
+  `enforcing-test-coverage-vitest-playwright`: PASS. No Critical or Important
+  findings after aligning them with the merged testing model.
 - Validation:
-  - YAML frontmatter parse passed for `test-planning/SKILL.md` and
-    `testing-orchestrator/SKILL.md`.
+  - YAML frontmatter parse passed for changed runtime skills.
   - `git diff --check` passed.
   - repository personal-name scan returned no matches.

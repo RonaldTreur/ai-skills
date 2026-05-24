@@ -1,6 +1,6 @@
 ---
 name: enforcing-test-coverage-vitest-playwright
-description: Use this skill whenever adding/changing functionality. Enforces full coverage via Vitest unit tests + Playwright E2E tests, orchestrated through npm scripts (pnpm only for monorepos) and runnable locally + in GitHub Actions.
+description: "Enforce Vitest + Playwright coverage policy for TypeScript web projects. Use when adding or changing functionality, setting npm/pnpm test scripts, aligning local and CI commands, reviewing coverage thresholds, or applying TEST_PLAN.md exclusions for unit/E2E/browser coverage."
 ---
 
 # Test Coverage Skill (Vitest + Playwright)
@@ -17,8 +17,13 @@ You enforce tests for every meaningful change: **Vitest** for unit tests and **P
 ## Non-negotiables
 - No meaningful change without tests (unless user explicitly says otherwise).
 - Unit tests aim for **100%** lines/statements/functions/branches.
-  - If an exclusion is needed: **ASK THE USER**.
+  - Exclusions are allowed only when `TEST_PLAN.md` documents the rationale or
+    the user explicitly approves.
 - E2E tests cover user-visible workflows (happy path + at least one relevant edge/negative path for critical flows).
+- Browser QA still covers changed user-visible behavior when durable E2E is
+  intentionally deferred or too expensive for the current slice.
+- Protected flows need safe auth, fixtures, seed data, reset scripts, or
+  documented storage state before tests can claim coverage.
 
 ## Required scripts (orchestrator)
 Provide these scripts so the same commands run locally and in CI:
@@ -55,11 +60,19 @@ Configure thresholds to 100% (ask before lowering):
 - functions: 100
 - branches: 100
 
+Do not satisfy thresholds by testing private structure, inert constants, or
+implementation trivia. If 100% creates noise without confidence, record the
+explicit exclusion in `TEST_PLAN.md` and keep behavior coverage strong.
+
 ## Playwright rules
 - Prefer testing against a built app (`build` + `preview`) unless the project requires dev-mode.
-- Use stable selectors (`data-testid`).
+- Prefer semantic locators (`getByRole`, labels, accessible names). Add
+  `data-testid` only when semantic locators cannot express a stable user-facing
+  target.
 - Avoid sleeps; rely on auto-waits and explicit conditions.
 - In CI, collect trace/screenshot/video on failure.
+- Do not use personal sessions, production credentials, or shared mutable
+  staging records as the default test path.
 
 ## GitHub Actions entrypoints
 CI must call the same scripts:
@@ -79,3 +92,6 @@ CI must call the same scripts:
 
 ## When E2E does not make sense
 Only skip E2E for changes that cannot affect user-visible behavior. If unsure: **ASK THE USER**.
+
+When E2E is skipped for a user-visible change, record why in `TEST_PLAN.md` or
+the PR and run [[browser-qa]] for the changed flow before merge.

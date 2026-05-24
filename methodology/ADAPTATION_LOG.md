@@ -29,6 +29,26 @@ next_review:
 ## Entries
 
 ```yaml
+id: 2026-05-24-testing-skills-hardening
+date: 2026-05-24
+discipline: testing-and-qa
+status: adopted
+source: local follow-up review after testing methodology merge
+source_url: local Discord discussion
+source_ref: 2026-05-24 #claw-enhance conversation
+source_path: n/a
+license: repository-local decision
+local_target: e2e-playwright/SKILL.md; unit-vitest/SKILL.md; enforcing-test-coverage-vitest-playwright/SKILL.md; e2e-playwright/PROVENANCE.md; unit-vitest/PROVENANCE.md; enforcing-test-coverage-vitest-playwright/PROVENANCE.md; methodology/disciplines/testing-and-qa.md
+influence_type: structural
+summary: The concrete E2E, unit, and coverage skills should align with the merged testing model before moving to non-testing disciplines.
+local_adaptation: Added safe auth/fixture/setup-blocker guidance to E2E, behavior-focused public-contract guidance to unit tests, and TEST_PLAN-backed justified exclusions to coverage enforcement.
+rationale: The high-level testing methodology is only useful if the concrete test-writing and coverage skills carry the same boundaries and stop conditions.
+credit_note: Local workflow refinement from the user.
+reviewer: Merlin
+next_review: After the guide-level E2E and unit references are exercised on real projects
+```
+
+```yaml
 id: 2026-05-24-testing-qa-auth-readiness
 date: 2026-05-24
 discipline: testing-and-qa
