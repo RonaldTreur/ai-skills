@@ -76,7 +76,7 @@ boundaries.
 - Adoption recommendation: adopt vertical behavior-first slices in active
   implementation and outside-in testing.
 
-## Questions For Ronald
+## Questions For The User
 
 - Should `codex-implementation-cycle` remain as a compatibility alias?
   Decision: no; `implement-issue` supersedes it.

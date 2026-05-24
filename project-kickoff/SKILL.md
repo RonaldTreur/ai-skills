@@ -1,6 +1,6 @@
 ---
 name: project-kickoff
-description: Three-phase project kickoff: brief clarification, competitive UI design, and implementation planning. Two AI models work independently, debate, and iterate — with the user steering. Final output hands off to Vectrix for implementation.
+description: "Three-phase project kickoff: brief clarification, competitive UI design, and implementation planning. Two AI models work independently, debate, and iterate — with the user steering. Final output hands off to Vectrix for implementation."
 ---
 
 # Project Kickoff
@@ -79,7 +79,7 @@ Updated progressively across ALL phases. Every significant decision gets recorde
 - **Decision:** [What was chosen]
 - **Why:** [Reasoning from the debate]
 - **Rejected:** [What was rejected and why]
-- **User input:** [Any steering from Ronald]
+- **User input:** [Any steering from the user]
 ```
 
 This is the key context document for Vectrix's handoff. It captures the *why*, not just the *what*.

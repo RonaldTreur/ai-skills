@@ -70,7 +70,7 @@ There is no current hard gate for:
 - Conflicts or risks:
   - The tone is intentionally rigid; forcing it everywhere may create friction
     for trivial fixes or conversational debugging.
-  - The architecture-escalation threshold may be too blunt for Ronald's normal
+  - The architecture-escalation threshold may be too blunt for the user's normal
     iteration style unless softened.
 - Adoption recommendation:
   - High-value source for a local debugging skill's guardrails.
@@ -112,12 +112,12 @@ There is no current hard gate for:
     architectural finding instead of faking confidence.
 - Conflicts or risks:
   - The process expects more explicit user-visible hypothesis checkpoints than
-    Ronald may want on routine debugging passes.
+    the user may want on routine debugging passes.
   - Some suggestions assume a richer project context layer (`CONTEXT.md`, ADRs)
     than every repo will have.
 - Adoption recommendation:
   - Strongest source for the local debugging spine.
-  - Adapt hypothesis ranking and loop-building as defaults; decide with Ronald
+  - Adapt hypothesis ranking and loop-building as defaults; decide with the user
     whether user-visible hypothesis lists should be mandatory or internal.
 
 ## Approved Policy

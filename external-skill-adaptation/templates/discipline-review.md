@@ -45,7 +45,7 @@ Summarize how this discipline currently works in ai-skills/OpenClaw.
 - Conflicts or risks:
 - Adoption recommendation:
 
-## Questions For Ronald
+## Questions For The User
 
 List concrete adoption questions that affect workflow, friction, or behavior policy.
 
@@ -63,7 +63,7 @@ For each local skill created or changed, create a source-influence artifact at
 If repository structure makes that exact path impossible, record the exception
 and the chosen path here. Do not silently choose a different location.
 
-Keep attribution and rebuild notes out of runtime `SKILL.md` files unless Ronald
+Keep attribution and rebuild notes out of runtime `SKILL.md` files unless the user
 explicitly asks for them there.
 
 Include:

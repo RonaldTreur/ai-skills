@@ -15,9 +15,12 @@ Keep these behaviors:
 5. Prefer Vectrix for substantial implementation, with a coordinating agent
    reviewing, fixing, and verifying when appropriate.
 6. Run P0-P3 review and, for non-trivial PRs, one independent review pass.
-7. Maintain `DELIVERY_STATE.md` and GitHub issue/PR state for recovery.
-8. Keep project lifecycle concerns in `project-manager`.
-9. Avoid rereading broad planning docs already summarized by `project-manager`
+7. Use `browser-qa` for user-visible browser checks and post-merge QA.
+8. Build features so browser QA can actually reach them, including safe
+   non-production auth paths for protected flows.
+9. Maintain `DELIVERY_STATE.md` and GitHub issue/PR state for recovery.
+10. Keep project lifecycle concerns in `project-manager`.
+11. Avoid rereading broad planning docs already summarized by `project-manager`
    unless the selected issue needs them.
 
 ## Source Influence
@@ -93,6 +96,10 @@ What we took:
 What we rejected:
 - GStack setup hooks, telemetry, session stores, generated preambles, and
   auto-update machinery.
+- GStack browser-QA details now live in `browser-qa/SKILL.md`; this skill only
+  calls that specialist workflow.
+- Features that introduce protected browser flows without a safe QA auth path.
+  Implementation must provide or document test access before merge.
 
 ### Existing Local Skills
 
@@ -100,6 +107,7 @@ What we rejected:
 - `developing-web-projects/SKILL.md`
 - `testing-orchestrator/SKILL.md`
 - `test-planning/SKILL.md`
+- `browser-qa/SKILL.md`
 - `code-review/SKILL.md`
 - `debugging/SKILL.md`
 
@@ -110,5 +118,6 @@ What we took:
 ## Formal Trail
 
 - `methodology/disciplines/implementation-lifecycle.md`
+- `methodology/disciplines/browser-qa.md`
 - `methodology/ADAPTATION_LOG.md`
 - source inventories under `methodology/sources/`

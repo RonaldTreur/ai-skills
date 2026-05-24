@@ -7,7 +7,7 @@ description: Compare external agent skills, prompts, instructions, or methodolog
 
 Use this skill to turn external agent-methodology sources into durable, attributed improvements to this repository.
 
-The goal is not to vendor external skills. The goal is to compare sources by discipline, decide what fits Ronald's workflow, adapt the useful parts into local conventions, and leave a provenance trail clear enough for credit, future re-review, and public explanation.
+The goal is not to vendor external skills. The goal is to compare sources by discipline, decide what fits the user's workflow, adapt the useful parts into local conventions, and leave a provenance trail clear enough for credit, future re-review, and public explanation.
 
 ## Core Rules
 
@@ -16,10 +16,10 @@ The goal is not to vendor external skills. The goal is to compare sources by dis
 3. Prefer paraphrased/adapted guidance over copied text unless copying is explicitly needed and license-compatible.
 4. Track every material influence in `methodology/ADAPTATION_LOG.md`.
 5. Keep rejected ideas. A future re-review needs to know why something did not land.
-6. Do one discipline at a time unless Ronald explicitly asks for a broader pass.
-7. Ask Ronald discipline-specific questions before finalizing adoption choices when the tradeoff is taste, workflow friction, or behavior policy rather than a clear technical correctness issue.
+6. Do one discipline at a time unless the user explicitly asks for a broader pass.
+7. Ask the user discipline-specific questions before finalizing adoption choices when the tradeoff is taste, workflow friction, or behavior policy rather than a clear technical correctness issue.
 8. When a discipline produces or changes a local skill, add a concise source-influence artifact at `<skill>/PROVENANCE.md`.
-9. Keep attribution and rebuild notes out of runtime `SKILL.md` files unless Ronald explicitly asks for them there.
+9. Keep attribution and rebuild notes out of runtime `SKILL.md` files unless the user explicitly asks for them there.
 10. Do not install or activate third-party skills, hooks, daemons, telemetry, or auto-update systems as part of this workflow.
 11. End every created or changed runtime skill with a `[[skill-review]]` pass before closing.
 
@@ -63,12 +63,12 @@ For each source, capture:
 - exact source locations
 - fit with current ai-skills and OpenClaw conventions
 - conflicts or risks
-- questions for Ronald
+- questions for the user
 - adoption recommendation
 
 Keep source quotes short. Summarize and link to exact files/commits wherever possible.
 
-### 4. Decide With Ronald
+### 4. Decide With The User
 
 Before changing existing local skills, ask targeted questions for decisions that depend on preference or operating style.
 
@@ -107,7 +107,7 @@ The skill-level provenance artifact must include:
 - source URL, reviewed ref, reviewed file paths, and license when known
 - what was taken from that source
 - why those ideas fit locally
-- how the idea was adapted to Ronald's conventions
+- how the idea was adapted to local conventions
 - important rejected material when the rejection explains the final shape
 - a pointer back to `methodology/ADAPTATION_LOG.md` and the relevant discipline review
 

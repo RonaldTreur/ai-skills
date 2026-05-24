@@ -12,7 +12,7 @@ Use the `external-skill-adaptation` skill when adding to this folder.
 
 ## Structure
 
-- `DISCIPLINES.md`: the discipline map for Ronald's project-development routine.
+- `DISCIPLINES.md`: the discipline map for the user-facing project-development routine.
 - `ADAPTATION_LOG.md`: provenance ledger for adopted, adapted, inspired, rejected, deferred, and superseded ideas.
 - `sources/`: source inventories for external projects and instruction sets.
 - `disciplines/`: one review document per discipline.

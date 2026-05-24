@@ -20,6 +20,8 @@ This is the canonical active-issue implementation workflow.
   defaults.
 - [[testing-orchestrator]], [[test-planning]], [[e2e-playwright]], and
   [[unit-vitest]] govern testing method and tooling.
+- [[browser-qa]] governs browser-based exploratory and post-merge QA for
+  user-visible web behavior.
 - [[code-review]] defines review method and P0-P3 severity for diff review.
 - [[debugging]] governs non-trivial failures discovered during implementation.
 
@@ -31,7 +33,7 @@ When invoked for a ready issue, assume the agent may:
 - create a branch from `dev`
 - write or update tests and production code
 - update `DELIVERY_STATE.md`
-- run local checks, tests, build, lint, browser QA, and relevant migrations
+- run local checks, tests, build, lint, relevant migrations, and [[browser-qa]]
 - commit, push, open/update a PR targeting `dev`
 - run review checks and fix valid P0-P3 findings
 - merge into `dev` when checks and review are clean
@@ -70,6 +72,7 @@ Ask before:
    - dependencies
    - affected user behavior
    - relevant tests/checks
+   - browser QA flows, including authenticated areas and test-account needs
    - likely risk areas
 
 If no issue is named, use [[project-manager]] rules to select one ready issue
@@ -99,23 +102,30 @@ tests before learning from implementation.
 For each meaningful behavior in the issue:
 
 1. Name the behavior and the public interface or user flow it affects.
-2. Write the smallest failing E2E or integration-style test that proves that
+2. Identify how the behavior will be QA'd in a browser. For authenticated flows,
+   ensure the project has a safe non-production auth path: documented test
+   account, seeded local user, fixture, ignored storage state, or documented
+   developer-only login path that is disabled in production.
+3. Write the smallest failing E2E or integration-style test that proves that
    behavior. Use unit tests first only when the change is internal-only or the
    public interface is a module/API.
-3. Run the test and confirm the expected failure.
-4. Implement the smallest production change that makes the test pass.
-5. Add focused unit tests for domain logic, validation, data access, edge cases,
+4. Run the test and confirm the expected failure.
+5. Implement the smallest production change that makes the test pass.
+6. Add focused unit tests for domain logic, validation, data access, edge cases,
    and failure paths exposed by that behavior.
-6. Run the narrow checks.
-7. Refactor only while green.
-8. Repeat for the next behavior until acceptance criteria are covered.
+7. Add or update safe QA setup when needed so [[browser-qa]] can reach the
+   changed behavior without the user's personal session or production
+   credentials.
+8. Run the narrow checks.
+9. Refactor only while green.
+10. Repeat for the next behavior until acceptance criteria are covered.
 
 Tests should verify behavior through public interfaces. Avoid tests that lock in
 private structure unless the structure is itself the contract.
 
 ## Delegation
 
-Prefer Vectrix for substantial implementation unless Ronald explicitly asks for
+Prefer Vectrix for substantial implementation unless the user explicitly asks for
 another runtime or Vectrix is blocked.
 
 When handing work to Vectrix or another implementation agent/runtime:
@@ -146,7 +156,9 @@ Before review:
 
 - run the narrow tests that prove the changed behavior
 - run relevant unit, E2E, typecheck, build, lint, and migration checks
-- run browser QA for user-visible browser behavior when feasible
+- run [[browser-qa]] for changed user-visible browser behavior
+- for authenticated browser behavior, verify the safe QA auth path works or
+  stop before merge with a blocking project-setup issue
 - inspect the diff for unrelated changes
 
 Then run the review loop:
@@ -162,7 +174,7 @@ coordinating agent then evaluates those findings, fixes valid P0-P3 items, and
 documents any rejected findings with rationale.
 
 After review fixes, rerun the checks most likely to catch regressions. If UI or
-routing changed, repeat browser QA.
+routing changed, repeat [[browser-qa]].
 
 ## PR And Merge
 
@@ -182,11 +194,14 @@ Merge into `dev` only when:
 - required checks are green
 - valid P0-P3 review findings are fixed
 - the issue acceptance criteria are satisfied
+- user-visible web behavior can be checked by [[browser-qa]], including any
+  authenticated flows introduced or changed by the issue
 - no unresolved human decision blocks the change
 
-After merge, run post-merge QA against `dev` or the closest available preview.
-If QA finds defects, create follow-up issues with priority/dependencies and
-return to [[project-manager]] for the next work decision.
+After merge, use [[browser-qa]] for post-merge QA against `dev` or the closest
+available preview. If QA finds defects, create follow-up issues with
+priority/dependencies and return to [[project-manager]] for the next work
+decision.
 
 ## Phase Heads-Ups
 
@@ -230,6 +245,9 @@ Fresh-session resume order:
 Pause the selected issue when:
 
 - acceptance criteria are not testable
+- user-visible web behavior cannot be browser-QA'd because the feature lacks a
+  safe non-production auth path, seed data, fixture, or documented preview
+  workflow
 - repo-local instructions conflict and no conservative interpretation exists
 - a required secret, credential, production access, billing/org setting, or
   external account action is needed

@@ -137,7 +137,7 @@ Local adaptation:
 
 ### Local Integration Decision
 
-- Source: Ronald's review feedback in `#claw-enhance`
+- Source: user review feedback in `#claw-enhance`
 - Reviewed ref: 2026-05-23 conversation
 - Reviewed material: instruction to ignore wiki-style references between local
   skills
