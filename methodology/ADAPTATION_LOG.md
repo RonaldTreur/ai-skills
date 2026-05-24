@@ -29,6 +29,26 @@ next_review:
 ## Entries
 
 ```yaml
+id: 2026-05-24-project-manager-testable-readiness
+date: 2026-05-24
+discipline: project-lifecycle-monitoring
+status: adopted
+source: local project lifecycle discussion
+source_url: local Discord discussion
+source_ref: 2026-05-24 #claw-enhance conversation
+source_path: n/a
+license: repository-local decision
+local_target: project-manager/SKILL.md; project-manager/PROVENANCE.md; methodology/disciplines/project-lifecycle-monitoring.md
+influence_type: structural
+summary: Project management should prevent QA and auth blockers by ensuring project setup is testable before feature issues depend on it.
+local_adaptation: Added a project-readiness gate for commands, CI, seed data, safe auth paths, browser-QA access, and durable handoff state; issue decomposition now includes browser-QA scope and test-data prerequisites.
+rationale: Browser QA and implementation can only stay reliable when project setup creates a safe verification path up front.
+credit_note: Local lifecycle policy decision from the user.
+reviewer: Merlin
+next_review: When test-planning and testing-orchestrator receive their deeper pass
+```
+
+```yaml
 id: 2026-05-24-browser-qa-controlled-profile
 date: 2026-05-24
 discipline: browser-qa

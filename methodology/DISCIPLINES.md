@@ -12,6 +12,7 @@ Use this map to review external sources against the real project-development rou
 - Implementation
 - Implementation lifecycle
 - Browser QA
+- Project lifecycle monitoring
 - Debugging
 - Testing and QA
 - Code review
@@ -36,9 +37,9 @@ Use this map to review external sources against the real project-development rou
 - Code review
 - Implementation lifecycle
 - Browser QA
+- Project lifecycle monitoring
 
 ## Next Candidate Slices
 
 - Test planning / testing orchestrator
 - Project kickoff
-- Project lifecycle monitoring
