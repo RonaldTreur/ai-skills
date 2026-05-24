@@ -15,6 +15,10 @@ Keep these behaviors:
 5. Hand selected issues to `implement-issue` with compact context.
 6. Ask before bulk GitHub mutations, project-scope changes, or product
    decisions.
+7. Treat runnable commands, CI, test data, safe auth, and browser-QA access as
+   project readiness concerns, not late implementation surprises.
+8. Recover stale project state from GitHub truth first, then local handoff
+   files.
 
 ## Source Influence
 
@@ -53,14 +57,30 @@ Local adaptation:
 
 - `project-kickoff/SKILL.md`
 - `implement-issue/SKILL.md`
+- `browser-qa/SKILL.md`
 - `test-planning/SKILL.md`
 - `developing-web-projects/SKILL.md`
 
 What we took:
-- Kickoff docs, test-plan approvals, web defaults, and implementation handoff
-  boundaries.
+- Kickoff docs, test-plan approvals, browser-QA readiness, web defaults, and
+  implementation handoff boundaries.
+
+### Local Browser QA Readiness Decision
+
+- Source: local project lifecycle discussion
+- Reviewed ref: `2026-05-24 #claw-enhance`
+- License: repository-local decision
+
+What we took:
+- Auth, seed data, local commands, CI, preview workflows, and browser-QA access
+  must be planned before feature issues depend on them.
+
+Local adaptation:
+- `project-manager` now checks project readiness before feature decomposition
+  and creates setup issue drafts for missing verification infrastructure.
 
 ## Formal Trail
 
 - `methodology/disciplines/implementation-lifecycle.md`
+- `methodology/disciplines/project-lifecycle-monitoring.md`
 - `methodology/ADAPTATION_LOG.md`

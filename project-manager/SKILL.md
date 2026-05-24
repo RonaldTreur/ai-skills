@@ -1,6 +1,6 @@
 ---
 name: project-manager
-description: "Manage GitHub-backed project lifecycle: kickoff handoff, repo setup, planning docs, issue decomposition, dependency ordering, project status, and selection of issues for the implement-issue skill. Use when starting a new project, organizing an active project, creating issues from plans, checking progress, or deciding what should be built next."
+description: "Manage GitHub-backed project lifecycle: kickoff handoff, repo setup, planning docs, testable project readiness, issue decomposition, dependency ordering, project status, and selection of issues for the implement-issue skill. Use when starting a new project, organizing an active project, creating issues from plans, checking progress, recovering stale project state, or deciding what should be built next."
 ---
 
 # Project Manager
@@ -21,6 +21,8 @@ execution is delegated to [[implement-issue]].
   implementation defaults.
 - [[test-planning]] and [[testing-orchestrator]] own testing strategy and
   outside-in test workflow.
+- [[browser-qa]] owns browser-based user-flow verification. `project-manager`
+  ensures repo setup and issue decomposition make that verification possible.
 - [[code-review]] defines review method and P0-P3 severity for diff review.
 
 When this skill reaches "build this issue", stop orchestrating code details and
@@ -32,6 +34,8 @@ invoke [[implement-issue]] with a compact handoff.
 - Repo-local docs are project memory: `BRIEF.md`, `DESIGN.md`, `PLAN.md`,
   `TEST_PLAN.md`, `DECISIONS.md`, `DELIVERY_STATE.md`, ADRs, and specs.
 - Issues should be independently mergeable slices with explicit dependencies.
+- Project setup must make local verification, CI, test data, and browser QA
+  practical before feature work depends on them.
 - Humans approve product direction, design direction, test strategy, and project
   scope changes.
 - Agents may choose conservative implementation defaults inside approved scope.
@@ -76,12 +80,16 @@ Ask before:
    - `DELIVERY_STATE.md`
    - `docs/**/*.md`
    - `specs/**/*.md`
+   - `.github/workflows/**/*.yml`
+   - `package.json`
 4. Extract:
    - product goal
    - current phase
    - integration branch
    - test/build commands
+   - local run or preview command
    - issue dependency conventions
+   - QA/auth/test-data setup
    - blocked decisions
    - next ready issue candidates
 
@@ -100,6 +108,21 @@ Expect these durable outputs:
 Before creating build issues, create or update `TEST_PLAN.md` via
 [[test-planning]]. For web projects, also load [[developing-web-projects]].
 
+Then check project readiness before feature decomposition:
+
+- repo has documented install, dev, build, test, and preview commands
+- CI runs the same meaningful unit/E2E/build checks expected locally
+- browser QA can reach the app through the active agent's controlled profile
+- protected or role-specific flows have a safe non-production auth path:
+  documented test account, seeded local user, fixture, ignored storage state, or
+  production-disabled developer login
+- seed data, fixtures, or reset steps exist for issue-level tests and QA
+- `DELIVERY_STATE.md` or equivalent handoff state exists for long-running work
+
+If readiness is missing, create setup issue drafts before feature issues. Do not
+bury missing QA access, missing test data, or missing commands inside unrelated
+feature issues.
+
 ### 2. Issue Decomposition
 
 Turn approved docs into GitHub Issues only after the scope and testing strategy
@@ -112,12 +135,17 @@ Each issue should include:
 - links to relevant `BRIEF.md`, `DESIGN.md`, `PLAN.md`, `TEST_PLAN.md`, and
   `DECISIONS.md` sections
 - test scope
+- browser QA scope, including auth/test-data prerequisites for protected flows
 - dependencies
 - out-of-scope notes
 - likely affected areas, without over-prescribing exact code
 
 Prefer issue slices that produce working, testable software. If a planned task
 is too large, split it into independently mergeable units.
+
+Create setup and infrastructure issues before feature issues when feature work
+would otherwise depend on missing scripts, CI, seed data, test accounts,
+preview/deployment plumbing, or browser-QA access.
 
 ### 3. Dependency Ordering
 
@@ -127,6 +155,8 @@ Use this readiness rule:
 - no `needs-human`, `blocked`, `wontfix`, or `duplicate` label
 - blockers are closed or explicitly resolved
 - acceptance criteria are testable
+- QA path, auth path, and test data are available or are explicitly part of the
+  issue scope
 - prerequisites exist or can be created inside the issue scope
 
 Sort ready issues by:
@@ -176,6 +206,31 @@ For long-running projects, keep `DELIVERY_STATE.md` aligned with GitHub state.
 If state conflicts, trust durable external truth first: merged PRs, open PRs,
 issue labels/comments, CI, then local files.
 
+When recovering stale or ambiguous project state:
+
+1. Read open issues, open PRs, recently merged PRs, and failing CI.
+2. Reconcile `DELIVERY_STATE.md` with GitHub state.
+3. Identify the current integration branch and active feature branches.
+4. Separate ready work from blocked work.
+5. Report one next concrete action instead of a broad project summary when the
+   user is waiting for a decision.
+
+### 6. Lifecycle Monitoring
+
+Use this skill for periodic or manual project-health checks. Report:
+
+- stale active issues or PRs with no recent verified checkpoint
+- merged PRs whose issue/project status was not updated
+- `needs-human` or `blocked` issues and the decision needed
+- newly unblocked issues that are ready for [[implement-issue]]
+- failing CI on the integration branch
+- gaps between `TEST_PLAN.md`, implemented tests, and browser-QA coverage
+
+Lifecycle monitoring should create local issue drafts for real defects or setup
+gaps, or create GitHub issues when the user already authorized that mutation,
+then return to next-work selection. It should not silently start a new
+implementation unless the user already asked for that workflow.
+
 ## Labels
 
 Use simple labels unless the repo already has its own taxonomy:
@@ -197,6 +252,8 @@ Stop and ask the user when:
 - project direction or scope is unclear
 - issue creation would encode a product decision
 - issue dependencies are ambiguous and materially change build order
+- project setup lacks the runnable commands, CI, seed data, auth path, or
+  browser-QA access needed to make feature issues testable
 - a required secret, billing, organization, production, or external-account
   action is needed
 - no ready issue remains
