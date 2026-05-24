@@ -13,6 +13,10 @@ Keep these behaviors:
 3. Avoid horizontal "all tests first, all code later" unless explicitly running
    a test-only pass.
 4. Delegate implementation state and PR mechanics to `implement-issue`.
+5. Treat auth, fixtures, seed data, CI, and browser-QA handoff as part of the
+   testing workflow rather than optional afterthoughts.
+6. Use the E2E planner/generator/healer roles when they add value, but do not
+   force the full sequence for tiny issue-local changes.
 
 ## Source Influence
 
@@ -31,7 +35,22 @@ Local adaptation:
 - Kept the existing E2E planner/generator/healer roles, but made vertical
   execution the default implementation pattern.
 
+### Existing Local Skills
+
+- `browser-qa/SKILL.md`
+- `project-manager/SKILL.md`
+- `test-planning/SKILL.md`
+
+What we took:
+- Browser QA access and project-readiness setup must be planned and verified
+  before tests claim protected flows are covered.
+
+Local adaptation:
+- Added safe auth/test-data requirements, browser-QA handoff, and setup-gap
+  routing through `project-manager`.
+
 ## Formal Trail
 
 - `methodology/disciplines/implementation-lifecycle.md`
+- `methodology/disciplines/testing-and-qa.md`
 - `methodology/ADAPTATION_LOG.md`

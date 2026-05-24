@@ -12,6 +12,8 @@ Keep these behaviors:
 3. Allow issue-local test additions inside an approved implementation workflow when they
    stay within issue acceptance criteria.
 4. Ask when test planning changes product scope or user-visible behavior.
+5. Plan auth, fixtures, seed data, browser-QA scope, CI, and coverage exclusions
+   before feature issues depend on them.
 
 ## Source Influence
 
@@ -19,13 +21,17 @@ Keep these behaviors:
 
 - `implement-issue/SKILL.md`
 - `project-manager/SKILL.md`
+- `browser-qa/SKILL.md`
 - `testing-orchestrator/SKILL.md`
 
 What we took:
 - The implementation workflow has standing authority for ready issue-local implementation,
   but project-level test strategy remains a human-approved artifact.
+- Project readiness and browser QA require explicit test data/auth planning, not
+  late discovery during QA.
 
 ## Formal Trail
 
 - `methodology/disciplines/implementation-lifecycle.md`
+- `methodology/disciplines/testing-and-qa.md`
 - `methodology/ADAPTATION_LOG.md`

@@ -38,8 +38,8 @@ Use this map to review external sources against the real project-development rou
 - Implementation lifecycle
 - Browser QA
 - Project lifecycle monitoring
+- Testing and QA
 
 ## Next Candidate Slices
 
-- Test planning / testing orchestrator
 - Project kickoff

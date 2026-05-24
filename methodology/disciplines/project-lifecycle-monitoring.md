@@ -47,4 +47,4 @@ data, safe auth, or browser-QA access.
 - Validation:
   - YAML frontmatter parse passed for `project-manager/SKILL.md`.
   - `git diff --check` passed.
-  - `git grep -n "Ronald"` returned no matches.
+  - repository personal-name scan returned no matches.
