@@ -17,6 +17,71 @@ Keep these behaviors:
 
 ## Source Influence
 
+### GStack
+
+- Source: <https://github.com/garrytan/gstack>
+- Reviewed ref: `61c9a20bd2e3a579c3d6184ed2fc95b51a528f7c`
+- Reviewed material: `qa/SKILL.md`, `autoplan/SKILL.md`
+- License: MIT
+
+What we took:
+- Browser QA and test planning should name blocked coverage explicitly instead
+  of implying full coverage when login, seed data, or app access is missing.
+- Useful plans surface setup gaps before implementation proceeds.
+
+Local adaptation:
+- `TEST_PLAN.md` now includes browser-QA scope, safe auth/test-data needs, CI
+  commands, and blocked coverage/exclusions.
+
+### Matt Pocock Skills
+
+- Source: <https://github.com/mattpocock/skills>
+- Reviewed ref: `b8be62ffacb0118fa3eaa29a0923c87c8c11985c`
+- Reviewed material: `skills/engineering/tdd/SKILL.md`
+- License: MIT
+
+What we took:
+- Test plans should organize work around vertical behavior slices and public
+  interfaces, not private implementation structure.
+
+Local adaptation:
+- `TEST_PLAN.md` planning now calls out one behavior, failing public-interface
+  test, minimal implementation, focused unit coverage, and browser QA when the
+  behavior is user-visible.
+
+### SuperPowers
+
+- Source: <https://github.com/obra/superpowers>
+- Reviewed ref: `f2cbfbefebbfef77321e4c9abc9e949826bea9d7`
+- Reviewed material: `skills/writing-plans/SKILL.md`,
+  `skills/subagent-driven-development/SKILL.md`
+- License: MIT
+
+What we took:
+- Little direct test-planning mechanics. The useful influence was mostly
+  boundary discipline: plans should make scope, blockers, and handoff context
+  explicit for later agents.
+
+Local adaptation:
+- Kept `test-planning` as strategy and readiness planning, not active
+  implementation or delegation.
+
+### Compound Engineering
+
+- Source: <https://github.com/everyinc/compound-engineering-plugin>
+- Reviewed ref: `5297a9440fa009822ceef8052b9e644e782281e1`
+- Reviewed material: `docs/skills/ce-plan.md`
+- License: MIT
+
+What we took:
+- Plans are durable guardrails: they should preserve scope, risks, decisions,
+  and test scenarios without over-prescribing code.
+
+Local adaptation:
+- `TEST_PLAN.md` records strategy, coverage intent, setup gaps, and exclusions
+  while leaving issue-local test execution to `testing-orchestrator` and
+  `implement-issue`.
+
 ### Existing Local Skills
 
 - `implement-issue/SKILL.md`
