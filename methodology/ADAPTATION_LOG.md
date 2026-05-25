@@ -32,20 +32,40 @@ next_review:
 id: 2026-05-24-testing-skills-hardening
 date: 2026-05-24
 discipline: testing-and-qa
-status: adopted
+status: superseded
 source: local follow-up review after testing methodology merge
 source_url: local Discord discussion
 source_ref: 2026-05-24 #claw-enhance conversation
 source_path: n/a
 license: repository-local decision
-local_target: e2e-playwright/SKILL.md; unit-vitest/SKILL.md; enforcing-test-coverage-vitest-playwright/SKILL.md; e2e-playwright/PROVENANCE.md; unit-vitest/PROVENANCE.md; enforcing-test-coverage-vitest-playwright/PROVENANCE.md; methodology/disciplines/testing-and-qa.md
+local_target: e2e-playwright/SKILL.md; unit-vitest/SKILL.md; test-ci-policy/SKILL.md; e2e-playwright/PROVENANCE.md; unit-vitest/PROVENANCE.md; test-ci-policy/PROVENANCE.md; methodology/disciplines/testing-and-qa.md
 influence_type: structural
-summary: The concrete E2E, unit, and coverage skills should align with the merged testing model before moving to non-testing disciplines.
-local_adaptation: Added safe auth/fixture/setup-blocker guidance to E2E, behavior-focused public-contract guidance to unit tests, and TEST_PLAN-backed justified exclusions to coverage enforcement.
-rationale: The high-level testing methodology is only useful if the concrete test-writing and coverage skills carry the same boundaries and stop conditions.
+summary: The concrete E2E, unit, and policy skills should align with the merged testing model before moving to non-testing disciplines.
+local_adaptation: Added safe auth/fixture/setup-blocker guidance to E2E, behavior-focused public-contract guidance to unit tests, and superseded the broad coverage-enforcement skill with a narrower test-ci-policy skill.
+rationale: The high-level testing methodology is only useful if the concrete test-writing skills carry the same boundaries and the project-wide enforcement policy does not duplicate them.
 credit_note: Local workflow refinement from the user.
 reviewer: Merlin
 next_review: After the guide-level E2E and unit references are exercised on real projects
+```
+
+```yaml
+id: 2026-05-25-testing-policy-taxonomy
+date: 2026-05-25
+discipline: testing-and-qa
+status: superseded
+source: local taxonomy review informed by the four external-source comparison
+source_url: local Discord discussion
+source_ref: 2026-05-25 #claw-enhance conversation
+source_path: n/a
+license: repository-local decision
+local_target: test-ci-policy/SKILL.md; test-ci-policy/PROVENANCE.md; developing-web-projects/SKILL.md; methodology/disciplines/testing-and-qa.md
+influence_type: structural
+summary: The old enforcing-test-coverage-vitest-playwright skill was too broad and duplicated the actual test owner skills.
+local_adaptation: Replaced it with test-ci-policy, a narrow skill for scripts, CI entrypoints, coverage thresholds, local/CI parity, Playwright artifacts, and enforcement review.
+rationale: External-source comparison favored clear ownership boundaries: plans own intent, orchestrators own execution, unit/E2E skills own test content, browser QA owns browser evidence, and policy owns only the enforcement layer.
+credit_note: Local workflow decision from the user.
+reviewer: Merlin
+next_review: After using the policy skill on a new project setup or CI audit
 ```
 
 ```yaml

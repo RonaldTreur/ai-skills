@@ -71,7 +71,9 @@ That skill is the source of truth for the base component, decorators, file struc
 
 Unless the user explicitly asks not to, create tests and run them. For test coverage standards and tooling, also use:
 
-- `enforcing-test-coverage-vitest-playwright/SKILL.md`
+- `testing-orchestrator/SKILL.md` for active test workflow
+- `test-ci-policy/SKILL.md` only when setting up or changing project-wide test
+  scripts, CI, or coverage thresholds
 
 ## TypeScript Preferences
 - TypeScript is the default
