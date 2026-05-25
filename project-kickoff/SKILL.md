@@ -41,7 +41,7 @@ implementation; hand off to the right owner after each boundary.
   assumptions before they become design or implementation drift.
 - **Visual frontend work is routed out.** If the project has a browser UI,
   dashboard, landing page, or visual frontend, use [[frontend-design]] for the
-  divergent design-shotgun-style exploration.
+  divergent visual design exploration.
 - **Non-visual design stays here.** Bot-only, backend-only, CLI, and automation
   projects still need interaction/artifact design, but not frontend-design.
 - **Plans are guardrails, not choreography.** `PLAN.md` records scope,

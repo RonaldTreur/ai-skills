@@ -1,6 +1,6 @@
 ---
 name: frontend-design
-description: "Explore and refine visual frontend direction for web apps, dashboards, landing pages, and UI-heavy features. Use when a project needs UI design concepts, GStack-style divergent variants, visual thesis, prototype comparison, or frontend design approval before implementation."
+description: "Explore and refine visual frontend direction for web apps, dashboards, landing pages, and UI-heavy features. Use when a project needs UI design concepts, divergent variants, visual thesis, prototype comparison, or frontend design approval before implementation."
 ---
 
 # Frontend Design
@@ -22,7 +22,7 @@ implementation.
 
 ## Core Idea
 
-Use the GStack `design-shotgun` pattern locally:
+Use a divergent-variant workflow:
 
 1. Understand the design context.
 2. Generate meaningfully divergent variants.
