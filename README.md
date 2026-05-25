@@ -36,3 +36,7 @@ a time.
 
 Browser verification lives in `browser-qa/`: use it for web preview, PR, and
 post-merge QA that needs an actual browser pass.
+
+Project-wide test enforcement lives in `test-ci-policy/`: use it for test
+scripts, CI entrypoints, coverage thresholds, and local/CI parity. Do not use it
+as the default workflow for ordinary feature implementation.

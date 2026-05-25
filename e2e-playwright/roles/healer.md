@@ -41,6 +41,14 @@ If you are confident the test is correct but the app is broken:
 - Add a concise comment explaining the observed app defect and why fixme is appropriate
 - Continue healing remaining tests
 
+## Setup blocker handling
+
+If the failure is caused by missing safe auth, seed data, reset scripts, browser
+dependencies, or preview setup, do not rewrite the test to hide the gap. Mark
+the affected coverage blocked, document the exact missing setup, and route the
+setup issue through [[project-manager]] or the current [[implement-issue]]
+workflow.
+
 ## Healing standards
 - Preserve intent from the original plan/spec
 - Avoid over-broad waits and brittle selectors

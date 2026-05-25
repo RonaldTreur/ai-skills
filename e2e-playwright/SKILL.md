@@ -1,6 +1,6 @@
 ---
 name: e2e-playwright
-description: Write and maintain Playwright E2E tests for web applications. Use when implementing end-to-end tests, testing user flows, or validating browser behavior.
+description: "Write and maintain durable Playwright E2E tests for web applications. Use when implementing automated browser tests, generating scenario-driven E2E coverage, validating user flows in CI, repairing flaky Playwright tests, or setting up fixtures/auth/storage state for repeatable browser tests. Do not use for exploratory browser QA reports; use browser-qa for that."
 ---
 
 # E2E Testing with Playwright
@@ -9,11 +9,18 @@ Use this skill to validate real user behavior in browser flows.
 
 Related workflow: [[testing-orchestrator]]
 
-## 3-agent pattern (Microsoft-style, adapted for OpenClaw)
-Use three specialized roles in sequence:
+## Role Pattern
+
+Use the three specialized roles when generating or repairing durable
+scenario-driven E2E coverage:
+
 1. **Planner** → explores the live app and writes a structured markdown plan in `specs/`
 2. **Generator** → reads that plan and generates TypeScript Playwright tests in `tests/`
 3. **Healer** → runs all tests, debugs failures, and repairs tests until stable
+
+For tiny issue-local changes, [[implement-issue]] or [[testing-orchestrator]]
+may add one focused failing Playwright test directly. Do not force the full role
+sequence when it would add ceremony without improving confidence.
 
 Role guides:
 - `roles/planner.md`
@@ -33,12 +40,22 @@ These role files define **agent behavior**. The guides below remain your **refer
 - One behavior per test
 - Mock external services only
 - Test against built app (not ad-hoc dev state)
+- Keep auth, storage state, generated data, passwords, tokens, and cookies out
+  of git and out of reports
+- Do not use the user's personal browser session or production credentials as
+  the default E2E auth path
+- If a protected flow lacks safe test auth, seed data, or reset support, mark
+  the coverage blocked and route setup work through [[project-manager]]
 
 ## Conventions
 - Framework-agnostic guidance only
 - Tests live in `tests/e2e/`
 - Use TypeScript test files (`*.spec.ts`)
 - Use `templates/seed.spec.ts` as the seed format for generator bootstrap
+- Prefer seeded users, fixtures, reset scripts, mocked external services, and
+  local/preview auth paths for deterministic state
+- Use storage state only when the project documents how it is generated,
+  refreshed, and excluded from git
 
 ## Recommended config defaults
 
