@@ -29,6 +29,26 @@ next_review:
 ## Entries
 
 ```yaml
+id: 2026-05-25-frontend-design-input-taxonomy
+date: 2026-05-25
+discipline: frontend-design
+status: adapted
+source: existing local ui-design-prompt skill
+source_url: local file
+source_ref: 2026-05-25 local review
+source_path: /Users/merlin/Development/skills/ui-design-prompt/SKILL.md
+license: repository-local material
+local_target: frontend-design/SKILL.md; frontend-design/PROVENANCE.md
+influence_type: behavioral
+summary: Frontend design variants should account for task, context, examples, behavior, and constraints, and should cover the relevant user flow.
+local_adaptation: Added lightweight design-input checks and full-flow/page-map expectations while rejecting fixed questionnaires, hard-coded model choice, and Vite-only generation assumptions.
+rationale: The input taxonomy improves design completeness, but frontend-design should remain an approval workflow for divergent variants rather than a prompt-builder/code-generator wrapper.
+credit_note: Adapted from the existing local ui-design-prompt skill.
+reviewer: Merlin
+next_review: During the dedicated UI design prompt consolidation slice
+```
+
+```yaml
 id: 2026-05-25-frontend-design-shareable-preview
 date: 2026-05-25
 discipline: frontend-design

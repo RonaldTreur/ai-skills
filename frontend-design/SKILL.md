@@ -73,6 +73,26 @@ Classify the design situation:
 - **Greenfield**: variants should diverge strongly.
 - **Ambiguous**: ask one concise question with a recommended default.
 
+## Design Inputs
+
+Before building variants, make sure these inputs are clear enough to design
+from. Do not ask a fixed questionnaire; ask only for missing information that
+would materially change the design direction.
+
+- **Task**: page type, component, layout, or flow being designed.
+- **Context**: product, audience, brand tone, workflow frequency, and device
+  priorities.
+- **Examples**: reference sites, screenshots, product imagery, or styles to
+  match or avoid.
+- **Behavior**: interactions, states, responsive requirements, permissions, and
+  meaningful motion.
+- **Constraints**: existing palette, typography, accessibility target, data
+  density, framework/project conventions, and hard boundaries.
+
+When the user has already provided an input, use it. When an input is missing
+but inferable from project context, record the inference in the variant thesis
+instead of asking.
+
 ## Visual Thesis
 
 Before building prototype files, write a short thesis for each concept:
@@ -127,11 +147,13 @@ Typical folder shape:
 Each variant should include:
 
 - key pages or views linked through real navigation
+- enough pages or states to judge the full relevant user flow, not just one
+  attractive screen
 - realistic content, not filler
 - empty, loading, error, and permission states when relevant
 - mobile and desktop responsive behavior
-- `DESIGN.md` with thesis, rationale, palette, typography, layout, states, and
-  tradeoffs
+- `DESIGN.md` with thesis, rationale, page map, palette, typography, layout,
+  states, applied constraints, and tradeoffs
 
 ## Shareable Preview
 

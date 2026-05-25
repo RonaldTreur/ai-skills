@@ -13,7 +13,10 @@ Keep these behaviors:
 4. Compare variants, collect structured feedback, and iterate.
 5. Provide shareable preview URLs when practical so review works from another
    computer.
-6. Save the approved design as durable project context.
+6. Capture task, context, examples, behavior, and constraints before generating
+   variants.
+7. Design enough pages or states to judge the relevant user flow.
+8. Save the approved design as durable project context.
 
 ## Local Decisions
 
@@ -35,6 +38,23 @@ Local adaptation:
 - Use temporary tunnels only with explicit approval and safe prototype content.
 - Treat screenshots or video as fallback evidence when remote preview is
   blocked, not as an equivalent review surface.
+
+### Existing UI Design Prompt Skill
+
+- Date: 2026-05-25
+- Source: `/Users/merlin/Development/skills/ui-design-prompt/SKILL.md`
+
+The existing prompt-builder skill had useful input categories: task, context,
+examples, behavior, and constraints. It also emphasized creating enough pages
+for the full user flow and preserving intent in `DESIGN.md`.
+
+Local adaptation:
+
+- Added the input categories as lightweight design-input checks rather than a
+  fixed user questionnaire.
+- Kept the full-flow/page-map expectation for prototypes and `DESIGN.md`.
+- Rejected hard-coded model selection, fixed Vite scaffolding, and single-agent
+  code-generation assumptions.
 
 ## Source Influence
 
