@@ -35,7 +35,7 @@ implementation; hand off to the right owner after each boundary.
 - Do not hand directly to implementation until [[project-manager]] has checked
   setup, testability, issue slicing, and dependencies.
 
-## Source-Inspired Defaults
+## Kickoff Defaults
 
 - **Grill the domain before planning.** Resolve overloaded terms and hidden
   assumptions before they become design or implementation drift.

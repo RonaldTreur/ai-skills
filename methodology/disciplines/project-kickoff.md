@@ -69,7 +69,7 @@ toward brittle implementation choreography.
   - Added ownership boundaries with `project-manager`, `test-planning`,
     `developing-web-projects`, `frontend-design`, and `browser-qa`.
   - Replaced direct Vectrix handoff with `project-manager` handoff.
-  - Added source-inspired defaults for domain grilling, visual-frontend routing,
+  - Added kickoff defaults for domain grilling, visual-frontend routing,
     guardrail planning, stable work-unit IDs, and fuzzy-language resolution.
   - Removed hard-coded model names from runtime guidance.
 - `frontend-design/SKILL.md`
