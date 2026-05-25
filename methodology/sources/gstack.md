@@ -33,6 +33,7 @@
 - Debugging and investigation
 - Review
 - Agent orchestration
+- Agent orchestration and delegation
 - Learning capture
 - Dispatch tiers
 

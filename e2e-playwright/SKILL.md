@@ -8,6 +8,7 @@ description: "Write and maintain durable Playwright E2E tests for web applicatio
 Use this skill to validate real user behavior in browser flows.
 
 Related workflow: [[testing-orchestrator]]
+Related delegation workflow: [[agent-delegation]]
 
 ## Role Pattern
 
@@ -28,6 +29,9 @@ Role guides:
 - `roles/healer.md`
 
 These role files define **agent behavior**. The guides below remain your **reference knowledge** for implementation details.
+
+When the role files are assigned to separate agents, use [[agent-delegation]]
+for the task packet, write scope, status, and blocker reporting.
 
 ## Golden rules
 - Prefer `getByRole()` locators first

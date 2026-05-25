@@ -29,6 +29,26 @@ next_review:
 ## Entries
 
 ```yaml
+id: 2026-05-25-agent-delegation-owner-skill
+date: 2026-05-25
+discipline: agent-orchestration-and-delegation
+status: adopted
+source: SuperPowers; Compound Engineering; GStack; Matt Pocock Skills
+source_url: https://github.com/obra/superpowers; https://github.com/everyinc/compound-engineering-plugin; https://github.com/garrytan/gstack; https://github.com/mattpocock/skills
+source_ref: f2cbfbefebbfef77321e4c9abc9e949826bea9d7; 5297a9440fa009822ceef8052b9e644e782281e1; 61c9a20bd2e3a579c3d6184ed2fc95b51a528f7c; b8be62ffacb0118fa3eaa29a0923c87c8c11985c
+source_path: skills/dispatching-parallel-agents/SKILL.md; skills/subagent-driven-development/SKILL.md; plugins/compound-engineering/skills/ce-code-review/references/subagent-template.md; plugins/compound-engineering/skills/ce-compound/SKILL.md; review/SKILL.md; autoplan/SKILL.md; skills/engineering/grill-with-docs/SKILL.md
+license: MIT
+local_target: agent-delegation/SKILL.md; agent-delegation/PROVENANCE.md; implement-issue/SKILL.md; project-manager/SKILL.md; project-kickoff/SKILL.md; testing-orchestrator/SKILL.md; e2e-playwright/SKILL.md; frontend-design/SKILL.md; README.md; methodology/disciplines/agent-orchestration-delegation.md; methodology/DISCIPLINES.md
+influence_type: structural
+summary: Delegation mechanics should live in one shared owner skill instead of being duplicated across lifecycle skills.
+local_adaptation: Created agent-delegation with delegation packets, write scopes, parallel-safety checks, explicit statuses, controller duties, and compact prompt shape; owner skills now point to it for mechanics while keeping their domain decisions.
+rationale: The project lifecycle now has multiple owner skills. Shared delegation mechanics reduce drift, improve recoverability, and prevent subagent confusion without importing heavyweight external choreography.
+credit_note: Adapted mainly from SuperPowers delegation patterns, with Compound controller/leaf-agent boundaries, GStack specialist-pass discipline, and Matt Pocock context-question calibration.
+reviewer: Merlin
+next_review: After the gh-pipeline automation slice decides how labels route work to agents
+```
+
+```yaml
 id: 2026-05-25-frontend-design-input-taxonomy
 date: 2026-05-25
 discipline: frontend-design

@@ -22,6 +22,8 @@ implementation; hand off to the right owner after each boundary.
 - [[frontend-design]] owns visual frontend design exploration when a project has
   a browser UI, dashboard, landing page, or other visual frontend.
 - [[browser-qa]] owns real browser verification for generated web prototypes.
+- [[agent-delegation]] owns delegation mechanics when kickoff uses critique,
+  risk-review, or variant-generation agents.
 
 ## Ground Rules
 
@@ -135,15 +137,15 @@ live codebase.
 
 ## Sub-Agent Pattern
 
+Use [[agent-delegation]] for prompt shape, status handling, and parallel-safety
+rules.
+
 Use sub-agents when independent perspectives materially improve the result:
 
 - brief critique or question generation
 - divergent product, interaction, or frontend design concepts
 - plan critique from engineering, design, or product angles
 - risk review before handoff
-
-Keep prompts bounded. Pass file paths and write scopes, not long pasted context,
-when the files already exist.
 
 Fresh sub-agents should read:
 

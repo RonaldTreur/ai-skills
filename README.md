@@ -49,3 +49,7 @@ Visual frontend exploration lives in `frontend-design/`: use it for divergent
 UI variants, visual thesis, shareable browser previews, feedback rounds, and
 approved frontend design artifacts. `project-kickoff/` routes here only when a
 project has a visual frontend.
+
+Agent delegation mechanics live in `agent-delegation/`: use it when handing
+work to another agent, runtime, or subagent so the task has clear context,
+write boundaries, status reporting, and integration review.

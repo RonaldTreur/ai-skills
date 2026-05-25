@@ -41,10 +41,10 @@ Use this map to review external sources against the real project-development rou
 - Project lifecycle monitoring
 - Testing and QA
 - Project kickoff
+- Frontend design
+- Agent orchestration and delegation
 
 ## Next Candidate Slices
 
-- Frontend design
-- Agent orchestration and delegation
 - Documentation and handoff
 - Research and discovery
