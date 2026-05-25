@@ -11,10 +11,13 @@ Keep these behaviors:
    `PLAN.md`, and `DECISIONS.md`.
 2. The user controls product and taste decisions; agents recommend defaults and
    ask only for choices that cannot be discovered.
-3. Design variants must be meaningfully divergent, not cosmetic siblings.
-4. Implementation plans are guardrails with stable work-unit IDs, not brittle
+3. Visual frontend design is a separate owner skill; kickoff detects when it is
+   needed and routes to it.
+4. Kickoff uses domain grilling and concise questions to resolve project
+   language before design/planning.
+5. Implementation plans are guardrails with stable work-unit IDs, not brittle
    code choreography.
-5. Kickoff hands off to `project-manager` for test planning, issue
+6. Kickoff hands off to `project-manager` for test planning, issue
    decomposition, readiness checks, and implementation routing.
 
 ## Source Influence
@@ -30,17 +33,15 @@ Keep these behaviors:
 
 What we took:
 
-- Generate multiple visual directions when taste is undecided.
-- Prevent converged variants by requiring materially different visual and
-  interaction concepts.
-- Collect structured feedback and confirm the interpretation before finalizing.
-- Surface close calls and scope/taste decisions instead of auto-deciding them.
+- Project kickoff should route visual frontend work to a divergent-variant
+  design workflow when visual direction matters.
+- Planning review should surface close calls and scope/taste decisions instead
+  of auto-deciding them.
 
 Local adaptation:
 
-- Kept the multi-variant design loop but removed GStack runtime machinery,
-  telemetry, persistent home-directory design stores, and command-specific
-  tooling.
+- The visual design-shotgun behavior now lives in `frontend-design`; kickoff
+  only detects that a visual frontend is needed and passes the right artifacts.
 
 ### Compound Engineering
 
@@ -52,15 +53,16 @@ Local adaptation:
 
 What we took:
 
-- Design should begin with context detection and a visual/interaction thesis.
+- Frontend design should begin with context detection and a visual thesis.
 - Plans should capture guardrails, scope, risks, test scenarios, and stable work
   units without pre-writing implementation code.
 - Learning and decisions compound only when artifacts are discoverable later.
 
 Local adaptation:
 
-- Added design context detection, thesis checkpoints, stable `U<N>` work units,
-  and an explicit handoff to `project-manager`.
+- Routed frontend-specific design context detection and thesis checkpoints to
+  `frontend-design`; kept stable `U<N>` work units and explicit
+  `project-manager` handoff in kickoff.
 
 ### SuperPowers
 
@@ -97,13 +99,17 @@ What we took:
 
 Local adaptation:
 
-- Phase 1 now resolves ambiguous terms and records domain decisions in
-  `DECISIONS.md` without introducing separate glossary/ADR files during kickoff.
+- Domain grilling is now central to Phase 1. Kickoff resolves ambiguous terms
+  and records domain decisions in `DECISIONS.md` without introducing separate
+  glossary/ADR files by default.
 
 ## Rejected Material
 
 - GStack home-directory artifact stores, generated preambles, telemetry, and
   command-specific design binary assumptions.
+- Keeping visual frontend design inside `project-kickoff`; it is now a separate
+  `frontend-design` skill so non-visual projects do not load frontend design
+  machinery.
 - SuperPowers micro-step implementation plans with exact code snippets; those
   conflict with the local guardrails-not-choreography planning boundary.
 - Compound's heavier multi-agent organizational loop; kickoff keeps optional

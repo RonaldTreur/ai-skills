@@ -29,6 +29,26 @@ next_review:
 ## Entries
 
 ```yaml
+id: 2026-05-25-frontend-design-split
+date: 2026-05-25
+discipline: project-kickoff
+status: adopted
+source: local taxonomy review after project-kickoff adaptation
+source_url: local Discord discussion
+source_ref: 2026-05-25 #claw-enhance conversation
+source_path: n/a
+license: repository-local decision
+local_target: frontend-design/SKILL.md; frontend-design/PROVENANCE.md; project-kickoff/SKILL.md; project-kickoff/phases/phase-2-design.md; project-kickoff/PROVENANCE.md; methodology/disciplines/project-kickoff.md; README.md
+influence_type: structural
+summary: Visual frontend design should be a separate skill that project kickoff routes to only when a project has a visual frontend.
+local_adaptation: Created frontend-design for divergent visual variants, visual thesis, browser review, structured feedback, and approved frontend artifacts; reduced kickoff's web design phase to routing and handoff.
+rationale: Project kickoff must handle projects with and without visual frontends. Keeping GStack-style design-shotgun behavior in a separate skill avoids loading frontend machinery for bot/backend/API projects.
+credit_note: Local workflow decision from the user.
+reviewer: Merlin
+next_review: During the dedicated frontend-design/UI design slice
+```
+
+```yaml
 id: 2026-05-25-project-kickoff-boundary
 date: 2026-05-25
 discipline: project-kickoff
@@ -38,10 +58,10 @@ source_url: local Discord discussion
 source_ref: 2026-05-25 #claw-enhance conversation
 source_path: n/a
 license: repository-local decision
-local_target: project-kickoff/SKILL.md; project-kickoff/phases/phase-1-brief.md; project-kickoff/phases/phase-2-design.md; project-kickoff/phases/phase-2-design-discord.md; project-kickoff/phases/phase-3-planning.md; project-kickoff/PROVENANCE.md; methodology/disciplines/project-kickoff.md
+local_target: project-kickoff/SKILL.md; project-kickoff/phases/phase-1-brief.md; project-kickoff/phases/phase-2-design.md; project-kickoff/phases/phase-2-design-discord.md; project-kickoff/phases/phase-3-planning.md; frontend-design/SKILL.md; project-kickoff/PROVENANCE.md; methodology/disciplines/project-kickoff.md
 influence_type: structural
 summary: Project kickoff should shape product/design/plan artifacts and hand off to project-manager, not directly to implementation.
-local_adaptation: Added ownership boundaries, removed hard-coded model handoff, and made Phase 3 produce guardrails with stable work-unit IDs for downstream issue decomposition.
+local_adaptation: Added ownership boundaries, split frontend design into its own skill, removed hard-coded model handoff, and made Phase 3 produce guardrails with stable work-unit IDs for downstream issue decomposition.
 rationale: Project-manager now owns readiness, test planning, issue decomposition, and implementation routing; direct kickoff-to-implementation bypassed that safety layer.
 credit_note: Local workflow refinement by the user and Merlin.
 reviewer: Merlin
@@ -58,10 +78,10 @@ source_url: https://github.com/garrytan/gstack
 source_ref: 61c9a20bd2e3a579c3d6184ed2fc95b51a528f7c
 source_path: design-shotgun/SKILL.md; design-html/SKILL.md; plan-design-review/SKILL.md
 license: MIT
-local_target: project-kickoff/SKILL.md; project-kickoff/phases/phase-2-design.md; project-kickoff/phases/phase-2-design-discord.md; project-kickoff/PROVENANCE.md
+local_target: frontend-design/SKILL.md; frontend-design/PROVENANCE.md; project-kickoff/phases/phase-2-design.md; project-kickoff/phases/phase-2-design-discord.md; project-kickoff/PROVENANCE.md
 influence_type: behavioral
-summary: Kickoff design variants should diverge materially, collect structured feedback, and confirm interpretation before final approval.
-local_adaptation: Added design context detection, thesis checkpoints, anti-convergence rules, browser review, and structured keep/change/reject/direction feedback.
+summary: Frontend design variants should diverge materially, collect structured feedback, and confirm interpretation before final approval.
+local_adaptation: Created frontend-design with design context detection, thesis checkpoints, anti-convergence rules, browser review, and structured keep/change/reject/direction feedback; kickoff routes visual frontend projects to it.
 rationale: Competing designs only help if they reveal real product/taste tradeoffs rather than cosmetic alternatives.
 credit_note: Adapted from GStack design-shotgun and design-review patterns.
 reviewer: Merlin
@@ -78,10 +98,10 @@ source_url: https://github.com/everyinc/compound-engineering-plugin
 source_ref: 5297a9440fa009822ceef8052b9e644e782281e1
 source_path: docs/skills/ce-frontend-design.md; docs/skills/ce-plan.md
 license: MIT
-local_target: project-kickoff/phases/phase-2-design.md; project-kickoff/phases/phase-3-planning.md; project-kickoff/PROVENANCE.md
+local_target: frontend-design/SKILL.md; project-kickoff/phases/phase-2-design.md; project-kickoff/phases/phase-3-planning.md; project-kickoff/PROVENANCE.md
 influence_type: structural
 summary: Kickoff should use visual-thesis-first design and guardrail-style implementation plans.
-local_adaptation: Added context detection, visual thesis/content/interaction checkpoints, stable U-ID work units, setup/readiness, test strategy, and issue decomposition notes.
+local_adaptation: Routed frontend context detection and visual thesis/content/interaction checkpoints into frontend-design; kept stable U-ID work units, setup/readiness, test strategy, and issue decomposition notes in kickoff planning.
 rationale: Plans should stay portable for project-manager and implementers instead of baking stale code-level choreography into kickoff.
 credit_note: Adapted from Compound Engineering frontend design and ce-plan guidance.
 reviewer: Merlin

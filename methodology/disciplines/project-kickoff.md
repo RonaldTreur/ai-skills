@@ -8,6 +8,7 @@
   `project-kickoff/phases/phase-2-design.md`,
   `project-kickoff/phases/phase-2-design-discord.md`,
   `project-kickoff/phases/phase-3-planning.md`,
+  `frontend-design/SKILL.md`,
   `project-manager/SKILL.md`, `test-planning/SKILL.md`,
   `developing-web-projects/SKILL.md`, `browser-qa/SKILL.md`
 - External sources reviewed: GStack, Compound Engineering, SuperPowers, Matt
@@ -25,9 +26,9 @@ conflicted with the newer `project-manager` boundary. It also hard-coded model
 names, Discord-specific orchestration details, and a mandatory two-model debate
 even when a smaller pass would be enough.
 
-The phase files were useful but too procedural in places and too weak in others:
-design variants were not explicitly forced to diverge, Phase 1 could ask a pile
-of questions instead of resolving discoverable context, and Phase 3 could drift
+The phase files were useful but too procedural in places and too weak in others.
+Phase 1 could ask a pile of questions instead of resolving discoverable context,
+Phase 2 mixed visual frontend design into kickoff, and Phase 3 could drift
 toward brittle implementation choreography.
 
 ## Source Comparison
@@ -36,17 +37,18 @@ toward brittle implementation choreography.
 
 - Useful patterns: design-shotgun variants, anti-convergence, comparison boards,
   structured feedback, and plan review surfacing close calls.
-- Local adaptation: kept the multi-variant and structured feedback discipline;
-  rejected runtime machinery, telemetry, command binaries, and home-directory
-  artifact stores.
+- Local adaptation: moved visual variant exploration into `frontend-design`;
+  kickoff detects visual frontends and routes there. Rejected runtime machinery,
+  telemetry, command binaries, and home-directory artifact stores.
 
 ### Compound Engineering
 
 - Useful patterns: context detection before frontend design, visual thesis,
   guardrails-not-choreography plans, stable work-unit identity, and learning
   capture.
-- Local adaptation: added design context detection, thesis checkpoint, stable
-  `U<N>` plan units, and handoff to `project-manager`.
+- Local adaptation: added `frontend-design` for context detection and thesis
+  checkpoints, stable `U<N>` kickoff plan units, and handoff to
+  `project-manager`.
 
 ### SuperPowers
 
@@ -58,24 +60,28 @@ toward brittle implementation choreography.
 
 - Useful patterns: challenge fuzzy domain language, ask one precise question at
   a time, and inspect existing code/docs before asking.
-- Local adaptation: Phase 1 resolves ambiguous terms and records decisions in
-  `DECISIONS.md` rather than adding separate domain docs during kickoff.
+- Local adaptation: domain grilling is now the main Phase 1 discipline; resolved
+  terms and assumptions are recorded in `DECISIONS.md`.
 
 ## Adopted Changes
 
 - `project-kickoff/SKILL.md`
   - Added ownership boundaries with `project-manager`, `test-planning`,
-    `developing-web-projects`, and `browser-qa`.
+    `developing-web-projects`, `frontend-design`, and `browser-qa`.
   - Replaced direct Vectrix handoff with `project-manager` handoff.
-  - Added source-inspired defaults for divergent variants, design thesis,
+  - Added source-inspired defaults for domain grilling, visual-frontend routing,
     guardrail planning, stable work-unit IDs, and fuzzy-language resolution.
   - Removed hard-coded model names from runtime guidance.
+- `frontend-design/SKILL.md`
+  - Added a separate visual frontend owner skill for GStack-style divergent
+    variants, visual thesis, browser review, feedback loops, and final design
+    approval.
 - `phase-1-brief.md`
   - Shifted from many clarifying questions to context gathering, blocking
     ambiguity only, recommended defaults, and decision capture.
 - `phase-2-design.md`
-  - Added design context detection, thesis checkpoints, anti-convergence, browser
-    review, and structured feedback capture.
+  - Reduced project-kickoff's web UI phase to routing and artifact handoff for
+    `frontend-design`.
 - `phase-2-design-discord.md`
   - Reframed bot design as interaction design with role, tone, visibility,
     command shape, permissions, embeds, and failure states.
@@ -87,9 +93,11 @@ toward brittle implementation choreography.
 
 - Rejected direct kickoff-to-implementation handoff.
 - Rejected mandatory two-model competition for every project size.
+- Rejected keeping frontend-design inside kickoff; non-visual projects should
+  not pay that context cost.
 - Rejected implementation plans that pre-write exact code, imports, signatures,
   or shell choreography.
-- Deferred deeper UI design prompt integration until the dedicated UI design
+- Deferred deeper UI design prompt integration until the broader frontend-design
   slice.
 - Deferred gh-pipeline integration until the issue automation slice.
 

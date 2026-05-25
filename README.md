@@ -44,3 +44,8 @@ as the default workflow for ordinary feature implementation.
 Project shaping lives in `project-kickoff/`: use it to create `BRIEF.md`,
 `DESIGN.md`, `PLAN.md`, and `DECISIONS.md` before `project-manager/` turns the
 work into testable issues and implementation slices.
+
+Visual frontend exploration lives in `frontend-design/`: use it for divergent
+UI variants, visual thesis, browser preview, feedback rounds, and approved
+frontend design artifacts. `project-kickoff/` routes here only when a project
+has a visual frontend.

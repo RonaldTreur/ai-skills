@@ -6,10 +6,10 @@ description: "Shape a new project before implementation: clarify the brief, expl
 # Project Kickoff
 
 Use this skill to turn a rough project idea into durable direction artifacts.
-Kickoff owns product shaping, design direction, implementation guardrails, and
-decision capture. It does not own GitHub issue decomposition, long-running
-delivery, or active implementation; hand off to [[project-manager]] after Phase
-3.
+Kickoff owns product shaping, surface detection, domain/decision clarity,
+implementation guardrails, and decision capture. It does not own detailed
+frontend design, GitHub issue decomposition, long-running delivery, or active
+implementation; hand off to the right owner after each boundary.
 
 ## Ownership Boundary
 
@@ -19,6 +19,8 @@ delivery, or active implementation; hand off to [[project-manager]] after Phase
   decomposition, project boards, and selecting implementation slices.
 - [[test-planning]] owns `TEST_PLAN.md` before broad test work begins.
 - [[developing-web-projects]] owns web architecture and stack conventions.
+- [[frontend-design]] owns visual frontend design exploration when a project has
+  a browser UI, dashboard, landing page, or other visual frontend.
 - [[browser-qa]] owns real browser verification for generated web prototypes.
 
 ## Ground Rules
@@ -26,7 +28,8 @@ delivery, or active implementation; hand off to [[project-manager]] after Phase
 - Keep the human in control of product and taste decisions.
 - Ask only questions that cannot be answered from existing context.
 - When asking, recommend a default and explain the tradeoff.
-- Use competing options to widen the design space, not to create ceremony.
+- Use competing options to widen product or interaction choices, not to create
+  ceremony.
 - Record every significant choice and rejected alternative in `DECISIONS.md`.
 - Prefer artifacts over chat summaries. The project folder is the durable state.
 - Do not hand directly to implementation until [[project-manager]] has checked
@@ -34,11 +37,13 @@ delivery, or active implementation; hand off to [[project-manager]] after Phase
 
 ## Source-Inspired Defaults
 
-- **Design variants must diverge.** Distinct concepts should differ in layout,
-  hierarchy, visual language, interaction model, or product framing. Avoid two
-  variants that are cosmetic siblings.
-- **Design work starts with a thesis.** Capture visual/interaction thesis,
-  content priorities, and target user context before producing prototypes.
+- **Grill the domain before planning.** Resolve overloaded terms and hidden
+  assumptions before they become design or implementation drift.
+- **Visual frontend work is routed out.** If the project has a browser UI,
+  dashboard, landing page, or visual frontend, use [[frontend-design]] for the
+  divergent design-shotgun-style exploration.
+- **Non-visual design stays here.** Bot-only, backend-only, CLI, and automation
+  projects still need interaction/artifact design, but not frontend-design.
 - **Plans are guardrails, not choreography.** `PLAN.md` records scope,
   decisions, work units, dependencies, risks, files, and test scenarios without
   pre-writing brittle implementation code.
@@ -52,10 +57,13 @@ delivery, or active implementation; hand off to [[project-manager]] after Phase
 
 Before Phase 1, classify the project:
 
-- **Web application**: website, app, dashboard, admin panel, or tool UI.
+- **Visual frontend**: website, web app, dashboard, admin panel, landing page,
+  browser tool, or UI-heavy frontend feature.
 - **Discord bot**: slash commands, embeds, interactions, modals, scheduled bot
   behavior.
-- **Both**: a bot plus one or more companion web UIs.
+- **Both**: a bot/backend plus one or more companion frontends.
+- **Non-visual software**: backend service, API, CLI, worker, automation, data
+  pipeline, or other project with no user-facing visual UI.
 - **Other**: still run Phase 1 and Phase 3, but replace Phase 2 with the
   relevant interaction or artifact design.
 
@@ -73,7 +81,8 @@ Create the project folder at the start of Phase 1:
   context/
 ```
 
-During Phase 2, use temporary competing folders:
+During Phase 2, visual frontend projects may use temporary competing folders
+owned by [[frontend-design]]:
 
 ```text
 <project-name>/
@@ -101,17 +110,19 @@ Use [[phases/phase-1-brief]].
 Goal: produce an approved `BRIEF.md` that defines the user, problem, flows,
 scope boundaries, data, constraints, and open questions.
 
-### Phase 2: Design Direction
+### Phase 2: Surface Design
 
-For web UI work, use [[phases/phase-2-design]].
+For visual frontend work, use [[phases/phase-2-design]], which delegates to
+[[frontend-design]].
 
 For Discord bot work, use [[phases/phase-2-design-discord]].
 
-For "both" projects, design the Discord interaction model first, then run a
-separate web UI design pass for each required interface.
+For "both" projects, design non-visual interaction surfaces first, then run a
+separate [[frontend-design]] pass for each required visual interface.
 
-Goal: produce an approved `DESIGN.md` plus `src/` for web prototypes or `docs/`
-for bot interaction artifacts.
+Goal: produce an approved `DESIGN.md` plus `src/` for frontend prototypes,
+`docs/` for bot interaction artifacts, or equivalent artifacts for non-visual
+projects.
 
 ### Phase 3: Implementation Guardrails
 
@@ -127,7 +138,7 @@ live codebase.
 Use sub-agents when independent perspectives materially improve the result:
 
 - brief critique or question generation
-- divergent design concepts
+- divergent product, interaction, or frontend design concepts
 - plan critique from engineering, design, or product angles
 - risk review before handoff
 
