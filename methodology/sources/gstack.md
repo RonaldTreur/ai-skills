@@ -22,6 +22,10 @@
 - `autoplan/SKILL.md`
 - plan review skill family: `plan-ceo-review`, `plan-design-review`,
   `plan-devex-review`, `plan-eng-review`, `plan-tune`
+- `design-shotgun/SKILL.md`
+- `design-html/SKILL.md`
+- selected design tooling files under `design/src/` for brief, variants,
+  iteration, and feedback flow
 
 ## Relevant Disciplines
 
@@ -47,6 +51,8 @@
   comments.
 - Plan-review pipelines can surface close calls and decision points before work
   proceeds.
+- Design exploration benefits from divergent variants, structured feedback, and
+  a clear approval artifact before finalization.
 
 ## Adoption Risks
 

@@ -29,6 +29,146 @@ next_review:
 ## Entries
 
 ```yaml
+id: 2026-05-25-frontend-design-input-taxonomy
+date: 2026-05-25
+discipline: frontend-design
+status: adapted
+source: existing local ui-design-prompt skill
+source_url: local file
+source_ref: 2026-05-25 local review
+source_path: /Users/merlin/Development/skills/ui-design-prompt/SKILL.md
+license: repository-local material
+local_target: frontend-design/SKILL.md; frontend-design/PROVENANCE.md
+influence_type: behavioral
+summary: Frontend design variants should account for task, context, examples, behavior, and constraints, and should cover the relevant user flow.
+local_adaptation: Added lightweight design-input checks and full-flow/page-map expectations while rejecting fixed questionnaires, hard-coded model choice, and Vite-only generation assumptions.
+rationale: The input taxonomy improves design completeness, but frontend-design should remain an approval workflow for divergent variants rather than a prompt-builder/code-generator wrapper.
+credit_note: Adapted from the existing local ui-design-prompt skill.
+reviewer: Merlin
+next_review: During the dedicated UI design prompt consolidation slice
+```
+
+```yaml
+id: 2026-05-25-frontend-design-shareable-preview
+date: 2026-05-25
+discipline: frontend-design
+status: adopted
+source: local frontend design review workflow
+source_url: local Discord discussion
+source_ref: 2026-05-25 #claw-enhance conversation
+source_path: n/a
+license: repository-local decision
+local_target: frontend-design/SKILL.md; frontend-design/PROVENANCE.md; project-kickoff/phases/phase-2-design.md; methodology/disciplines/project-kickoff.md; README.md
+influence_type: behavioral
+summary: Frontend design variants need shareable preview URLs so the user can review them from another computer.
+local_adaptation: Added a shareable-preview requirement with project-preview or Cloudflare Pages preference, safe temporary tunnel fallback by approval, and screenshots/video only as fallback when remote preview is blocked.
+rationale: Localhost-only previews make design review impractical when the reviewer is not on the same machine.
+credit_note: Local workflow decision from the user.
+reviewer: Merlin
+next_review: During the dedicated frontend-design/UI design slice
+```
+
+```yaml
+id: 2026-05-25-frontend-design-split
+date: 2026-05-25
+discipline: project-kickoff
+status: adopted
+source: local taxonomy review after project-kickoff adaptation
+source_url: local Discord discussion
+source_ref: 2026-05-25 #claw-enhance conversation
+source_path: n/a
+license: repository-local decision
+local_target: frontend-design/SKILL.md; frontend-design/PROVENANCE.md; project-kickoff/SKILL.md; project-kickoff/phases/phase-2-design.md; project-kickoff/PROVENANCE.md; methodology/disciplines/project-kickoff.md; README.md
+influence_type: structural
+summary: Visual frontend design should be a separate skill that project kickoff routes to only when a project has a visual frontend.
+local_adaptation: Created frontend-design for divergent visual variants, visual thesis, browser review, structured feedback, and approved frontend artifacts; reduced kickoff's web design phase to routing and handoff.
+rationale: Project kickoff must handle projects with and without visual frontends. Keeping GStack-style design-shotgun behavior in a separate skill avoids loading frontend machinery for bot/backend/API projects.
+credit_note: Local workflow decision from the user.
+reviewer: Merlin
+next_review: During the dedicated frontend-design/UI design slice
+```
+
+```yaml
+id: 2026-05-25-project-kickoff-boundary
+date: 2026-05-25
+discipline: project-kickoff
+status: adopted
+source: local project lifecycle boundary after external-source comparison
+source_url: local Discord discussion
+source_ref: 2026-05-25 #claw-enhance conversation
+source_path: n/a
+license: repository-local decision
+local_target: project-kickoff/SKILL.md; project-kickoff/phases/phase-1-brief.md; project-kickoff/phases/phase-2-design.md; project-kickoff/phases/phase-2-design-discord.md; project-kickoff/phases/phase-3-planning.md; frontend-design/SKILL.md; project-kickoff/PROVENANCE.md; methodology/disciplines/project-kickoff.md
+influence_type: structural
+summary: Project kickoff should shape product/design/plan artifacts and hand off to project-manager, not directly to implementation.
+local_adaptation: Added ownership boundaries, split frontend design into its own skill, removed hard-coded model handoff, and made Phase 3 produce guardrails with stable work-unit IDs for downstream issue decomposition.
+rationale: Project-manager now owns readiness, test planning, issue decomposition, and implementation routing; direct kickoff-to-implementation bypassed that safety layer.
+credit_note: Local workflow refinement by the user and Merlin.
+reviewer: Merlin
+next_review: After the first real project kickoff uses the revised flow
+```
+
+```yaml
+id: 2026-05-25-project-kickoff-design-variants
+date: 2026-05-25
+discipline: project-kickoff
+status: adapted
+source: GStack
+source_url: https://github.com/garrytan/gstack
+source_ref: 61c9a20bd2e3a579c3d6184ed2fc95b51a528f7c
+source_path: design-shotgun/SKILL.md; design-html/SKILL.md; plan-design-review/SKILL.md
+license: MIT
+local_target: frontend-design/SKILL.md; frontend-design/PROVENANCE.md; project-kickoff/phases/phase-2-design.md; project-kickoff/phases/phase-2-design-discord.md; project-kickoff/PROVENANCE.md
+influence_type: behavioral
+summary: Frontend design variants should diverge materially, collect structured feedback, and confirm interpretation before final approval.
+local_adaptation: Created frontend-design with design context detection, thesis checkpoints, anti-convergence rules, browser review, and structured keep/change/reject/direction feedback; kickoff routes visual frontend projects to it.
+rationale: Competing designs only help if they reveal real product/taste tradeoffs rather than cosmetic alternatives.
+credit_note: Adapted from GStack design-shotgun and design-review patterns.
+reviewer: Merlin
+next_review: When UI design prompt receives its dedicated slice
+```
+
+```yaml
+id: 2026-05-25-project-kickoff-guardrail-plans
+date: 2026-05-25
+discipline: project-kickoff
+status: adapted
+source: Compound Engineering
+source_url: https://github.com/everyinc/compound-engineering-plugin
+source_ref: 5297a9440fa009822ceef8052b9e644e782281e1
+source_path: docs/skills/ce-frontend-design.md; docs/skills/ce-plan.md
+license: MIT
+local_target: frontend-design/SKILL.md; project-kickoff/phases/phase-2-design.md; project-kickoff/phases/phase-3-planning.md; project-kickoff/PROVENANCE.md
+influence_type: structural
+summary: Kickoff should use visual-thesis-first design and guardrail-style implementation plans.
+local_adaptation: Routed frontend context detection and visual thesis/content/interaction checkpoints into frontend-design; kept stable U-ID work units, setup/readiness, test strategy, and issue decomposition notes in kickoff planning.
+rationale: Plans should stay portable for project-manager and implementers instead of baking stale code-level choreography into kickoff.
+credit_note: Adapted from Compound Engineering frontend design and ce-plan guidance.
+reviewer: Merlin
+next_review: After project-manager consumes a kickoff PLAN.md into issues
+```
+
+```yaml
+id: 2026-05-25-project-kickoff-question-discipline
+date: 2026-05-25
+discipline: project-kickoff
+status: inspired
+source: Matt Pocock Skills; SuperPowers
+source_url: https://github.com/mattpocock/skills; https://github.com/obra/superpowers
+source_ref: b8be62ffacb0118fa3eaa29a0923c87c8c11985c; f2cbfbefebbfef77321e4c9abc9e949826bea9d7
+source_path: skills/engineering/grill-with-docs/SKILL.md; skills/writing-plans/SKILL.md; skills/subagent-driven-development/SKILL.md
+license: MIT
+local_target: project-kickoff/SKILL.md; project-kickoff/phases/phase-1-brief.md; project-kickoff/phases/phase-3-planning.md; project-kickoff/PROVENANCE.md
+influence_type: behavioral
+summary: Kickoff should resolve discoverable context itself, sharpen fuzzy terms, and give subagents bounded artifact paths and outputs.
+local_adaptation: Phase 1 now asks only blocking questions with recommended defaults; subagent guidance passes file paths and expected output instead of broad inherited context.
+rationale: The user should steer product/taste decisions, not answer questions the agent can resolve by reading existing artifacts.
+credit_note: Inspired by Matt Pocock's grilling/domain-language discipline and SuperPowers subagent scope discipline.
+reviewer: Merlin
+next_review: When agent orchestration and delegation receives its dedicated slice
+```
+
+```yaml
 id: 2026-05-24-testing-skills-hardening
 date: 2026-05-24
 discipline: testing-and-qa

@@ -7,6 +7,7 @@ Use this map to review external sources against the real project-development rou
 - Research and discovery
 - Product thinking and design
 - UI design
+- Frontend design
 - Architecture
 - Implementation planning
 - Implementation
@@ -39,7 +40,11 @@ Use this map to review external sources against the real project-development rou
 - Browser QA
 - Project lifecycle monitoring
 - Testing and QA
+- Project kickoff
 
 ## Next Candidate Slices
 
-- Project kickoff
+- Frontend design
+- Agent orchestration and delegation
+- Documentation and handoff
+- Research and discovery
