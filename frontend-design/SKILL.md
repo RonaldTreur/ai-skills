@@ -19,6 +19,8 @@ implementation.
 - [[developing-web-projects]] owns web stack and implementation conventions.
 - [[browser-qa]] owns real browser verification of prototypes.
 - [[project-manager]] consumes approved design artifacts later for issue slicing.
+- [[agent-delegation]] owns delegation mechanics when variant or critique agents
+  are used.
 
 ## Core Idea
 

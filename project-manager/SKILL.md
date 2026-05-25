@@ -24,6 +24,8 @@ execution is delegated to [[implement-issue]].
 - [[browser-qa]] owns browser-based user-flow verification. `project-manager`
   ensures repo setup and issue decomposition make that verification possible.
 - [[code-review]] defines review method and P0-P3 severity for diff review.
+- [[agent-delegation]] defines the handoff packet, write-scope, status, and
+  parallel-safety rules when work is sent to another agent.
 
 When this skill reaches "build this issue", stop orchestrating code details and
 invoke [[implement-issue]] with a compact handoff.
@@ -180,7 +182,8 @@ When asked "what is next?", "next sprint", or "start building":
 5. Once an issue is selected for active implementation, invoke [[implement-issue]]
    with a compact handoff.
 
-The handoff should include:
+Use [[agent-delegation]] when routing work to another agent. The handoff should
+include:
 
 - repo path and integration branch
 - selected issue number, URL, and acceptance criteria

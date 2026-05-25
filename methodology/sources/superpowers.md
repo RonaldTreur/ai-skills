@@ -31,6 +31,7 @@
 - Systematic debugging
 - Review before completion
 - Skill activation behavior
+- Agent orchestration and delegation
 
 ## Strong Ideas
 

@@ -125,6 +125,9 @@ private structure unless the structure is itself the contract.
 
 ## Delegation
 
+Use [[agent-delegation]] for delegation packet shape, write-scope discipline,
+parallel-safety checks, and status handling.
+
 Prefer Vectrix for substantial implementation unless the user explicitly asks for
 another runtime or Vectrix is blocked.
 
@@ -132,23 +135,10 @@ When handing work to Vectrix or another implementation agent/runtime:
 
 - give it the exact issue, branch, repo path, relevant docs, active
   skills, and current checkpoint
-- keep the write scope clear
-- state that other agents may also be working in the repo
 - require a report with changed files, tests run, status, blockers, and concerns
 
 Use "subagent" only for actual spawned Codex/OpenClaw subagents, not for
 Vectrix.
-
-Use these statuses:
-
-- `DONE`: implementation and verification completed
-- `DONE_WITH_CONCERNS`: work completed but correctness, scope, or design doubts
-  remain
-- `NEEDS_CONTEXT`: more repo/spec context is needed
-- `BLOCKED`: the task cannot be completed safely as scoped
-
-Do not ignore escalations. Provide missing context, split the task, use a more
-capable model, or mark the issue blocked.
 
 ## Verification Gates
 

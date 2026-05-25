@@ -28,6 +28,7 @@
 - Worktree workflows
 - Learning capture
 - Solution documentation
+- Agent orchestration and delegation
 
 ## Strong Ideas
 

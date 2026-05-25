@@ -10,6 +10,7 @@ Conductor skill for end-to-end testing workflow across:
 - [[e2e-playwright]]
 - [[unit-vitest]]
 - [[browser-qa]]
+- [[agent-delegation]] when test roles run as separate agents
 
 ## Scope Boundary
 
@@ -61,6 +62,9 @@ from scenarios:
 Do not force the full role sequence for tiny issue-local changes where
 [[implement-issue]] can add one focused failing test directly. Do not run the
 healer before there is a concrete failure to diagnose.
+
+When these roles run as separate agents, use [[agent-delegation]] for the
+handoff packet, write scope, status, and blocker reporting.
 
 ## Example phase prompts
 
