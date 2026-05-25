@@ -1,156 +1,111 @@
-# Phase 2 (Discord Bot): Interaction Design
+# Phase 2: Discord Bot Interaction Design
 
 ## Goal
 
-Two competing interaction designs for a Discord bot, iterated with user feedback, until one is chosen. Output: approved design with `DESIGN.md`.
+Explore the bot's interaction model, message tone, permissions, embeds,
+commands, and failure states until one design is approved.
 
 ## Prerequisites
 
-- Approved `BRIEF.md` from Phase 1
-- Read `/Users/merlin/Development/skills/developing-web-projects/SKILL.md` for stack conventions (still applies to bot backend)
+- Approved `BRIEF.md`
+- Current `DECISIONS.md`
+- Known Discord server/channel context if relevant
 
-## What "Design" Means for a Discord Bot
+## What "Design" Means
 
-There's no visual UI to browse. Instead, the deliverables are:
+For a Discord bot, design is interaction design:
 
-1. **Command Map** — every slash command, its arguments, permissions, and what it does
-2. **Embed Mockups** — markdown representations of Discord embeds (title, fields, colors, thumbnails, footers)
-3. **Interaction Flows** — button/select menu sequences, multi-step flows, ephemeral vs public responses
-4. **Message Examples** — realistic mock messages showing what the bot says in key scenarios
-5. **Component Layouts** — how buttons, select menus, and modals are arranged per command
+- command map and permissions
+- public vs ephemeral response policy
+- embeds and message examples
+- button/select/modal flows
+- error handling and recovery messages
+- scheduled/background behavior
+- moderation, audit, or privacy implications
 
-## Round 1: Initial Designs
+## 1. Interaction Thesis
 
-Spawn both models. Each reads `BRIEF.md` and creates a complete interaction design.
+Before drafting variants, capture:
 
-**Prompt for each (adapt folder name):**
+- **Bot role**: utility, moderator, concierge, analyst, game master, etc.
+- **Tone**: terse, warm, playful, formal, operational.
+- **Visibility policy**: what is public, ephemeral, DM-only, logged, or silent.
+- **Control model**: slash commands, buttons, selects, modals, reactions,
+  scheduled messages, or threads.
+
+## 2. Initial Designs
+
+Generate two interaction designs when the decision benefits from comparison.
+They should differ in more than wording:
+
+- command shape
+- message density
+- permission model
+- public/private behavior
+- recovery/error style
+- interaction flow
+
+Each design folder should include:
+
+```text
+design-a/
+  DESIGN.md
+  commands.md
+  embeds.md
+  flows.md
+  examples.md
 ```
-You are designing the interaction model for a Discord bot.
 
-Read these files:
-- <project>/BRIEF.md — the functional spec
-- /Users/merlin/Development/skills/developing-web-projects/SKILL.md — conventions (for backend architecture)
+`DESIGN.md` should explain philosophy, tone, visibility, permissions, error
+handling, and tradeoffs.
 
-Create a complete interaction design in <project>/design-[a|b]/:
+`commands.md` should define every command:
 
-### Files to create:
-
-**design-[a|b]/DESIGN.md** — your design rationale:
-- Design philosophy (minimal vs rich embeds, playful vs utilitarian tone)
-- Color scheme for embeds (hex values with reasoning)
-- Tone of voice for bot messages
-- Error handling approach (ephemeral errors, friendly messages)
-- Permission model (who can use what)
-
-**design-[a|b]/commands.md** — every command:
 ```markdown
 ## /command-name
 - **Description:** [one-liner shown in Discord]
-- **Arguments:** [name: type (required/optional) — description]
+- **Arguments:** [name: type, required/optional, description]
 - **Permissions:** [who can run this]
-- **Response:** [ephemeral/public/DM]
+- **Response:** [public, ephemeral, DM, thread, scheduled]
 - **Flow:** [what happens step by step]
 ```
 
-**design-[a|b]/embeds.md** — embed mockups in markdown:
-```markdown
-## [Scenario Name]
-> **Embed Title**
-> 
-> Description text goes here.
->
-> **Field 1:** value
-> **Field 2:** value
->
-> 🟢 Button: [Label] | 🔴 Button: [Label]
-> 
-> _Footer text · timestamp_
-```
-Use emoji and formatting to approximate Discord's rendering. Include color indicators (🟦 blue, 🟩 green, etc.)
+`embeds.md`, `flows.md`, and `examples.md` should show realistic happy paths,
+edge cases, permission failures, empty states, and recovery messages.
 
-**design-[a|b]/flows.md** — multi-step interaction flows:
-```markdown
-## [Flow Name]
-1. User runs `/command`
-2. Bot responds with embed + buttons [Confirm] [Cancel]
-3. User clicks [Confirm]
-4. Bot updates embed to show result
-5. After 60s, buttons are disabled
-```
+## 3. Review
 
-**design-[a|b]/examples.md** — realistic example messages:
-Full mock conversations showing the bot in action across key scenarios. Use Discord markdown formatting. Show both happy path and error cases.
+Post a concise comparison:
 
-Make it feel GOOD. The bot's personality comes through in its messages. This is a design competition.
-```
+- where both designs agree
+- where they differ materially
+- which design better fits the target users
+- unresolved tradeoffs needing user choice
 
-### Post to Discord
+Do not ask the user to compare giant documents unaided. Surface the important
+decision points.
 
-After both complete:
-1. Post key differences in interaction philosophy
-2. Show side-by-side embed mockups for the same scenario
-3. Highlight different approaches to the same user flow
+## 4. Feedback Loop
 
-## Iteration Rounds
+Capture feedback in `<project>/context/round-N-feedback.md` with:
 
-### Collecting Feedback
+- keep
+- change
+- reject
+- direction
 
-User comments in the thread. Capture feedback as `<project>/context/round-N-feedback.md`:
+Then revise the existing designs. Do not restart unless the user rejects the
+whole direction.
 
-```markdown
-# Round N Feedback
-
-## What I like about Design A:
-[user's comments]
-
-## What I like about Design B:
-[user's comments]
-
-## What needs to change:
-[user's comments]
-
-## Direction for next round:
-[user's overall guidance]
-```
-
-### Spawning Next Round
-
-Each model gets:
-- The feedback file
-- Access to the OTHER model's design folder
-- Their own previous design (iterate, don't restart)
-
-**Prompt:**
-```
-Read the user's feedback: <project>/context/round-N-feedback.md
-Review the competing design: <project>/design-[other]/
-Review your current design: <project>/design-[yours]/
-
-Revise your interaction design based on the feedback. The user wants you to move in this direction:
-[paste the "Direction for next round" section]
-
-Update all your design files. Don't start from scratch — evolve what you have.
-```
-
-### Decision Points
-
-After each round, ask the user:
-- **"Continue iterating?"** → next round
-- **"Pick a winner?"** → finalize
-- **"Merge specific elements?"** → instruct both models what to take from each other, one more round
-
-## Finalizing
+## 5. Finalize
 
 When the user picks a winner:
 
-1. Move winning design docs to project root:
-   - `DESIGN.md` (design rationale)
-   - `commands.md`, `embeds.md`, `flows.md`, `examples.md` into `docs/`
-2. Remove both design folders and context files
-3. Update `DECISIONS.md` with interaction design decisions
+1. Move the winning `DESIGN.md` to `<project>/DESIGN.md`.
+2. Move `commands.md`, `embeds.md`, `flows.md`, and `examples.md` into
+   `<project>/docs/`.
+3. Remove temporary design folders and stale context files.
+4. Update `DECISIONS.md` with interaction decisions and rejected alternatives.
 
-The project now has a complete, approved interaction design — ready for Phase 3 planning and Vectrix implementation.
-
-## Note: Future Web UIs
-
-If the project later adds a web interface (admin panel, user-facing site), run Phase 2 again using the standard [[phases/phase-2-design]] workflow for that specific UI. The bot interaction design and web UI design are separate phases.
+If the project later adds a web UI, run [[phases/phase-2-design]] separately
+for that interface.

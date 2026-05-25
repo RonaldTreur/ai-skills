@@ -12,6 +12,7 @@
 - `README.md`
 - `docs/skills/ce-debug.md`
 - `docs/skills/ce-code-review.md`
+- `docs/skills/ce-frontend-design.md`
 - `docs/skills/ce-plan.md`
 - `docs/skills/ce-resolve-pr-feedback.md`
 - `plugins/compound-engineering/skills/ce-compound/SKILL.md`
@@ -43,6 +44,8 @@
   scenarios, not brittle implementation choreography.
 - Stable implementation-unit identity and clear planning-time vs
   implementation-time decisions prevent stale plans from breaking execution.
+- Frontend design should detect existing systems, state a visual thesis before
+  building, and verify visually before claiming quality.
 
 ## Adoption Risks
 

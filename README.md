@@ -40,3 +40,7 @@ post-merge QA that needs an actual browser pass.
 Project-wide test enforcement lives in `test-ci-policy/`: use it for test
 scripts, CI entrypoints, coverage thresholds, and local/CI parity. Do not use it
 as the default workflow for ordinary feature implementation.
+
+Project shaping lives in `project-kickoff/`: use it to create `BRIEF.md`,
+`DESIGN.md`, `PLAN.md`, and `DECISIONS.md` before `project-manager/` turns the
+work into testable issues and implementation slices.

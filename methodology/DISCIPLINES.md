@@ -39,7 +39,10 @@ Use this map to review external sources against the real project-development rou
 - Browser QA
 - Project lifecycle monitoring
 - Testing and QA
+- Project kickoff
 
 ## Next Candidate Slices
 
-- Project kickoff
+- Agent orchestration and delegation
+- Documentation and handoff
+- Research and discovery

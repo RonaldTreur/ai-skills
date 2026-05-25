@@ -1,147 +1,142 @@
-# Phase 3: Implementation Planning
+# Phase 3: Implementation Guardrails
 
 ## Goal
 
-Two competing implementation plans, debated and refined, until one is selected. Output: `PLAN.md` ready for Vectrix handoff.
+Produce an approved `PLAN.md` that gives [[project-manager]] enough structure to
+set up the project and decompose implementation work without freezing brittle
+code-level choreography too early.
 
 ## Prerequisites
 
-- Approved `BRIEF.md` from Phase 1
-- Approved `DESIGN.md` + `src/` from Phase 2
-- Read `/Users/merlin/Development/skills/developing-web-projects/SKILL.md` for stack conventions
+- Approved `BRIEF.md`
+- Approved `DESIGN.md`
+- `src/` for web prototypes or `docs/` for bot interaction artifacts
+- Current `DECISIONS.md`
+- [[developing-web-projects]] for web projects
 
-## Round 1: Independent Plans
+## Planning Philosophy
 
-Spawn both models. Each reads all project files and produces an implementation plan.
+`PLAN.md` is a guardrail document:
 
-**Prompt for each:**
+- what must be built
+- what decisions must be honored
+- what work units exist
+- what files or areas are likely involved
+- what dependencies and risks matter
+- what tests and browser QA must prove
+
+It is not an implementation script. Avoid exact code, imports, signatures,
+micro-steps, and shell choreography unless they are truly contractual.
+
+## 1. Independent Plan Drafts
+
+Use one or more independent planning perspectives when the project is large or
+risky:
+
+- engineering architecture
+- product scope and sequencing
+- design/UX implementation risk
+- testability and operations
+
+For small projects, one planner plus a critique pass is enough.
+
+Each planner should read:
+
+```text
+<project>/BRIEF.md
+<project>/DESIGN.md
+<project>/DECISIONS.md
+<project>/src/ or <project>/docs/
 ```
-You are planning the implementation of a web project.
 
-Read these files:
-- <project>/BRIEF.md — functional requirements
-- <project>/DESIGN.md — approved design and rationale
-- <project>/src/ — the approved HTML/CSS design files
-- <project>/DECISIONS.md — decisions made so far
-- /Users/merlin/Development/skills/developing-web-projects/SKILL.md — conventions
+Ask for:
 
-Produce a detailed implementation plan covering:
+- architecture and platform fit
+- data model and integrations
+- work units with stable IDs
+- likely files/areas
+- dependency ordering
+- test scenarios and browser-QA needs
+- risks, unknowns, and setup blockers
+- explicit non-goals
+
+## 2. Debate And Merge
+
+Compare plans by decision quality, not volume.
+
+Surface:
+
+- where planners agree
+- where they disagree
+- what the real tradeoff is
+- which recommendation you prefer and why
+- what user choice is still needed
+
+If a disagreement can be resolved from `BRIEF.md`, `DESIGN.md`, existing code,
+or [[developing-web-projects]], resolve it directly and record the decision.
+Ask the user only for product, taste, cost, or scope choices.
+
+## 3. `PLAN.md` Structure
+
+Use this structure:
+
+```markdown
+# [Project Name] - Implementation Plan
+
+## Goal
+[One paragraph.]
+
+## Guardrails
+[Decisions, constraints, non-goals, and quality bars.]
 
 ## Architecture
-- Overall structure, routing approach, build pipeline
-- How the existing HTML/CSS design translates to the production architecture
+[High-level structure and platform choices.]
 
-## Data Model
-- Entities, relationships, storage approach
-- Schema design (if applicable)
+## Data And Integrations
+[Entities, persistence, APIs, queues, auth, external systems.]
 
-## Component Breakdown
-- Which parts of the HTML become Web Components
-- Shared vs page-specific components
-- Component hierarchy
+## Work Units
 
-## Dependencies
-- Runtime dependencies (with justification for each)
-- Dev dependencies
-- What can be done WITHOUT a dependency
+### U1 - [Stable unit name]
+- **Outcome:** [What is true when complete.]
+- **Scope:** [Included work.]
+- **Likely files/areas:** [Paths or areas, not brittle line-by-line changes.]
+- **Dependencies:** [Other U-IDs or setup work.]
+- **Tests:** [Unit, integration, E2E, browser QA, manual verification.]
+- **Risks:** [Known risks and mitigations.]
 
-## API Design (if applicable)
-- Endpoints, methods, request/response shapes
-- Auth approach
+## Setup And Readiness
+[Repo, CI, scripts, safe auth/test data, seed/reset, preview, deployment.]
 
-## File Structure
-- Proposed directory layout with every file listed
-- Clear mapping from design pages to production files
+## Test Strategy
+[What [[test-planning]] should turn into TEST_PLAN.md.]
 
-## Build & Deploy
-- Build pipeline, hosting, CI/CD approach
-- Environment configuration
+## Issue Decomposition Notes
+[How [[project-manager]] should slice issues and what must happen first.]
 
-## Implementation Order
-- Ordered list of tasks, with dependencies between them
-- What can be parallelized
-- What blocks what
-
-Be specific and opinionated. Justify your choices. Call out trade-offs.
-Write your plan to <project>/plan-[a|b].md
+## Open Questions
+[Remaining questions, recommended default, and owner.]
 ```
 
-### Post to Discord
+## 4. Update `DECISIONS.md`
 
-Post both plans to the thread, highlighting key differences:
-- Where they agree (likely the right answer)
-- Where they diverge (the interesting debates)
+Record:
 
-## Debate Rounds (max 3, extendable)
+- architecture choices
+- dependency decisions
+- data model decisions
+- design-to-implementation tradeoffs
+- rejected plan alternatives
+- user steering
 
-### How Debate Works
+## 5. Final Approval
 
-Each model reviews the OTHER's plan and produces a critique + revised version of their own plan.
+The phase exits when the user approves `PLAN.md`.
 
-**Prompt:**
-```
-Read the competing implementation plan: <project>/plan-[other].md
-Read your current plan: <project>/plan-[yours].md
-Read all project context: BRIEF.md, DESIGN.md, DECISIONS.md
+Do not hand directly to implementation. The next step is [[project-manager]]:
 
-1. Critique the other plan: what's strong, what's weak, what would you change?
-2. Revise YOUR plan based on anything you learned from the other's approach.
-3. If you changed your mind on anything, explain why.
-
-Write your critique to <project>/context/round-N-[yours]-critique.md
-Update your plan in <project>/plan-[yours].md
-```
-
-### Posting Each Round
-
-Post to the thread:
-- Each model's critique of the other's plan
-- Key changes they made to their own plan
-- Where they converged vs. still disagree
-
-### After Each Round
-
-Ask the user:
-- **"Another round?"** → continue (default up to 3)
-- **"One more round"** → user can extend beyond 3
-- **"Pick a winner"** → finalize
-- **"Merge X from plan A into plan B"** → targeted instruction, one more round
-
-## Updating DECISIONS.md
-
-After each round, update `DECISIONS.md` with new decisions that emerged:
-- Architecture choices
-- Dependency selections
-- Data model decisions
-- Any trade-offs the user weighed in on
-
-## Finalizing
-
-When the user picks a winner:
-
-1. Move winning plan to `<project>/PLAN.md`
-2. Remove `plan-a.md`, `plan-b.md`, and `context/` round files
-3. Final update to `DECISIONS.md`
-4. Confirm with user: "Ready to hand off to Vectrix?"
-
-## Vectrix Handoff
-
-Spawn Vectrix (or instruct the user to engage Vectrix) with:
-
-```
-New project ready for implementation.
-
-Read these files in order:
-1. <project>/BRIEF.md — what we're building and why
-2. <project>/DESIGN.md — approved visual design and rationale
-3. <project>/PLAN.md — approved implementation plan
-4. <project>/DECISIONS.md — every decision with rationale and rejected alternatives
-5. <project>/src/ — the approved design files (working Vite project)
-6. /Users/merlin/Development/skills/developing-web-projects/SKILL.md — development conventions
-
-Your first task: write <project>/IMPLEMENTATION_PLAN.md in your own words.
-- Break it into ordered, concrete tasks
-- For each task: which files to create/modify, what they contain
-- Flag anything that's unclear or seems contradictory
-- Do NOT start coding until I approve your implementation plan
-```
+- verify setup/readiness
+- create or update `TEST_PLAN.md` through [[test-planning]]
+- turn work units into GitHub issues
+- establish dependency order and labels
+- route the first issue to the selected implementer

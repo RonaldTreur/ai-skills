@@ -39,6 +39,8 @@
 - TDD should proceed in vertical behavior slices: one failing test, minimal
   implementation, repeat. Avoid horizontal "all tests first, all code later"
   sequencing.
+- Planning conversations should sharpen overloaded domain language and inspect
+  existing docs/code before asking the user to answer discoverable questions.
 
 ## Adoption Risks
 
