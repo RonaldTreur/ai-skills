@@ -84,6 +84,9 @@ parallel safety, and integration review.
 - Should mandatory two-stage subagent review be required for all delegated work?
   Decision: no; keep review proportional and let `code-review`/owner skills
   decide the verification depth.
+- Should this make multi-agent work more common?
+  Decision: no; the skill is a protocol for justified delegation, not a
+  recommendation to delegate.
 
 ## Adopted Changes
 
@@ -117,6 +120,7 @@ the shared delegation mechanics.
 ## Rejections And Deferrals
 
 - Rejected mandatory subagent dispatch for every implementation plan.
+- Rejected making multi-agent workflows the default for ordinary work.
 - Rejected requiring delegated agents to commit by default.
 - Rejected importing external task tools, generated preambles, telemetry,
   session stores, artifact schemas, or always-on routing tiers.

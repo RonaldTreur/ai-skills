@@ -8,8 +8,9 @@ This document records the source material that shaped
 Keep these behaviors:
 
 1. Treat delegation as mechanics, not project ownership.
-2. Delegate only when it materially improves speed, focus, review, or
-   independent exploration.
+2. Default to one capable agent; delegate only when it materially improves
+   speed, focus, review, or independent exploration enough to justify
+   coordination cost.
 3. Provide a compact packet with goal, inputs, scope, write boundaries,
    verification, and return format.
 4. Parallelize only independent tasks with non-overlapping write scopes.
@@ -19,6 +20,20 @@ Keep these behaviors:
    returned work.
 
 ## Source Influence
+
+### Local Delegation Restraint
+
+- Date: 2026-05-25
+- Source: local workflow discussion
+
+The skill must not encourage multi-agent work as a default. It exists as a
+guardrail for delegation that was already justified by another workflow.
+
+Local adaptation:
+
+- Tightened trigger wording to "use only after deciding to delegate".
+- Added an explicit default to keep work local for small, sequential, tightly
+  coupled, or ambiguous tasks.
 
 ### SuperPowers
 

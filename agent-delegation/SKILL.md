@@ -1,6 +1,6 @@
 ---
 name: agent-delegation
-description: "Delegate work to another agent, runtime, or subagent with clear scope, context, write boundaries, status reporting, and integration review. Use when splitting work across agents, spawning subagents, handing a selected issue to an implementation agent, or coordinating parallel independent tasks."
+description: "Use only after deciding to delegate work to another agent, runtime, or subagent. Defines clear scope, context, write boundaries, status reporting, parallel-safety checks, and integration review for selected issue handoffs, spawned subagents, or genuinely independent parallel tasks."
 ---
 
 # Agent Delegation
@@ -8,13 +8,17 @@ description: "Delegate work to another agent, runtime, or subagent with clear sc
 Use this skill when another agent, runtime, or subagent will do part of the
 work. The goal is to make delegation recoverable, bounded, and reviewable.
 
+This skill is not a reason to delegate. It is the protocol for delegation after
+a workflow has already decided that another agent will materially improve speed,
+focus, review quality, or independent exploration.
+
 This skill owns delegation mechanics. It does not decide project priority,
 issue scope, frontend direction, test strategy, or code-review findings; those
 belong to the workflow skill that invoked delegation.
 
 ## When To Delegate
 
-Delegate only when it materially improves the work:
+Delegate only when the invoking workflow has a concrete reason:
 
 - an implementation slice is ready for a dedicated implementation agent
 - multiple tasks are independent and can run without shared state
@@ -22,9 +26,11 @@ Delegate only when it materially improves the work:
 - a fresh context is useful for review, critique, or variant generation
 - the coordinating agent can keep doing non-overlapping work while the delegate
   runs
+- the work is large enough that coordination cost is lower than local execution
 
-Keep work local when the next step is blocked on the result, when the task is
-tightly coupled, or when the coordination cost is larger than the work.
+Default to one capable agent for small, sequential, tightly coupled, or
+ambiguous work. Keep work local when the next step is blocked on the result, or
+when the coordination cost is larger than the work.
 
 ## Delegation Packet
 

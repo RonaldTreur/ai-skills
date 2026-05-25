@@ -40,9 +40,9 @@ source_path: skills/dispatching-parallel-agents/SKILL.md; skills/subagent-driven
 license: MIT
 local_target: agent-delegation/SKILL.md; agent-delegation/PROVENANCE.md; implement-issue/SKILL.md; project-manager/SKILL.md; project-kickoff/SKILL.md; testing-orchestrator/SKILL.md; e2e-playwright/SKILL.md; frontend-design/SKILL.md; README.md; methodology/disciplines/agent-orchestration-delegation.md; methodology/DISCIPLINES.md
 influence_type: structural
-summary: Delegation mechanics should live in one shared owner skill instead of being duplicated across lifecycle skills.
-local_adaptation: Created agent-delegation with delegation packets, write scopes, parallel-safety checks, explicit statuses, controller duties, and compact prompt shape; owner skills now point to it for mechanics while keeping their domain decisions.
-rationale: The project lifecycle now has multiple owner skills. Shared delegation mechanics reduce drift, improve recoverability, and prevent subagent confusion without importing heavyweight external choreography.
+summary: Delegation mechanics should live in one shared owner skill, but delegation should remain selective rather than default.
+local_adaptation: Created agent-delegation with tight trigger wording, delegation packets, write scopes, parallel-safety checks, explicit statuses, controller duties, and compact prompt shape; owner skills now point to it for mechanics while keeping ordinary one-agent work local.
+rationale: The project lifecycle now has multiple owner skills. Shared delegation mechanics reduce drift, improve recoverability, and prevent subagent confusion without importing heavyweight external choreography or encouraging unnecessary multi-agent overhead.
 credit_note: Adapted mainly from SuperPowers delegation patterns, with Compound controller/leaf-agent boundaries, GStack specialist-pass discipline, and Matt Pocock context-question calibration.
 reviewer: Merlin
 next_review: After the gh-pipeline automation slice decides how labels route work to agents
