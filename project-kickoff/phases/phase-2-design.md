@@ -58,6 +58,8 @@ Produce an approved visual frontend direction using your divergent-variant
 workflow. Save the approved output as:
 - <project>/DESIGN.md
 - <project>/src/ or the approved prototype location
+- shareable preview URLs for variant review when practical, with any blocker
+  and fallback noted
 - DECISIONS.md updates for chosen/rejected design directions
 ```
 

@@ -46,6 +46,6 @@ Project shaping lives in `project-kickoff/`: use it to create `BRIEF.md`,
 work into testable issues and implementation slices.
 
 Visual frontend exploration lives in `frontend-design/`: use it for divergent
-UI variants, visual thesis, browser preview, feedback rounds, and approved
-frontend design artifacts. `project-kickoff/` routes here only when a project
-has a visual frontend.
+UI variants, visual thesis, shareable browser previews, feedback rounds, and
+approved frontend design artifacts. `project-kickoff/` routes here only when a
+project has a visual frontend.

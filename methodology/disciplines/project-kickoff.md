@@ -74,8 +74,8 @@ toward brittle implementation choreography.
   - Removed hard-coded model names from runtime guidance.
 - `frontend-design/SKILL.md`
   - Added a separate visual frontend owner skill for GStack-style divergent
-    variants, visual thesis, browser review, feedback loops, and final design
-    approval.
+    variants, visual thesis, shareable browser review, feedback loops, and
+    final design approval.
 - `phase-1-brief.md`
   - Shifted from many clarifying questions to context gathering, blocking
     ambiguity only, recommended defaults, and decision capture.

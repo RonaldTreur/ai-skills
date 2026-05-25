@@ -1,6 +1,6 @@
 ---
 name: frontend-design
-description: "Explore and refine visual frontend direction for web apps, dashboards, landing pages, and UI-heavy features. Use when a project needs UI design concepts, divergent variants, visual thesis, prototype comparison, or frontend design approval before implementation."
+description: "Explore and refine visual frontend direction for web apps, dashboards, landing pages, and UI-heavy features. Use when a project needs UI design concepts, divergent variants, visual thesis, shareable prototype comparison, or frontend design approval before implementation."
 ---
 
 # Frontend Design
@@ -27,9 +27,10 @@ Use a divergent-variant workflow:
 1. Understand the design context.
 2. Generate meaningfully divergent variants.
 3. Compare them side by side.
-4. Capture structured feedback.
-5. Iterate until one direction is approved.
-6. Save the approved design as durable project context.
+4. Publish or expose a shareable preview when practical.
+5. Capture structured feedback.
+6. Iterate until one direction is approved.
+7. Save the approved design as durable project context.
 
 The goal is not "two versions of the same page." The goal is to expose real
 tradeoffs in information architecture, density, hierarchy, tone, and visual
@@ -132,10 +133,36 @@ Each variant should include:
 - `DESIGN.md` with thesis, rationale, palette, typography, layout, states, and
   tradeoffs
 
+## Shareable Preview
+
+Human review must be possible from another computer. Do not assume `localhost`
+is enough.
+
+Before asking the user to choose a direction, publish or expose the variants
+through a shareable preview URL when practical:
+
+- prefer the project's existing preview or deploy mechanism
+- for Cloudflare-first static prototypes, use a Cloudflare Pages preview or
+  branch deployment when available
+- for other stacks, use the repository's normal preview environment
+- use a temporary tunnel only when the user approves and the content is safe to
+  expose
+- if remote preview is blocked, state the blocker and provide screenshots or
+  video as a fallback; do not treat that as equivalent to hands-on review
+
+Preview safety:
+
+- use static or sanitized prototype data
+- do not publish secrets, personal sessions, production data, private tokens, or
+  internal-only URLs
+- keep design variants accessible until feedback or approval is complete
+- include direct links to each variant and, when possible, a comparison page
+
 ## Browser Review
 
 Start the preview and inspect variants in a browser before asking the user to
-choose.
+choose. When a shareable preview exists, inspect that URL too; a local-only pass
+does not prove the review link works.
 
 Check:
 

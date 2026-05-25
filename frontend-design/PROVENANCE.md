@@ -11,7 +11,30 @@ Keep these behaviors:
 2. Use divergent design variants when visual direction is undecided.
 3. Start from context detection and a visual thesis.
 4. Compare variants, collect structured feedback, and iterate.
-5. Save the approved design as durable project context.
+5. Provide shareable preview URLs when practical so review works from another
+   computer.
+6. Save the approved design as durable project context.
+
+## Local Decisions
+
+### Shareable Design Review
+
+- Date: 2026-05-25
+- Source: local workflow discussion
+
+Design variants must be reviewable from another computer when practical.
+Localhost-only previews are acceptable for agent/browser inspection, but they
+are not enough for human design selection unless the reviewer is on the same
+machine.
+
+Local adaptation:
+
+- Prefer the project's existing preview/deploy mechanism.
+- Use Cloudflare Pages previews for Cloudflare-first static prototypes when
+  available.
+- Use temporary tunnels only with explicit approval and safe prototype content.
+- Treat screenshots or video as fallback evidence when remote preview is
+  blocked, not as an equivalent review surface.
 
 ## Source Influence
 

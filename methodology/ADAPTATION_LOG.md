@@ -29,6 +29,26 @@ next_review:
 ## Entries
 
 ```yaml
+id: 2026-05-25-frontend-design-shareable-preview
+date: 2026-05-25
+discipline: frontend-design
+status: adopted
+source: local frontend design review workflow
+source_url: local Discord discussion
+source_ref: 2026-05-25 #claw-enhance conversation
+source_path: n/a
+license: repository-local decision
+local_target: frontend-design/SKILL.md; frontend-design/PROVENANCE.md; project-kickoff/phases/phase-2-design.md; methodology/disciplines/project-kickoff.md; README.md
+influence_type: behavioral
+summary: Frontend design variants need shareable preview URLs so the user can review them from another computer.
+local_adaptation: Added a shareable-preview requirement with project-preview or Cloudflare Pages preference, safe temporary tunnel fallback by approval, and screenshots/video only as fallback when remote preview is blocked.
+rationale: Localhost-only previews make design review impractical when the reviewer is not on the same machine.
+credit_note: Local workflow decision from the user.
+reviewer: Merlin
+next_review: During the dedicated frontend-design/UI design slice
+```
+
+```yaml
 id: 2026-05-25-frontend-design-split
 date: 2026-05-25
 discipline: project-kickoff
