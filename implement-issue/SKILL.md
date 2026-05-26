@@ -24,6 +24,8 @@ This is the canonical active-issue implementation workflow.
   user-visible web behavior.
 - [[code-review]] defines review method and P0-P3 severity for diff review.
 - [[debugging]] governs non-trivial failures discovered during implementation.
+- [[documentation-handoff]] governs `DELIVERY_STATE.md`, PR/issue handoffs,
+  decision capture, blocker notes, and recovery summaries.
 
 ## Default Authority
 
@@ -90,7 +92,7 @@ Use `dev` as the integration branch.
    repo policy allows and the user has authorized this workflow to do so.
 2. Create a focused branch from `dev`, such as `issue-12-short-title`.
 3. Update `DELIVERY_STATE.md` with issue, branch, checkpoint, checks, blockers,
-   and next action.
+   and next action using [[documentation-handoff]].
 4. Add an issue comment or PR note for meaningful checkpoints when the work is
    long-running or delegated.
 
@@ -175,6 +177,7 @@ The PR should include:
 - linked issue
 - scope summary
 - acceptance criteria covered
+- docs or decisions updated
 - tests/checks run
 - review findings fixed or explicitly rejected
 - known follow-ups or blockers
@@ -248,5 +251,6 @@ Pause the selected issue when:
 - all useful checks are blocked by environment or permissions
 - the next safe step would be destructive
 
-Document the blocker in `DELIVERY_STATE.md` and the issue/PR. Then return to
-[[project-manager]] to find other ready work when useful.
+Document the blocker in `DELIVERY_STATE.md` and the issue/PR using
+[[documentation-handoff]]. Then return to [[project-manager]] to find other
+ready work when useful.

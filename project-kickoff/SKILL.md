@@ -24,6 +24,8 @@ implementation; hand off to the right owner after each boundary.
 - [[browser-qa]] owns real browser verification for generated web prototypes.
 - [[agent-delegation]] owns delegation mechanics when kickoff uses critique,
   risk-review, or variant-generation agents.
+- [[documentation-handoff]] owns durable artifact roles, decision capture, and
+  handoff shape for kickoff outputs.
 
 ## Ground Rules
 
@@ -32,7 +34,8 @@ implementation; hand off to the right owner after each boundary.
 - When asking, recommend a default and explain the tradeoff.
 - Use competing options to widen product or interaction choices, not to create
   ceremony.
-- Record every significant choice and rejected alternative in `DECISIONS.md`.
+- Record every significant choice and rejected alternative in `DECISIONS.md`
+  using [[documentation-handoff]].
 - Prefer artifacts over chat summaries. The project folder is the durable state.
 - Do not hand directly to implementation until [[project-manager]] has checked
   setup, testability, issue slicing, and dependencies.
@@ -92,7 +95,8 @@ owned by [[frontend-design]]:
   design-b/
 ```
 
-After Phase 3, the stable handoff set should be:
+After Phase 3, the stable handoff set should follow [[documentation-handoff]]
+and normally include:
 
 ```text
 <project-name>/

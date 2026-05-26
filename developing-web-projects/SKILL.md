@@ -18,8 +18,9 @@ TypeScript style, dependencies, documentation expectations, and when a web
 decision needs human approval.
 
 It does not own GitHub issue sequencing, branch/PR mechanics, review gates, or
-long-running implementation state. Use [[project-manager]] for project lifecycle and
-[[implement-issue]] for active per-issue implementation.
+long-running implementation state. Use [[project-manager]] for project lifecycle,
+[[implement-issue]] for active per-issue implementation, and
+[[documentation-handoff]] for durable docs and continuation state.
 
 ---
 
@@ -120,6 +121,8 @@ Proceed as if you are implementing *your own project* using the user's style.
 ---
 
 ## Documentation & Workflow Defaults
+
+Use [[documentation-handoff]] for README/AGENTS roles and handoff state.
 
 - For new projects, always create `README.md` and `AGENTS.md` if they do not exist.
 - For existing projects, after making changes, update `README.md` and `AGENTS.md` when those files already exist.

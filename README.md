@@ -57,3 +57,7 @@ write boundaries, status reporting, and integration review.
 GitHub label automation lives in `gh-pipeline/`: use it when GitHub issue labels
 drive build, test, review, fix, approved, blocked, and failed states across the
 existing project lifecycle skills.
+
+Documentation and continuation state live in `documentation-handoff/`: use it
+for README/AGENTS roles, project artifacts, `DELIVERY_STATE.md`, decisions,
+PR/issue handoffs, blockers, and recovery summaries.
