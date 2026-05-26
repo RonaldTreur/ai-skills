@@ -53,3 +53,7 @@ project has a visual frontend.
 Agent delegation mechanics live in `agent-delegation/`: use it when handing
 work to another agent, runtime, or subagent so the task has clear context,
 write boundaries, status reporting, and integration review.
+
+GitHub label automation lives in `gh-pipeline/`: use it when GitHub issue labels
+drive build, test, review, fix, approved, blocked, and failed states across the
+existing project lifecycle skills.
