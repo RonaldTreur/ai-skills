@@ -948,3 +948,43 @@ credit_note: Follow-up from the first skill-review pass on debugging.
 reviewer: Merlin
 next_review: When debugging trigger behavior is next revised
 ```
+
+```yaml
+id: 2026-05-26-gh-pipeline-owner-skill
+date: 2026-05-26
+discipline: github-issue-automation
+status: adapted
+source: Local OpenClaw gh-pipeline skill plus external orchestration sources
+source_url: local workspace skill; https://github.com/obra/superpowers; https://github.com/everyinc/compound-engineering-plugin; https://github.com/garrytan/gstack; https://github.com/mattpocock/skills
+source_ref: local file reviewed 2026-05-26; SuperPowers f2cbfbefebbfef77321e4c9abc9e949826bea9d7; Compound 5297a9440fa009822ceef8052b9e644e782281e1; GStack 61c9a20bd2e3a579c3d6184ed2fc95b51a528f7c; Matt Pocock b8be62ffacb0118fa3eaa29a0923c87c8c11985c
+source_path: /Users/merlin/.openclaw/workspace-main/skills/gh-pipeline/SKILL.md; skills/subagent-driven-development/SKILL.md; skills/requesting-code-review/SKILL.md; plugins/compound-engineering/skills/ce-compound/SKILL.md; review/SKILL.md; skills/engineering/tdd/SKILL.md
+license: mixed local guidance and MIT sources
+local_target: gh-pipeline/SKILL.md
+influence_type: structural
+summary: Add a dedicated owner for label-driven GitHub issue automation with build, test, review, fix, blocked, failed, and approved states.
+local_adaptation: Adapted the local pipeline labels and guard rails into a concise repository skill that routes stage work to project-manager, implement-issue, testing-orchestrator, code-review, and agent-delegation instead of duplicating their workflows.
+rationale: The repository now has separate lifecycle owner skills; gh-pipeline should coordinate durable GitHub state and recovery without becoming another implementation playbook.
+credit_note: Adapted from the local OpenClaw gh-pipeline skill and calibrated against external agent orchestration/review guidance.
+reviewer: Merlin
+next_review: When an actual orchestrator script or cron config is added
+```
+
+```yaml
+id: 2026-05-26-gh-pipeline-readme-pointer
+date: 2026-05-26
+discipline: github-issue-automation
+status: adopted
+source: Local repository taxonomy decision
+source_url: local repository
+source_ref: feat/gh-pipeline-adaptation
+source_path: README.md; gh-pipeline/SKILL.md
+license: repository-local decision
+local_target: README.md
+influence_type: documentation
+summary: Document gh-pipeline as the GitHub label automation owner in the repository overview.
+local_adaptation: Added a short README pointer next to the existing project lifecycle and agent-delegation skill descriptions.
+rationale: The top-level README should show where label automation fits without making it look like a replacement for project-manager or implement-issue.
+credit_note: Local taxonomy update.
+reviewer: Merlin
+next_review: During final taxonomy cleanup
+```
