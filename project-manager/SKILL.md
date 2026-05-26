@@ -26,6 +26,8 @@ execution is delegated to [[implement-issue]].
 - [[code-review]] defines review method and P0-P3 severity for diff review.
 - [[agent-delegation]] defines the handoff packet, write-scope, status, and
   parallel-safety rules when work is sent to another agent.
+- [[documentation-handoff]] defines durable project docs, continuation state,
+  decision capture, and recoverable handoff packets.
 
 When this skill reaches "build this issue", stop orchestrating code details and
 invoke [[implement-issue]] with a compact handoff.
@@ -33,8 +35,9 @@ invoke [[implement-issue]] with a compact handoff.
 ## Core Principles
 
 - GitHub Issues are the durable backlog.
-- Repo-local docs are project memory: `BRIEF.md`, `DESIGN.md`, `PLAN.md`,
-  `TEST_PLAN.md`, `DECISIONS.md`, `DELIVERY_STATE.md`, ADRs, and specs.
+- Repo-local docs are project memory. Use [[documentation-handoff]] for artifact
+  roles such as `BRIEF.md`, `DESIGN.md`, `PLAN.md`, `TEST_PLAN.md`,
+  `DECISIONS.md`, `DELIVERY_STATE.md`, ADRs, and specs.
 - Issues should be independently mergeable slices with explicit dependencies.
 - Project setup must make local verification, CI, test data, and browser QA
   practical before feature work depends on them.
@@ -42,6 +45,7 @@ invoke [[implement-issue]] with a compact handoff.
   scope changes.
 - Agents may choose conservative implementation defaults inside approved scope.
 - Every handoff must be recoverable by a fresh agent from files and GitHub state.
+  Use [[documentation-handoff]] for the compact handoff shape.
 
 ## Default Authority
 
@@ -180,7 +184,7 @@ When asked "what is next?", "next sprint", or "start building":
 4. Ask for approval only when changing the backlog, project scope, or a GitHub
    project/label state.
 5. Once an issue is selected for active implementation, invoke [[implement-issue]]
-   with a compact handoff.
+   with a compact handoff shaped by [[documentation-handoff]].
 
 Use [[agent-delegation]] when routing work to another agent. The handoff should
 include:
@@ -205,9 +209,10 @@ Status reports should include:
 - blockers
 - next concrete action
 
-For long-running projects, keep `DELIVERY_STATE.md` aligned with GitHub state.
-If state conflicts, trust durable external truth first: merged PRs, open PRs,
-issue labels/comments, CI, then local files.
+For long-running projects, use [[documentation-handoff]] to keep
+`DELIVERY_STATE.md` aligned with GitHub state. If state conflicts, trust durable
+external truth first: merged PRs, open PRs, issue labels/comments, CI, then
+local files.
 
 When recovering stale or ambiguous project state:
 

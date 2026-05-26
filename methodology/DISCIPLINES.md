@@ -43,8 +43,9 @@ Use this map to review external sources against the real project-development rou
 - Project kickoff
 - Frontend design
 - Agent orchestration and delegation
+- GitHub issue automation
+- Documentation and handoff
 
 ## Next Candidate Slices
 
-- Documentation and handoff
 - Research and discovery

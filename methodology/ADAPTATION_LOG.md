@@ -988,3 +988,23 @@ credit_note: Local taxonomy update.
 reviewer: Merlin
 next_review: During final taxonomy cleanup
 ```
+
+```yaml
+id: 2026-05-26-documentation-handoff-owner-skill
+date: 2026-05-26
+discipline: documentation-and-handoff
+status: adapted
+source: Local lifecycle skills plus external planning, evidence, and handoff guidance
+source_url: local repository skills; https://github.com/everyinc/compound-engineering-plugin; https://github.com/obra/superpowers; https://github.com/garrytan/gstack; https://github.com/mattpocock/skills
+source_ref: feat/documentation-handoff-adaptation; Compound 5297a9440fa009822ceef8052b9e644e782281e1; SuperPowers f2cbfbefebbfef77321e4c9abc9e949826bea9d7; GStack 61c9a20bd2e3a579c3d6184ed2fc95b51a528f7c; Matt Pocock b8be62ffacb0118fa3eaa29a0923c87c8c11985c
+source_path: project-kickoff/SKILL.md; project-manager/SKILL.md; implement-issue/SKILL.md; developing-web-projects/SKILL.md; docs/skills/ce-plan.md; docs/skills/ce-resolve-pr-feedback.md; skills/writing-plans/SKILL.md; skills/executing-plans/SKILL.md; qa/SKILL.md; skills/engineering/grill-with-docs/SKILL.md
+license: mixed local guidance and MIT sources
+local_target: documentation-handoff/SKILL.md; project-manager/SKILL.md; implement-issue/SKILL.md; project-kickoff/SKILL.md; developing-web-projects/SKILL.md
+influence_type: structural
+summary: Create a shared owner for durable documentation, continuation state, decisions, PR/issue handoffs, blockers, and recovery summaries.
+local_adaptation: Consolidated scattered documentation and handoff mechanics into documentation-handoff while keeping product, implementation, testing, and review decisions in their existing owner skills.
+rationale: Fresh sessions and agent handoffs fail when state lives only in chat or duplicated workflow fragments; a focused owner skill keeps docs recoverable without making every small task ceremonial.
+credit_note: Adapted from local lifecycle needs and external planning, evidence, and handoff guidance.
+reviewer: Merlin
+next_review: After the first real project uses documentation-handoff through kickoff, implementation, and PR recovery
+```
