@@ -1,6 +1,6 @@
 ---
 name: implement-issue
-description: "Implement one selected GitHub issue or ready backlog slice from repo context through branch, vertical behavior-first tests, code changes, verification, code review, optional independent review, PR merge into dev, and post-merge QA. Use when asked to build, fix, continue, or implement a specific ready issue in a GitHub-backed software project."
+description: "Implement one selected GitHub issue or ready backlog slice from repo context through branch, vertical behavior-first tests, code changes, verification, code review, optional independent review, PR merge into the repo integration branch, and post-merge QA. Use when asked to build, fix, continue, or implement a specific ready issue in a GitHub-backed software project."
 ---
 
 # Implement Issue
@@ -32,13 +32,13 @@ This is the canonical active-issue implementation workflow.
 When invoked for a ready issue, assume the agent may:
 
 - read repo docs, issues, PRs, and source files
-- create a branch from `dev`
+- create a branch from the repo integration branch
 - write or update tests and production code
 - update `DELIVERY_STATE.md`
 - run local checks, tests, build, lint, relevant migrations, and [[browser-qa]]
-- commit, push, open/update a PR targeting `dev`
+- commit, push, open/update a PR targeting the repo integration branch
 - run review checks and fix valid P0-P3 findings
-- merge into `dev` when checks and review are clean
+- merge into the repo integration branch when checks and review are clean
 - create follow-up issues for defects, blockers, or out-of-scope work
 
 Ask before:
@@ -46,7 +46,8 @@ Ask before:
 - production deploys or production-impacting migrations
 - secrets, credentials, billing, organization settings, or external accounts
 - deleting branches, rewriting history, or destructive filesystem/git actions
-- merging to `main`
+- merging to `main`, even when `main` is the repo integration branch, unless
+  the user explicitly authorized that merge
 - changing product scope or user-visible behavior beyond the issue/spec
 
 ## Intake
@@ -86,11 +87,15 @@ insufficient for the selected issue.
 
 ## Branch And State
 
-Use `dev` as the integration branch.
+Use the repo's active integration branch. Prefer `dev` when the repo already has
+an active `dev` branch. Otherwise use the repo's documented integration branch
+or default branch; do not create a new `dev` branch just because this workflow
+was invoked.
 
-1. Ensure `origin/dev` exists; create it from the default branch only when the
-   repo policy allows and the user has authorized this workflow to do so.
-2. Create a focused branch from `dev`, such as `issue-12-short-title`.
+1. Identify the integration branch from repo instructions, open PR targets, or
+   remote branches.
+2. Create a focused branch from that integration branch, such as
+   `issue-12-short-title`.
 3. Update `DELIVERY_STATE.md` with issue, branch, checkpoint, checks, blockers,
    and next action using [[documentation-handoff]].
 4. Add an issue comment or PR note for meaningful checkpoints when the work is
@@ -170,7 +175,7 @@ routing changed, repeat [[browser-qa]].
 
 ## PR And Merge
 
-Open or update a PR targeting `dev`.
+Open or update a PR targeting the repo integration branch.
 
 The PR should include:
 
@@ -182,7 +187,7 @@ The PR should include:
 - review findings fixed or explicitly rejected
 - known follow-ups or blockers
 
-Merge into `dev` only when:
+Merge into the integration branch only when:
 
 - required checks are green
 - valid P0-P3 review findings are fixed
@@ -191,8 +196,8 @@ Merge into `dev` only when:
   authenticated flows introduced or changed by the issue
 - no unresolved human decision blocks the change
 
-After merge, use [[browser-qa]] for post-merge QA against `dev` or the closest
-available preview. If QA finds defects, create follow-up issues with
+After merge, use [[browser-qa]] for post-merge QA against the integration branch
+or the closest available preview. If QA finds defects, create follow-up issues with
 priority/dependencies and return to [[project-manager]] for the next work
 decision.
 

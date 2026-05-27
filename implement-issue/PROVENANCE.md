@@ -9,7 +9,8 @@ Keep these behaviors:
 
 1. Treat this skill as the canonical active-issue implementation workflow.
 2. Execute one ready GitHub issue or backlog slice at a time.
-3. Use `dev` as the integration target.
+3. Use the repo's active integration branch, preferring `dev` only when the repo
+   actually has one.
 4. Use vertical behavior-first TDD: behavior, failing test, minimal code,
    verification, refactor while green, repeat.
 5. Prefer Vectrix for substantial implementation, with a coordinating agent

@@ -1028,3 +1028,23 @@ credit_note: Adapted primarily from Compound Engineering's mode-aware research a
 reviewer: Merlin
 next_review: After the next real project kickoff uses grounding before shaping
 ```
+
+```yaml
+id: 2026-05-27-final-taxonomy-cleanup
+date: 2026-05-27
+discipline: final-taxonomy-cleanup
+status: adopted
+source: Local taxonomy review after completed external-source adaptation slices
+source_url: local repository
+source_ref: feat/external-skill-adaptation after PR #15
+source_path: README.md; methodology/DISCIPLINES.md; implement-issue/SKILL.md; implement-issue/PROVENANCE.md; project-kickoff/SKILL.md; project-manager/SKILL.md; test-ci-policy/SKILL.md
+license: repository-local decision
+local_target: README.md; methodology/DISCIPLINES.md; methodology/disciplines/final-taxonomy-cleanup.md; implement-issue/SKILL.md; implement-issue/PROVENANCE.md
+influence_type: structural
+summary: Consolidate the final runtime skill taxonomy and remove remaining over-broad or stale ownership language before integration.
+local_adaptation: Rewrote the README and discipline map around current workflow owners, folded/deferred disciplines, completed adaptation slices, and rejected/superseded runtime owners. Adjusted implement-issue to discover the repo integration branch instead of hard-coding dev, while still preferring dev when the repo actually uses it.
+rationale: The adaptation branch should integrate as a coherent local skill system, not a sequence of source-inspired additions. Final cleanup reduces accidental trigger overlap and avoids creating new skills without clear use cases.
+credit_note: Local consolidation decision from Ronald and Merlin after reviewing the completed external-source adaptation work.
+reviewer: Merlin
+next_review: After the external-skill-adaptation branch is integrated and exercised on a real project
+```
