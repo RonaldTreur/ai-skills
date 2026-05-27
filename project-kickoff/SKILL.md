@@ -1,15 +1,16 @@
 ---
 name: project-kickoff
-description: "Shape a new project before implementation: clarify the brief, explore competing product/design directions, capture decisions, and produce handoff-ready BRIEF.md, DESIGN.md, PLAN.md, and DECISIONS.md. Use for greenfield or major new-project starts before project-manager decomposes work."
+description: "Shape a new project before implementation: run early grounding/research when it can change direction, clarify the brief, explore competing product/design directions, capture decisions, and produce handoff-ready BRIEF.md, DESIGN.md, PLAN.md, and DECISIONS.md. Use for greenfield or major new-project starts before project-manager decomposes work."
 ---
 
 # Project Kickoff
 
 Use this skill to turn a rough project idea into durable direction artifacts.
-Kickoff owns product shaping, surface detection, domain/decision clarity,
-implementation guardrails, and decision capture. It does not own detailed
-frontend design, GitHub issue decomposition, long-running delivery, or active
-implementation; hand off to the right owner after each boundary.
+Kickoff owns product shaping, early research/discovery, surface detection,
+domain/decision clarity, implementation guardrails, and decision capture. It
+does not own detailed frontend design, GitHub issue decomposition, long-running
+delivery, or active implementation; hand off to the right owner after each
+boundary.
 
 ## Ownership Boundary
 
@@ -44,6 +45,9 @@ implementation; hand off to the right owner after each boundary.
 
 - **Grill the domain before planning.** Resolve overloaded terms and hidden
   assumptions before they become design or implementation drift.
+- **Ground before shaping.** Use the cheapest sufficient discovery pass before
+  locking the brief, design direction, or plan. Skip research when it would not
+  change the decision.
 - **Visual frontend work is routed out.** If the project has a browser UI,
   dashboard, landing page, or visual frontend, use [[frontend-design]] for the
   divergent visual design exploration.
@@ -57,6 +61,56 @@ implementation; hand off to the right owner after each boundary.
 - **Stress-test fuzzy language.** If terms like "account", "project", "admin",
   "publish", or "sync" are overloaded, resolve the domain meaning and record it
   in `DECISIONS.md`.
+
+## Grounding Before Shaping
+
+Use discovery when a project idea depends on facts outside the user's initial
+prompt or when "surprise me" needs real substance. The point is to inform the
+brief, product direction, and plan; do not turn kickoff into a standing research
+report workflow.
+
+Classify the research need:
+
+- **Current/social signal**: what people are saying now, recent tools, market
+  movement, prompt patterns, or recommendations. Use `last30days`, `x_search`,
+  Reddit/X sources, and Brave-backed web search when current signal can change
+  the direction.
+- **Deep external research**: competitive landscape, prior art, trends, or
+  source-backed decision support. Use `deep-research` only when a saved report
+  is worth the time and token cost.
+- **Repo/project discovery**: existing docs, code, issues, decisions, strategy,
+  user feedback, or prior project artifacts. Read local context before asking
+  the user to restate it.
+- **Memory/session discovery**: relevant OpenClaw memory, session snapshots, or
+  channel history when continuity affects the project framing.
+
+Default to a compact grounding digest:
+
+```markdown
+## Grounding
+- **Research value:** high | moderate | low | unavailable
+- **Searched:** [sources, tools, files, issues, memory]
+- **Strongest findings:** [decision-relevant findings]
+- **Weak or conflicting signals:** [uncertainty and contradictions]
+- **Implication:** [how this changes or confirms the brief/design/plan]
+- **Next action:** [one concrete step or blocker]
+```
+
+Keep the digest in `<project>/context/grounding.md` or fold it into `BRIEF.md`
+when short. Link full reports instead of pasting them into runtime kickoff
+artifacts.
+
+Skip discovery when:
+
+- the work is already scoped by approved project docs
+- the request is a tiny implementation task
+- current external signal is unlikely to change product, design, or platform
+  direction
+- the user is asking for execution, not shaping
+- research would only delay an answer the existing context already supports
+
+When research surfaces a durable product, domain, or platform decision, record
+it through [[documentation-handoff]] in `DECISIONS.md`.
 
 ## Project Type Detection
 

@@ -16,6 +16,16 @@ Do not ask for information that can be discovered from local context. If the
 project is in an existing repo, inspect the relevant docs and code before
 asking.
 
+Run a lightweight grounding pass when outside context could change the brief:
+
+- current market, social, or tool signal
+- prior art, competitors, or adjacent products
+- existing repo/project/memory context
+- user-supplied URLs, artifacts, or references
+
+Keep the result compact. Capture only decision-relevant findings, weak signals,
+and implications for the brief.
+
 ### 2. Resolve Only Blocking Ambiguity
 
 Generate clarifying questions only for decisions that affect scope, data,
@@ -74,6 +84,9 @@ Use this structure:
 
 ## Data And State
 [Entities, relationships, persistence, ownership, lifecycle, and privacy notes.]
+
+## Grounding
+[Research value, sources checked, strongest findings, weak/conflicting signals, and implications.]
 
 ## Surfaces
 [Pages, views, commands, notifications, background jobs, or integrations.]

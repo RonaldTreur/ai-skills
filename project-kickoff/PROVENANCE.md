@@ -19,6 +19,8 @@ Keep these behaviors:
    code choreography.
 6. Kickoff hands off to `project-manager` for test planning, issue
    decomposition, readiness checks, and implementation routing.
+7. Early research/discovery happens inside kickoff when outside context can
+   change the brief, design direction, or planning guardrails.
 
 ## Source Influence
 
@@ -37,11 +39,16 @@ What we took:
   design workflow when visual direction matters.
 - Planning review should surface close calls and scope/taste decisions instead
   of auto-deciding them.
+- Research-like work should check prior learnings and separate page/browser
+  evidence from broader investigation.
 
 Local adaptation:
 
 - The visual design-shotgun behavior now lives in `frontend-design`; kickoff
   only detects that a visual frontend is needed and passes the right artifacts.
+- Kept the idea of prior-learning checks as a lightweight kickoff grounding
+  rule without importing GStack memory, telemetry, update checks, or browser
+  machinery.
 
 ### Compound Engineering
 
@@ -57,12 +64,19 @@ What we took:
 - Plans should capture guardrails, scope, risks, test scenarios, and stable work
   units without pre-writing implementation code.
 - Learning and decisions compound only when artifacts are discoverable later.
+- Web research should be mode-aware, source-weighted, compact, and explicit
+  about research value, prior art, adjacent solutions, market signals, weak
+  signals, and stop rules.
+- "Surprise me" works only when there is enough substance from a repo, supplied
+  artifact, URL, memory topic, or current social/web signal.
 
 Local adaptation:
 
 - Routed frontend-specific design context detection and thesis checkpoints to
   `frontend-design`; kept stable `U<N>` work units and explicit
   `project-manager` handoff in kickoff.
+- Folded research/discovery into kickoff as "Grounding Before Shaping" rather
+  than creating a standalone research router skill.
 
 ### SuperPowers
 
@@ -76,12 +90,16 @@ What we took:
 
 - Subagents need explicit scope, file paths, expected output, and fresh context.
 - Plans need clear file responsibilities, tests, and task decomposition.
+- Project context should be explored before asking clarifying questions, and
+  alternatives should be presented with tradeoffs before settling.
 
 Local adaptation:
 
 - Kickoff now passes paths and artifacts to bounded subagents and leaves issue
   decomposition to `project-manager` rather than embedding a full execution
   workflow in kickoff.
+- Adopted context-first question discipline without making brainstorming a hard
+  gate for every small change.
 
 ### Matt Pocock Skills
 
@@ -96,12 +114,16 @@ What we took:
 - Challenge fuzzy domain language and ask one precise question at a time when a
   decision truly needs the user.
 - Explore existing docs/code instead of asking when the answer is discoverable.
+- Use project language from existing docs, code, and decisions when shaping PRDs
+  or downstream issues.
 
 Local adaptation:
 
 - Domain grilling is now central to Phase 1. Kickoff resolves ambiguous terms
   and records domain decisions in `DECISIONS.md` without introducing separate
   glossary/ADR files by default.
+- Grounding guidance now reinforces answering from existing artifacts before
+  asking the user to restate context.
 
 ## Rejected Material
 
@@ -114,6 +136,8 @@ Local adaptation:
   conflict with the local guardrails-not-choreography planning boundary.
 - Compound's heavier multi-agent organizational loop; kickoff keeps optional
   perspectives rather than mandatory specialist pipelines.
+- A standalone `research-discovery` runtime skill; research routing is folded
+  into kickoff until repeated non-kickoff use justifies promotion.
 - Direct handoff from kickoff to implementation; this is superseded by the local
   `project-manager` boundary.
 
