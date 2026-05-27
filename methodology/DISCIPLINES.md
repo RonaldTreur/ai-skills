@@ -11,6 +11,7 @@ Use this map to review external sources against the real project-development rou
 - Debugging: `debugging`
 - Code review: `code-review`
 - Skill review and promotion: `skill-review`
+- Skill inventory maintenance and cleanup: `skill-maintenance`
 - Agent orchestration and delegation: `agent-delegation`
 - GitHub label automation: `gh-pipeline`
 - Browser QA: `browser-qa`
@@ -52,6 +53,7 @@ Use this map to review external sources against the real project-development rou
 
 - Debugging
 - Research and discovery
+- Skill maintenance and cleanup
 - Skill review
 - Code review
 - Implementation lifecycle

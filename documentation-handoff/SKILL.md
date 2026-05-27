@@ -1,6 +1,6 @@
 ---
 name: documentation-handoff
-description: "Create and maintain durable documentation and handoff state for software projects. Use when writing README/AGENTS updates, DELIVERY_STATE.md, DECISIONS.md, ADRs, PR handoffs, issue handoffs, continuation notes, or recovery summaries across project kickoff, management, implementation, review, and session boundaries."
+description: "Create durable project docs and handoff state: README/AGENTS updates, DELIVERY_STATE.md, DECISIONS.md, ADRs, PR/issue handoffs, continuation notes, and recovery summaries."
 ---
 
 # Documentation Handoff
@@ -35,8 +35,9 @@ long narrative. Do not use docs to hide unresolved decisions.
 - `DECISIONS.md`: accepted decisions, rejected alternatives, assumptions, and
   dated rationale.
 - `DELIVERY_STATE.md`: current implementation checkpoint for active work.
-- ADRs or `docs/`: durable architecture, operations, or domain explanations when
-  the detail is too large for README or DECISIONS.
+- ADRs in `docs/adr/`: durable technical decisions and tradeoffs.
+- Other `docs/`: architecture, operations, or domain explanations when the
+  detail is too large for README, DECISIONS, or one ADR.
 
 Use existing project conventions first. Do not invent a second doc system when
 the repo already has one.
@@ -48,6 +49,8 @@ Update durable docs when:
 - a new project is created or first organized
 - a kickoff decision is accepted or a rejected alternative matters later
 - setup, commands, auth, seed data, fixtures, or deployment behavior changes
+- a technical decision shapes architecture, data, auth, platform, deployment,
+  integration boundaries, or major library/framework choice
 - an issue is decomposed from planning artifacts
 - long-running implementation reaches a meaningful checkpoint
 - a PR introduces behavior, operations, or constraints future agents need
@@ -103,13 +106,12 @@ GitHub first and update the file.
 
 ## Decision Capture
 
-Use `DECISIONS.md` when a choice will shape later work:
+Use `DECISIONS.md` when a broad choice will shape later work:
 
 - product direction
-- architecture or platform
 - UX/design direction
 - testing/QA strategy
-- auth, data, deployment, or operational policy
+- workflow, scope, operational policy, or non-technical assumptions
 - rejected alternatives that are likely to be proposed again
 
 Each entry should include:
@@ -122,6 +124,25 @@ Each entry should include:
 
 Do not record every small coding preference. Use the repo's existing formatter,
 lint, and conventions for that.
+
+## Architecture Decision Records
+
+Use an ADR when a technical choice would be expensive to rediscover or reverse:
+
+- platform, storage, queue, cache, auth, tenancy, or deployment model
+- public API, data model, migration, integration, or boundary shape
+- major library/framework/runtime choice
+- intentional deviation from local defaults or established project conventions
+- rejected architecture alternative likely to be proposed again
+
+Do not create ADRs for routine implementation details, small refactors, naming,
+formatting, or choices already obvious from local conventions.
+
+Default location: `docs/adr/NNNN-short-title.md`. Use the repo's existing ADR
+location or numbering if present.
+
+Use [references/adr-template.md](references/adr-template.md) when creating a
+new ADR. Keep ADRs short enough to review in normal project work.
 
 ## PR And Issue Handoffs
 

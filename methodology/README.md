@@ -23,5 +23,6 @@ Use the `external-skill-adaptation` skill when adding to this folder.
 - SuperPowers
 - Compound Engineering
 - Matt Pocock skills
+- Steipete Agent Scripts
 
 This list is intentionally small. Add sources only when they are worth comparing deeply.

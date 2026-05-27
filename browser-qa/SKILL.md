@@ -1,6 +1,6 @@
 ---
 name: browser-qa
-description: "Run browser-based QA for web applications using a real or automated browser. Use when asked to QA a site, smoke-test a preview, verify user-visible browser behavior, inspect a PR or post-merge build, check UI/routing/forms/responsive behavior, or confirm that a web change works in the browser. Do not use for writing long-lived Playwright E2E tests; use e2e-playwright for that."
+description: "Run browser QA for web apps: preview smoke tests, PR/post-merge checks, user-visible behavior, UI, routing, forms, and responsive verification. Use e2e-playwright for durable E2E tests."
 ---
 
 # Browser QA

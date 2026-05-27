@@ -1,6 +1,6 @@
 ---
 name: unit-vitest
-description: "Write and maintain Vitest unit and integration tests for TypeScript projects. Use when adding behavior-focused unit coverage, testing domain logic, validating API/Worker boundaries, reviewing mocks/factories, or enforcing justified coverage from TEST_PLAN.md."
+description: "Write and maintain Vitest unit/integration tests for TypeScript projects: behavior coverage, domain logic, API/Worker boundaries, mocks, factories, and TEST_PLAN.md coverage."
 ---
 
 # Unit Testing with Vitest

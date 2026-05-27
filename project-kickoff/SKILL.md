@@ -1,32 +1,27 @@
 ---
 name: project-kickoff
-description: "Shape a new project before implementation: run early grounding/research when it can change direction, clarify the brief, explore competing product/design directions, capture decisions, and produce handoff-ready BRIEF.md, DESIGN.md, PLAN.md, and DECISIONS.md. Use for greenfield or major new-project starts before project-manager decomposes work."
+description: "Shape greenfield or major projects before implementation: grounding, brief, product/design direction, decisions, and handoff-ready BRIEF.md, DESIGN.md, PLAN.md, and DECISIONS.md."
 ---
 
 # Project Kickoff
 
-Use this skill to turn a rough project idea into durable direction artifacts.
-Kickoff owns product shaping, early research/discovery, surface detection,
-domain/decision clarity, implementation guardrails, and decision capture. It
-does not own detailed frontend design, GitHub issue decomposition, long-running
-delivery, or active implementation; hand off to the right owner after each
-boundary.
+Turn a rough project idea into durable direction artifacts. Own product shaping,
+early discovery, surface detection, domain clarity, implementation guardrails,
+and decisions. Do not own detailed frontend design, GitHub issue decomposition,
+long-running delivery, or active implementation.
 
 ## Ownership Boundary
 
-- `project-kickoff` owns the initial `BRIEF.md`, `DESIGN.md`, `PLAN.md`, and
+- `project-kickoff`: initial `BRIEF.md`, `DESIGN.md`, `PLAN.md`,
   `DECISIONS.md`.
-- [[project-manager]] owns repo/project setup, testable readiness, issue
-  decomposition, project boards, and selecting implementation slices.
-- [[test-planning]] owns `TEST_PLAN.md` before broad test work begins.
-- [[developing-web-projects]] owns web architecture and stack conventions.
-- [[frontend-design]] owns visual frontend design exploration when a project has
-  a browser UI, dashboard, landing page, or other visual frontend.
-- [[browser-qa]] owns real browser verification for generated web prototypes.
-- [[agent-delegation]] owns delegation mechanics when kickoff uses critique,
-  risk-review, or variant-generation agents.
-- [[documentation-handoff]] owns durable artifact roles, decision capture, and
-  handoff shape for kickoff outputs.
+- [[project-manager]]: repo setup, readiness, issues, project boards, next
+  implementation slices.
+- [[test-planning]]: `TEST_PLAN.md` before broad test work.
+- [[developing-web-projects]]: web architecture and stack conventions.
+- [[frontend-design]]: visual frontend exploration.
+- [[browser-qa]]: real browser verification for generated web prototypes.
+- [[agent-delegation]]: critique/risk/variant agent handoffs.
+- [[documentation-handoff]]: artifact roles, decisions, handoff shape.
 
 ## Ground Rules
 
@@ -37,6 +32,8 @@ boundary.
   ceremony.
 - Record every significant choice and rejected alternative in `DECISIONS.md`
   using [[documentation-handoff]].
+- Create an ADR via [[documentation-handoff]] when a technical choice shapes
+  architecture, data, auth, platform, deployment, or integration boundaries.
 - Prefer artifacts over chat summaries. The project folder is the durable state.
 - Do not hand directly to implementation until [[project-manager]] has checked
   setup, testability, issue slicing, and dependencies.
@@ -48,14 +45,12 @@ boundary.
 - **Ground before shaping.** Use the cheapest sufficient discovery pass before
   locking the brief, design direction, or plan. Skip research when it would not
   change the decision.
-- **Visual frontend work is routed out.** If the project has a browser UI,
-  dashboard, landing page, or visual frontend, use [[frontend-design]] for the
-  divergent visual design exploration.
+- **Visual frontend work is routed out.** Browser UI, dashboards, landing pages,
+  and visual frontends use [[frontend-design]] for divergent design.
 - **Non-visual design stays here.** Bot-only, backend-only, CLI, and automation
   projects still need interaction/artifact design, but not frontend-design.
-- **Plans are guardrails, not choreography.** `PLAN.md` records scope,
-  decisions, work units, dependencies, risks, files, and test scenarios without
-  pre-writing brittle implementation code.
+- **Plans are guardrails, not choreography.** `PLAN.md` records scope, work
+  units, dependencies, risks, files, and tests without pre-writing code.
 - **Use stable work-unit IDs.** Plan units use IDs such as `U1`, `U2`, `U3` so
   later issues, blockers, and PRs can reference them without renumbering chaos.
 - **Stress-test fuzzy language.** If terms like "account", "project", "admin",
@@ -64,27 +59,22 @@ boundary.
 
 ## Grounding Before Shaping
 
-Use discovery when a project idea depends on facts outside the user's initial
-prompt or when "surprise me" needs real substance. The point is to inform the
-brief, product direction, and plan; do not turn kickoff into a standing research
-report workflow.
+Use discovery when outside facts can change the brief, product direction, or
+plan. Do not turn kickoff into a standing research report workflow.
 
 Classify the research need:
 
-- **Current/social signal**: what people are saying now, recent tools, market
-  movement, prompt patterns, or recommendations. Use `last30days`, `x_search`,
-  Reddit/X sources, and Brave-backed web search when current signal can change
-  the direction.
-- **Deep external research**: competitive landscape, prior art, trends, or
-  source-backed decision support. Use `deep-research` only when a saved report
-  is worth the time and token cost.
-- **Repo/project discovery**: existing docs, code, issues, decisions, strategy,
-  user feedback, or prior project artifacts. Read local context before asking
-  the user to restate it.
-- **Memory/session discovery**: relevant OpenClaw memory, session snapshots, or
-  channel history when continuity affects the project framing.
+- **Current/social signal**: use `last30days`, `x_search`, Reddit/X, and
+  Brave-backed web search only when current signal can change direction.
+- **Deep external research**: use `deep-research` when a saved report is worth
+  the time and token cost.
+- **Repo/project discovery**: read existing docs, code, issues, decisions, and
+  prior artifacts before asking the user to restate them.
+- **Memory/session discovery**: use relevant OpenClaw memory/session/channel
+  history when continuity affects framing.
 
-Default to a compact grounding digest:
+Default to a compact grounding digest in `<project>/context/grounding.md` or
+`BRIEF.md` when short:
 
 ```markdown
 ## Grounding
@@ -96,16 +86,11 @@ Default to a compact grounding digest:
 - **Next action:** [one concrete step or blocker]
 ```
 
-Keep the digest in `<project>/context/grounding.md` or fold it into `BRIEF.md`
-when short. Link full reports instead of pasting them into runtime kickoff
-artifacts.
-
 Skip discovery when:
 
 - the work is already scoped by approved project docs
 - the request is a tiny implementation task
-- current external signal is unlikely to change product, design, or platform
-  direction
+- current signal is unlikely to change product, design, or platform direction
 - the user is asking for execution, not shaping
 - research would only delay an answer the existing context already supports
 
@@ -117,49 +102,24 @@ it through [[documentation-handoff]] in `DECISIONS.md`.
 Before Phase 1, classify the project:
 
 - **Visual frontend**: website, web app, dashboard, admin panel, landing page,
-  browser tool, or UI-heavy frontend feature.
-- **Discord bot**: slash commands, embeds, interactions, modals, scheduled bot
-  behavior.
+  browser tool, or UI-heavy feature.
+- **Discord bot**: slash commands, embeds, interactions, modals, schedules.
 - **Both**: a bot/backend plus one or more companion frontends.
 - **Non-visual software**: backend service, API, CLI, worker, automation, data
   pipeline, or other project with no user-facing visual UI.
-- **Other**: still run Phase 1 and Phase 3, but replace Phase 2 with the
-  relevant interaction or artifact design.
+- **Other**: run Phase 1 and Phase 3; replace Phase 2 with relevant artifact or
+  interaction design.
 
 If the type is unclear and cannot be inferred, ask one concise question before
 creating folders.
 
 ## Project Folder
 
-Create the project folder at the start of Phase 1:
-
-```text
-<project-name>/
-  BRIEF.md
-  DECISIONS.md
-  context/
-```
-
-During Phase 2, visual frontend projects may use temporary competing folders
-owned by [[frontend-design]]:
-
-```text
-<project-name>/
-  design-a/
-  design-b/
-```
-
-After Phase 3, the stable handoff set should follow [[documentation-handoff]]
-and normally include:
-
-```text
-<project-name>/
-  BRIEF.md
-  DESIGN.md
-  PLAN.md
-  DECISIONS.md
-  src/ or docs/
-```
+Create the project folder at Phase 1 with `BRIEF.md`, `DECISIONS.md`, and
+`context/`. Visual frontend Phase 2 may use temporary competing design folders
+owned by [[frontend-design]]. After Phase 3, the stable handoff set normally
+contains `BRIEF.md`, `DESIGN.md`, `PLAN.md`, `DECISIONS.md`, and `src/` or
+`docs/`.
 
 ## Phase Flow
 
@@ -193,49 +153,43 @@ files, risks, and test scenarios. The plan should be specific enough for issue
 decomposition, but leave implementation details to the agent working with the
 live codebase.
 
+If Phase 3 settles a significant technical direction, create or update the
+relevant ADR before handing off.
+
 ## Sub-Agent Pattern
 
 Use [[agent-delegation]] for prompt shape, status handling, and parallel-safety
 rules.
 
-Use sub-agents when independent perspectives materially improve the result:
+Use sub-agents only when independent perspectives materially improve the result:
 
 - brief critique or question generation
 - divergent product, interaction, or frontend design concepts
 - plan critique from engineering, design, or product angles
 - risk review before handoff
 
-Fresh sub-agents should read:
-
-```text
-<project>/BRIEF.md
-<project>/DESIGN.md (when available)
-<project>/DECISIONS.md
-<project>/context/<round>.md (when available)
-```
+Fresh sub-agents read only the relevant kickoff artifacts: `BRIEF.md`,
+`DESIGN.md` when available, `DECISIONS.md`, and current context notes.
 
 ## Handoff
 
-After Phase 3, hand off to [[project-manager]], not directly to an implementer:
+After Phase 3, hand off to [[project-manager]], not directly to implementation.
+Tell it to read:
 
-```text
-New project kickoff is complete.
+- `BRIEF.md`
+- `DESIGN.md`
+- `PLAN.md`
+- `DECISIONS.md`
+- relevant `docs/adr/` records
+- `src/` or `docs/`
 
-Read these files in order:
-1. <project>/BRIEF.md
-2. <project>/DESIGN.md
-3. <project>/PLAN.md
-4. <project>/DECISIONS.md
-5. <project>/src/ or <project>/docs/
+Then it should:
 
-Use [[project-manager]] to:
-- verify project readiness
-- create or update TEST_PLAN.md through [[test-planning]]
-- decompose PLAN.md work units into GitHub issues
-- identify dependencies and setup blockers
-- route implementation slices to the appropriate implementer
-```
+- verify readiness
+- create/update `TEST_PLAN.md`
+- decompose `PLAN.md` into issues
+- identify blockers
+- route implementation slices
 
-If a dedicated implementation agent is used later, it should receive the
-project-manager issue context plus the kickoff artifacts, not a raw kickoff
-handoff alone.
+Implementation agents receive project-manager issue context plus kickoff
+artifacts, not raw kickoff output alone.

@@ -5,46 +5,25 @@ description: Interactive UI design prompt builder using the TC-EBC framework. As
 
 # UI Design Prompt Builder (TC-EBC Framework)
 
-Generates high-quality UI code by walking the user through the **Task–Context–Examples–Behavior–Constraints** framework, then assembling a structured prompt for code generation.
+Build a UI generation prompt with **Task, Context, Examples, Behavior, and
+Constraints**, then generate the approved design.
 
 ## Linked Skills
 
-This skill **defers to the user's web development conventions**. Before generating code, read and follow:
+Before generating code, read and follow:
 
-- `/Users/merlin/Development/skills/developing-web-projects/SKILL.md` — architecture, styling, platform, and tooling defaults
-
-If the UI involves **Web Components**, also read:
-
-Do NOT repeat conventions from that skill here. It is the source of truth.
+- `/Users/merlin/Development/skills/developing-web-projects/SKILL.md`
 
 ## Step 1: Gather TC-EBC Inputs
 
-Ask the user up to 5 questions — one per dimension. Keep them short and specific. Skip dimensions the user already answered in their initial request.
+Ask up to 5 short questions, one per missing dimension. Skip answers already
+present in the request.
 
-### T — Task
-> What are we building? (page type, component, layout)
-
-Examples: "analytics dashboard", "settings page", "pricing section", "login form"
-
-### C — Context
-> Who is this for? What's the product/brand?
-
-Useful context: target audience, existing product, brand personality (playful/corporate/minimal), platform (desktop-first, mobile-first, both).
-
-### E — Examples
-> Any reference sites, screenshots, or styles to match?
-
-Accept: URLs, screenshots (analyze with image tool), style keywords ("like Linear", "like Stripe docs", "brutalist", "glassmorphism"). If none provided, skip — don't force it.
-
-### B — Behavior
-> Any interactions, states, or responsive requirements?
-
-Examples: hover states, modals, form validation, animations, breakpoints, dark/light mode toggle, loading states.
-
-### C — Constraints
-> Hard requirements or boundaries?
-
-Examples: must match existing color palette, specific typography, accessibility level (WCAG AA), max viewport, specific data shape.
+- **Task:** page/component/layout to build.
+- **Context:** audience, product, brand, platform.
+- **Examples:** URLs, screenshots, references, or style keywords.
+- **Behavior:** interactions, states, responsiveness, mode support.
+- **Constraints:** palette, typography, accessibility, viewport, data shape.
 
 **Smart defaults** — if the user skips a dimension, use sensible defaults:
 - Color: neutral palette with one accent color
@@ -54,7 +33,7 @@ Examples: must match existing color palette, specific typography, accessibility 
 - Mode: light mode (add dark if requested)
 - Architecture/styling/platform: whatever `developing-web-projects` specifies
 
-**Be efficient.** If the user gives a detailed initial request, you might only need 1–2 clarifying questions. Don't ask 5 questions if the answers are obvious.
+If the initial request is detailed, ask only 1-2 questions.
 
 ## Step 2: Assemble the Structured Prompt
 
@@ -86,41 +65,25 @@ Show this assembled prompt to the user for confirmation before generating. Let t
 
 **Model:** Always spawn a sub-agent with `opus` for this step. Design is a one-time investment — getting it right matters more than saving tokens.
 
-Pass the assembled TC-EBC prompt to the sub-agent along with instructions to:
+Pass the assembled TC-EBC prompt to the sub-agent. Require:
 
-1. Read `/Users/merlin/Development/skills/developing-web-projects/SKILL.md` for stack conventions
-2. Generate **all pages** needed to fulfill the design — not just one. Think through the full user flow and create every page that's required (home, dashboard, settings, detail views, error pages, etc.)
-3. **Plain HTML and CSS only** — no TypeScript, no JavaScript, no Web Components. Repeated HTML is fine; Codex will refactor into components later.
-4. No business logic, no API calls, no state management — purely what it looks like
-5. Include all visual states mentioned in Behavior (hover, active, loading, empty, dark/light)
-6. Use realistic placeholder content (not "Lorem ipsum") so the design reads like a real product
-7. Set up a **Vite project** with proper structure — pages and styles go where they belong in a real project
-8. Split CSS into multiple files where it makes sense (global styles, per-page styles, component-level styles) — use good judgment
+- read `developing-web-projects` for stack conventions
+- generate all pages needed for the full flow
+- plain HTML and CSS only; no TypeScript, JavaScript, or Web Components
+- no business logic, API calls, or state management
+- include requested visual states
+- use realistic content, not Lorem Ipsum
+- set up a Vite project with proper file structure
+- split CSS logically
 
 The sub-agent delivers:
 
-### Vite project with pages
-- Proper Vite project scaffolding (package.json, vite.config, etc.)
-- **One HTML file per page** in the appropriate location
-- Pages share common elements (nav, header, footer) — repeated HTML is fine, Codex will refactor later
-
-### Styles
-- Split CSS logically — a global stylesheet for shared styles (colors, typography, resets, layout primitives) and per-page or per-section stylesheets where it keeps things clean
-
-### Design document
-- **`DESIGN.md`** (project root) — design philosophy and decisions:
-  - Overall design direction and why
-  - Page map: what pages exist and their purpose
-  - Color palette with rationale
-  - Typography choices and scale
-  - Spacing system
-  - Layout decisions per page (why this grid/flex structure)
-  - Navigation structure
-  - Responsive strategy
-  - Visual state explanations (hover, focus, loading, empty, dark/light)
-  - Anything a developer implementing this later needs to understand the *intent*, not just the code
-
-`DESIGN.md` serves as the long-term design reference. When Codex takes over implementation, it reads this file to understand the reasoning behind visual choices — so it can make consistent decisions for new pages/components without re-running this skill.
+- Vite project scaffolding
+- one HTML file per page
+- shared repeated HTML where useful
+- global and page/section CSS files
+- `DESIGN.md` with direction, page map, palette, typography, spacing, layout,
+  navigation, responsive strategy, visual states, and implementation intent
 
 ## Step 4: Review and Iterate
 

@@ -1,6 +1,6 @@
 ---
 name: test-ci-policy
-description: "Configure or review project-wide test scripts, CI entrypoints, coverage thresholds, package-manager parity, and Vitest/Playwright enforcement policy. Use when setting up or auditing the testing enforcement layer, not for routine feature implementation or ordinary test writing."
+description: "Configure or review project-wide test scripts, CI entrypoints, coverage thresholds, package-manager parity, and Vitest/Playwright enforcement policy."
 ---
 
 # Test CI Policy

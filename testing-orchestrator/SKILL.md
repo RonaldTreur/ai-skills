@@ -1,6 +1,6 @@
 ---
 name: testing-orchestrator
-description: "Orchestrate outside-in testing for web projects: test planning, vertical behavior slices, E2E/integration tests, unit tests, fixtures/auth setup, CI verification, and handoff to browser QA. Use when turning TEST_PLAN.md or issue acceptance criteria into executable tests and verification flow."
+description: "Orchestrate outside-in testing for web projects: vertical behavior slices, E2E/integration/unit tests, fixtures/auth setup, CI verification, and browser-QA handoff."
 ---
 
 # Testing Orchestrator
@@ -69,13 +69,18 @@ handoff packet, write scope, status, and blocker reporting.
 ## Example phase prompts
 
 ### Phase 1 — Planner prompt
-"Use `e2e-playwright/roles/planner.md`. Explore the live app from a fresh state and create a structured markdown test plan in `specs/<feature>-plan.md` with clear scenario titles, numbered steps, expected outcomes, and success/failure criteria."
+Use `e2e-playwright/roles/planner.md` to explore/read the target behavior and
+write `specs/<feature>-plan.md` with scenario titles, numbered steps, expected
+outcomes, and success/failure criteria.
 
 ### Phase 2 — Generator prompt
-"Use `e2e-playwright/roles/generator.md`. Read `specs/<feature>-plan.md`, validate each scenario step live, and generate TypeScript Playwright tests (one test per file) with describe/title alignment to the plan and comments before each step."
+Use `e2e-playwright/roles/generator.md` to read the plan, validate steps live,
+and generate TypeScript Playwright tests aligned to the scenario titles.
 
 ### Phase 3 — Healer prompt
-"Use `e2e-playwright/roles/healer.md`. Run all Playwright tests, debug each failing test, apply minimal robust fixes, re-run to verify, and mark `test.fixme()` only when the app is likely broken (with comment)."
+Use `e2e-playwright/roles/healer.md` to run Playwright, debug failures, apply
+minimal robust fixes, rerun, and mark `test.fixme()` only when the app is likely
+broken, with a comment.
 
 ## Auth, Fixtures, And Test Data
 
@@ -99,37 +104,11 @@ reach it safely and repeatably.
 - Use this template when bootstrapping generator output shape
 - Keep generated tests TypeScript-only and framework-agnostic
 
-## Script conventions (`package.json`)
+## Enforcement Policy
 
-```json
-{
-  "scripts": {
-    "test": "npm run test:all",
-    "test:all": "npm run test:unit && npm run test:e2e",
-    "test:unit": "vitest run",
-    "test:unit:watch": "vitest",
-    "test:unit:coverage": "vitest run --coverage",
-    "test:e2e": "playwright test",
-    "test:e2e:ui": "playwright test --ui"
-  }
-}
-```
-
-## Coverage policy
-
-- Default enforcement: 100% lines/statements/functions/branches for owned
-  TypeScript modules.
-- Exclusions must be explicit in `TEST_PLAN.md` with rationale.
-- Ask before lowering thresholds globally.
-- Do not chase meaningless coverage by testing private structure. Prefer public
-  behavior, edge cases, and failure paths.
-
-## CI/CD policy
-- Use the same scripts locally and in GitHub Actions
-- Install browsers in CI before E2E
-- Store artifacts (trace/screenshots/videos) on failures
-- Ensure CI has deterministic fixtures, seed data, and preview commands before
-  relying on E2E coverage
+Use [[test-ci-policy]] for package scripts, CI entrypoints, Playwright artifacts,
+and coverage thresholds. This skill only decides how test work flows; it should
+not duplicate the enforcement policy.
 
 ## When E2E or unit tests may not make sense
 - Skip E2E only for non-user-visible/internal-only changes

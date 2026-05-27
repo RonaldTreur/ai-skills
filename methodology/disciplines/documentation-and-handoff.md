@@ -89,6 +89,9 @@ recoverable handoff packet must contain.
   - Created a shared owner for artifact roles, update triggers, handoff packets,
     `DELIVERY_STATE.md`, `DECISIONS.md`, PR/issue handoffs, quality rules, and
     recovery.
+  - Later ADR extension: `2026-05-28-documentation-handoff-adr-support`
+    split broad `DECISIONS.md` choices from technical ADRs and added a compact
+    ADR template.
 - `project-manager/SKILL.md`
   - Provenance entry: `2026-05-26-documentation-handoff-owner-skill`
   - Pointed documentation and recovery mechanics to `documentation-handoff`.
@@ -116,6 +119,8 @@ cross-skill ownership boundary rather than their original source influence.
 
 - Rejected mandatory documentation updates for tiny self-contained changes.
 - Rejected chat transcripts as durable documentation.
+- Rejected ADRs for routine implementation details, naming, formatting, and
+  choices already obvious from local conventions.
 - Rejected external persistent report stores, telemetry, generated preambles,
   command modes, and artifact schemas.
 - Deferred any automated docs validator or handoff template generator.

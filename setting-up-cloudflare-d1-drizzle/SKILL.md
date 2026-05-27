@@ -1,6 +1,6 @@
 ---
 name: setting-up-cloudflare-d1-drizzle
-description: Implement Cloudflare D1 + Drizzle ORM integration in a Workers project. Use when wiring a D1 binding into Wrangler/Env, defining sqlite-core schema, creating a typed Drizzle D1 database, and structuring a DataStore/repository layer with migrations.
+description: "Implement Cloudflare D1 + Drizzle ORM in Workers: D1 binding, Env typing, sqlite-core schema, typed database, DataStore/repository layer, and migrations."
 ---
 
 # Cloudflare D1 + Drizzle Integration (Workers)

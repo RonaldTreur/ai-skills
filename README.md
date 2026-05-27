@@ -39,8 +39,8 @@ Core lifecycle owners:
 - `implement-issue/`: one ready issue or backlog slice through branch, tests,
   implementation, review, PR, merge, and post-merge QA.
 - `documentation-handoff/`: README/AGENTS roles, project artifacts,
-  `DELIVERY_STATE.md`, decisions, PR/issue handoffs, blockers, and recovery
-  summaries.
+  `DELIVERY_STATE.md`, `DECISIONS.md`, ADRs, PR/issue handoffs, blockers, and
+  recovery summaries.
 
 Specialist owners:
 
@@ -50,6 +50,9 @@ Specialist owners:
   convention, and test-risk review.
 - `skill-review/`: skill activation accuracy, context cost, progressive
   disclosure, safety, and realistic behavior.
+- `skill-maintenance/`: skill inventory audits and focused cleanup for
+  duplicate skills, superseded skills, long descriptions, repeated prose,
+  overlap, and prompt-budget pressure.
 - `agent-delegation/`: handoff mechanics for work sent to another agent,
   runtime, or subagent.
 

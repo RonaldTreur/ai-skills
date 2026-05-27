@@ -119,9 +119,9 @@ What we took:
 
 Local adaptation:
 
-- Domain grilling is now central to Phase 1. Kickoff resolves ambiguous terms
-  and records domain decisions in `DECISIONS.md` without introducing separate
-  glossary/ADR files by default.
+- Domain grilling is now central to Phase 1. Kickoff resolves ambiguous terms,
+  records broad choices in `DECISIONS.md`, and routes durable technical
+  architecture choices to ADRs through `documentation-handoff`.
 - Grounding guidance now reinforces answering from existing artifacts before
   asking the user to restate context.
 

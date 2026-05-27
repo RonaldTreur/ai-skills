@@ -1,6 +1,6 @@
 ---
 name: agent-delegation
-description: "Use only after deciding to delegate work to another agent, runtime, or subagent. Defines clear scope, context, write boundaries, status reporting, parallel-safety checks, and integration review for selected issue handoffs, spawned subagents, or genuinely independent parallel tasks."
+description: "Use after deciding to delegate work to another agent/runtime/subagent. Defines scope, context, write boundaries, status reporting, parallel safety, and integration review."
 ---
 
 # Agent Delegation

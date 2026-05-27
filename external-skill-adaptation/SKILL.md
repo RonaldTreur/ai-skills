@@ -1,6 +1,6 @@
 ---
 name: external-skill-adaptation
-description: Compare external agent skills, prompts, instructions, or methodology repos against this ai-skills repository and adapt useful ideas into local skills with explicit attribution. Use when reviewing third-party agent methodology sources, revisiting previously reviewed sources after updates, creating discipline-by-discipline skill improvements, or maintaining provenance logs for borrowed, paraphrased, inspired, rejected, or superseded external ideas.
+description: Compare external agent skills, prompts, instructions, or methodology repos against this ai-skills repository, adapt useful local improvements, and maintain attribution/provenance.
 ---
 
 # External Skill Adaptation
