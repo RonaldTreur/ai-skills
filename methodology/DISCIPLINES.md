@@ -34,6 +34,7 @@ Use this map to review external sources against the real project-development rou
 ## Completed Vertical Slices
 
 - Debugging
+- Research and discovery
 - Skill review
 - Code review
 - Implementation lifecycle
@@ -48,4 +49,4 @@ Use this map to review external sources against the real project-development rou
 
 ## Next Candidate Slices
 
-- Research and discovery
+- Final taxonomy cleanup

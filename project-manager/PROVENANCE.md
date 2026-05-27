@@ -19,6 +19,9 @@ Keep these behaviors:
    project readiness concerns, not late implementation surprises.
 8. Recover stale project state from GitHub truth first, then local handoff
    files.
+9. Use kickoff artifacts as the main research/discovery input; project-manager
+   only refreshes repo, issue, PR, memory, or external context when it can
+   change backlog or next-work decisions.
 
 ## Source Influence
 
@@ -79,8 +82,27 @@ Local adaptation:
 - `project-manager` now checks project readiness before feature decomposition
   and creates setup issue drafts for missing verification infrastructure.
 
+### Research And Discovery Fold-In
+
+- Source: local research/discovery review
+- Reviewed ref: `feat/research-discovery-adaptation` on 2026-05-27
+- Reviewed material: `methodology/disciplines/research-and-discovery.md`,
+  `project-kickoff/SKILL.md`
+- License: repository-local decision
+
+What we took:
+- Early research/discovery belongs in `project-kickoff`, where it can shape the
+  brief, design direction, and planning guardrails.
+- Project-manager should refresh research or memory only when it changes
+  backlog, scope, priority, setup, or next-work decisions.
+
+Local adaptation:
+- Added narrow intake and stale-state recovery language without turning
+  project-manager into another research router.
+
 ## Formal Trail
 
 - `methodology/disciplines/implementation-lifecycle.md`
 - `methodology/disciplines/project-lifecycle-monitoring.md`
+- `methodology/disciplines/research-and-discovery.md`
 - `methodology/ADAPTATION_LOG.md`

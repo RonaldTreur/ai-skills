@@ -38,6 +38,8 @@ invoke [[implement-issue]] with a compact handoff.
 - Repo-local docs are project memory. Use [[documentation-handoff]] for artifact
   roles such as `BRIEF.md`, `DESIGN.md`, `PLAN.md`, `TEST_PLAN.md`,
   `DECISIONS.md`, `DELIVERY_STATE.md`, ADRs, and specs.
+- For new or fuzzy projects, expect [[project-kickoff]] to own research and
+  discovery before project-manager decomposes work.
 - Issues should be independently mergeable slices with explicit dependencies.
 - Project setup must make local verification, CI, test data, and browser QA
   practical before feature work depends on them.
@@ -88,7 +90,11 @@ Ask before:
    - `specs/**/*.md`
    - `.github/workflows/**/*.yml`
    - `package.json`
-4. Extract:
+4. Read relevant repo, issue, PR, and memory context before asking the user to
+   restate project state. Use current external research only when it can change
+   backlog, scope, priority, or setup decisions; otherwise rely on kickoff
+   artifacts and GitHub truth.
+5. Extract:
    - product goal
    - current phase
    - integration branch
@@ -220,7 +226,9 @@ When recovering stale or ambiguous project state:
 2. Reconcile `DELIVERY_STATE.md` with GitHub state.
 3. Identify the current integration branch and active feature branches.
 4. Separate ready work from blocked work.
-5. Report one next concrete action instead of a broad project summary when the
+5. Re-check local docs, issue comments, and memory/session context only when
+   they can change the next-work decision.
+6. Report one next concrete action instead of a broad project summary when the
    user is waiting for a decision.
 
 ### 6. Lifecycle Monitoring

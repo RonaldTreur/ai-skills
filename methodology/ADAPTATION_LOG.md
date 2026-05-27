@@ -1008,3 +1008,23 @@ credit_note: Adapted from local lifecycle needs and external planning, evidence,
 reviewer: Merlin
 next_review: After the first real project uses documentation-handoff through kickoff, implementation, and PR recovery
 ```
+
+```yaml
+id: 2026-05-27-research-discovery-folded-into-kickoff
+date: 2026-05-27
+discipline: research-and-discovery
+status: adapted
+source: Local research skills plus external research, ideation, and question-discipline sources
+source_url: local workspace skills; https://github.com/everyinc/compound-engineering-plugin; https://github.com/garrytan/gstack; https://github.com/obra/superpowers; https://github.com/mattpocock/skills
+source_ref: local files reviewed 2026-05-27; Compound 5297a9440fa009822ceef8052b9e644e782281e1; GStack 61c9a20bd2e3a579c3d6184ed2fc95b51a528f7c; SuperPowers f2cbfbefebbfef77321e4c9abc9e949826bea9d7; Matt Pocock b8be62ffacb0118fa3eaa29a0923c87c8c11985c
+source_path: /Users/merlin/.openclaw/workspace-main/skills/last30days/SKILL.md; /Users/merlin/.openclaw/workspace-main/skills/deep-research/SKILL.md; plugins/compound-engineering/skills/ce-ideate/SKILL.md; plugins/compound-engineering/agents/ce-web-researcher.md; plugins/compound-engineering/agents/ce-repo-research-analyst.md; investigate/SKILL.md; learn/SKILL.md; skills/brainstorming/SKILL.md; skills/engineering/grill-with-docs/SKILL.md
+license: mixed local guidance and MIT sources
+local_target: project-kickoff/SKILL.md; project-kickoff/phases/phase-1-brief.md; project-manager/SKILL.md; README.md; methodology/DISCIPLINES.md
+influence_type: structural
+summary: Fold research and discovery into project kickoff instead of creating a standalone research router skill.
+local_adaptation: Added kickoff grounding before shaping, with routing across current/social signal, deep reports, repo discovery, memory/session discovery, compact grounding digests, and explicit skip rules. Project-manager received only narrow intake/recovery guidance for refreshing context when it can change backlog or next-work decisions.
+rationale: The repeated local pain is weak early project framing, not lack of search tools. Kickoff is where current signal, prior art, competitor checks, repo/memory discovery, and "surprise me" opportunity discovery most affect decisions; a separate runtime skill would mostly duplicate routing already better owned by kickoff.
+credit_note: Adapted primarily from Compound Engineering's mode-aware research and digest contract, with GStack prior-learning habits, SuperPowers context-first question discipline, and Matt Pocock domain-language pressure.
+reviewer: Merlin
+next_review: After the next real project kickoff uses grounding before shaping
+```
