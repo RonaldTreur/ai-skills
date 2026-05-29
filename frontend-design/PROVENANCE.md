@@ -43,7 +43,7 @@ Local adaptation:
 - Treat screenshots or video as fallback evidence when remote preview is
   blocked, not as an equivalent review surface.
 
-### Existing UI Design Prompt Skill
+### Former UI Design Prompt Skill
 
 - Date: 2026-05-25
 - Source: `/Users/merlin/Development/skills/ui-design-prompt/SKILL.md`
@@ -71,8 +71,8 @@ design workflow became the primary owner.
 Local adaptation:
 
 - Moved TC-EBC framing into `frontend-design` as an input/prompt-export frame.
-- Narrowed `ui-design-prompt` to prompt export for external UI generators and
-  one-off design workers.
+- Renamed and narrowed `ui-design-prompt` to `design-prompt-export` for
+  external UI generators and one-off design workers.
 - Removed its competing production-design/code-generation workflow.
 
 ### Hallmark-Inspired Design Guidance

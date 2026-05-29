@@ -1,9 +1,9 @@
 ---
-name: ui-design-prompt
+name: design-prompt-export
 description: Export approved UI direction into a copy-paste prompt for external UI generators or one-off design workers; do not use as the primary design workflow.
 ---
 
-# UI Design Prompt Export
+# Design Prompt Export
 
 Export an approved or nearly-approved UI direction into a structured prompt.
 This is a helper, not the primary design workflow.

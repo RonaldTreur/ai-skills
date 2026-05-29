@@ -53,7 +53,7 @@ id: 2026-05-25-frontend-design-input-taxonomy
 date: 2026-05-25
 discipline: frontend-design
 status: adapted
-source: existing local ui-design-prompt skill
+source: former local ui-design-prompt skill
 source_url: local file
 source_ref: 2026-05-25 local review
 source_path: /Users/merlin/Development/skills/ui-design-prompt/SKILL.md
@@ -63,7 +63,7 @@ influence_type: behavioral
 summary: Frontend design variants should account for task, context, examples, behavior, and constraints, and should cover the relevant user flow.
 local_adaptation: Added lightweight design-input checks and full-flow/page-map expectations while rejecting fixed questionnaires, hard-coded model choice, and Vite-only generation assumptions.
 rationale: The input taxonomy improves design completeness, but frontend-design should remain an approval workflow for divergent variants rather than a prompt-builder/code-generator wrapper.
-credit_note: Adapted from the existing local ui-design-prompt skill.
+credit_note: Adapted from the former local ui-design-prompt skill.
 reviewer: Merlin
 next_review: During the dedicated UI design prompt consolidation slice
 ```
@@ -198,18 +198,18 @@ source_url: https://github.com/Nutlope/hallmark
 source_ref: 39fe438bf930b040c7a60350d18a0e3b54a24a5a
 source_path: skills/hallmark/SKILL.md; skills/hallmark/references/macrostructures.md; skills/hallmark/references/study.md; skills/hallmark/references/design-md.md; skills/hallmark/references/slop-test.md
 license: MIT
-local_target: frontend-design/SKILL.md; frontend-design/PROVENANCE.md; ui-design-prompt/SKILL.md; project-kickoff/phases/phase-2-design.md; documentation-handoff/SKILL.md; developing-web-projects/SKILL.md
+local_target: frontend-design/SKILL.md; frontend-design/PROVENANCE.md; design-prompt-export/SKILL.md; project-kickoff/phases/phase-2-design.md; documentation-handoff/SKILL.md; developing-web-projects/SKILL.md
 influence_type: behavioral
 summary: Frontend design guidance should choose macrostructure before styling, extract design DNA from references, reject common AI-design defaults, and preserve the resulting design thesis in DESIGN.md.
 local_adaptation: Added page/app-shape grammar, anti-AI-design gates, reference-study extraction, stronger DESIGN.md expectations, and better prompt defaults without importing Hallmark runtime text or repo structure.
 rationale: The repo needed stronger taste and structure guidance for design work, but the runtime skills must stay concise and repo-native rather than becoming a vendored Hallmark clone.
 credit_note: Selectively adapted from Nutlope Hallmark's design-direction machinery.
 reviewer: Merlin
-next_review: When the frontend-design and ui-design-prompt skills are next consolidated
+next_review: When the frontend-design and design-prompt-export skills are next reviewed
 ```
 
 ```yaml
-id: 2026-05-29-ui-design-prompt-consolidation
+id: 2026-05-29-design-prompt-export-consolidation
 date: 2026-05-29
 discipline: frontend-design
 status: adopted
@@ -218,10 +218,10 @@ source_url: local file
 source_ref: feat/hallmark-design-guidance
 source_path: ui-design-prompt/SKILL.md
 license: repository-local material
-local_target: frontend-design/SKILL.md; ui-design-prompt/SKILL.md; frontend-design/PROVENANCE.md; README.md; methodology/DISCIPLINES.md
+local_target: frontend-design/SKILL.md; design-prompt-export/SKILL.md; frontend-design/PROVENANCE.md; README.md; methodology/DISCIPLINES.md
 influence_type: structural
 summary: Frontend design should have one primary workflow owner; prompt generation remains useful only as an export/helper path.
-local_adaptation: Moved TC-EBC input framing into frontend-design and narrowed ui-design-prompt to exporting approved UI direction into prompts for external generators or one-off design workers.
+local_adaptation: Moved TC-EBC input framing into frontend-design and renamed/narrowed ui-design-prompt to design-prompt-export for exporting approved UI direction into prompts for external generators or one-off design workers.
 rationale: Keeping two broad UI-design entrypoints caused routing ambiguity. The project workflow needs frontend-design, while prompt artifacts are only occasional downstream/export outputs.
 credit_note: Local taxonomy decision from Ronald and Merlin.
 reviewer: Merlin
