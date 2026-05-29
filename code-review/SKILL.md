@@ -104,6 +104,9 @@ Check:
   - Semantic CSS class names
   - MPA architecture with real HTML documents and normal navigation
   - Web Components follow proper patterns (Shadow DOM, attribute/property discipline, lifecycle)
+  - Changed CSS files still match real templates, components, pages, and states
+  - CSS selectors and state rules remain explainable from rendered markup, not
+    speculative future structure
 
 Output expectation:
 - Propose **incremental** refactor steps with clear risk/benefit
@@ -148,6 +151,12 @@ Check:
 - Performance issues (N+1, large imports, missing pagination)
 - Boundary issues (null/undefined, empty collections, coercion)
 - TypeScript quality (`any`, loose generics, missing return types)
+- CSS hygiene issues in changed stylesheets:
+  - selectors that no longer match templates/components/pages
+  - duplicate or overridden declarations left behind by iterative edits
+  - stale custom properties or token freelancing
+  - orphaned hover/focus/active/open/selected/error/loading states
+  - additive-only CSS patches that changed appearance without pruning dead rules
 - Symptom-layering smells:
   - multiple small patches in the same interaction flow without simplifying the design
   - document-level listeners added to compensate for broken local event handling
@@ -156,6 +165,13 @@ Check:
   - tests that only prove synthetic handler invocation while the real browser interaction path remains unverified
 
 If these appear, treat them as a maintainability/correctness risk, not just style. Usually this is at least **P1** when the patch changes behavior, and **P2** when it mainly increases fragility.
+
+CSS severity guidance:
+
+- User-visible breakage from selector/state mismatch is usually **P1** and can
+  be **P0** if it makes the interface unusable.
+- Dead, stale, or overridden CSS is usually **P2** unless it creates an active
+  behavior, cascade, or responsive-layout risk.
 
 ### 8) Output
 

@@ -54,6 +54,22 @@ If the user asks for an "app", assume MPA unless explicitly requesting an SPA.
 - Keep styles readable and maintainable.
 - Avoid CSS-in-JS.
 
+CSS hygiene rules:
+
+- CSS must be explainable from rendered markup and actual interactive states.
+- Do not add speculative or future-facing selectors, states, tokens, or layout
+  hooks that the current markup does not render.
+- Prefer semantic selectors tied to page, component, and document structure over
+  loose presentational naming.
+- When markup changes, remove selectors for removed structure in the same patch.
+- Treat pruning as part of CSS editing, not optional cleanup after the feature
+  is "done".
+- Review for duplicate or immediately overridden declarations while editing;
+  do not leave additive-only CSS patches that silently stack dead rules.
+- Reuse the established token system. Do not freelance new colors, spacing, or
+  custom properties unless the design direction actually changed and the new
+  token is used deliberately.
+
 Frontend design guidance for this repo:
 
 - Choose macrostructure before palette or component ornament.

@@ -166,6 +166,9 @@ Added or sharpened by this pass:
 - Critical-first risk scan.
 - Evidence and suppression rules to reduce noisy findings.
 - Skill-level provenance for `code-review`.
+- CSS review guidance for selector/markup consistency, orphaned states,
+  duplicate or overridden declarations, stale custom properties, and additive-
+  only CSS patches.
 
 ## Formal Trail
 
