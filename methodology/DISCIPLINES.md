@@ -22,7 +22,7 @@ Use this map to review external sources against the real project-development rou
 - Test/CI enforcement policy: `test-ci-policy`
 - Frontend design: `frontend-design`
 - Web architecture and implementation conventions: `developing-web-projects`
-- UI prompt building: `ui-design-prompt`
+- Design prompt export: `design-prompt-export`
 - Web Component generation: `generating-web-components`
 
 ## Folded Or Deferred Disciplines

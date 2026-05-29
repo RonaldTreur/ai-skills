@@ -17,6 +17,10 @@ Keep these behaviors:
    variants.
 7. Design enough pages or states to judge the relevant user flow.
 8. Save the approved design as durable project context.
+9. Choose macrostructure before palette/components and preserve that decision in
+   `DESIGN.md`.
+10. Study references for design DNA without cloning pixels.
+11. Reject generic AI-design defaults before review.
 
 ## Local Decisions
 
@@ -39,7 +43,7 @@ Local adaptation:
 - Treat screenshots or video as fallback evidence when remote preview is
   blocked, not as an equivalent review surface.
 
-### Existing UI Design Prompt Skill
+### Former UI Design Prompt Skill
 
 - Date: 2026-05-25
 - Source: `/Users/merlin/Development/skills/ui-design-prompt/SKILL.md`
@@ -55,6 +59,50 @@ Local adaptation:
 - Kept the full-flow/page-map expectation for prototypes and `DESIGN.md`.
 - Rejected hard-coded model selection, fixed Vite scaffolding, and single-agent
   code-generation assumptions.
+
+### UI Prompt Builder Consolidation
+
+- Date: 2026-05-29
+- Source: `/Users/merlin/Development/skills/ui-design-prompt/SKILL.md`
+
+The prompt-builder skill overlapped with `frontend-design` after the visual
+design workflow became the primary owner.
+
+Local adaptation:
+
+- Moved TC-EBC framing into `frontend-design` as an input/prompt-export frame.
+- Renamed and narrowed `ui-design-prompt` to `design-prompt-export` for
+  external UI generators and one-off design workers.
+- Removed its competing production-design/code-generation workflow.
+
+### Hallmark-Inspired Design Guidance
+
+- Date: 2026-05-29
+- Source: <https://github.com/Nutlope/hallmark>
+- Reviewed ref: `39fe438bf930b040c7a60350d18a0e3b54a24a5a`
+- Reviewed material: `skills/hallmark/SKILL.md`,
+  `skills/hallmark/references/macrostructures.md`,
+  `skills/hallmark/references/study.md`,
+  `skills/hallmark/references/design-md.md`,
+  `skills/hallmark/references/slop-test.md`
+- License: MIT
+
+What we took:
+
+- start from macrostructure before color/components
+- name the visual thesis and surface type explicitly
+- study references for structure, type roles, density, rhythm, color anchors,
+  and interaction stance
+- guard against generic AI-generated UI defaults
+- preserve rejected alternatives and anti-pattern notes in `DESIGN.md`
+
+Local adaptation:
+
+- Kept the guidance as compact runtime rules inside `frontend-design` and
+  related owner skills instead of vendoring Hallmark prompts or large reference
+  text.
+- Converted the patterns into reusable page/app-shape examples, anti-pattern
+  gates, and `DESIGN.md` expectations that fit this repo's skill taxonomy.
 
 ## Source Influence
 

@@ -125,6 +125,24 @@ Each entry should include:
 Do not record every small coding preference. Use the repo's existing formatter,
 lint, and conventions for that.
 
+## DESIGN.md Expectations
+
+When a workflow produces or updates `DESIGN.md`, preserve the choices that will
+otherwise get lost in implementation:
+
+- macrostructure or surface shape
+- visual thesis
+- token/color anchors
+- type roles
+- density
+- motion stance
+- key states and responsive behavior
+- rejected alternatives worth remembering
+- anti-patterns, "do not repeat", or "we tried this and it failed" notes
+
+Do not reduce `DESIGN.md` to a palette dump or component inventory. Capture the
+structural and taste decisions that future agents would otherwise flatten.
+
 ## Architecture Decision Records
 
 Use an ADR when a technical choice would be expensive to rediscover or reverse:

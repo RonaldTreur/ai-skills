@@ -76,7 +76,8 @@ Design and frontend owners:
 - `frontend-design/`: divergent UI variants, visual thesis, shareable browser
   previews, feedback rounds, and approved frontend design artifacts.
 - `developing-web-projects/`: web architecture and implementation conventions.
-- `ui-design-prompt/`: interactive prompt building for UI design requests.
+- `design-prompt-export/`: export approved UI direction into copy-paste prompts
+  for external UI generators or one-off design workers.
 - `generating-web-components/`: repository-patterned Web Component generation.
 
 GitHub label automation lives in `gh-pipeline/`. It is dormant infrastructure

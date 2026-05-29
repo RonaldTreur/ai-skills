@@ -54,6 +54,17 @@ If the user asks for an "app", assume MPA unless explicitly requesting an SPA.
 - Keep styles readable and maintainable.
 - Avoid CSS-in-JS.
 
+Frontend design guidance for this repo:
+
+- Choose macrostructure before palette or component ornament.
+- Start from a visual thesis, type roles, density, and motion stance instead of
+  defaulting to generic SaaS polish.
+- Reuse a deliberate token system once chosen; do not freelance colors or
+  spacing from section to section.
+- Avoid shallow trends as defaults: hero-plus-three-cards, fake browser chrome,
+  emoji feature icons, gradient text as the whole idea, nested cards for
+  cosmetic depth, and unreadable mobile CTAs.
+
 ---
 
 ## HTML First

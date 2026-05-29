@@ -26,8 +26,11 @@ long-running delivery, or active implementation.
 ## Ground Rules
 
 - Keep the human in control of product and taste decisions.
-- Ask only questions that cannot be answered from existing context.
-- When asking, recommend a default and explain the tradeoff.
+- Use kickoff as the place to ask important product, domain, and taste
+  questions up front so later implementation can run autonomously.
+- Do not ask for information that can be discovered from existing context.
+- When asking, group the important choices into concise checkpoints, recommend
+  defaults, and explain the tradeoff.
 - Use competing options to widen product or interaction choices, not to create
   ceremony.
 - Record every significant choice and rejected alternative in `DECISIONS.md`
@@ -42,6 +45,10 @@ long-running delivery, or active implementation.
 
 - **Grill the domain before planning.** Resolve overloaded terms and hidden
   assumptions before they become design or implementation drift.
+- **Front-load human judgment.** Ask the questions that affect taste, scope,
+  audience, workflow, and non-goals during kickoff/design; after approval,
+  implementation agents should rely on the artifacts and conservative defaults
+  instead of reopening those choices.
 - **Ground before shaping.** Use the cheapest sufficient discovery pass before
   locking the brief, design direction, or plan. Skip research when it would not
   change the decision.
