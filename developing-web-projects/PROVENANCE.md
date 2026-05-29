@@ -29,6 +29,21 @@ Local adaptation:
 - Added a scope boundary and clarified when the implementation outline is
   blocking versus informational.
 
+### CSS Hygiene Discipline
+
+- Date: 2026-05-29
+- Sources: Nutlope Hallmark, GStack, Compound Engineering, Matt Pocock Skills
+
+What we took:
+- keep token usage deliberate instead of freelancing colors or spacing
+- require CSS to stay explainable from real rendered markup and states
+- prune removed structure in the same change that updates markup
+
+Local adaptation:
+- Added compact runtime rules for semantic selectors, no speculative selectors,
+  same-patch pruning, duplicate/override cleanup, and token discipline without
+  importing source-specific workflow text into the runtime skill.
+
 ## Formal Trail
 
 - `methodology/disciplines/implementation-lifecycle.md`

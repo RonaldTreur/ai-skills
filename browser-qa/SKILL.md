@@ -101,6 +101,17 @@ For each tested page or flow:
 For `focused` mode, bias coverage toward changed behavior and nearby regression
 risks. For `quick` mode, stop after the highest-signal smoke checks.
 
+For significant CSS cleanup or visual changes:
+
+1. Inspect the rendered DOM and the states the CSS claims to style before
+   deleting selectors.
+2. Check responsive viewports, not just desktop, because dead-looking rules can
+   still be active in narrow layouts.
+3. Where browser tooling makes it available, gather CSS coverage or equivalent
+   unused-rule evidence to support deletions.
+4. Do not justify CSS removal by guesswork alone; back it with DOM, state, or
+   coverage evidence.
+
 ## Defect Handling
 
 Use P0-P3 as defect priority:

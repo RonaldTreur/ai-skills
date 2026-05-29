@@ -103,6 +103,9 @@ Local adaptation:
   text.
 - Converted the patterns into reusable page/app-shape examples, anti-pattern
   gates, and `DESIGN.md` expectations that fit this repo's skill taxonomy.
+- Reused Hallmark's token-discipline idea to discourage speculative prototype
+  CSS and to preserve enough token/state detail in `DESIGN.md` for later
+  pruning during implementation.
 
 ## Source Influence
 
@@ -174,6 +177,8 @@ What we took:
 
 - Ask only when taste, domain language, or product direction needs human
   judgment.
+- Inspect the existing code and artifact context before asking questions that
+  the repo can answer directly.
 
 Local adaptation:
 

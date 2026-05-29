@@ -52,6 +52,9 @@ Local adaptation:
   merged branch by default.
 - Kept screenshots optional for evidence rather than mandatory for every page,
   matching local cost discipline.
+- Extended browser evidence guidance for CSS cleanup: inspect DOM/state,
+  responsive viewports, and use browser coverage or equivalent unused-rule
+  evidence when available before deleting selectors.
 
 Rejected material:
 
@@ -100,6 +103,20 @@ Useful comparison:
 - Reinforces escalation to root-cause debugging when a browser defect is not
   trivial. The local skill routes non-trivial defects to [[debugging]] rather
   than embedding a full investigation workflow.
+
+## CSS Evidence Notes
+
+- Sources: GStack, Compound Engineering
+
+What we took:
+
+- defects and cleanup decisions should be backed by browser-observable evidence
+- probe the rendered system before assuming the cause or safety of a deletion
+
+Local adaptation:
+
+- CSS cleanup guidance is phrased as DOM/state/coverage verification rather than
+  a separate heavyweight audit workflow.
 
 ## Local Browser Profile Policy
 

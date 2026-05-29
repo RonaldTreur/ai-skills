@@ -1128,3 +1128,23 @@ credit_note: Inspired by Matt Pocock's architecture/documentation pressure and a
 reviewer: Merlin
 next_review: After the next project kickoff or implementation creates its first real ADR
 ```
+
+```yaml
+id: 2026-05-29-css-hygiene-owner-skills
+date: 2026-05-29
+discipline: frontend-design; browser-qa; code-review; developing-web-projects
+status: adapted
+source: Nutlope Hallmark; GStack; Compound Engineering; Matt Pocock Skills
+source_url: https://github.com/Nutlope/hallmark; https://github.com/garrytan/gstack; https://github.com/everyinc/compound-engineering-plugin; https://github.com/mattpocock/skills
+source_ref: 39fe438bf930b040c7a60350d18a0e3b54a24a5a; 61c9a20bd2e3a579c3d6184ed2fc95b51a528f7c; 5297a9440fa009822ceef8052b9e644e782281e1; b8be62ffacb0118fa3eaa29a0923c87c8c11985c
+source_path: skills/hallmark/SKILL.md; skills/hallmark/references/design-md.md; qa/SKILL.md; docs/skills/ce-debug.md; skills/engineering/grill-with-docs/SKILL.md
+license: MIT
+local_target: developing-web-projects/SKILL.md; developing-web-projects/PROVENANCE.md; code-review/SKILL.md; code-review/PROVENANCE.md; browser-qa/SKILL.md; browser-qa/PROVENANCE.md; frontend-design/SKILL.md; frontend-design/PROVENANCE.md; methodology/ADAPTATION_LOG.md
+influence_type: behavioral
+summary: CSS work in vanilla web projects should include pruning and browser-backed verification, not only additive styling.
+local_adaptation: Added runtime CSS hygiene rules to developing-web-projects, CSS-specific review checks and severity guidance to code-review, DOM/state/coverage-backed cleanup expectations to browser-qa, and prototype anti-speculation rules plus DESIGN.md preservation guidance to frontend-design.
+rationale: AI-generated CSS tends to accumulate dead selectors, stale states, duplicate declarations, and freelanced tokens after iterative edits. The repo needed explicit owner-skill guidance that keeps CSS tied to real markup and actual rendered states.
+credit_note: Selectively adapted from Hallmark token discipline, GStack evidence-first QA and defect framing, Compound's hypothesis-before-probe mindset, and Matt Pocock's inspect-before-asking habit.
+reviewer: Merlin
+next_review: When the web/frontend owner skills are next consolidated or after the next repo-wide skill audit
+```

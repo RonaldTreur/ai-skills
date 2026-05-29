@@ -226,6 +226,18 @@ Each variant should include:
   density, motion stance, states, applied constraints, rejected alternatives,
   and anti-pattern notes
 
+Prototype CSS discipline:
+
+- Prototype only the pages, components, and states that the variant actually
+  renders.
+- Do not pad prototypes with speculative selectors, future states, or unused
+  token definitions.
+- Keep selectors semantic and tied to the rendered structure so later pruning is
+  straightforward.
+- In `DESIGN.md`, preserve the chosen tokens, state inventory, and any styling
+  anti-patterns or rejected directions so implementation can extend or prune the
+  CSS without guessing intent.
+
 ## Shareable Preview
 
 Human review must be possible from another computer. Do not assume `localhost`
