@@ -5,8 +5,7 @@ description: Use when generating new Web Components. Produces ready-to-drop-in c
 
 # Web Component Generator Skill
 
-This skill is a **focused production tool**.  
-Its purpose is to rapidly generate new Web Components that match the user’s real-world codebase with high fidelity.
+This skill is a focused production tool for generating Web Components that match the user's real codebase with high fidelity.
 
 When this skill is active:
 - Prioritize correctness over discussion
@@ -17,13 +16,9 @@ When this skill is active:
 
 Behave like a senior engineer generating components inside this exact codebase.
 
----
-
 ## Authoritative Sources (Must Be Used)
 
-This skill folder includes real implementation files. These are the **only source of truth**.
-
-You must follow these files exactly:
+This skill folder includes real implementation files. They are the only source of truth:
 
 - `base-component.ts`
   - Defines the real `BaseComponentElement`
@@ -46,10 +41,7 @@ You must follow these files exactly:
     - Method naming (e.g. `setProfileData`)
     - Render logic patterns
 
-If unsure:
-> Copy patterns from the example rather than guessing.
-
----
+If unsure, copy patterns from the example rather than guessing.
 
 ## Required Architecture Pattern
 
@@ -65,50 +57,33 @@ Every generated component must:
 - Implement:
   - `protected render(): void`
 - Store state in private fields
-- Expose explicit setter methods (e.g. `setData(...)`) rather than reactive frameworks
+- Expose explicit setter methods (e.g. `setData(...)`) rather than reactive frameworks.
 
 Do not:
-- Override `connectedCallback()` unless unavoidable  
-- Introduce reactivity systems  
-- Introduce frameworks (Lit, React, Vue, etc.)  
-- Introduce templating libraries  
 
----
+- override `connectedCallback()` unless unavoidable
+- introduce reactivity systems
+- introduce frameworks such as Lit, React, or Vue
+- introduce templating libraries
 
 ## Decorators (Required, API-locked)
 
 Use only the decorators defined in `base-component.ts`.
 
-### `@customElement('tag-name')`
-- Registers the custom element
-- Must be used on every component class
-
-### `@bindTemplateElement('#selector')`
-- Used on class fields
-- Selector resolves inside the component’s ShadowRoot
-- Fields must be initialized to `null`
-- Fields should be correctly typed:
-  - `HTMLElement | null`
-  - `HTMLImageElement | null`
-  - `HTMLTemplateElement | null`
-  - etc.
+- `@customElement('tag-name')`: registers every component class.
+- `@bindTemplateElement('#selector')`: used on class fields; selector resolves inside the component ShadowRoot; fields initialize to `null` and use precise types such as `HTMLElement | null`, `HTMLImageElement | null`, or `HTMLTemplateElement | null`.
 
 Example pattern (mirror this style):
+
 ```ts
 @bindTemplateElement('#profile-name')
 private profileNameEl: HTMLElement | null = null;
 ```
 
-### `@bindAttribute('attr-name', { type, required })` (optional)
-- Only use when attributes are genuinely part of the component API
-- Must be applied to accessors (not fields)
-- Use correct `AttributeType` when applicable
-- Do not invent behavior beyond what is implemented in `base-component.ts`
+- `@bindAttribute('attr-name', { type, required })`: optional; use only when attributes are genuinely part of the component API; apply to accessors, not fields; use the correct `AttributeType`; do not invent behavior beyond `base-component.ts`.
 
 Never use legacy decorator syntax.  
 This codebase uses the official 2023-11 decorators model.
-
----
 
 ## Mandatory Component Structure
 
@@ -132,11 +107,10 @@ Follow the example component for:
 
 The output must be **ready to drop into a real project**.
 
----
-
 ## File Responsibilities
 
 ### `<prefix>-<name>.ts`
+
 - Contains:
   - class definition
   - bindings
@@ -150,6 +124,7 @@ The output must be **ready to drop into a real project**.
 - Avoid inline HTML/CSS
 
 ### `<prefix>-<name>.html`
+
 - Contains:
   - semantic markup
   - structural layout
@@ -158,16 +133,16 @@ The output must be **ready to drop into a real project**.
 - Use IDs and class naming patterns similar to the example
 
 ### `<prefix>-<name>.css`
+
 - Semantic class names
 - No Tailwind / no utility-class soup
 - Modern CSS allowed (nesting, etc.)
 - Mirrors the structure style of the example
 
 ### `index.ts`
+
 - Re-exports the component
 - Consumers import the folder, not internal files
-
----
 
 ## Rendering Model
 
@@ -185,12 +160,7 @@ However:
   - `container.innerHTML = ''` before appending
 - Do this pragmatically and quietly without introducing architectural changes
 
-Do not:
-- Introduce reactive state systems
-- Add observers, signals, or stores
-- Create render loops
-
----
+Do not introduce reactive state systems, observers, signals, stores, or render loops.
 
 ## Output Style Expectations
 
@@ -204,29 +174,3 @@ When generating components:
 - Match the tone and style of real-world project code
 
 This skill is a **generator**, not a tutor.
-
----
-
-## Example Usage
-
-User:
-> Create a new Web Component called `astral-tooltip`
-
-You should output:
-
-- A complete folder:
-  ```
-  astral-tooltip/
-    astral-tooltip.ts
-    astral-tooltip.html
-    astral-tooltip.css
-    index.ts
-  ```
-- With:
-  - Proper decorators
-  - Proper imports
-  - Proper template usage
-  - Realistic HTML/CSS
-  - A working `render()` method
-  - Correct constructor pattern
-  - No invented APIs
