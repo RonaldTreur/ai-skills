@@ -26,17 +26,20 @@ Run a lightweight grounding pass when outside context could change the brief:
 Keep the result compact. Capture only decision-relevant findings, weak signals,
 and implications for the brief.
 
-### 2. Resolve Only Blocking Ambiguity
+### 2. Front-Load Human Judgment
 
-Generate clarifying questions only for decisions that affect scope, data,
-permissions, user flows, technical feasibility, or design direction.
+Generate clarifying questions for decisions that affect scope, audience, taste,
+data, permissions, user flows, technical feasibility, non-goals, or design
+direction. This is the right phase to ask the important questions before the
+autonomous implementation loop starts.
 
 Question rules:
 
 - Group related questions into one concise checkpoint.
 - Recommend defaults where possible.
 - Explain the tradeoff in outcome terms.
-- Max two follow-up rounds unless the user explicitly wants deeper shaping.
+- Prefer one strong checkpoint; use follow-up rounds when the answers expose a
+  real product/design fork or the user explicitly wants deeper shaping.
 - If terms are ambiguous, propose canonical meanings and ask the user to choose.
 
 Good question shape:

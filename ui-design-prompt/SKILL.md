@@ -17,7 +17,9 @@ Before generating code, read and follow:
 ## Step 1: Gather TC-EBC Inputs
 
 Ask up to 5 short questions, one per missing dimension. Skip answers already
-present in the request.
+present in the request. In kickoff or design-shaping work, ask the important
+taste and workflow questions up front so the later implementation loop can use
+the approved prompt and `DESIGN.md` without reopening product choices.
 
 - **Task:** page/component/layout to build.
 - **Context:** audience, product, brand, platform.

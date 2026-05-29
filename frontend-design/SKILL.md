@@ -78,8 +78,9 @@ Classify the design situation:
 ## Design Inputs
 
 Before building variants, make sure these inputs are clear enough to design
-from. Do not ask a fixed questionnaire; ask only for missing information that
-would materially change the design direction.
+from. This is an appropriate phase to ask taste, reference, and workflow
+questions that would materially change the design direction; resolve them here
+so implementation agents can work from `DESIGN.md` later.
 
 - **Task**: page type, component, layout, or flow being designed.
 - **Context**: product, audience, brand tone, workflow frequency, and device
@@ -94,6 +95,11 @@ would materially change the design direction.
 When the user has already provided an input, use it. When an input is missing
 but inferable from project context, record the inference in the variant thesis
 instead of asking.
+
+If multiple inputs are missing, group them into one design-discovery checkpoint
+with recommended defaults. Avoid low-value preference surveys; ask questions
+that change macrostructure, density, content hierarchy, interaction stance,
+visual tone, or non-goals.
 
 ## Visual Thesis
 
