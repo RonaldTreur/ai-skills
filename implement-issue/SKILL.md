@@ -1,54 +1,48 @@
 ---
 name: implement-issue
-description: "Implement one selected GitHub issue or ready backlog slice from repo context through branch, vertical behavior-first tests, code changes, verification, code review, optional independent review, PR merge into the repo integration branch, and post-merge QA. Use when asked to build, fix, continue, or implement a specific ready issue in a GitHub-backed software project."
+description: "Implement one ready GitHub issue or backlog slice through branch, behavior-first tests, code changes, verification, review, PR merge, and post-merge QA."
 ---
 
 # Implement Issue
 
 Use this skill for active implementation of one ready issue or backlog slice.
 
-This is the canonical active-issue implementation workflow.
-
 ## Ownership Boundary
 
-- [[project-manager]] owns project lifecycle, issue decomposition, backlog
-  ordering, and status across many issues.
-- `implement-issue` owns one active implementation slice at a time:
-  issue selection, branch, tests, implementation, verification, review, PR,
-  merge, and post-merge QA.
-- [[developing-web-projects]] governs web architecture and implementation
-  defaults.
-- [[testing-orchestrator]], [[test-planning]], [[e2e-playwright]], and
-  [[unit-vitest]] govern testing method and tooling.
-- [[browser-qa]] governs browser-based exploratory and post-merge QA for
-  user-visible web behavior.
-- [[code-review]] defines review method and P0-P3 severity for diff review.
-- [[debugging]] governs non-trivial failures discovered during implementation.
-- [[documentation-handoff]] governs `DELIVERY_STATE.md`, PR/issue handoffs,
-  decision capture, blocker notes, and recovery summaries.
+- [[project-manager]] owns lifecycle, issue decomposition, backlog ordering, and
+  multi-issue status.
+- `implement-issue`: one active slice from branch through post-merge QA.
+- [[developing-web-projects]]: web architecture and implementation defaults.
+- [[testing-orchestrator]], [[test-planning]], [[e2e-playwright]],
+  [[unit-vitest]]: testing strategy and tooling.
+- [[browser-qa]]: exploratory/post-merge browser QA for user-visible behavior.
+- [[code-review]]: review method and P0-P3 severity.
+- [[debugging]]: non-trivial failures discovered during implementation.
+- [[documentation-handoff]]: `DELIVERY_STATE.md`, PR/issue handoffs, decisions,
+  blockers, recovery summaries.
 
-## Default Authority
+## Authority
 
-When invoked for a ready issue, assume the agent may:
+For a ready issue, assume the agent may:
 
-- read repo docs, issues, PRs, and source files
-- create a branch from the repo integration branch
-- write or update tests and production code
+- read project state
+- create a focused branch
+- edit tests/code/docs
 - update `DELIVERY_STATE.md`
-- run local checks, tests, build, lint, relevant migrations, and [[browser-qa]]
-- commit, push, open/update a PR targeting the repo integration branch
-- run review checks and fix valid P0-P3 findings
-- merge into the repo integration branch when checks and review are clean
-- create follow-up issues for defects, blockers, or out-of-scope work
+- run checks and [[browser-qa]]
+- commit, push, and open/update a PR
+- create/update ADRs for architecture decisions discovered inside scope
+- fix valid P0-P3 review findings
+- merge to the authorized integration branch
+- create follow-up issues
 
 Ask before:
 
-- production deploys or production-impacting migrations
-- secrets, credentials, billing, organization settings, or external accounts
-- deleting branches, rewriting history, or destructive filesystem/git actions
-- merging to `main`, even when `main` is the repo integration branch, unless
-  the user explicitly authorized that merge
-- changing product scope or user-visible behavior beyond the issue/spec
+- production deploys or migrations
+- secrets, billing, org, or external-account actions
+- destructive git/filesystem operations
+- merging to `main` without explicit authorization
+- changing product scope beyond the issue/spec
 
 ## Intake
 
@@ -57,26 +51,14 @@ Ask before:
    - `git remote -v`
    - `git branch --show-current`
 2. Resolve the selected issue and current handoff context.
-3. Read repo-local instructions that govern the agent:
-   - `AGENTS.md`
-   - `.github/copilot-instructions.md`
-   - `.codex/*`
-4. Read only the project docs needed for this issue:
-   - the selected issue and linked issue/PR context
-   - `DELIVERY_STATE.md` when present
-   - doc sections named in the handoff
-   - `BRIEF.md`, `DESIGN.md`, `PLAN.md`, `IMPLEMENTATION_PLAN.md`,
-     `TEST_PLAN.md`, `DECISIONS.md`, `docs/`, `specs/`, or ADRs only when
-     they are linked, missing from the handoff, stale, or needed to resolve a
-     concrete implementation question
+3. Read repo-local instructions: `AGENTS.md`, `.github/copilot-instructions.md`, `.codex/*`.
+4. Read only issue-relevant docs: selected issue, linked issue/PR context,
+   `DELIVERY_STATE.md`, named handoff sections, and planning/spec/ADR docs only
+   when linked, stale, missing from the handoff, or needed for a concrete
+   implementation question.
 5. For web projects, load [[developing-web-projects]] before writing code.
-6. Identify the implementation slice:
-   - issue number and acceptance criteria
-   - dependencies
-   - affected user behavior
-   - relevant tests/checks
-   - browser QA flows, including authenticated areas and test-account needs
-   - likely risk areas
+6. Identify issue number, acceptance criteria, dependencies, behavior,
+   tests/checks, browser-QA/auth needs, and risks.
 
 If no issue is named, use [[project-manager]] rules to select one ready issue
 before entering this workflow.
@@ -87,62 +69,40 @@ insufficient for the selected issue.
 
 ## Branch And State
 
-Use the repo's active integration branch. Prefer `dev` when the repo already has
-an active `dev` branch. Otherwise use the repo's documented integration branch
-or default branch; do not create a new `dev` branch just because this workflow
-was invoked.
+Use the repo's active integration branch. Prefer `dev` only when the repo
+already has one. Otherwise use the documented integration/default branch; never
+create `dev` just because this workflow was invoked.
 
-1. Identify the integration branch from repo instructions, open PR targets, or
-   remote branches.
-2. Create a focused branch from that integration branch, such as
-   `issue-12-short-title`.
+1. Identify the integration branch from instructions, open PR targets, or remotes.
+2. Create a focused branch, e.g. `issue-12-short-title`.
 3. Update `DELIVERY_STATE.md` with issue, branch, checkpoint, checks, blockers,
-   and next action using [[documentation-handoff]].
-4. Add an issue comment or PR note for meaningful checkpoints when the work is
-   long-running or delegated.
+   and next action via [[documentation-handoff]].
+4. Add issue/PR notes for meaningful long-running or delegated checkpoints.
 
 ## Implementation Loop
 
-Use vertical behavior-first slices. Do not generate a large batch of imagined
-tests before learning from implementation.
+Use vertical behavior-first slices. Do not batch imagined tests before learning
+from implementation.
 
-For each meaningful behavior in the issue:
+For each meaningful behavior:
 
-1. Name the behavior and the public interface or user flow it affects.
-2. Identify how the behavior will be QA'd in a browser. For authenticated flows,
-   ensure the project has a safe non-production auth path: documented test
-   account, seeded local user, fixture, ignored storage state, or documented
-   developer-only login path that is disabled in production.
-3. Write the smallest failing E2E or integration-style test that proves that
-   behavior. Use unit tests first only when the change is internal-only or the
-   public interface is a module/API.
-4. Run the test and confirm the expected failure.
-5. Implement the smallest production change that makes the test pass.
-6. Add focused unit tests for domain logic, validation, data access, edge cases,
-   and failure paths exposed by that behavior.
-7. Add or update safe QA setup when needed so [[browser-qa]] can reach the
-   changed behavior without the user's personal session or production
-   credentials.
-8. Run the narrow checks.
-9. Refactor only while green.
-10. Repeat for the next behavior until acceptance criteria are covered.
+1. Name the behavior and affected public interface/user flow.
+2. Identify browser QA and safe non-production auth/test data when needed.
+3. Write the smallest failing E2E/integration test; use unit tests first only for
+   internal/module/API behavior.
+4. Confirm failure, make the smallest passing change, add focused unit coverage,
+   run narrow checks, refactor only while green, then repeat.
 
 Tests should verify behavior through public interfaces. Avoid tests that lock in
 private structure unless the structure is itself the contract.
 
 ## Delegation
 
-Use [[agent-delegation]] for delegation packet shape, write-scope discipline,
-parallel-safety checks, and status handling.
+Use [[agent-delegation]] for packet shape, write scopes, parallel safety, and status.
+Prefer Vectrix for substantial implementation unless requested otherwise or blocked.
 
-Prefer Vectrix for substantial implementation unless the user explicitly asks for
-another runtime or Vectrix is blocked.
-
-When handing work to Vectrix or another implementation agent/runtime:
-
-- give it the exact issue, branch, repo path, relevant docs, active
-  skills, and current checkpoint
-- require a report with changed files, tests run, status, blockers, and concerns
+Delegation packets include issue, branch, repo path, relevant docs, active skills,
+checkpoint, and expected report: changed files, tests, status, blockers, concerns.
 
 Use "subagent" only for actual spawned Codex/OpenClaw subagents, not for
 Vectrix.
@@ -151,74 +111,64 @@ Vectrix.
 
 Before review:
 
-- run the narrow tests that prove the changed behavior
-- run relevant unit, E2E, typecheck, build, lint, and migration checks
-- run [[browser-qa]] for changed user-visible browser behavior
-- for authenticated browser behavior, verify the safe QA auth path works or
-  stop before merge with a blocking project-setup issue
+- run narrow behavior tests
+- run relevant unit, E2E, typecheck, build, lint, and migrations
+- run [[browser-qa]] for user-visible browser changes
+- verify safe QA auth for authenticated browser behavior, or stop before merge
+  with a blocking setup issue
 - inspect the diff for unrelated changes
 
-Then run the review loop:
+Review loop:
 
-1. Review the diff with [[code-review]].
-2. Fix all valid P0-P3 findings.
-3. Re-run the smallest meaningful verification.
-4. Repeat until no valid P0-P3 findings remain, or rejected findings are
-   explicitly justified in the PR/issue.
+1. Run [[code-review]].
+2. Fix valid P0-P3 findings.
+3. Rerun the smallest meaningful verification.
+4. Repeat until clean or rejected findings are justified.
+5. Use one independent review for non-trivial PRs when available.
 
-Run one independent review pass when available for non-trivial PRs. The
-coordinating agent then evaluates those findings, fixes valid P0-P3 items, and
-documents any rejected findings with rationale.
-
-After review fixes, rerun the checks most likely to catch regressions. If UI or
-routing changed, repeat [[browser-qa]].
+After review fixes, rerun checks most likely to catch regressions. If UI/routing
+changed, repeat [[browser-qa]].
 
 ## PR And Merge
 
 Open or update a PR targeting the repo integration branch.
 
-The PR should include:
+PR body includes:
 
 - linked issue
-- scope summary
+- scope
 - acceptance criteria covered
-- docs or decisions updated
+- docs/decisions updated
+- ADRs created/updated when architecture changed
 - tests/checks run
-- review findings fixed or explicitly rejected
-- known follow-ups or blockers
+- review findings
+- follow-ups/blockers
 
-Merge into the integration branch only when:
+Merge only when:
 
 - required checks are green
-- valid P0-P3 review findings are fixed
-- the issue acceptance criteria are satisfied
-- user-visible web behavior can be checked by [[browser-qa]], including any
-  authenticated flows introduced or changed by the issue
-- no unresolved human decision blocks the change
+- valid P0-P3 findings are fixed
+- acceptance criteria are satisfied
+- browser QA can cover user-visible behavior, including changed auth flows
+- no human decision blocks the change
 
-After merge, use [[browser-qa]] for post-merge QA against the integration branch
-or the closest available preview. If QA finds defects, create follow-up issues with
-priority/dependencies and return to [[project-manager]] for the next work
-decision.
+After merge, run [[browser-qa]] against the integration branch or closest
+preview. If QA finds defects, create follow-up issues and return to [[project-manager]].
 
 ## Phase Heads-Ups
 
-For visible long-running work, send compact updates at these transitions:
+For visible long-running work, send compact updates at major transitions:
 
 - issue selected
 - branch created
-- behavior/test slice started
-- implementation delegated or started
+- behavior/test slice
+- implementation
 - self-verification
-- code review
-- independent review
-- review fixes
+- review
 - CI/PR gate
 - merge
 - post-merge QA
-- next issue or blocker
-
-Use this shape:
+- next issue/blocker
 
 ```md
 Phase: #<issue> <phase>
@@ -235,26 +185,23 @@ Fresh-session resume order:
 3. Inspect actual git state.
 4. Reconcile in favor of durable external truth: merged PRs, open PRs, issue
    labels/comments, CI, then local files.
-5. Continue from the last verified checkpoint, not from the last claimed
-   checkpoint.
+5. Continue from the last verified checkpoint, not the last claimed checkpoint.
 
 ## Stop Conditions
 
-Pause the selected issue when:
+Pause when:
 
 - acceptance criteria are not testable
-- user-visible web behavior cannot be browser-QA'd because the feature lacks a
-  safe non-production auth path, seed data, fixture, or documented preview
-  workflow
-- repo-local instructions conflict and no conservative interpretation exists
-- a required secret, credential, production access, billing/org setting, or
-  external account action is needed
-- implementation would deviate from [[developing-web-projects]] defaults without
-  explicit approval
-- fixing the issue requires changing product scope or user-visible behavior
-  beyond the issue/spec
-- all useful checks are blocked by environment or permissions
-- the next safe step would be destructive
+- browser QA lacks safe auth, seed data, fixtures, or preview
+- repo instructions conflict
+- secrets, production access, billing/org settings, or external accounts are
+  needed
+- implementation would deviate from [[developing-web-projects]] without approval
+- the fix changes product scope beyond the issue/spec
+- the fix requires an architecture decision not covered by an existing ADR,
+  plan, or explicit user approval
+- useful checks are blocked
+- the next safe step is destructive
 
 Document the blocker in `DELIVERY_STATE.md` and the issue/PR using
 [[documentation-handoff]]. Then return to [[project-manager]] to find other

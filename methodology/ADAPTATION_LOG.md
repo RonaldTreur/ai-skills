@@ -1048,3 +1048,43 @@ credit_note: Local consolidation decision from Ronald and Merlin after reviewing
 reviewer: Merlin
 next_review: After the external-skill-adaptation branch is integrated and exercised on a real project
 ```
+
+```yaml
+id: 2026-05-27-skill-maintenance
+date: 2026-05-27
+discipline: skill-maintenance
+status: adapted
+source: Steipete Agent Scripts
+source_url: https://github.com/steipete/agent-scripts
+source_ref: 737040cf3a196b1a11aeb1c1c7508ce721545745
+source_path: skills/skill-cleaner/SKILL.md; skills/skill-cleaner/scripts/skill-cleaner.ts
+license: MIT
+local_target: skill-maintenance/SKILL.md; skill-maintenance/scripts/audit-skills.rb; skill-maintenance/PROVENANCE.md; skill-maintenance/agents/openai.yaml; README.md; methodology/DISCIPLINES.md; methodology/disciplines/skill-maintenance.md; methodology/sources/steipete-agent-scripts.md
+influence_type: structural
+summary: Add a skill inventory maintenance owner for bloat, body overlap, duplicate names, superseded skills, prompt-budget pressure, and focused cleanup.
+local_adaptation: Created skill-maintenance with a local Ruby audit script that scans caller-provided roots and reports counts, long descriptions, body bloat, duplicate names, identical bodies, near-body duplicates, large sections, repeated headings, description overlap, cleanup recommendations, and superseded names by default. The runtime skill then supports explicit cleanup patches for long descriptions, repeated prose, stale docs, and superseded skills while preserving scannable operational lists.
+rationale: The external-source adaptation branch added and reshaped many skills. A tool-backed audit plus explicit cleanup mode catches real skill-sprawl problems before integration without turning deletion into an unsafe automatic action.
+credit_note: Adapted from Peter Steinberger's skill-cleaner concept and analyzer, with Codex-specific runtime assumptions and automatic delete/disable behavior removed.
+reviewer: Merlin
+next_review: After the adaptation branch is integrated and the audit/cleanup pass runs against only active installed roots
+```
+
+```yaml
+id: 2026-05-28-documentation-handoff-adr-support
+date: 2026-05-28
+discipline: documentation-and-handoff
+status: adapted
+source: Matt Pocock architecture/documentation guidance plus local lifecycle needs
+source_url: https://github.com/mattpocock/skills; local repository
+source_ref: Matt Pocock b8be62ffacb0118fa3eaa29a0923c87c8c11985c; feat/skill-maintenance-audit
+source_path: skills/engineering/improve-codebase-architecture/SKILL.md; documentation-handoff/SKILL.md; project-kickoff/SKILL.md; project-manager/SKILL.md; implement-issue/SKILL.md
+license: mixed local guidance and MIT source
+local_target: documentation-handoff/SKILL.md; documentation-handoff/references/adr-template.md; documentation-handoff/PROVENANCE.md; project-kickoff/SKILL.md; project-kickoff/PROVENANCE.md; project-manager/SKILL.md; implement-issue/SKILL.md; README.md; methodology/disciplines/documentation-and-handoff.md
+influence_type: structural
+summary: Add lightweight Architecture Decision Record support to the documentation-handoff owner skill and hook it into kickoff, project management, and implementation workflows.
+local_adaptation: Split broad product, UX, QA, workflow, and non-technical decisions into DECISIONS.md while routing durable technical choices to docs/adr records. Added concise ADR triggers, a short template, project memory intake, issue-decomposition guardrails, and implementation stop/PR reporting rules.
+rationale: Significant architecture choices become expensive to rediscover when they live only in chat, plans, or PR comments. ADRs give those decisions a durable, reviewable place without turning routine implementation choices into documentation ceremony.
+credit_note: Inspired by Matt Pocock's architecture/documentation pressure and adapted to the local documentation-handoff workflow.
+reviewer: Merlin
+next_review: After the next project kickoff or implementation creates its first real ADR
+```

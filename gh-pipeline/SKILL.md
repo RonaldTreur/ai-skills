@@ -1,6 +1,6 @@
 ---
 name: gh-pipeline
-description: "Operate a label-driven GitHub issue pipeline for agent work. Use when setting up or running issue labels that move work through build, test, review, fix, approved, blocked, or failed states across project-manager, implement-issue, testing, review, and delegation workflows."
+description: "Operate label-driven GitHub issue automation that moves agent work through build, test, review, fix, approved, blocked, and failed states."
 ---
 
 # GitHub Pipeline

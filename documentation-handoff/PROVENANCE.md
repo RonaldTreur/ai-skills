@@ -92,16 +92,21 @@ Local adaptation:
 - Source: <https://github.com/mattpocock/skills>
 - Reviewed ref: `b8be62ffacb0118fa3eaa29a0923c87c8c11985c`
 - Reviewed material: `skills/engineering/grill-with-docs/SKILL.md`,
-  `skills/engineering/tdd/SKILL.md`
+  `skills/engineering/tdd/SKILL.md`,
+  `skills/engineering/improve-codebase-architecture/SKILL.md`
 - License: MIT
 
 What we took:
 - Inspect existing docs/code before asking the user and sharpen overloaded
   domain language into explicit decisions.
+- Preserve architectural decisions and rejected alternatives when they would be
+  expensive to rediscover.
 
 Local adaptation:
 - Added decision-capture guidance and a bias toward discoverable context over
   asking the user to restate what files already know.
+- Added lightweight ADR triggers and a short template while keeping broad
+  product, UX, QA, and workflow decisions in `DECISIONS.md`.
 
 ## Formal Trail
 

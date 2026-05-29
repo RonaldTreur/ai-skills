@@ -1,6 +1,6 @@
 ---
 name: e2e-playwright
-description: "Write and maintain durable Playwright E2E tests for web applications. Use when implementing automated browser tests, generating scenario-driven E2E coverage, validating user flows in CI, repairing flaky Playwright tests, or setting up fixtures/auth/storage state for repeatable browser tests. Do not use for exploratory browser QA reports; use browser-qa for that."
+description: "Write and maintain durable Playwright E2E tests for web apps, including user flows, CI coverage, flaky-test repair, fixtures, auth, and storage state. Use browser-qa for exploratory checks."
 ---
 
 # E2E Testing with Playwright

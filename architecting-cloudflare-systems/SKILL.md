@@ -1,6 +1,6 @@
 ---
 name: architecting-cloudflare-systems
-description: Use this skill for any work involving Cloudflare products (Workers, R2, KV, D1, Queues, Durable Objects, Pages, Stream). Provides opinionated guidance for designing reliable, cost-efficient Cloudflare-native systems in vanilla TypeScript.
+description: Use for Cloudflare Workers, R2, KV, D1, Queues, Durable Objects, Pages, or Stream architecture in reliable, cost-efficient vanilla TypeScript systems.
 ---
 
 # Cloudflare Architecture Skill

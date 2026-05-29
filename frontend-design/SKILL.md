@@ -1,6 +1,6 @@
 ---
 name: frontend-design
-description: "Explore and refine visual frontend direction for web apps, dashboards, landing pages, and UI-heavy features. Use when a project needs UI design concepts, divergent variants, visual thesis, shareable prototype comparison, or frontend design approval before implementation."
+description: "Explore and refine visual frontend direction for web apps, dashboards, landing pages, and UI-heavy features through concepts, variants, prototypes, and approval."
 ---
 
 # Frontend Design

@@ -1,6 +1,6 @@
 ---
 name: cloudflare-logs
-description: Query Cloudflare Worker logs, errors, and metrics via the Workers Observability API. Use when debugging a Worker, investigating errors, checking logs/console output, or analyzing Worker performance. Works across all accounts and Workers.
+description: Query Cloudflare Worker logs, errors, console output, metrics, and performance via the Workers Observability API across accounts and Workers.
 ---
 
 # Cloudflare Workers Log Access

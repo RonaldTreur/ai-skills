@@ -1,24 +1,19 @@
 ---
 name: openclaw-contribution
-description: Use when creating or updating OpenClaw GitHub issues or pull requests, especially for openclaw/openclaw. Read the repo's current issue templates, PR template, and CONTRIBUTING rules first; then draft grounded issue or PR bodies and either submit with gh or produce ready-to-paste drafts when authentication is unavailable.
+description: Use when creating or updating OpenClaw GitHub issues or PRs. Read current templates and CONTRIBUTING first, then submit with gh or draft ready-to-paste text.
 ---
 
 # OpenClaw Contribution
 
 Use this skill for contribution work against OpenClaw GitHub repositories.
 
-Default assumption:
-- core repo is openclaw/openclaw
-- local clone is /Users/merlin/openclaw when it exists
+Defaults: core repo `openclaw/openclaw`; local clone `/Users/merlin/openclaw`
+when present.
 
-## What this skill covers
+## Scope
 
-- Filing OpenClaw bug reports
-- Filing OpenClaw feature requests
-- Preparing OpenClaw pull requests
-- Updating an existing OpenClaw issue or PR with the right structure
-
-Do not use this skill for generic GitHub work outside the OpenClaw ecosystem.
+Use for OpenClaw bug reports, feature requests, pull requests, and issue/PR
+updates. Do not use for generic GitHub work outside OpenClaw.
 
 ## Preflight
 
@@ -33,43 +28,34 @@ Before drafting anything:
    - .github/pull_request_template.md
 4. Check whether gh is authenticated.
 
-If gh is not authenticated, do not pretend submission succeeded. Produce a ready-to-paste draft instead.
+If `gh` is not authenticated, produce a ready-to-paste draft instead of claiming
+submission.
 
 Load [references/openclaw-core.md](references/openclaw-core.md) for the current OpenClaw-specific requirements and canonical file paths.
 
-## Issue workflow
-
-### Bug reports
+## Issues
 
 OpenClaw's bug template is strict:
 - keep every answer concise, reproducible, and grounded in observed evidence
 - do not speculate beyond the evidence
 - if a narrative field cannot be supported, use exactly NOT_ENOUGH_INFO
 
-Minimum bug-report workflow:
+Bug workflow:
 
-1. Gather direct evidence first: repro steps, logs, screenshots, version, OS, install method, model, provider chain.
+1. Gather evidence: repro steps, logs, screenshots, version, OS, install method,
+   model, provider chain.
 2. Distill the shortest deterministic repro.
-3. Write expected behavior from a known-good version, prior observed behavior, or docs.
+3. Write expected behavior from a known-good version, prior observation, or docs.
 4. Write actual behavior using only what was observed.
-5. Capture impact in concrete terms: who is affected, severity, frequency, consequence.
-6. If evidence is incomplete, use NOT_ENOUGH_INFO exactly where the upstream template requires it.
+5. Capture concrete impact: affected user, severity, frequency, consequence.
+6. Use NOT_ENOUGH_INFO exactly where required if evidence is incomplete.
 
 Never fill gaps with plausible guesses.
 
-### Feature requests
-
-OpenClaw's feature template wants:
-- one-line summary
-- problem to solve
-- proposed solution
-- alternatives considered
-- impact
-- evidence/examples
+Feature requests need summary, problem, proposed solution, alternatives, impact,
+and evidence/examples.
 
 Prefer concrete use cases and tradeoffs over vague product language.
-
-### Docs-only or small clarifications
 
 If the upstream contribution guide indicates the change is simple enough for a direct PR without an issue, do that instead of opening a low-value issue.
 
@@ -77,28 +63,24 @@ If the upstream contribution guide indicates the change is simple enough for a d
 
 For PRs, also use git-conventions.
 
-OpenClaw expects:
-- focused PR scope
-- Conventional Commit style PR title
-- linked issue when applicable
-- explicit scope boundaries
-- real behavior proof for external PRs
-- AI-assisted disclosure when AI was used
-- bot review conversations handled by the author
+OpenClaw expects focused scope, Conventional Commit PR titles, linked issues
+when applicable, explicit boundaries, real behavior proof, AI-assisted
+disclosure when AI was used, and author-handled bot review conversations.
 
 Minimum PR workflow:
 
 1. Inspect branch state and keep the diff focused.
 2. Fill the current PR template, not a generic one.
-3. Include the required Real behavior proof section with human-run evidence from a real setup.
-4. Include root cause for bug fixes when known; otherwise say Unknown or N/A as appropriate.
+3. Include Real behavior proof with human-run evidence from a real setup.
+4. Include root cause for bug fixes, or Unknown/N/A when appropriate.
 5. Name the smallest reliable regression guardrail.
 6. Fill security impact honestly.
 7. State what you personally verified and what you did not verify.
-8. If the PR is AI-assisted, mark that clearly in the PR title or description.
+8. Mark AI-assisted PRs clearly in the title or description.
 9. Resolve or reply to bot review conversations you addressed before asking for review again.
 
-Tests, lint, typechecks, and CI are useful, but they do not replace real behavior proof for external OpenClaw PRs.
+Tests, lint, typechecks, and CI do not replace real behavior proof for external
+OpenClaw PRs.
 
 ## Submission rules
 
