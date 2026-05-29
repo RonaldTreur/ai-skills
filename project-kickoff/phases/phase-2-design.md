@@ -61,6 +61,15 @@ workflow. Save the approved output as:
 - shareable preview URLs for variant review when practical, with any blocker
   and fallback noted
 - DECISIONS.md updates for chosen/rejected design directions
+
+The approved `DESIGN.md` must preserve:
+
+- chosen macrostructure and why it fits
+- visual thesis and interaction stance
+- tokens/color anchors and type roles
+- density and motion stance
+- rejected alternatives
+- anti-patterns or do-not-repeat notes discovered during review
 ```
 
 ## Exit Condition

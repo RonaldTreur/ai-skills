@@ -26,9 +26,14 @@ present in the request.
 - **Constraints:** palette, typography, accessibility, viewport, data shape.
 
 **Smart defaults** — if the user skips a dimension, use sensible defaults:
-- Color: neutral palette with one accent color
-- Typography: system font stack, rem-based scale
-- Spacing: consistent scale (0.25rem increments)
+- Visual thesis: pick a concrete stance that fits the domain, not "clean modern"
+- Macrostructure: choose a page/app shape before styling
+- Typography: choose named type roles or an intentional pairing, not a fallback
+  system stack unless the context already demands it
+- Density: choose relaxed, balanced, or compact based on the workflow
+- Motion: choose restrained, assertive, or nearly static motion on purpose
+- Color: choose restrained anchors that support the thesis rather than a
+  generic neutral-plus-accent recipe
 - Responsive: mobile-first, works down to 320px
 - Mode: light mode (add dark if requested)
 - Architecture/styling/platform: whatever `developing-web-projects` specifies
@@ -49,6 +54,9 @@ Combine the user's answers into a single structured prompt block. Format:
 ## Examples
 [Reference styles, sites, screenshots — or "none specified"]
 
+## Visual Thesis
+[Macrostructure, tone, type roles, density, motion stance]
+
 ## Behavior
 [Interactions, states, responsive rules]
 
@@ -68,6 +76,10 @@ Show this assembled prompt to the user for confirmation before generating. Let t
 Pass the assembled TC-EBC prompt to the sub-agent. Require:
 
 - read `developing-web-projects` for stack conventions
+- choose and name a visual thesis before writing code
+- choose macrostructure before color/components
+- if references are supplied, extract structure, type roles, density, rhythm,
+  color anchors, and interaction stance without cloning
 - generate all pages needed for the full flow
 - plain HTML and CSS only; no TypeScript, JavaScript, or Web Components
 - no business logic, API calls, or state management
@@ -82,8 +94,9 @@ The sub-agent delivers:
 - one HTML file per page
 - shared repeated HTML where useful
 - global and page/section CSS files
-- `DESIGN.md` with direction, page map, palette, typography, spacing, layout,
-  navigation, responsive strategy, visual states, and implementation intent
+- `DESIGN.md` with macrostructure, visual thesis, page map, tokens, type roles,
+  density, motion stance, visual states, rejected alternatives, and anti-pattern
+  notes
 
 ## Step 4: Review and Iterate
 

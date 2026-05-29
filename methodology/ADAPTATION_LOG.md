@@ -189,6 +189,26 @@ next_review: When agent orchestration and delegation receives its dedicated slic
 ```
 
 ```yaml
+id: 2026-05-29-hallmark-design-guidance
+date: 2026-05-29
+discipline: frontend-design
+status: adapted
+source: Nutlope Hallmark
+source_url: https://github.com/Nutlope/hallmark
+source_ref: 39fe438bf930b040c7a60350d18a0e3b54a24a5a
+source_path: skills/hallmark/SKILL.md; skills/hallmark/references/macrostructures.md; skills/hallmark/references/study.md; skills/hallmark/references/design-md.md; skills/hallmark/references/slop-test.md
+license: MIT
+local_target: frontend-design/SKILL.md; frontend-design/PROVENANCE.md; ui-design-prompt/SKILL.md; project-kickoff/phases/phase-2-design.md; documentation-handoff/SKILL.md; developing-web-projects/SKILL.md
+influence_type: behavioral
+summary: Frontend design guidance should choose macrostructure before styling, extract design DNA from references, reject common AI-design defaults, and preserve the resulting design thesis in DESIGN.md.
+local_adaptation: Added page/app-shape grammar, anti-AI-design gates, reference-study extraction, stronger DESIGN.md expectations, and better prompt defaults without importing Hallmark runtime text or repo structure.
+rationale: The repo needed stronger taste and structure guidance for design work, but the runtime skills must stay concise and repo-native rather than becoming a vendored Hallmark clone.
+credit_note: Selectively adapted from Nutlope Hallmark's design-direction machinery.
+reviewer: Merlin
+next_review: When the frontend-design and ui-design-prompt skills are next consolidated
+```
+
+```yaml
 id: 2026-05-24-testing-skills-hardening
 date: 2026-05-24
 discipline: testing-and-qa

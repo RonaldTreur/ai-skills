@@ -99,12 +99,24 @@ instead of asking.
 
 Before building prototype files, write a short thesis for each concept:
 
+- **Macrostructure**: the page or app shape chosen before palette, components,
+  or decoration.
 - **Visual thesis**: mood, material, density, and energy.
 - **Content plan**: what appears first, what gets detail, what can be omitted.
 - **Interaction plan**: navigation model, key states, and meaningful motion.
 
 For greenfield work, do not default to generic SaaS design. Pick a direction
 that fits the domain.
+
+Macrostructure-first rule:
+
+- Pick the surface shape before choosing color, card style, or component polish.
+- Name the shape explicitly in the variant thesis so tradeoffs stay legible.
+- Useful starting shapes: **workbench** for tool-first flows,
+  **index-first** for navigation-heavy surfaces, **catalogue** for browse and
+  compare, **long document** for editorial rhythm, **stat-led** for KPI-first
+  scan order, **component playground** for state comparison, and
+  **manifesto/letter** for voice-led pages.
 
 ## Divergent Variants
 
@@ -126,6 +138,40 @@ Anti-convergence rule:
 
 - If the user could swap the headline text between variants and they would still
   feel like the same design, regenerate one direction before review.
+
+Anti-AI-design gates:
+
+- Reject default SaaS hero-plus-feature-grid composition unless the product
+  genuinely needs it.
+- Do not fall back to three-card feature rows by reflex.
+- Avoid fake browser chrome, emoji feature icons, invented proof, gradient text
+  as the whole idea, nested cards with no information value, token freelancing,
+  and unreadable mobile CTAs.
+
+If a concept trips two or more gates, redesign it before review instead of
+adding polish to a weak structure.
+
+## Reference Study
+
+When the user provides a screenshot, website, or visual reference, study it for
+design DNA rather than cloning pixels.
+
+Extract:
+
+- structure and macrostructure
+- type roles and hierarchy
+- density and whitespace rhythm
+- color anchors and restraint
+- interaction stance such as playful, quiet, tactile, editorial, or operational
+
+Then state:
+
+- what to preserve
+- what to translate into the local product context
+- what to avoid copying literally
+
+Good adaptation preserves stance and structure while changing content,
+constraints, and implementation details to fit the actual project.
 
 ## Prototype Shape
 
@@ -154,8 +200,9 @@ Each variant should include:
 - realistic content, not filler
 - empty, loading, error, and permission states when relevant
 - mobile and desktop responsive behavior
-- `DESIGN.md` with thesis, rationale, page map, palette, typography, layout,
-  states, applied constraints, and tradeoffs
+- `DESIGN.md` with macrostructure, visual thesis, page map, tokens, type roles,
+  density, motion stance, states, applied constraints, rejected alternatives,
+  and anti-pattern notes
 
 ## Shareable Preview
 
