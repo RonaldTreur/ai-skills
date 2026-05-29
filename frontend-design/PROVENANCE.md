@@ -60,6 +60,21 @@ Local adaptation:
 - Rejected hard-coded model selection, fixed Vite scaffolding, and single-agent
   code-generation assumptions.
 
+### UI Prompt Builder Consolidation
+
+- Date: 2026-05-29
+- Source: `/Users/merlin/Development/skills/ui-design-prompt/SKILL.md`
+
+The prompt-builder skill overlapped with `frontend-design` after the visual
+design workflow became the primary owner.
+
+Local adaptation:
+
+- Moved TC-EBC framing into `frontend-design` as an input/prompt-export frame.
+- Narrowed `ui-design-prompt` to prompt export for external UI generators and
+  one-off design workers.
+- Removed its competing production-design/code-generation workflow.
+
 ### Hallmark-Inspired Design Guidance
 
 - Date: 2026-05-29

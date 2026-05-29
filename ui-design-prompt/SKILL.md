@@ -1,109 +1,84 @@
 ---
 name: ui-design-prompt
-description: Interactive UI design prompt builder using the TC-EBC framework. Asks targeted questions, assembles a structured prompt, then generates production-ready UI code. Use when designing new pages, components, or layouts.
+description: Export approved UI direction into a copy-paste prompt for external UI generators or one-off design workers; do not use as the primary design workflow.
 ---
 
-# UI Design Prompt Builder (TC-EBC Framework)
+# UI Design Prompt Export
 
-Build a UI generation prompt with **Task, Context, Examples, Behavior, and
-Constraints**, then generate the approved design.
+Export an approved or nearly-approved UI direction into a structured prompt.
+This is a helper, not the primary design workflow.
 
-## Linked Skills
+Use [[frontend-design]] for product UI direction, divergent variants,
+macrostructure, feedback, preview, and `DESIGN.md`. Use this skill only when the
+requested output is a prompt artifact for another model/tool or a tightly
+scoped one-off design worker.
 
-Before generating code, read and follow:
+## When To Use
 
-- `/Users/merlin/Development/skills/developing-web-projects/SKILL.md`
+Use for:
 
-## Step 1: Gather TC-EBC Inputs
+- turning `BRIEF.md` and `DESIGN.md` into a copy-paste prompt for an external
+  UI generator
+- preparing a bounded prompt for a one-off design worker
+- converting a chosen design direction into a prompt that preserves constraints
+- summarizing TC-EBC inputs for a small component or page when design direction
+  is already settled
 
-Ask up to 5 short questions, one per missing dimension. Skip answers already
-present in the request. In kickoff or design-shaping work, ask the important
-taste and workflow questions up front so the later implementation loop can use
-the approved prompt and `DESIGN.md` without reopening product choices.
+Do not use for:
 
-- **Task:** page/component/layout to build.
-- **Context:** audience, product, brand, platform.
-- **Examples:** URLs, screenshots, references, or style keywords.
-- **Behavior:** interactions, states, responsiveness, mode support.
-- **Constraints:** palette, typography, accessibility, viewport, data shape.
+- project kickoff
+- choosing visual direction
+- generating competing variants
+- approval of a design
+- implementation work after `DESIGN.md` is approved
 
-**Smart defaults** — if the user skips a dimension, use sensible defaults:
-- Visual thesis: pick a concrete stance that fits the domain, not "clean modern"
-- Macrostructure: choose a page/app shape before styling
-- Typography: choose named type roles or an intentional pairing, not a fallback
-  system stack unless the context already demands it
-- Density: choose relaxed, balanced, or compact based on the workflow
-- Motion: choose restrained, assertive, or nearly static motion on purpose
-- Color: choose restrained anchors that support the thesis rather than a
-  generic neutral-plus-accent recipe
-- Responsive: mobile-first, works down to 320px
-- Mode: light mode (add dark if requested)
-- Architecture/styling/platform: whatever `developing-web-projects` specifies
+## Inputs
 
-If the initial request is detailed, ask only 1-2 questions.
+Read existing artifacts first:
 
-## Step 2: Assemble the Structured Prompt
+- `BRIEF.md`
+- `DESIGN.md`
+- `DECISIONS.md`
+- relevant screenshots, references, or brand assets
+- [[developing-web-projects]] when stack or implementation conventions matter
 
-Combine the user's answers into a single structured prompt block. Format:
+If a required input is missing, do not restart design discovery here. Either
+infer from approved artifacts or route back to [[frontend-design]].
+
+## TC-EBC Export Frame
+
+Assemble the prompt with:
 
 ```
 ## Task
-[What we're building — specific and concrete]
+[What to generate, specific and bounded]
 
 ## Context
-[Who it's for, brand/product context]
+[Audience, product, workflow frequency, brand tone]
 
 ## Examples
-[Reference styles, sites, screenshots — or "none specified"]
+[References to preserve, translate, or avoid]
 
 ## Visual Thesis
-[Macrostructure, tone, type roles, density, motion stance]
+[Macrostructure, tone, type roles, density, motion stance, color anchors]
 
 ## Behavior
-[Interactions, states, responsive rules]
+[Interactions, states, permissions, responsive rules]
 
 ## Constraints
-[Hard requirements + defaults applied]
+[Stack, accessibility, data shape, viewport, existing tokens, hard boundaries]
 
-## Technical Stack
-[From developing-web-projects skill — DO NOT hardcode here, read from the linked skill]
+## Output Contract
+[Files, fidelity, states, prompt-only vs code, what not to invent]
 ```
 
-Show this assembled prompt to the user for confirmation before generating. Let them tweak it.
+## Output Rules
 
-## Step 3: Generate the UI Design
-
-**Model:** Always spawn a sub-agent with `opus` for this step. Design is a one-time investment — getting it right matters more than saving tokens.
-
-Pass the assembled TC-EBC prompt to the sub-agent. Require:
-
-- read `developing-web-projects` for stack conventions
-- choose and name a visual thesis before writing code
-- choose macrostructure before color/components
-- if references are supplied, extract structure, type roles, density, rhythm,
-  color anchors, and interaction stance without cloning
-- generate all pages needed for the full flow
-- plain HTML and CSS only; no TypeScript, JavaScript, or Web Components
-- no business logic, API calls, or state management
-- include requested visual states
-- use realistic content, not Lorem Ipsum
-- set up a Vite project with proper file structure
-- split CSS logically
-
-The sub-agent delivers:
-
-- Vite project scaffolding
-- one HTML file per page
-- shared repeated HTML where useful
-- global and page/section CSS files
-- `DESIGN.md` with macrostructure, visual thesis, page map, tokens, type roles,
-  density, motion stance, visual states, rejected alternatives, and anti-pattern
-  notes
-
-## Step 4: Review and Iterate
-
-Present the generated design to the user. Ask: "Want me to adjust anything — colors, spacing, layout?"
-
-Iterate with the same Opus sub-agent until the user is satisfied.
-
-This skill's job ends at design approval.
+- Produce the prompt artifact only unless the user explicitly asks to run it.
+- Keep approved macrostructure, visual thesis, tokens, and anti-pattern notes
+  intact.
+- State which source artifacts the prompt was built from.
+- Mark unknowns clearly instead of inventing proof, metrics, brand assets, or
+  implementation details.
+- If the prompt would require choosing a new design direction, stop and route
+  back to [[frontend-design]].

@@ -209,6 +209,26 @@ next_review: When the frontend-design and ui-design-prompt skills are next conso
 ```
 
 ```yaml
+id: 2026-05-29-ui-design-prompt-consolidation
+date: 2026-05-29
+discipline: frontend-design
+status: adopted
+source: local ui-design-prompt skill
+source_url: local file
+source_ref: feat/hallmark-design-guidance
+source_path: ui-design-prompt/SKILL.md
+license: repository-local material
+local_target: frontend-design/SKILL.md; ui-design-prompt/SKILL.md; frontend-design/PROVENANCE.md; README.md; methodology/DISCIPLINES.md
+influence_type: structural
+summary: Frontend design should have one primary workflow owner; prompt generation remains useful only as an export/helper path.
+local_adaptation: Moved TC-EBC input framing into frontend-design and narrowed ui-design-prompt to exporting approved UI direction into prompts for external generators or one-off design workers.
+rationale: Keeping two broad UI-design entrypoints caused routing ambiguity. The project workflow needs frontend-design, while prompt artifacts are only occasional downstream/export outputs.
+credit_note: Local taxonomy decision from Ronald and Merlin.
+reviewer: Merlin
+next_review: After PR #18 is merged and the next skill-maintenance cleanup runs
+```
+
+```yaml
 id: 2026-05-24-testing-skills-hardening
 date: 2026-05-24
 discipline: testing-and-qa

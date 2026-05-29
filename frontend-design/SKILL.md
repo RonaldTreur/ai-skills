@@ -101,6 +101,22 @@ with recommended defaults. Avoid low-value preference surveys; ask questions
 that change macrostructure, density, content hierarchy, interaction stance,
 visual tone, or non-goals.
 
+Use TC-EBC as the compact input frame when preparing a design brief, variant
+brief, or prompt for a design worker:
+
+- **Task**: the exact page, component, layout, or flow.
+- **Context**: audience, product, brand, platform, and workflow frequency.
+- **Examples**: references, screenshots, sites, or styles to match or avoid.
+- **Behavior**: interactions, states, responsive behavior, permissions, and
+  motion.
+- **Constraints**: stack, accessibility, data shape, existing tokens, viewport,
+  and hard boundaries.
+
+When a worker or external tool needs a prompt, assemble it from these inputs
+plus the chosen macrostructure, visual thesis, content plan, and interaction
+plan. The prompt is an execution artifact; it does not replace `DESIGN.md` or
+human approval of the direction.
+
 ## Visual Thesis
 
 Before building prototype files, write a short thesis for each concept:
