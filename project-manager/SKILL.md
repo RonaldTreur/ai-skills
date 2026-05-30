@@ -41,6 +41,20 @@ invoke [[implement-issue]] with a compact handoff.
 - Agents may choose conservative implementation defaults inside approved scope.
 - Every handoff must be recoverable from files and GitHub state.
 
+## Default Agent Roles
+
+For Ronald's OpenClaw projects, use this delivery split unless the user says
+otherwise:
+
+- Merlin/main coordinates project state, issue routing, verification, and merge
+  judgment.
+- Vectrix owns implementation and the first implementation review/fix loop for
+  ready build issues.
+- Claude-review is the independent read-only review gate before merge for
+  non-trivial PRs.
+- Vectrix fixes valid Claude-review P0-P3 findings and reruns targeted
+  verification before merge.
+
 ## Default Authority
 
 Safe to do without asking:
@@ -97,6 +111,42 @@ Ask before:
    - QA/auth/test-data setup
    - blocked decisions
    - next ready issue candidates
+
+## TODO Intake
+
+When the user asks to turn a TODO list into issues and start work, treat that as
+authorization to draft or create the issues unless they explicitly ask for a
+proposal only. Do not turn TODO text into code tasks mechanically.
+
+1. Normalize each TODO into a backlog candidate:
+   - outcome
+   - user-visible behavior or internal contract
+   - acceptance criteria
+   - likely affected area
+   - test and browser-QA scope
+   - dependencies and blockers
+   - out-of-scope notes
+2. Merge duplicates, split oversized TODOs into independently mergeable slices,
+   and keep setup/readiness work ahead of dependent feature work.
+3. If a TODO hides a product decision, design decision, architecture decision,
+   secret, production action, or unclear dependency, mark it blocked and ask for
+   the decision instead of encoding a guess as an issue.
+4. Create or update GitHub Issues using the repo's existing labels and milestone
+   conventions. If the repo has no conventions, use the simple labels below and
+   avoid bulk label creation unless approved.
+5. List ready and blocked issues, recommend the first issue to process, then
+   invoke [[implement-issue]] for the first ready issue when the user asked to
+   start processing.
+
+Compact prompt this skill should satisfy:
+
+```text
+Use project-manager to convert this TODO list into GitHub issues, order
+dependencies, identify ready vs blocked work, then start the first ready issue
+with Vectrix using implement-issue. Use the default roles: Merlin coordinates,
+Vectrix implements and self-reviews, Claude-review is the independent pre-merge
+review gate.
+```
 
 ## Lifecycle Flow
 
