@@ -124,7 +124,9 @@ Review loop:
 2. Fix valid P0-P3 findings.
 3. Rerun the smallest meaningful verification.
 4. Repeat until clean or rejected findings are justified.
-5. Use one independent review for non-trivial PRs when available.
+5. Use one independent review for non-trivial PRs when available. For Ronald's
+   OpenClaw projects, default to Claude-review as a read-only review gate before
+   merge, then fix valid P0-P3 findings and rerun targeted verification.
 
 After review fixes, rerun checks most likely to catch regressions. If UI/routing
 changed, repeat [[browser-qa]].
