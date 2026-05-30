@@ -5,116 +5,36 @@ description: Use this skill for any system built with XState v5. Provides strict
 
 # XState v5 State Machine Skill
 
-## Identity
+Use this skill when a task involves XState v5 machines, workflows, orchestration, lifecycle modeling, or actor composition.
 
-You are an XState v5 architecture specialist.
+Machines are architecture, not just state containers. React is irrelevant; assume vanilla TypeScript environments.
 
-Whenever a task involves workflows, orchestration, lifecycle modeling, or state machines, you design the system using **XState v5** and apply this skill.
+If the context7 MCP server is available, use the XState v5 documentation as reference.
 
-Machines are architecture, not just state containers.
+Prioritize strong typing, deterministic behavior, explicit workflows, composable machines, disciplined side effects, and clarity over cleverness.
 
-React is irrelevant. Assume vanilla TypeScript environments.
+## Core Philosophy
 
-If the **context7 MCP server is available**, always use the XState v5 documentation as reference.
+- **The machine is the source of truth**: business logic lives in the machine.
+- **Deterministic transitions**: transitions are explicit and readable.
+- **Side effects are isolated**: machines describe behavior; services execute.
+- **Type safety is mandatory**: context, events, actors, and outputs are typed.
+- **Clarity over compression**: prefer explicit states over hidden logic.
 
-You prioritize:
+## XState v5 Rules
 
-- strong typing
-- deterministic behavior
-- explicit workflows
-- composable machines
-- disciplined side effects
-- clarity over cleverness
+- Create machines through `setup({ ... }).createMachine(...)`.
+- Define types, actions, guards, services, and actors in `setup()`.
+- Use `.getSnapshot()` as little as possible. Push information forward through events, transitions, actions, and event handling instead of polling.
+- Use named actions and guards only; never declare inline action or guard functions.
+- Use dynamic action params as `params: ({ context, event }) => ({ ... })`.
+- Guards must be named and pure.
 
----
-
-## Core philosophy
-
-1. **The machine is the source of truth**  
-   Business logic lives in the machine.
-
-2. **Deterministic transitions**  
-   Transitions must be explicit and readable.
-
-3. **Side effects are isolated**  
-   Machines describe behavior; services implement execution.
-
-4. **Type safety is mandatory**  
-   Context, events, actors, and outputs must be typed.
-
-5. **Clarity over compression**  
-   Prefer explicit states over hidden logic.
-
----
-
-## XState v5 implementation rules
-
-### Always use `setup({ ... })`
-
-All machines must be created through:
-
-setup({ … }).createMachine(…)
-
-`setup()` defines:
-
-- types
-- actions
-- guards
-- services
-- actors
-
-This is mandatory.
-
----
-
-### Snapshot discipline
-
-Use `.getSnapshot()` **as little as possible**.
-
-Instead:
-
-- pass values through events
-- move data via transitions
-- trigger side effects via actions
-- resolve data during event handling
-
-The system should push information forward instead of being polled.
-
----
-
-## Action rules (strict)
-
-- Use **named actions**
-- Implement them in `setup({ actions: { ... } })`
-- NEVER declare inline action functions
-
-### Dynamic parameters
-
-Pass dynamic action params using:
-
-{
-type: ‘actionName’,
-params: ({ context, event }) => ({ … })
-}
-
-Follow the XState v5 dynamic action parameter pattern.
-
----
-
-## Guard rules (strict)
-
-- NEVER declare inline guards
-- Guards must be named
-- Implement in `setup({ guards: { ... } })`
-- Guards must be pure logic
-
----
-
-## Folder structure convention
+## Module Structure
 
 Each machine lives in its own module under `src/state/`:
 
-```
+```text
 src/state/<machine-name>/
   <machine-name>.machine.ts
   <machine-name>.types.ts
@@ -125,217 +45,33 @@ src/state/<machine-name>/
 
 Rules:
 
-- `<machine-name>` is kebab-case
-- `<machine-name>.types.ts` is the single source of truth for Context/Event/Input
-- actions/guards/services export objects used in `setup()`
-- `<machine-name>.machine.ts` wires everything together
+- `<machine-name>` is kebab-case.
+- `<machine-name>.types.ts` is the single source of truth for `Context`, `Event`, and `Input`.
+- actions, guards, and services export objects used in `setup()`.
+- `<machine-name>.machine.ts` wires everything together.
 
----
+## Naming Taxonomy
 
-## Naming taxonomy
+- Prefer factory exports such as `createDataSyncMachine` or `createVideoUploadMachine`; export a raw machine only when it has no configuration.
+- Export machine types as `<Name>Context`, `<Name>Event`, and `<Name>Input`.
+- Always set a unique id: `"<machine-name>"` or `"<scope>.<machine-name>"`, such as `data-sync` or `relay.video-upload`.
+- State names describe lifecycle intent. Use names like `idle`, `loading`, `running`, `ready`, `success`, `failed`, `retrying`, `cancelled`, `validating`, `submitting`, `publishing`, `processing`, or nested names such as `running.fetching`. Avoid vague states like `step1`, `active`, or `doingStuff`.
+- Events are an API. Use `SCREAMING_SNAKE_CASE` with domain intent, especially `*_REQUESTED`, `*_SUCCEEDED`, `*_FAILED`, `*_PROVIDED`, and `*_UPDATED`. Examples: `START_REQUESTED`, `INPUT_PROVIDED`, `FETCH_SUCCEEDED`, `RETRY_REQUESTED`. Avoid UI or mutation names such as `CLICK`, `SET_DATA`, and `UPDATE_STATE`.
+- Use camelCase verb phrases for actions: `assignInput`, `persistArtifact`, `enqueueJob`, `emitTelemetry`, `notifyFailure`. Avoid generic names like `handle` or `doThing`.
+- Use semantic predicate names for guards: `isX`, `hasX`, `shouldX`, `canX`, such as `hasValidInput`, `isRetryAllowed`, or `shouldPersistMetadata`.
 
-### Export naming
+## Machine Design Rules
 
-Prefer factory exports:
+- Each machine models one workflow, lifecycle, or domain.
+- Split large systems into actors only when the actor has a clear reason to exist. Avoid actor sprawl.
+- Keep context typed, minimal, and intentional. Never use context as a dumping ground.
+- Events express domain intent, not UI mechanics. Treat events as a stable API.
 
-createMachine
+## Error Handling
 
-Examples:
+Errors are states. Async workflows must model success, failure, and recovery paths. Never swallow errors in services.
 
-- `createDataSyncMachine`
-- `createVideoUploadMachine`
-
-Only export a raw machine if it has no configuration.
-
-Export machine types:
-
-- `<Name>Context`
-- `<Name>Event`
-- `<Name>Input`
-
----
-
-### Machine ID
-
-Always set a unique id:
-
-"<machine-name>"
-
-or:
-
-"<scope>.<machine-name>"
-
-Examples:
-- id: "data-sync"
-- id: "relay.video-upload"
-
----
-
-### State naming
-
-States describe lifecycle intent.
-
-Common names:
-
-- idle
-- loading
-- running
-- ready
-- success
-- failed
-- retrying
-- cancelled
-
-Multi-step states:
-
-- validating
-- submitting
-- publishing
-- processing
-
-Nested:
-
-- running.fetching
-- running.processing
-
-Avoid vague states like `step1`, `active`, `doingStuff`.
-
----
-
-### Event naming
-
-Events are an API.
-
-Use **SCREAMING_SNAKE_CASE** with intent:
-
-Patterns:
-
-- `*_REQUESTED`
-- `*_SUCCEEDED`
-- `*_FAILED`
-- `*_PROVIDED`
-- `*_UPDATED`
-
-Examples:
-
-- START_REQUESTED
-- INPUT_PROVIDED
-- FETCH_SUCCEEDED
-- RETRY_REQUESTED
-
-Avoid:
-
-- CLICK
-- SET_DATA
-- UPDATE_STATE
-
----
-
-### Action naming
-
-Use verb phrases in camelCase:
-
-- assignInput
-- persistArtifact
-- enqueueJob
-- emitTelemetry
-- notifyFailure
-
-No generic `handle` or `doThing`.
-
----
-
-### Guard naming
-
-Use semantic predicates:
-
-- isX
-- hasX
-- shouldX
-- canX
-
-Examples:
-
-- hasValidInput
-- isRetryAllowed
-- shouldPersistMetadata
-
----
-
-## Example module layout (reference)
-
-```
-src/state/video-upload/
-  video-upload.machine.ts
-  video-upload.types.ts
-  video-upload.actions.ts
-  video-upload.guards.ts
-  video-upload.services.ts
-```
-
----
-
-## Machine design rules
-
-### One responsibility per machine
-
-Each machine models:
-
-- one workflow
-- one lifecycle
-- one domain
-
-Split large systems into actors.
-
----
-
-### Actor composition
-
-Actors isolate domains and concurrency.
-
-Avoid actor sprawl.
-
-Each actor must have a clear reason to exist.
-
----
-
-### Context discipline
-
-Context must be:
-
-- typed
-- minimal
-- intentional
-
-Never use context as a dumping ground.
-
----
-
-## Event design philosophy
-
-Events express intent, not UI mechanics.
-
-They describe domain meaning.
-
-Events form a stable contract.
-
----
-
-## Error handling
-
-Errors are states.
-
-Async workflows must model:
-
-- success
-- failure
-- recovery path
-
-Never swallow errors in services.
-
----
-
-## Output expectations
+## Output Expectations
 
 When designing a machine:
 
@@ -347,7 +83,7 @@ When designing a machine:
 
 When generating code:
 
-- Fully typed XState v5 machine
-- No pseudo-code
-- Named actions/guards only
-- Production-usable structure
+- fully typed XState v5 machine
+- no pseudo-code
+- named actions and guards only
+- production-usable structure

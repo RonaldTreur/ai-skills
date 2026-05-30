@@ -9,7 +9,7 @@ Skills are modular, filesystem-based capabilities for agents. A Skill packages m
 ## Best practices (summary)
 
 - Use clear, specific names and descriptions that say what the Skill does and when to use it.
-- Keep `SKILL.md` concise (under ~500 lines) and move deep reference material into separate files; rely on progressive disclosure.
+- Keep `SKILL.md` concise enough to use, but not at the expense of the normal execution path. The hot file must contain every rule needed for the default run of the Skill. Move only optional depth, long examples, templates, provenance, rare edge cases, and expanded reference material into separate files, with explicit "load this when..." gates.
 - Match instruction specificity to task risk: use high-level guidance when multiple approaches are valid and exact scripts when consistency is critical.
 - Provide templates or input/output examples when output format matters.
 - Prefer utility scripts for deterministic operations and handle errors explicitly; document configuration values and avoid assuming dependencies are installed.
@@ -26,66 +26,39 @@ The `methodology/` folder tracks discipline-by-discipline reviews of external ag
 
 Use the `external-skill-adaptation` skill when comparing third-party skills, prompts, or instruction repos against these local skills.
 
-The current methodology taxonomy is split by workflow ownership, not by source
-repo. Each skill should have recognizable trigger cases, reduce duplication,
-and say what it does not own.
+The current methodology taxonomy is split by workflow ownership, not by source repo. Each skill should have recognizable trigger cases, reduce duplication, and say what it does not own.
 
 Core lifecycle owners:
 
-- `project-kickoff/`: early grounding, brief, product/design direction,
-  `BRIEF.md`, `DESIGN.md`, `PLAN.md`, and `DECISIONS.md`.
-- `project-manager/`: repo/project setup, readiness, issue decomposition,
-  backlog ordering, status, and next-work selection.
-- `implement-issue/`: one ready issue or backlog slice through branch, tests,
-  implementation, review, PR, merge, and post-merge QA.
-- `documentation-handoff/`: README/AGENTS roles, project artifacts,
-  `DELIVERY_STATE.md`, `DECISIONS.md`, ADRs, PR/issue handoffs, blockers, and
-  recovery summaries.
+- `project-kickoff/`: early grounding, brief, product/design direction, `BRIEF.md`, `DESIGN.md`, `PLAN.md`, and `DECISIONS.md`.
+- `project-manager/`: repo/project setup, readiness, issue decomposition, backlog ordering, status, and next-work selection.
+- `implement-issue/`: one ready issue or backlog slice through branch, tests, implementation, review, PR, merge, and post-merge QA.
+- `documentation-handoff/`: README/AGENTS roles, project artifacts, `DELIVERY_STATE.md`, `DECISIONS.md`, ADRs, PR/issue handoffs, blockers, and recovery summaries.
 
 Specialist owners:
 
-- `debugging/`: investigation-first bug fixing with a trivial-bug fast path and
-  hard verification gates.
-- `code-review/`: architecture, security, maintainability, correctness,
-  convention, and test-risk review.
-- `skill-review/`: skill activation accuracy, context cost, progressive
-  disclosure, safety, and realistic behavior.
-- `skill-maintenance/`: skill inventory audits and focused cleanup for
-  duplicate skills, superseded skills, long descriptions, repeated prose,
-  overlap, and prompt-budget pressure.
-- `agent-delegation/`: handoff mechanics for work sent to another agent,
-  runtime, or subagent.
+- `debugging/`: investigation-first bug fixing with a trivial-bug fast path and hard verification gates.
+- `code-review/`: architecture, security, maintainability, correctness, convention, and test-risk review.
+- `skill-review/`: skill activation accuracy, context cost, progressive disclosure, safety, and realistic behavior.
+- `skill-maintenance/`: skill inventory audits and focused cleanup for duplicate skills, superseded skills, long descriptions, repeated prose, overlap, and prompt-budget pressure.
+- `agent-delegation/`: handoff mechanics for work sent to another agent, runtime, or subagent.
 
 Testing and QA owners:
 
-- `test-planning/`: `TEST_PLAN.md`, coverage intent, exclusions, auth/test-data
-  readiness, and browser-QA scope.
-- `testing-orchestrator/`: outside-in execution across E2E, integration, unit,
-  and browser-QA verification.
+- `test-planning/`: `TEST_PLAN.md`, coverage intent, exclusions, auth/test-data readiness, and browser-QA scope.
+- `testing-orchestrator/`: outside-in execution across E2E, integration, unit, and browser-QA verification.
 - `unit-vitest/`: behavior-focused Vitest unit and integration tests.
-- `e2e-playwright/`: durable Playwright E2E tests, fixtures, locators, storage
-  state, and E2E artifacts.
-- `browser-qa/`: web preview, PR, and post-merge QA that needs an actual
-  browser pass.
-- `test-ci-policy/`: test scripts, CI entrypoints, coverage thresholds, and
-  local/CI parity. Do not use it as the default workflow for ordinary feature
-  implementation.
+- `e2e-playwright/`: durable Playwright E2E tests, fixtures, locators, storage state, and E2E artifacts.
+- `browser-qa/`: web preview, PR, and post-merge QA that needs an actual browser pass.
+- `test-ci-policy/`: test scripts, CI entrypoints, coverage thresholds, and local/CI parity. Do not use it as the default workflow for ordinary feature implementation.
 
 Design and frontend owners:
 
-- `frontend-design/`: divergent UI variants, visual thesis, shareable browser
-  previews, feedback rounds, and approved frontend design artifacts.
+- `frontend-design/`: divergent UI variants, visual thesis, shareable browser previews, feedback rounds, and approved frontend design artifacts.
 - `developing-web-projects/`: web architecture and implementation conventions.
-- `design-prompt-export/`: export approved UI direction into copy-paste prompts
-  for external UI generators or one-off design workers.
+- `design-prompt-export/`: export approved UI direction into copy-paste prompts for external UI generators or one-off design workers.
 - `generating-web-components/`: repository-patterned Web Component generation.
 
-GitHub label automation lives in `gh-pipeline/`. It is dormant infrastructure
-unless a repo is actually using labels to drive build, test, review, fix,
-approved, blocked, and failed states across the lifecycle skills.
+GitHub label automation lives in `gh-pipeline/`. It is dormant infrastructure unless a repo is actually using labels to drive build, test, review, fix, approved, blocked, and failed states across the lifecycle skills.
 
-Research and discovery does not have a standalone runtime skill. The useful
-behavior is folded into `project-kickoff/` as "Grounding Before Shaping";
-`deep-research`, `last30days`, `x_search`, Brave/web search, repo context, and
-memory/session lookup are routed only when they can change the brief, design
-direction, platform choice, backlog, or setup decision.
+Research and discovery does not have a standalone runtime skill. The useful behavior is folded into `project-kickoff/` as "Grounding Before Shaping"; `deep-research`, `last30days`, `x_search`, Brave/web search, repo context, and memory/session lookup are routed only when they can change the brief, design direction, platform choice, backlog, or setup decision.

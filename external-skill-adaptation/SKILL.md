@@ -27,29 +27,13 @@ The goal is not to vendor external skills. The goal is to compare sources by dis
 
 ### 1. Establish Scope
 
-Identify:
-
-- target discipline, such as debugging, implementation planning, testing, review, design, documentation, orchestration, or meta-behavior
-- sources to compare
-- local skills or instructions affected
-- whether the output is research only, draft skill text, or a ready-to-merge skill change
+Identify the target discipline, sources to compare, local skills or instructions affected, and whether the output is research only, draft skill text, or a ready-to-merge skill change.
 
 If the user has not named a discipline, recommend one vertical slice. Prefer debugging first because it has clear observable failure modes and high reuse.
 
 ### 2. Inventory Sources
 
-For each external source, record a source entry using `templates/source-inventory-entry.md`.
-
-Required fields:
-
-- source name
-- repository or document URL
-- license
-- commit SHA, tag, or release
-- reviewed files
-- review date
-- high-level applicability
-- risks or adoption constraints
+For each external source, record a source entry using `templates/source-inventory-entry.md`: source name, URL, license, reviewed ref, reviewed files, review date, applicability, and risks or adoption constraints.
 
 Store entries under `methodology/sources/`.
 
@@ -57,14 +41,7 @@ Store entries under `methodology/sources/`.
 
 Create or update `methodology/disciplines/<discipline>.md` using `templates/discipline-review.md`.
 
-For each source, capture:
-
-- useful practices
-- exact source locations
-- fit with current ai-skills and OpenClaw conventions
-- conflicts or risks
-- questions for the user
-- adoption recommendation
+For each source, capture useful practices, exact source locations, fit with current ai-skills and OpenClaw conventions, conflicts or risks, questions for the user, and adoption recommendation.
 
 Keep source quotes short. Summarize and link to exact files/commits wherever possible.
 
@@ -82,37 +59,17 @@ Avoid broad questions like "What do you think?"
 
 ### 5. Adapt Locally
 
-When adopting an idea:
-
-- fit it into the existing local skill that owns the discipline, or create a new focused skill if no owner exists
-- preserve local tone and conventions
-- remove assumptions that belong to the external tool, platform, or agent runtime
-- include only the minimum procedural detail needed for reliable behavior
-- keep activation triggers conservative enough that routine work does not become ceremonial
-- keep runtime skill text operational; move rebuild notes and source-by-source attribution into the adjacent source-influence artifact, not into `SKILL.md`
+When adopting an idea, fit it into the existing owner skill or create a focused skill only if no owner exists. Preserve local tone, remove external runtime assumptions, include the minimum procedural detail needed for reliable behavior, keep triggers conservative, and keep runtime `SKILL.md` text operational. Move rebuild notes and source-by-source attribution into the adjacent source-influence artifact.
 
 ### 6. Add Skill-Level Attribution
 
-When a discipline produces or materially changes a local skill, create or update
-`<skill>/PROVENANCE.md`. This path is mandatory.
+When a discipline produces or materially changes a local skill, create or update `<skill>/PROVENANCE.md`. This path is mandatory.
 
-If a local skill cannot have a sibling `PROVENANCE.md` because of repository
-structure, do not improvise another location silently. Record the exception and
-the chosen path in the discipline review before closing the task.
+If a local skill cannot have a sibling `PROVENANCE.md` because of repository structure, do not improvise another location silently. Record the exception and the chosen path in the discipline review before closing the task.
 
-The skill-level provenance artifact must include:
+The skill-level provenance artifact must include a short rebuild recipe, one concise section per source, source URL/ref/files/license when known, what was taken, why it fit, how it was adapted, important rejected material, and pointers back to `methodology/ADAPTATION_LOG.md` and the discipline review.
 
-- a short rebuild recipe for the adopted behavior
-- one concise section per external source
-- source URL, reviewed ref, reviewed file paths, and license when known
-- what was taken from that source
-- why those ideas fit locally
-- how the idea was adapted to local conventions
-- important rejected material when the rejection explains the final shape
-- a pointer back to `methodology/ADAPTATION_LOG.md` and the relevant discipline review
-
-Keep this artifact concise enough to read quickly, but complete enough to rebuild
-the skill close to its current form without rereading every external source.
+Keep this artifact concise enough to read quickly, but complete enough to rebuild the skill close to its current form without rereading every external source.
 
 ### 7. Update Provenance
 
@@ -131,18 +88,7 @@ Categories:
 
 ### 8. Verify
 
-Before closing the task:
-
-- run basic skill validation for new or changed skills when available
-- run `[[skill-review]]` against every created or changed runtime `SKILL.md`
-  and apply or report the findings
-- inspect `git diff` for accidental copied text, missing attribution, or unrelated changes
-- ensure every changed local skill has a matching log entry
-- ensure every changed local skill has `<skill>/PROVENANCE.md`, or the discipline review records the structural exception and chosen path
-- ensure runtime `SKILL.md` files do not contain provenance-only notes
-- ignore local `[[skill-name]]` references during the review; these skills are
-  meant to work together, not in isolation
-- summarize branch, files changed, source commits reviewed, and open questions
+Before closing, run validation when available; run `[[skill-review]]` against every created or changed runtime `SKILL.md`; inspect `git diff` for copied text, missing attribution, or unrelated changes; ensure every changed skill has a matching log entry and `<skill>/PROVENANCE.md` or a documented exception; keep provenance-only notes out of runtime `SKILL.md`; ignore local `[[skill-name]]` references during review; and summarize branch, files changed, reviewed refs, and open questions.
 
 ## Output Shape
 
