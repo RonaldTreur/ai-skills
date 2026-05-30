@@ -1,0 +1,6 @@
+interface:
+  display_name: "Skill Maintenance"
+  short_description: "Audit skill inventories for bloat, duplicates, stale skills, and routing risk"
+  default_prompt: "Use $skill-maintenance to audit installed or repository skills before a large integration or cleanup pass."
+policy:
+  allow_implicit_invocation: true

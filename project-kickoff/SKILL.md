@@ -1,155 +1,202 @@
 ---
 name: project-kickoff
-description: Three-phase project kickoff: brief clarification, competitive UI design, and implementation planning. Two AI models work independently, debate, and iterate — with the user steering. Final output hands off to Vectrix for implementation.
+description: "Shape greenfield or major projects before implementation: grounding, brief, product/design direction, decisions, and handoff-ready BRIEF.md, DESIGN.md, PLAN.md, and DECISIONS.md."
 ---
 
 # Project Kickoff
 
-Orchestrates the full kickoff of a new web project in three phases, all visible in a dedicated Discord thread.
+Turn a rough project idea into durable direction artifacts. Own product shaping,
+early discovery, surface detection, domain clarity, implementation guardrails,
+and decisions. Do not own detailed frontend design, GitHub issue decomposition,
+long-running delivery, or active implementation.
 
-## Linked Skills
+## Ownership Boundary
 
-- `/Users/merlin/Development/skills/developing-web-projects/SKILL.md` — stack, architecture, conventions
-- `/Users/merlin/.openclaw/workspace-main/skills/ui-design-prompt/SKILL.md` — TC-EBC design framework
+- `project-kickoff`: initial `BRIEF.md`, `DESIGN.md`, `PLAN.md`,
+  `DECISIONS.md`.
+- [[project-manager]]: repo setup, readiness, issues, project boards, next
+  implementation slices.
+- [[test-planning]]: `TEST_PLAN.md` before broad test work.
+- [[developing-web-projects]]: web architecture and stack conventions.
+- [[frontend-design]]: visual frontend exploration.
+- [[browser-qa]]: real browser verification for generated web prototypes.
+- [[agent-delegation]]: critique/risk/variant agent handoffs.
+- [[documentation-handoff]]: artifact roles, decisions, handoff shape.
 
-Read these before starting. They define the constraints both AIs work within.
+## Ground Rules
 
-## The Two Models
+- Keep the human in control of product and taste decisions.
+- Use kickoff as the place to ask important product, domain, and taste
+  questions up front so later implementation can run autonomously.
+- Do not ask for information that can be discovered from existing context.
+- When asking, group the important choices into concise checkpoints, recommend
+  defaults, and explain the tradeoff.
+- Use competing options to widen product or interaction choices, not to create
+  ceremony.
+- Record every significant choice and rejected alternative in `DECISIONS.md`
+  using [[documentation-handoff]].
+- Create an ADR via [[documentation-handoff]] when a technical choice shapes
+  architecture, data, auth, platform, deployment, or integration boundaries.
+- Prefer artifacts over chat summaries. The project folder is the durable state.
+- Do not hand directly to implementation until [[project-manager]] has checked
+  setup, testability, issue slicing, and dependencies.
 
-- **Model A — Codex** (`openai-codex/gpt-5.3-codex`): engineering-first, pragmatic
-- **Model B — Opus** (`anthropic/claude-opus-4-6`): design-first, holistic
+## Kickoff Defaults
 
-Both are spawned as sub-agents. Neither knows which "letter" they are — they just see the project files and the other's work.
+- **Grill the domain before planning.** Resolve overloaded terms and hidden
+  assumptions before they become design or implementation drift.
+- **Front-load human judgment.** Ask the questions that affect taste, scope,
+  audience, workflow, and non-goals during kickoff/design; after approval,
+  implementation agents should rely on the artifacts and conservative defaults
+  instead of reopening those choices.
+- **Ground before shaping.** Use the cheapest sufficient discovery pass before
+  locking the brief, design direction, or plan. Skip research when it would not
+  change the decision.
+- **Visual frontend work is routed out.** Browser UI, dashboards, landing pages,
+  and visual frontends use [[frontend-design]] for divergent design.
+- **Non-visual design stays here.** Bot-only, backend-only, CLI, and automation
+  projects still need interaction/artifact design, but not frontend-design.
+- **Plans are guardrails, not choreography.** `PLAN.md` records scope, work
+  units, dependencies, risks, files, and tests without pre-writing code.
+- **Use stable work-unit IDs.** Plan units use IDs such as `U1`, `U2`, `U3` so
+  later issues, blockers, and PRs can reference them without renumbering chaos.
+- **Stress-test fuzzy language.** If terms like "account", "project", "admin",
+  "publish", or "sync" are overloaded, resolve the domain meaning and record it
+  in `DECISIONS.md`.
 
-## Discord Setup
+## Grounding Before Shaping
 
-All phases happen in a **Discord thread** inside `#🏗️project-kickoff` (or whatever channel the user specifies). Create the thread at the start with the project name.
+Use discovery when outside facts can change the brief, product direction, or
+plan. Do not turn kickoff into a standing research report workflow.
 
-Prefix every posted message with the source:
-- `**🔧 Codex:**` for Model A output
-- `**🧠 Opus:**` for Model B output
-- `**📋 Merlin:**` for orchestration notes
-- User messages are their own
+Classify the research need:
 
-## Project Folder Structure
+- **Current/social signal**: use `last30days`, `x_search`, Reddit/X, and
+  Brave-backed web search only when current signal can change direction.
+- **Deep external research**: use `deep-research` when a saved report is worth
+  the time and token cost.
+- **Repo/project discovery**: read existing docs, code, issues, decisions, and
+  prior artifacts before asking the user to restate them.
+- **Memory/session discovery**: use relevant OpenClaw memory/session/channel
+  history when continuity affects framing.
 
-Create at the start of Phase 1:
-
-**Web application:**
-```
-<project-name>/
-  BRIEF.md              ← Phase 1 output (functional spec)
-  DECISIONS.md          ← Progressive, updated across all phases
-  design-a/             ← Codex's design (Phase 2)
-  design-b/             ← Opus's design (Phase 2)
-  vite.config.ts        ← Multi-page Vite config serving /a/ and /b/
-  package.json          ← Vite project scaffolding
-```
-
-**Discord bot:**
-```
-<project-name>/
-  BRIEF.md              ← Phase 1 output (functional spec)
-  DECISIONS.md          ← Progressive, updated across all phases
-  design-a/             ← Codex's interaction design (Phase 2)
-  design-b/             ← Opus's interaction design (Phase 2)
-```
-
-After Phase 2, winning design promotes:
-- **Web:** design files → `src/`, loser deleted
-- **Discord bot:** design docs → `docs/`, loser deleted
-
-After Phase 3:
-```
-<project-name>/
-  BRIEF.md
-  DESIGN.md             ← From winning design
-  PLAN.md               ← Winning implementation plan
-  DECISIONS.md          ← All decisions with rationale
-  src/                  ← Promoted design files (web) or empty (bot)
-  docs/                 ← commands.md, embeds.md, flows.md, examples.md (bot)
-```
-
-## DECISIONS.md — The Living Record
-
-Updated progressively across ALL phases. Every significant decision gets recorded:
+Default to a compact grounding digest in `<project>/context/grounding.md` or
+`BRIEF.md` when short:
 
 ```markdown
-## [Topic]: [Choice A] vs [Choice B]
-- **Decision:** [What was chosen]
-- **Why:** [Reasoning from the debate]
-- **Rejected:** [What was rejected and why]
-- **User input:** [Any steering from Ronald]
+## Grounding
+- **Research value:** high | moderate | low | unavailable
+- **Searched:** [sources, tools, files, issues, memory]
+- **Strongest findings:** [decision-relevant findings]
+- **Weak or conflicting signals:** [uncertainty and contradictions]
+- **Implication:** [how this changes or confirms the brief/design/plan]
+- **Next action:** [one concrete step or blocker]
 ```
 
-This is the key context document for Vectrix's handoff. It captures the *why*, not just the *what*.
+Skip discovery when:
+
+- the work is already scoped by approved project docs
+- the request is a tiny implementation task
+- current signal is unlikely to change product, design, or platform direction
+- the user is asking for execution, not shaping
+- research would only delay an answer the existing context already supports
+
+When research surfaces a durable product, domain, or platform decision, record
+it through [[documentation-handoff]] in `DECISIONS.md`.
 
 ## Project Type Detection
 
-Before starting Phase 1, determine the project type. If the user's description doesn't make it clear, ask:
+Before Phase 1, classify the project:
 
-> **What are we building?**
-> 🌐 **Web application** — user-facing website or admin panel
-> 🤖 **Discord bot** — bot with slash commands, embeds, interactions
-> 🌐+🤖 **Both** — bot with companion web UI(s)
+- **Visual frontend**: website, web app, dashboard, admin panel, landing page,
+  browser tool, or UI-heavy feature.
+- **Discord bot**: slash commands, embeds, interactions, modals, schedules.
+- **Both**: a bot/backend plus one or more companion frontends.
+- **Non-visual software**: backend service, API, CLI, worker, automation, data
+  pipeline, or other project with no user-facing visual UI.
+- **Other**: run Phase 1 and Phase 3; replace Phase 2 with relevant artifact or
+  interaction design.
 
-The project type determines which Phase 2 variant to use. Phase 1 and Phase 3 are the same for all types.
+If the type is unclear and cannot be inferred, ask one concise question before
+creating folders.
 
-For **"Both"** projects: run the Discord bot Phase 2 first (interaction design), then run the web UI Phase 2 separately for each web interface. Each gets its own design competition.
+## Project Folder
+
+Create the project folder at Phase 1 with `BRIEF.md`, `DECISIONS.md`, and
+`context/`. Visual frontend Phase 2 may use temporary competing design folders
+owned by [[frontend-design]]. After Phase 3, the stable handoff set normally
+contains `BRIEF.md`, `DESIGN.md`, `PLAN.md`, `DECISIONS.md`, and `src/` or
+`docs/`.
 
 ## Phase Flow
 
-### Phase 1: Functional Brief → [[phases/phase-1-brief]]
-Clarify requirements through interactive Q&A with both models.
-**Entry:** User describes the project.
-**Exit:** `BRIEF.md` is complete and user confirms.
+### Phase 1: Functional Brief
 
-### Phase 2: Design (branched by project type)
+Use [[phases/phase-1-brief]].
 
-**Web application** → [[phases/phase-2-design]]
-Competitive UI/UX design with HTML/CSS prototypes served by Vite.
-**Entry:** Approved `BRIEF.md`.
-**Exit:** User picks a winning design, promoted to `src/`.
+Goal: produce an approved `BRIEF.md` that defines the user, problem, flows,
+scope boundaries, data, constraints, and open questions.
 
-**Discord bot** → [[phases/phase-2-design-discord]]
-Competitive interaction design: commands, embeds, flows, message examples.
-**Entry:** Approved `BRIEF.md`.
-**Exit:** User picks a winning interaction design, docs moved to `docs/`.
+### Phase 2: Surface Design
 
-**Both** → Run [[phases/phase-2-design-discord]] first, then [[phases/phase-2-design]] for each web UI.
+For visual frontend work, use [[phases/phase-2-design]], which delegates to
+[[frontend-design]].
 
-### Phase 3: Implementation Planning → [[phases/phase-3-planning]]
-Architecture debate between both models.
-**Entry:** Approved `BRIEF.md` + `DESIGN.md`.
-**Exit:** `PLAN.md` selected, ready for Vectrix handoff.
+For Discord bot work, use [[phases/phase-2-design-discord]].
 
-## Vectrix Handoff
+For "both" projects, design non-visual interaction surfaces first, then run a
+separate [[frontend-design]] pass for each required visual interface.
 
-After Phase 3, hand the project to Vectrix with:
+Goal: produce an approved `DESIGN.md` plus `src/` for frontend prototypes,
+`docs/` for bot interaction artifacts, or equivalent artifacts for non-visual
+projects.
 
-```
-Read these files in order:
-1. BRIEF.md — what we're building
-2. DESIGN.md — what it looks like (and why)
-3. PLAN.md — how to build it
-4. DECISIONS.md — every decision and its rationale
-5. /Users/merlin/Development/skills/developing-web-projects/SKILL.md — conventions
+### Phase 3: Implementation Guardrails
 
-Your first task: write IMPLEMENTATION_PLAN.md in your own words.
-Break it into ordered tasks, file-by-file. If anything is unclear, ask before writing code.
-```
+Use [[phases/phase-3-planning]].
 
-Vectrix rewrites the plan to internalize it. This is intentional — it forces understanding rather than blind execution.
+Goal: produce an approved `PLAN.md` with stable work units, dependencies,
+files, risks, and test scenarios. The plan should be specific enough for issue
+decomposition, but leave implementation details to the agent working with the
+live codebase.
+
+If Phase 3 settles a significant technical direction, create or update the
+relevant ADR before handing off.
 
 ## Sub-Agent Pattern
 
-Each round spawns a fresh sub-agent. The project folder IS the persistent state.
+Use [[agent-delegation]] for prompt shape, status handling, and parallel-safety
+rules.
 
-```
-Spawn: "Read <project>/BRIEF.md, <project>/DECISIONS.md, 
-  <project>/design-b/ (the other's design), and 
-  <project>/context/round-N-feedback.md.
-  Revise your design in <project>/design-a/."
-```
+Use sub-agents only when independent perspectives materially improve the result:
 
-Sub-agent reads everything, has full context, produces output, completes. No persistent sessions needed.
+- brief critique or question generation
+- divergent product, interaction, or frontend design concepts
+- plan critique from engineering, design, or product angles
+- risk review before handoff
+
+Fresh sub-agents read only the relevant kickoff artifacts: `BRIEF.md`,
+`DESIGN.md` when available, `DECISIONS.md`, and current context notes.
+
+## Handoff
+
+After Phase 3, hand off to [[project-manager]], not directly to implementation.
+Tell it to read:
+
+- `BRIEF.md`
+- `DESIGN.md`
+- `PLAN.md`
+- `DECISIONS.md`
+- relevant `docs/adr/` records
+- `src/` or `docs/`
+
+Then it should:
+
+- verify readiness
+- create/update `TEST_PLAN.md`
+- decompose `PLAN.md` into issues
+- identify blockers
+- route implementation slices
+
+Implementation agents receive project-manager issue context plus kickoff
+artifacts, not raw kickoff output alone.

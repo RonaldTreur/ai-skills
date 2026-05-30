@@ -1,0 +1,6 @@
+interface:
+  display_name: "Browser QA"
+  short_description: "Verify web app behavior in a browser and report defects"
+  default_prompt: "Use $browser-qa to verify a web app, preview, PR, or post-merge build in the browser."
+policy:
+  allow_implicit_invocation: true

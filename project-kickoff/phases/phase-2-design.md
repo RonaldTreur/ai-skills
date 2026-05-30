@@ -1,130 +1,78 @@
-# Phase 2: UI/UX Design
+# Phase 2: Visual Frontend Design
 
 ## Goal
 
-Two competing designs, iterated with user feedback, until one is chosen. Output: approved design promoted to `src/` with `DESIGN.md`.
+Route visual frontend work to [[frontend-design]] when the project includes a
+web UI, dashboard, landing page, or other visual browser surface.
 
-## Prerequisites
+Project kickoff should detect that a visual frontend is needed and preserve the
+resulting approved design artifact. It should not duplicate the frontend design
+workflow.
 
-- Approved `BRIEF.md` from Phase 1
-- Read `/Users/merlin/.openclaw/workspace-main/skills/ui-design-prompt/SKILL.md` for the TC-EBC framework
-- Read `/Users/merlin/Development/skills/developing-web-projects/SKILL.md` for stack conventions
+## When This Phase Applies
 
-## Setup: Vite Project
+Use this phase for:
 
-Before spawning designers, scaffold the project:
+- websites
+- web apps
+- dashboards
+- admin panels
+- landing pages
+- companion web UIs for bot/backend projects
+- UI-heavy browser tools
 
-```
-<project>/
-  package.json          ← Vite + dev dependencies
-  vite.config.ts        ← Multi-page: /a/ serves design-a/, /b/ serves design-b/
-  design-a/
-    index.html
-  design-b/
-    index.html
-```
+Skip this phase for:
 
-Configure Vite for multi-page serving so the user can navigate both designs in-browser at `localhost:5173/a/` and `localhost:5173/b/`.
+- Discord bot-only projects
+- backend-only services
+- CLI-only tools
+- pure API work
+- automation with no visual frontend
 
-Start the dev server and keep it running throughout Phase 2.
+For non-visual projects, use the relevant interaction/artifact design phase
+instead, such as [[phases/phase-2-design-discord]].
 
-## Round 1: Initial Designs
+## Inputs
 
-Spawn both models. Each reads `BRIEF.md` and creates a full multi-page design in their folder.
+Before invoking [[frontend-design]], make sure these exist:
 
-**Prompt for each (adapt folder name):**
-```
-You are designing the UI/UX for a new web project.
+- `<project>/BRIEF.md`
+- `<project>/DECISIONS.md`
+- any brand assets, sketches, screenshots, or reference links already provided
+- any existing design system files if the project is not greenfield
 
-Read these files:
-- <project>/BRIEF.md — the functional spec
-- /Users/merlin/Development/skills/developing-web-projects/SKILL.md — conventions
-- /Users/merlin/.openclaw/workspace-main/skills/ui-design-prompt/SKILL.md — design framework
+## Delegation
 
-Create a complete, navigable design in <project>/design-[a|b]/:
-- One HTML file per page, all linked together (real navigation)
-- CSS files split however makes sense
-- Plain HTML + CSS only. No JS, no TypeScript, no Web Components.
-- Repeated HTML is fine — this is a design, not production code
-- Use realistic placeholder content, not Lorem ipsum
-- Include all visual states mentioned in the brief
+Invoke [[frontend-design]] with:
 
-Also create <project>/design-[a|b]/DESIGN.md with your design rationale:
-- Design direction and why
-- Color palette with reasoning
-- Typography and spacing system
-- Layout decisions per page
-- Responsive strategy
+```text
+Project kickoff has approved the functional brief and this project needs a
+visual frontend design.
 
-Make it look GOOD. This is a design competition.
-```
+Read:
+1. <project>/BRIEF.md
+2. <project>/DECISIONS.md
+3. any existing brand/design assets in <project>/
 
-### Post to Discord
+Produce an approved visual frontend direction using your divergent-variant
+workflow. Save the approved output as:
+- <project>/DESIGN.md
+- <project>/src/ or the approved prototype location
+- shareable preview URLs for variant review when practical, with any blocker
+  and fallback noted
+- DECISIONS.md updates for chosen/rejected design directions
 
-After both complete:
-1. Take screenshots of key pages from each design
-2. Post to thread with links: "Browse Codex's design at localhost:5173/a/ and Opus's at localhost:5173/b/"
-3. Highlight key differences between the approaches
+The approved `DESIGN.md` must preserve:
 
-## Iteration Rounds
-
-### Collecting Feedback
-
-User comments in the thread. Capture feedback as `<project>/context/round-N-feedback.md`:
-
-```markdown
-# Round N Feedback
-
-## What I like about Design A:
-[user's comments]
-
-## What I like about Design B:
-[user's comments]
-
-## What needs to change:
-[user's comments]
-
-## Direction for next round:
-[user's overall guidance — e.g., "Move closer to B's layout but keep A's colors"]
+- chosen macrostructure and why it fits
+- visual thesis and interaction stance
+- tokens/color anchors and type roles
+- density and motion stance
+- rejected alternatives
+- anti-patterns or do-not-repeat notes discovered during review
 ```
 
-### Spawning Next Round
+## Exit Condition
 
-Each model gets:
-- The feedback file
-- Access to the OTHER model's design folder (they can read it)
-- Their own previous design (they iterate, not restart)
-
-**Prompt:**
-```
-Read the user's feedback: <project>/context/round-N-feedback.md
-Review the competing design: <project>/design-[other]/
-Review your current design: <project>/design-[yours]/
-
-Revise your design based on the feedback. The user wants you to move in this direction:
-[paste the "Direction for next round" section]
-
-Update your HTML/CSS files and DESIGN.md. Don't start from scratch — evolve what you have.
-```
-
-### Decision Points
-
-After each round, ask the user:
-- **"Continue iterating?"** → next round
-- **"Pick a winner?"** → finalize
-- **"Merge specific elements?"** → instruct both models what to take from each other, one more round
-
-## Finalizing
-
-When the user picks a winner:
-
-1. Move winning design to `<project>/src/`:
-   ```bash
-   mv <project>/design-[winner]/* <project>/src/
-   ```
-2. Move winning `DESIGN.md` to project root
-3. Remove both design folders and context files
-4. Update Vite config to serve from `src/`
-5. Update `DECISIONS.md` with design decisions that emerged
-
-The project now has a working, approved design served by Vite — ready for Vectrix to build on.
+This phase is complete when [[frontend-design]] has produced an approved
+`DESIGN.md` and prototype/design artifact suitable for Phase 3 planning.

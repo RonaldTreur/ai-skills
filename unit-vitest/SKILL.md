@@ -1,6 +1,6 @@
 ---
 name: unit-vitest
-description: Write and maintain Vitest unit tests for TypeScript projects. Use when implementing unit tests, reviewing test quality, or adding coverage for existing code.
+description: "Write and maintain Vitest unit/integration tests for TypeScript projects: behavior coverage, domain logic, API/Worker boundaries, mocks, factories, and TEST_PLAN.md coverage."
 ---
 
 # Unit Testing with Vitest
@@ -24,10 +24,16 @@ Related workflow: [[testing-orchestrator]]
   - prefer dependency injection over heavy mocking
 - Coverage defaults:
   - lines/statements/functions/branches = **100%**
-  - ask before lowering thresholds
+  - lower thresholds or exclusions only when `TEST_PLAN.md` documents the
+    rationale or the user explicitly approves
 - Structure tests with Arrange-Act-Assert
 - Keep `describe` blocks focused (usually 3–5 tests)
 - Test behavior, not implementation details
+- Prefer public module/API contracts over private helpers and internal call
+  order
+- Use integration tests for meaningful boundaries: Worker handlers, persistence,
+  queues, auth callbacks, crypto, and other cross-module behavior
+- Mock external services and rare failure paths, not pure local logic you own
 
 ## Practical defaults
 
@@ -35,6 +41,11 @@ Related workflow: [[testing-orchestrator]]
 - Test null/undefined boundaries and malformed input.
 - Prefer deterministic tests (fake timers, stable factories).
 - Keep one behavior per `it()`.
+- Keep test data realistic enough to preserve behavior, but small enough to make
+  failures obvious.
+- If a coverage target pushes tests toward private structure or meaningless
+  assertions, update the coverage exclusion rationale in `TEST_PLAN.md` instead
+  of gaming the metric.
 
 ## Typical setup snippet (TypeScript)
 

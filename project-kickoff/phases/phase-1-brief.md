@@ -2,97 +2,124 @@
 
 ## Goal
 
-Turn the user's initial project idea into a clear, complete functional specification (`BRIEF.md`).
+Turn the user's rough idea into an approved `BRIEF.md` with clear product
+scope, target users, flows, data, constraints, and open questions.
 
 ## Process
 
-### Step 1: User Describes the Project
+### 1. Gather Existing Context
 
-The user posts their project idea in the Discord thread. Can be rough — a few sentences, a paragraph, bullet points. Whatever they have.
+Read the user's project description and any linked notes, sketches, docs, repo
+files, prior decisions, or market references already available.
 
-### Step 2: Independent Clarifying Questions
+Do not ask for information that can be discovered from local context. If the
+project is in an existing repo, inspect the relevant docs and code before
+asking.
 
-Spawn both models as sub-agents. Each independently reads the user's description and produces clarifying questions.
+Run a lightweight grounding pass when outside context could change the brief:
 
-**Prompt for each:**
-```
-You are helping define a new project. Here's what the user described:
+- current market, social, or tool signal
+- prior art, competitors, or adjacent products
+- existing repo/project/memory context
+- user-supplied URLs, artifacts, or references
 
-[user's description]
+Keep the result compact. Capture only decision-relevant findings, weak signals,
+and implications for the brief.
 
-Read the web development conventions: /Users/merlin/Development/skills/developing-web-projects/SKILL.md
+### 2. Front-Load Human Judgment
 
-Generate 5-10 clarifying questions that would help produce a complete functional spec. Focus on:
-- User flows and interactions
-- Data model and persistence
-- Edge cases and error states
-- Target audience and context
-- Scope boundaries (what's NOT included)
+Generate clarifying questions for decisions that affect scope, audience, taste,
+data, permissions, user flows, technical feasibility, non-goals, or design
+direction. This is the right phase to ask the important questions before the
+autonomous implementation loop starts.
 
-Be specific, not generic. Don't ask questions the description already answers.
-```
+Question rules:
 
-### Step 3: Merge and Post
+- Group related questions into one concise checkpoint.
+- Recommend defaults where possible.
+- Explain the tradeoff in outcome terms.
+- Prefer one strong checkpoint; use follow-up rounds when the answers expose a
+  real product/design fork or the user explicitly wants deeper shaping.
+- If terms are ambiguous, propose canonical meanings and ask the user to choose.
 
-Merge both sets of questions. Remove duplicates. Group by theme. Post to the thread:
-
-```
-📋 Merlin: Both models have questions before we write the brief:
-
-**User Flows:**
-- 🔧 [Codex question]
-- 🧠 [Opus question]
-
-**Data & Persistence:**
-- 🔧 [Codex question]
-- 🧠 [Opus question]
-...
-```
-
-### Step 4: User Answers
-
-User answers in the thread. Can answer all at once or in batches. Can also add new requirements.
-
-### Step 5: Follow-up Round (if needed)
-
-If answers reveal new ambiguities, either model can generate follow-up questions. Max 2 follow-up rounds — then we write the brief with what we have.
-
-### Step 6: Draft BRIEF.md
-
-Spawn one model (Opus — better at synthesis) to draft `BRIEF.md`:
+Good question shape:
 
 ```markdown
-# [Project Name] — Functional Brief
+I can draft the brief with these assumptions:
 
-## Overview
-[What this project is, in 2-3 sentences]
+- [assumption + consequence]
+- [assumption + consequence]
 
-## Target Audience
-[Who uses this and why]
+The only blocking choices are:
 
-## Core Features
-[Numbered list of features with brief descriptions]
-
-## User Flows
-[Key user journeys, step by step]
-
-## Data Model
-[What data exists, relationships, persistence approach]
-
-## Pages / Views / Commands
-[For web: list of pages with their purpose]
-[For Discord bot: list of slash commands with their purpose]
-[For both: list both]
-
-## Scope Boundaries
-[What is explicitly NOT included in v1]
-
-## Open Questions
-[Anything still unresolved]
+1. [question with recommended default]
+2. [question with recommended default]
 ```
 
-### Step 7: User Confirms
+### 3. Optional Independent Review
 
-Post the draft to the thread. User reviews, requests changes, or approves.
+Use sub-agents when the idea is large, fuzzy, or high-stakes:
 
-**Exit condition:** User says the brief is good → save final `BRIEF.md` → proceed to Phase 2.
+- one product/UX lens: audience, motivation, flows, edge cases
+- one engineering lens: data, integrations, constraints, failure modes
+
+Ask each to produce questions, assumptions, and scope risks. Merge their output
+before showing the user. Do not post duplicate or generic questions.
+
+### 4. Draft `BRIEF.md`
+
+Use this structure:
+
+```markdown
+# [Project Name] - Functional Brief
+
+## Overview
+[What this project is and why it exists.]
+
+## Target Users
+[Who uses this, what they already know, and what job they need done.]
+
+## Core Use Cases
+[Numbered list of primary user goals.]
+
+## User Flows
+[Key journeys, including happy path and important edge/error paths.]
+
+## Data And State
+[Entities, relationships, persistence, ownership, lifecycle, and privacy notes.]
+
+## Grounding
+[Research value, sources checked, strongest findings, weak/conflicting signals, and implications.]
+
+## Surfaces
+[Pages, views, commands, notifications, background jobs, or integrations.]
+
+## Scope Boundaries
+[What v1 explicitly includes and excludes.]
+
+## Constraints
+[Technical, operational, design, schedule, budget, platform, or policy constraints.]
+
+## Open Questions
+[Questions that remain unresolved, with recommended default when possible.]
+```
+
+### 5. Update `DECISIONS.md`
+
+Record meaningful decisions immediately:
+
+```markdown
+## [Topic]
+- **Decision:** [choice]
+- **Why:** [reasoning]
+- **Rejected:** [alternatives and why they lost]
+- **User input:** [direct user steering if any]
+```
+
+Do not record noise. Capture decisions a future implementer would otherwise
+need to rediscover.
+
+### 6. User Confirmation
+
+Post or summarize the draft for review. The phase exits only when the user
+approves the brief or gives enough concrete edits to finalize it.
