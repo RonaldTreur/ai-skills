@@ -18,6 +18,9 @@ Runtime attribution belongs here, not in the skill body.
    non-production auth paths and report missing auth setup as QA infrastructure.
 6. Use the agent's own controlled browser profile by default so QA automation
    is repeatable and does not depend on personal profile extensions or state.
+7. For significant visual changes, verify concrete mobile widths and clickable
+   affordance behavior, and treat optional detector output as evidence rather
+   than authority.
 
 ## GStack
 
@@ -118,6 +121,32 @@ Local adaptation:
 - CSS cleanup guidance is phrased as DOM/state/coverage verification rather than
   a separate heavyweight audit workflow.
 
+## Impeccable and Hallmark Visual QA
+
+- Sources: https://github.com/pbakaus/impeccable,
+  https://github.com/Nutlope/hallmark
+- Reviewed refs: Impeccable `1d5d745823aae7019044e8b0a621af4366dae224`,
+  Hallmark `df5498f7f64102f559ccd1cb693d95136dd95b97`
+- Reviewed paths: Impeccable detector registry and audit/critique references;
+  Hallmark `SKILL.md`, `references/slop-test.md`, `references/structure.md`
+- Licenses: Apache-2.0 and MIT
+
+What we took:
+
+- optional anti-pattern detector evidence for narrow Node-capable targets
+- mobile visual QA widths: 320, 375, 414, and 768 px
+- no horizontal scroll as a default visual QA expectation
+- no awkward two-line clickable CTA/nav/tab/breadcrumb/footer text
+- visible checks for fake chrome, invented proof, token drift, missing states,
+  and generic AI layout tells
+
+Local adaptation:
+
+- Kept detector use optional and non-blocking.
+- Added a small command reference at `references/impeccable-detector.md`.
+- Routed broad durable E2E coverage to [[e2e-playwright]] and kept this skill
+  focused on browser-observed QA evidence.
+
 ## Local Browser Profile Policy
 
 - Source: user review feedback in `#claw-enhance`
@@ -141,3 +170,5 @@ Why:
 
 - Adaptation log: `methodology/ADAPTATION_LOG.md`
 - Discipline review: `methodology/disciplines/browser-qa.md`
+- Design source review:
+  `methodology/disciplines/frontend-design-impeccable-hallmark.md`

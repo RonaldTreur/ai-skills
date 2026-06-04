@@ -45,7 +45,7 @@ Suppress speculative best-practice notes, unchanged pre-existing issues unless t
 4. **Architecture and conventions**: check SOLID concerns and enforce [[developing-web-projects]] rules: no React/Vue/Angular imports unless explicitly allowed, no Tailwind or utility CSS, no CSS resets, no SPA router, semantic CSS names, MPA documents/navigation, proper Web Components, and CSS selectors explainable from rendered markup and real states. Propose incremental refactors with risk/benefit.
 5. **Removal candidates**: find unused imports, dead code paths, redundant abstractions, and expired feature-flag branches. Classify as safe-delete-now or defer-with-plan.
 6. **Security and reliability**: check XSS, injection, auth/authz, secret exposure, race/TOCTOU, and CSRF. Always report exploitability, impact, and minimal mitigation.
-7. **Code quality**: check error handling, performance, boundaries, TypeScript quality, CSS hygiene, and symptom-layering. CSS findings include stale selectors, duplicate/overridden declarations, token freelancing, orphaned states, and additive-only CSS patches. Symptom-layering is usually **P1** when behavior changes and **P2** when it mainly adds fragility.
+7. **Code quality**: check error handling, performance, boundaries, TypeScript quality, CSS hygiene, and symptom-layering. CSS findings include stale selectors, duplicate/overridden declarations, token freelancing, orphaned states, and additive-only CSS patches. For UI diffs, also check design-system drift, invented metrics/testimonials/logos, fake browser/device/IDE chrome, unreadable mobile CTAs, missing component states, and visual changes that contradict an approved `DESIGN.md`. Symptom-layering is usually **P1** when behavior changes and **P2** when it mainly adds fragility.
 8. **Output**: use `templates/review-output.md`. Lead with findings, then open questions, then secondary summary. End with numbered next-step options when action is needed.
 
 ## Severity Levels
@@ -61,6 +61,12 @@ CSS severity guidance:
 
 - User-visible breakage from selector/state mismatch is usually **P1** and can be **P0** if it makes the interface unusable.
 - Dead, stale, or overridden CSS is usually **P2** unless it creates active behavior, cascade, or responsive-layout risk.
+- Design-system drift, token freelancing, fake proof, or fake chrome in a UI diff
+  is usually **P2**; raise to **P1** when it breaks approved design direction,
+  accessibility, trust, or primary mobile usability.
+- Optional detector findings, such as `impeccable detect`, are evidence to
+  inspect, not automatic findings. Anchor the final review finding in code,
+  rendered behavior, or the approved design artifact.
 
 ## Integration Notes
 

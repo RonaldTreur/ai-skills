@@ -26,6 +26,8 @@ To reconstruct the skill, keep these behaviors:
 7. Do not auto-fix during review without approval.
 8. End skill changes with a `[[skill-review]]` pass and ignore local wiki-style
    skill links during that review.
+9. For UI diffs, review design-system drift, token freelancing, fake proof,
+   fake chrome, missing states, mobile CTA risk, and approved-design mismatch.
 
 ## Source Influence
 
@@ -169,6 +171,33 @@ Added or sharpened by this pass:
 - CSS review guidance for selector/markup consistency, orphaned states,
   duplicate or overridden declarations, stale custom properties, and additive-
   only CSS patches.
+
+### Impeccable and Hallmark Visual Review Additions
+
+- Sources: <https://github.com/pbakaus/impeccable>,
+  <https://github.com/Nutlope/hallmark>
+- Reviewed refs: Impeccable `1d5d745823aae7019044e8b0a621af4366dae224`,
+  Hallmark `df5498f7f64102f559ccd1cb693d95136dd95b97`
+- Reviewed paths: Impeccable detector registry and audit/critique references;
+  Hallmark `SKILL.md`, `references/slop-test.md`, `references/structure.md`,
+  `references/verbs/audit.md`
+- Licenses: Apache-2.0 and MIT
+
+What we took:
+
+- review UI diffs for design-system drift and token freelancing
+- flag invented metrics, testimonials, logos, and fake proof as trust problems
+- flag fake browser/device/IDE chrome and unreadable mobile affordances
+- treat missing component states as a review concern
+- use detector output as evidence that still needs code/rendered confirmation
+
+Local adaptation:
+
+- Kept findings anchored to code, rendered behavior, or approved design docs.
+- Did not make Impeccable or Hallmark detector/gate output an automatic merge
+  blocker.
+- Preserved local P0-P3 severity instead of adopting Hallmark
+  critical/major/minor labels.
 
 ## Formal Trail
 
