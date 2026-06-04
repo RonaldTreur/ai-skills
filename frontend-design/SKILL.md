@@ -68,12 +68,36 @@ Before generating variants, inspect:
 - user audience, workflow frequency, data density, and device context
 - comparable products or visual references supplied by the user
 
+For existing projects, run a compact pre-flight scan before asking design
+questions. Report what you found and what you will preserve:
+
+- font stack and type roles
+- palette, tokens, and theme mechanism
+- motion library or motion-cut stance
+- spacing scale and layout conventions
+- framework and component vocabulary
+
+If no signals exist, say so briefly and proceed with a greenfield design pass.
+If signals conflict, name the conflict and recommend one default to preserve.
+
 Classify the design situation:
 
 - **Existing system**: follow it; variants explore layout, flow, and emphasis.
 - **Partial system**: preserve known constraints; use variants to fill gaps.
 - **Greenfield**: variants should diverge strongly.
 - **Ambiguous**: ask one concise question with a recommended default.
+
+Classify the surface register:
+
+- **Brand**: marketing, landing, campaign, portfolio, about, long-form content,
+  or product storytelling where design is the impression being made.
+- **Product**: dashboards, admin panels, app shells, settings, tools, data
+  tables, forms, and authenticated workflows where design serves task flow.
+
+Brand surfaces can carry more visual voice, imagery, motion, and pacing.
+Product surfaces prioritize earned familiarity, consistent components, density,
+states, and predictable interaction. If the project has both, record the
+default register in `DESIGN.md` and override per page or flow when needed.
 
 ## Design Inputs
 
@@ -100,6 +124,17 @@ If multiple inputs are missing, group them into one design-discovery checkpoint
 with recommended defaults. Avoid low-value preference surveys; ask questions
 that change macrostructure, density, content hierarchy, interaction stance,
 visual tone, or non-goals.
+
+For greenfield or thin briefs, use one design-context checkpoint. Ask for:
+
+- **Audience**: who uses this and what they already know
+- **Use case**: the single job or primary action the surface should support
+- **Tone**: a concrete stance such as utilitarian, editorial, austere,
+  playful, technical, atmospheric, luxury, or brutal
+
+Answering is optional. If the user says to proceed, infer the missing values,
+state them in one sentence, and record them in the variant thesis so the user
+can redirect without another long questionnaire.
 
 Use TC-EBC as the compact input frame when preparing a design brief, variant
 brief, or prompt for a design worker:
@@ -138,7 +173,43 @@ Macrostructure-first rule:
   **index-first** for navigation-heavy surfaces, **catalogue** for browse and
   compare, **long document** for editorial rhythm, **stat-led** for KPI-first
   scan order, **component playground** for state comparison, and
-  **manifesto/letter** for voice-led pages.
+  **manifesto/letter** for voice-led pages. Other useful shapes include
+  **bento grid**, **marquee hero**, **photographic**, **quote-led**,
+  **conversational FAQ**, **split studio**, **narrative workflow**,
+  **portfolio grid**, **map/diagram**, and **ecosystem index**.
+
+Anti-reflex check:
+
+- First-order: if the shape and palette could be guessed from the category
+  alone, choose a less obvious macrostructure or visual thesis.
+- Second-order: if the "not the obvious category default" answer still lands in
+  a saturated AI aesthetic, choose again.
+- Across consecutive greenfield variants or pages for the same project, avoid
+  repeating the same macrostructure unless `DESIGN.md` intentionally locks it as
+  the system.
+
+## Component Scope
+
+If the request is for one component or element, do not run the full page design
+workflow.
+
+Component-scope signals include:
+
+- a named element such as button, input, card, modal, dropdown, tooltip, select,
+  checkbox, switch, tab strip, chip, badge, banner, snackbar, popover, slider,
+  date picker, or avatar
+- a short request that says "just", "only", "single", or names one component
+- a target file that is clearly one component
+
+For component scope:
+
+- preserve existing tokens, typography, sizing, and component vocabulary
+- skip page macrostructure, nav, footer, hero, and multi-section preview work
+- design all meaningful states: default, hover, focus-visible, active,
+  disabled, loading, error, and success when applicable
+- provide a small preview/demo artifact when useful so states can be inspected
+  side by side
+- keep production output aligned with the project's component conventions
 
 ## Divergent Variants
 
@@ -169,6 +240,19 @@ Anti-AI-design gates:
 - Avoid fake browser chrome, emoji feature icons, invented proof, gradient text
   as the whole idea, nested cards with no information value, token freelancing,
   and unreadable mobile CTAs.
+- Do not invent metrics, testimonials, logos, customer counts, or proof stats.
+  Use supplied facts, marked placeholders, or a macrostructure that does not
+  need proof slots.
+- Do not redraw browser bars, IDE chrome, terminal frames, phone notches, or
+  fake device shells. Use real screenshots or let the content stand without
+  costume chrome.
+- Once a design system or prototype token set exists, route colors and fonts
+  through named tokens instead of mid-render one-off values.
+- For brand surfaces, imagery is required when the domain implies a real
+  product, place, person, food, travel, fashion, photography, or object. Verify
+  external image URLs before using them.
+- For product surfaces, avoid decorative motion, display fonts in UI controls,
+  bespoke standard affordances, and inconsistent state vocabulary.
 
 If a concept trips two or more gates, redesign it before review instead of
 adding polish to a weak structure.
@@ -194,6 +278,15 @@ Then state:
 
 Good adaptation preserves stance and structure while changing content,
 constraints, and implementation details to fit the actual project.
+
+Reference safety:
+
+- Study for DNA, not pixels.
+- Do not copy proprietary layouts, copy, images, or templates wholesale.
+- If the user asks to turn a reference into a reusable `DESIGN.md`, only do so
+  for their own project/brand or a public reference they are allowed to adapt.
+- For auth-walled, JS-only, or unreadable URLs, ask for a screenshot or a brief
+  description instead of guessing.
 
 ## Prototype Shape
 
@@ -275,6 +368,8 @@ Check:
 - hierarchy is scan-friendly
 - text fits without overlap
 - responsive layouts hold up
+- key mobile widths hold up for visual work: 320, 375, 414, and 768 px
+- clickable CTA, nav, tab, breadcrumb, and footer text does not wrap awkwardly
 - contrast and focus states are acceptable
 - console has no relevant errors
 

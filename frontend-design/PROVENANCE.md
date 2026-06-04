@@ -21,6 +21,13 @@ Keep these behaviors:
    `DESIGN.md`.
 10. Study references for design DNA without cloning pixels.
 11. Reject generic AI-design defaults before review.
+12. Classify visual work by brand vs product register.
+13. Run a compact pre-flight scan for existing design systems before asking.
+14. Route component-shaped requests through component scope instead of page
+    design.
+15. Use reference study for design DNA, not pixel or copy cloning.
+16. Treat honest copy, locked tokens, fake chrome, mobile affordance fit, and
+    macrostructure repetition as runtime design gates.
 
 ## Local Decisions
 
@@ -106,6 +113,46 @@ Local adaptation:
 - Reused Hallmark's token-discipline idea to discourage speculative prototype
   CSS and to preserve enough token/state detail in `DESIGN.md` for later
   pruning during implementation.
+
+### Impeccable and Hallmark Refresh
+
+- Date: 2026-06-04
+- Sources: <https://github.com/pbakaus/impeccable>,
+  <https://github.com/Nutlope/hallmark>
+- Reviewed refs: Impeccable `1d5d745823aae7019044e8b0a621af4366dae224`,
+  Hallmark `df5498f7f64102f559ccd1cb693d95136dd95b97`
+- Reviewed material: Impeccable `.agents/skills/impeccable/SKILL.md`,
+  `reference/brand.md`, `reference/product.md`, `reference/audit.md`,
+  `reference/critique.md`, detector registry; Hallmark
+  `skills/hallmark/SKILL.md`, `references/structure.md`,
+  `references/macrostructures.md`, `references/slop-test.md`,
+  `references/verbs/audit.md`
+- Licenses: Apache-2.0 for Impeccable, MIT for Hallmark
+
+What we took:
+
+- Impeccable's brand/product register split and detector-as-evidence framing.
+- Hallmark's pre-flight scan, component-scope routing, richer macrostructure
+  vocabulary, study/redesign safety rails, mobile non-negotiables, honest-copy
+  rule, locked-token discipline, and fake-chrome rejection.
+
+Local adaptation:
+
+- Folded the rules into `frontend-design` instead of installing either external
+  command system.
+- Kept one compact design-context checkpoint rather than Hallmark's strict
+  always-ask rule.
+- Preserved local `BRIEF.md`, `DESIGN.md`, and `DECISIONS.md` artifacts instead
+  of adding Impeccable `PRODUCT.md` or Hallmark `.hallmark` state.
+- Rejected full theme catalogues, CSS stamps, live overlay mode, and detector
+  hard gates as default local behavior.
+
+Pointers:
+
+- `methodology/sources/impeccable.md`
+- `methodology/sources/hallmark-refresh.md`
+- `methodology/disciplines/frontend-design-impeccable-hallmark.md`
+- `methodology/ADAPTATION_LOG.md`
 
 ## Source Influence
 

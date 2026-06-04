@@ -26,6 +26,9 @@ Choose the smallest mode that fits the request.
   controls, console errors, and visible layout breakage.
 - `focused`: changed routes, affected flows, linked acceptance criteria,
   responsive checks, and regression-prone neighboring behavior.
+- `visual`: significant visual, CSS, responsive, or design-system change where
+  layout, states, anti-patterns, and mobile behavior matter more than broad
+  route coverage.
 - `post-merge`: merged `dev` or preview URL smoke check plus issue creation for
   defects found.
 - `full`: broader exploratory pass across reachable pages when the user
@@ -101,6 +104,35 @@ For each tested page or flow:
 For `focused` mode, bias coverage toward changed behavior and nearby regression
 risks. For `quick` mode, stop after the highest-signal smoke checks.
 
+For `visual` mode or significant visual changes:
+
+1. Check desktop plus 320, 375, 414, and 768 px widths when practical.
+2. Fail horizontal scrolling unless the design intentionally owns a horizontal
+   interaction and makes it obvious.
+3. Check that CTA, nav, tab, breadcrumb, and footer link text does not wrap into
+   awkward two-line clickable affordances.
+4. Check long display words and headings for overflow or overlap.
+5. For image-bearing grid tracks, inspect that images do not force the grid
+   wider than the viewport.
+6. Check focus-visible, active, disabled, loading, error, and success states
+   when the changed component exposes those states.
+7. Treat fake browser/device/IDE chrome, invented proof stats, token drift, and
+   generic AI layout tells as design defects when they are visible in scope.
+
+Optional detector evidence:
+
+- Prefer the project's pinned Impeccable command: a package script, checked-in
+  dependency, or repo-documented tool invocation.
+- Do not run ad-hoc `npx impeccable ...` unless the user explicitly approves
+  that external package execution for this task or the repo has an explicit
+  allowlist/policy permitting it.
+- Load `references/impeccable-detector.md` only when command examples or output
+  interpretation details are needed.
+- Treat detector output as evidence, not authority. Product UI may legitimately
+  use familiar fonts or one family; brand surfaces need more distinctiveness.
+- Do not block QA on detector installation, network access, or broad scans.
+  Report detector coverage as skipped when unavailable.
+
 For significant CSS cleanup or visual changes:
 
 1. Inspect the rendered DOM and the states the CSS claims to style before
@@ -135,6 +167,7 @@ Report:
 - target URL/build/branch and mode
 - flows and viewports checked
 - console/network errors observed
+- detector or visual anti-pattern evidence when used
 - defects found, each with priority, repro steps, expected/actual behavior, and
   screenshot or DOM/console evidence when useful
 - coverage not tested and why
