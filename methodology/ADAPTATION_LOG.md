@@ -1168,3 +1168,43 @@ credit_note: Selectively adapted from Paul Bakaus's Impeccable and Nutlope's Hal
 reviewer: Merlin
 next_review: After the next real greenfield website or visual redesign uses frontend-design plus browser-qa under these rules
 ```
+
+```yaml
+id: 2026-06-04-impeccable-hallmark-rejected-runtime-systems
+date: 2026-06-04
+discipline: frontend-design; browser-qa; code-review
+status: rejected
+source: Impeccable and Hallmark refresh
+source_url: https://github.com/pbakaus/impeccable; https://github.com/Nutlope/hallmark
+source_ref: Impeccable 1d5d745823aae7019044e8b0a621af4366dae224; Hallmark df5498f7f64102f559ccd1cb693d95136dd95b97
+source_path: .agents/skills/impeccable/SKILL.md; skills/hallmark/SKILL.md; skills/hallmark/references/macrostructures.md; skills/hallmark/references/slop-test.md
+license: Apache-2.0 for Impeccable; MIT for Hallmark
+local_target: frontend-design/SKILL.md; browser-qa/SKILL.md; code-review/SKILL.md
+influence_type: negative-example
+summary: Reject wholesale installation of Impeccable or Hallmark command systems, new PRODUCT.md artifacts, Hallmark theme catalogues/stamps, and automatic detector gates as default runtime behavior.
+local_adaptation: Useful concepts were folded into existing owner skills instead of adding new runtime skills, tool-specific state, or a parallel command taxonomy.
+rationale: The local lifecycle already owns kickoff, design, browser QA, review, and implementation. Vendoring either source would create routing overlap, introduce external tool assumptions, and risk hiding source-specific artifacts inside general projects.
+credit_note: Reviewed and intentionally did not adopt the runtime systems from Impeccable and Hallmark.
+reviewer: Merlin
+next_review: Revisit only if the local skill taxonomy gains a dedicated design-tool integration layer
+```
+
+```yaml
+id: 2026-06-04-impeccable-hallmark-deferred-tooling
+date: 2026-06-04
+discipline: browser-qa; frontend-design
+status: deferred
+source: Impeccable and Hallmark refresh
+source_url: https://github.com/pbakaus/impeccable; https://github.com/Nutlope/hallmark
+source_ref: Impeccable 1d5d745823aae7019044e8b0a621af4366dae224; Hallmark df5498f7f64102f559ccd1cb693d95136dd95b97
+source_path: .agents/skills/impeccable/reference/critique.md; .agents/skills/impeccable/scripts/live*.mjs; skills/hallmark/SKILL.md; skills/hallmark/references/study.md
+license: Apache-2.0 for Impeccable; MIT for Hallmark
+local_target: browser-qa/references/impeccable-detector.md; frontend-design/SKILL.md
+influence_type: comparison-only
+summary: Defer live browser overlays, automatic remote package execution, hard detector gates, and source-specific study/live state until a concrete project proves they are worth the safety and workflow cost.
+local_adaptation: Detector use is optional and prefers pinned local commands; ad-hoc npm execution requires explicit approval or repo policy. Reference study remains a design-DNA workflow without adopting live overlays or source-specific state.
+rationale: Browser injection, remote package execution, and hard detector gates carry more safety and friction than the current local workflow needs.
+credit_note: Deferred after comparing Impeccable and Hallmark tooling with OpenClaw browser and repository safety rules.
+reviewer: Merlin
+next_review: Revisit after a real project needs repeated visual detector runs or browser-overlay iteration
+```

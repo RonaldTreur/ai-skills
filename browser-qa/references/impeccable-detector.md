@@ -5,13 +5,23 @@ examples for optional visual anti-pattern scanning.
 
 ## Command
 
+Preferred shape:
+
+```bash
+npm run <repo-impeccable-script> -- <target> --json
+```
+
+or the repo's documented equivalent.
+
+Ad-hoc fallback, only after explicit user approval for external package
+execution or a repo-level allowlist:
+
 ```bash
 npx impeccable detect <target> --json
 ```
 
-Prefer a project-pinned script or dependency when one exists. Use ad-hoc `npx`
-only when external package execution is already acceptable for the task; otherwise
-mark detector coverage as skipped.
+If neither a pinned command nor approval exists, mark detector coverage as
+skipped. Do not install or execute remote npm packages silently during QA.
 
 Use a narrow target:
 

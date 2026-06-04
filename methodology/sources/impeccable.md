@@ -48,4 +48,3 @@
 
 Revisit before making detector usage mandatory, adding a design-audit skill, or
 adopting live/overlay workflows.
-

@@ -53,4 +53,3 @@
 Revisit when Hallmark releases a major version, when a local project needs
 theme/catalogue machinery, or if the local frontend-design skill starts
 producing structurally repetitive outputs again.
-

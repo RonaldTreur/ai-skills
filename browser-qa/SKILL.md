@@ -121,10 +121,11 @@ For `visual` mode or significant visual changes:
 
 Optional detector evidence:
 
-- When the project is Node-capable and the target is narrow, run
-  the project's pinned Impeccable command, or `npx impeccable detect <target>
-  --json` only when external package execution is already acceptable for the
-  task.
+- Prefer the project's pinned Impeccable command: a package script, checked-in
+  dependency, or repo-documented tool invocation.
+- Do not run ad-hoc `npx impeccable ...` unless the user explicitly approves
+  that external package execution for this task or the repo has an explicit
+  allowlist/policy permitting it.
 - Load `references/impeccable-detector.md` only when command examples or output
   interpretation details are needed.
 - Treat detector output as evidence, not authority. Product UI may legitimately
