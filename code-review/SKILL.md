@@ -57,12 +57,10 @@ finding against code and the governing spec before reporting or fixing it. Use
 prompt or dataset context to check spec compliance, not just generic code
 quality.
 
-A diff is trivial only when it cannot change runtime behavior, security, data,
-public contracts, UI, tests, build/deploy output, or understanding of risky
-code. Examples include typo-only docs, comment-only cleanup, formatting, or tiny
-no-op metadata edits. Line count is not the test: small auth, parsing, config,
-CSS, dependency, migration, shell, external I/O, or test-harness changes are
-non-trivial. When unsure, treat the diff as non-trivial.
+Skip the helper only for clearly trivial diffs: typo-only docs, comment-only
+cleanup, formatting-only changes, or tiny no-op metadata edits. Use it for all
+other diffs, especially code, config, CSS, dependency, test, build, security,
+data, API, UI, migration, shell, or external I/O changes. When unsure, use it.
 
 After review-triggered fixes, rerun the smallest focused verification that can
 catch regressions. If using `autoreview --parallel-tests`, remember it only runs
