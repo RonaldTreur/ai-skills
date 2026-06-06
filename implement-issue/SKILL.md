@@ -120,7 +120,8 @@ Before review:
 
 Review loop:
 
-1. Run [[code-review]].
+1. Run [[code-review]]. For non-trivial diffs, let `code-review` use
+   `autoreview` as its executable closeout helper when available.
 2. Fix valid P0-P3 findings.
 3. Rerun the smallest meaningful verification.
 4. Repeat until clean or rejected findings are justified.

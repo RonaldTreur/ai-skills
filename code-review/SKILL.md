@@ -48,6 +48,20 @@ Suppress speculative best-practice notes, unchanged pre-existing issues unless t
 7. **Code quality**: check error handling, performance, boundaries, TypeScript quality, CSS hygiene, and symptom-layering. CSS findings include stale selectors, duplicate/overridden declarations, token freelancing, orphaned states, and additive-only CSS patches. For UI diffs, also check design-system drift, invented metrics/testimonials/logos, fake browser/device/IDE chrome, unreadable mobile CTAs, missing component states, and visual changes that contradict an approved `DESIGN.md`. Symptom-layering is usually **P1** when behavior changes and **P2** when it mainly adds fragility.
 8. **Output**: use `templates/review-output.md`. Lead with findings, then open questions, then secondary summary. End with numbered next-step options when action is needed.
 
+## Executable Helper
+
+`code-review` owns review policy, severity, evidence rules, and final judgment.
+For non-trivial diffs, prefer the external `autoreview` executable as the
+closeout helper when it is available. Treat its output as advisory: verify every
+finding against code and the governing spec before reporting or fixing it. Use
+prompt or dataset context to check spec compliance, not just generic code
+quality.
+
+After review-triggered fixes, rerun the smallest focused verification that can
+catch regressions. If using `autoreview --parallel-tests`, remember it only runs
+the already-selected stable focused checks in parallel; it is not a request for
+extra test ceremony.
+
 ## Severity Levels
 
 | Level | Name | Description | Action |
