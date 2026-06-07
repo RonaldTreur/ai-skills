@@ -31,12 +31,17 @@ long-running delivery, or active implementation.
 - Do not ask for information that can be discovered from existing context.
 - When asking, group the important choices into concise checkpoints, recommend
   defaults, and explain the tradeoff.
+- Kickoff may run asynchronously over hours or days. Ask the next most useful
+  question or compact checkpoint, update durable artifacts after each answer,
+  and resume from those artifacts instead of relying on chat memory.
 - Use competing options to widen product or interaction choices, not to create
   ceremony.
 - Record every significant choice and rejected alternative in `DECISIONS.md`
   using [[documentation-handoff]].
 - Create an ADR via [[documentation-handoff]] when a technical choice shapes
   architecture, data, auth, platform, deployment, or integration boundaries.
+  `DECISIONS.md` is the broad decision log; summarize or link ADRs there when
+  useful.
 - Prefer artifacts over chat summaries. The project folder is the durable state.
 - Do not hand directly to implementation until [[project-manager]] has checked
   setup, testability, issue slicing, and dependencies.
@@ -123,10 +128,18 @@ creating folders.
 ## Project Folder
 
 Create the project folder at Phase 1 with `BRIEF.md`, `DECISIONS.md`, and
-`context/`. Visual frontend Phase 2 may use temporary competing design folders
-owned by [[frontend-design]]. After Phase 3, the stable handoff set normally
-contains `BRIEF.md`, `DESIGN.md`, `PLAN.md`, `DECISIONS.md`, and `src/` or
-`docs/`.
+`context/` as soon as the project type and folder name are clear. These files
+are the resumable checkpoint for kickoff, including during question gathering.
+
+Maintain the open-question queue in `context/questions.md`, with compact
+statuses such as `unanswered`, `answered`, `assumed default`, and `blocked`.
+After each user answer, update `BRIEF.md`, `DECISIONS.md`, and the question
+queue before asking the next question. If the user answers everything in one
+run, apply the same updates in one pass.
+
+Visual frontend Phase 2 may use temporary competing design folders owned by
+[[frontend-design]]. After Phase 3, the stable handoff set normally contains
+`BRIEF.md`, `DESIGN.md`, `PLAN.md`, `DECISIONS.md`, and `src/` or `docs/`.
 
 ## Phase Flow
 
@@ -135,7 +148,7 @@ contains `BRIEF.md`, `DESIGN.md`, `PLAN.md`, `DECISIONS.md`, and `src/` or
 Use [[phases/phase-1-brief]].
 
 Goal: produce an approved `BRIEF.md` that defines the user, problem, flows,
-scope boundaries, data, constraints, and open questions.
+scope boundaries, data, constraints, and the current open-question queue.
 
 ### Phase 2: Surface Design
 
