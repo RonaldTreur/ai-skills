@@ -103,6 +103,15 @@ Prefer Vectrix for substantial implementation unless requested otherwise or bloc
 
 Delegation packets include issue, branch, repo path, relevant docs, active skills,
 checkpoint, and expected report: changed files, tests, status, blockers, concerns.
+For implementation delegates, require explicit loop evidence in the report:
+
+- active skills used
+- tests-first or behavior-coverage decision
+- verification commands and results
+- browser-QA applicability and result
+- [[code-review]] result
+- P0-P3 fix loop status
+- explicit `ready for independent review: yes|no`
 
 Use "subagent" only for actual spawned Codex/OpenClaw subagents, not for
 Vectrix.
@@ -131,6 +140,11 @@ Review loop:
 
 After review fixes, rerun checks most likely to catch regressions. If UI/routing
 changed, repeat [[browser-qa]].
+
+Do not start the independent review gate from a delegate's "implemented",
+"checks passed", or "PR opened" report alone. If the delegate report lacks the
+loop evidence above, treat the issue as still in implementation and ask for the
+missing review/verification artifact first.
 
 ## PR And Merge
 
