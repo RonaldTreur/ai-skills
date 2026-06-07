@@ -55,6 +55,12 @@ otherwise:
 - Vectrix fixes valid Claude-review P0-P3 findings and reruns targeted
   verification before merge.
 
+Merlin must not route a Vectrix implementation report to Claude-review until the
+report includes the [[implement-issue]] loop evidence: active skills used,
+tests-first or behavior-coverage decision, verification results, browser-QA
+applicability/result, code-review result, P0-P3 fix status, and `ready for
+independent review: yes`. A PR link or "checks passed" is not enough.
+
 ## Default Authority
 
 Safe to do without asking:
@@ -185,6 +191,9 @@ review gate.
    or two, identify safe parallel work, and ask only before changing backlog,
    scope, labels, or project state. When selected, invoke [[implement-issue]]
    with a compact [[documentation-handoff]] packet.
+   When a delegate returns, reject incomplete implementation handoffs before
+   independent review: no loop evidence means the issue is still in
+   implementation.
 6. **Status and recovery:** report:
    - phase
    - active issue/branch/PR
