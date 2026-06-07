@@ -14,7 +14,7 @@ implementation.
 
 ## Related Skills
 
-- [[project-kickoff]] detects whether a project has a visual frontend and routes
+- [[start-new-project]] detects whether a project has a visual frontend and routes
   here when needed.
 - [[developing-web-projects]] owns web stack and implementation conventions.
 - [[browser-qa]] owns real browser verification of prototypes.
@@ -419,6 +419,6 @@ When the user picks a winner:
 3. Remove temporary design folders and stale context files.
 4. Update `DECISIONS.md` with design choices and rejected alternatives.
 
-The approved design becomes input for [[project-kickoff]] Phase 3 or
+The approved design becomes input for [[start-new-project]] Phase 3 or
 [[project-manager]] issue decomposition, depending on where the project is in
 the lifecycle.

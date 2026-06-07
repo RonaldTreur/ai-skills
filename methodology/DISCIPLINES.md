@@ -4,7 +4,7 @@ Use this map to review external sources against the real project-development rou
 
 ## Current Runtime Owners
 
-- Project kickoff: `project-kickoff`
+- Start new project: `start-new-project`
 - Project lifecycle monitoring and backlog management: `project-manager`
 - Active implementation: `implement-issue`
 - Documentation and handoff: `documentation-handoff`
@@ -27,13 +27,14 @@ Use this map to review external sources against the real project-development rou
 
 ## Folded Or Deferred Disciplines
 
-- Research and discovery: folded into `project-kickoff` as grounding before
+- Research and discovery: folded into `start-new-project` as grounding before
   shaping. Use `deep-research`, `last30days`, `x_search`, Brave/web search,
-  repo discovery, and memory/session lookup only when they can change kickoff,
+  repo discovery, and memory/session lookup only when they can change project
+  shaping,
   backlog, scope, setup, or next-work decisions.
-- Product thinking and non-visual design: owned by `project-kickoff`.
+- Product thinking and non-visual design: owned by `start-new-project`.
 - Architecture: owned by the relevant domain skill when one exists, otherwise by
-  `project-kickoff`, `project-manager`, `implement-issue`, and `code-review`
+  `start-new-project`, `project-manager`, `implement-issue`, and `code-review`
   according to lifecycle stage.
 - Learning capture: handled through `skill-review`,
   `external-skill-adaptation`, and repo-local provenance artifacts rather than a
@@ -60,7 +61,7 @@ Use this map to review external sources against the real project-development rou
 - Browser QA
 - Project lifecycle monitoring
 - Testing and QA
-- Project kickoff
+- Start new project
 - Frontend design
 - Agent orchestration and delegation
 - GitHub issue automation
@@ -70,7 +71,7 @@ Use this map to review external sources against the real project-development rou
 ## Rejected Or Superseded Runtime Owners
 
 - Standalone `research-discovery`: rejected for now. The repeated value is early
-  project grounding, so the behavior belongs in `project-kickoff`.
+  project grounding, so the behavior belongs in `start-new-project`.
 - `enforcing-test-coverage-vitest-playwright`: superseded by
   `test-ci-policy`, `test-planning`, `testing-orchestrator`, `unit-vitest`,
   `e2e-playwright`, and `browser-qa`.

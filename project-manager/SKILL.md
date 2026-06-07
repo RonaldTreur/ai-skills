@@ -13,7 +13,7 @@ Do not own per-issue implementation; route active execution to
 
 ## Ownership Boundary
 
-- [[project-kickoff]]: brief, design, plan, decisions.
+- [[start-new-project]]: brief, design, plan, decisions.
 - `project-manager`: repo setup, planning docs, issue decomposition,
   dependency graph, status, approval gates.
 - [[implement-issue]]: active per-issue build execution.
@@ -31,7 +31,7 @@ invoke [[implement-issue]] with a compact handoff.
 - GitHub Issues are the durable backlog.
 - Repo-local docs are project memory; use [[documentation-handoff]] for artifact
   roles and recoverable handoffs.
-- For new or fuzzy projects, [[project-kickoff]] owns research and discovery
+- For new or fuzzy projects, [[start-new-project]] owns research and discovery
   before issue decomposition.
 - Issues should be independently mergeable slices with explicit dependencies.
 - Project setup must make local verification, CI, test data, and browser QA
@@ -99,7 +99,7 @@ Ask before:
    - `package.json`
 4. Read relevant repo, issue, PR, and memory context before asking the user to
    restate project state. Use current external research only when it can change
-   backlog, scope, priority, or setup decisions; otherwise rely on kickoff
+   backlog, scope, priority, or setup decisions; otherwise rely on start-new-project
    artifacts and GitHub truth.
 5. Extract:
    - product goal
@@ -151,7 +151,7 @@ review gate.
 ## Lifecycle Flow
 
 1. **Kickoff handoff:** if the project is still being shaped, invoke
-   [[project-kickoff]] first. Expect `BRIEF.md`, `DESIGN.md`, `PLAN.md`, and
+   [[start-new-project]] first. Expect `BRIEF.md`, `DESIGN.md`, `PLAN.md`, and
    `DECISIONS.md`. Before build issues, create/update `TEST_PLAN.md`; for web
    projects, load [[developing-web-projects]].
 2. **Readiness gate:** verify:

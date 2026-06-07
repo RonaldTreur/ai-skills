@@ -30,7 +30,8 @@ The current methodology taxonomy is split by workflow ownership, not by source r
 
 Core lifecycle owners:
 
-- `project-kickoff/`: early grounding, brief, product/design direction, `BRIEF.md`, `DESIGN.md`, `PLAN.md`, and `DECISIONS.md`.
+- `start-new-project/`: early grounding, brief, product/design direction, `BRIEF.md`, `DESIGN.md`, `PLAN.md`, and `DECISIONS.md`.
+- `add-feature/`: existing-project feature request classification, minimal issue creation, and routing into the normal lifecycle.
 - `project-manager/`: repo/project setup, readiness, issue decomposition, backlog ordering, status, and next-work selection.
 - `implement-issue/`: one ready issue or backlog slice through branch, tests, implementation, review, PR, merge, and post-merge QA.
 - `documentation-handoff/`: README/AGENTS roles, project artifacts, `DELIVERY_STATE.md`, `DECISIONS.md`, ADRs, PR/issue handoffs, blockers, and recovery summaries.
@@ -61,4 +62,4 @@ Design and frontend owners:
 
 GitHub label automation lives in `gh-pipeline/`. It is dormant infrastructure unless a repo is actually using labels to drive build, test, review, fix, approved, blocked, and failed states across the lifecycle skills.
 
-Research and discovery does not have a standalone runtime skill. The useful behavior is folded into `project-kickoff/` as "Grounding Before Shaping"; `deep-research`, `last30days`, `x_search`, Brave/web search, repo context, and memory/session lookup are routed only when they can change the brief, design direction, platform choice, backlog, or setup decision.
+Research and discovery does not have a standalone runtime skill. The useful behavior is folded into `start-new-project/` as "Grounding Before Shaping"; `deep-research`, `last30days`, `x_search`, Brave/web search, repo context, and memory/session lookup are routed only when they can change the brief, design direction, platform choice, backlog, or setup decision.

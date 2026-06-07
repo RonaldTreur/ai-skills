@@ -1,7 +1,7 @@
-# Project Kickoff Provenance
+# Start New Project Provenance
 
 This document records the source material and local decisions that shaped
-`project-kickoff/SKILL.md` and its phase files.
+`start-new-project/SKILL.md` and its phase files.
 
 ## Rebuild Recipe
 
@@ -129,7 +129,7 @@ Local adaptation:
 
 - GStack home-directory artifact stores, generated preambles, telemetry, and
   command-specific design binary assumptions.
-- Keeping visual frontend design inside `project-kickoff`; it is now a separate
+- Keeping visual frontend design inside `start-new-project`; it is now a separate
   `frontend-design` skill so non-visual projects do not load frontend design
   machinery.
 - SuperPowers micro-step implementation plans with exact code snippets; those
@@ -143,5 +143,6 @@ Local adaptation:
 
 ## Formal Trail
 
-- `methodology/disciplines/project-kickoff.md`
+- `methodology/disciplines/project-kickoff.md` records the historical review
+  from before this skill was renamed to `start-new-project`.
 - `methodology/ADAPTATION_LOG.md`

@@ -5,7 +5,8 @@
 Route visual frontend work to [[frontend-design]] when the project includes a
 web UI, dashboard, landing page, or other visual browser surface.
 
-Project kickoff should detect that a visual frontend is needed and preserve the
+The start-new-project workflow should detect that a visual frontend is needed
+and preserve the
 resulting approved design artifact. It should not duplicate the frontend design
 workflow.
 
@@ -46,7 +47,7 @@ Before invoking [[frontend-design]], make sure these exist:
 Invoke [[frontend-design]] with:
 
 ```text
-Project kickoff has approved the functional brief and this project needs a
+The start-new-project brief is approved and this project needs a
 visual frontend design.
 
 Read:

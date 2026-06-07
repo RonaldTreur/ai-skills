@@ -1,18 +1,18 @@
 ---
-name: project-kickoff
-description: "Shape greenfield or major projects before implementation: grounding, brief, product/design direction, decisions, and handoff-ready BRIEF.md, DESIGN.md, PLAN.md, and DECISIONS.md."
+name: start-new-project
+description: "Start greenfield or major projects before implementation: grounding, brief, product/design direction, decisions, and handoff-ready BRIEF.md, DESIGN.md, PLAN.md, and DECISIONS.md."
 ---
 
-# Project Kickoff
+# Start New Project
 
-Turn a rough project idea into durable direction artifacts. Own product shaping,
-early discovery, surface detection, domain clarity, implementation guardrails,
-and decisions. Do not own detailed frontend design, GitHub issue decomposition,
-long-running delivery, or active implementation.
+Turn a rough new-project idea into durable direction artifacts. Own product
+shaping, early discovery, surface detection, domain clarity, implementation
+guardrails, and decisions. Do not own detailed frontend design, GitHub issue
+decomposition, long-running delivery, or active implementation.
 
 ## Ownership Boundary
 
-- `project-kickoff`: initial `BRIEF.md`, `DESIGN.md`, `PLAN.md`,
+- `start-new-project`: initial `BRIEF.md`, `DESIGN.md`, `PLAN.md`,
   `DECISIONS.md`.
 - [[project-manager]]: repo setup, readiness, issues, project boards, next
   implementation slices.
@@ -26,14 +26,15 @@ long-running delivery, or active implementation.
 ## Ground Rules
 
 - Keep the human in control of product and taste decisions.
-- Use kickoff as the place to ask important product, domain, and taste
+- Use this skill as the place to ask important product, domain, and taste
   questions up front so later implementation can run autonomously.
 - Do not ask for information that can be discovered from existing context.
 - When asking, group the important choices into concise checkpoints, recommend
   defaults, and explain the tradeoff.
-- Kickoff may run asynchronously over hours or days. Ask the next most useful
-  question or compact checkpoint, update durable artifacts after each answer,
-  and resume from those artifacts instead of relying on chat memory.
+- Starting a project may run asynchronously over hours or days. Ask the next
+  most useful question or compact checkpoint, update durable artifacts after
+  each answer, and resume from those artifacts instead of relying on chat
+  memory.
 - Use competing options to widen product or interaction choices, not to create
   ceremony.
 - Record every significant choice and rejected alternative in `DECISIONS.md`
@@ -46,12 +47,12 @@ long-running delivery, or active implementation.
 - Do not hand directly to implementation until [[project-manager]] has checked
   setup, testability, issue slicing, and dependencies.
 
-## Kickoff Defaults
+## Start Defaults
 
 - **Grill the domain before planning.** Resolve overloaded terms and hidden
   assumptions before they become design or implementation drift.
 - **Front-load human judgment.** Ask the questions that affect taste, scope,
-  audience, workflow, and non-goals during kickoff/design; after approval,
+  audience, workflow, and non-goals during shaping/design; after approval,
   implementation agents should rely on the artifacts and conservative defaults
   instead of reopening those choices.
 - **Ground before shaping.** Use the cheapest sufficient discovery pass before
@@ -72,7 +73,7 @@ long-running delivery, or active implementation.
 ## Grounding Before Shaping
 
 Use discovery when outside facts can change the brief, product direction, or
-plan. Do not turn kickoff into a standing research report workflow.
+plan. Do not turn this skill into a standing research report workflow.
 
 Classify the research need:
 
@@ -129,7 +130,8 @@ creating folders.
 
 Create the project folder at Phase 1 with `BRIEF.md`, `DECISIONS.md`, and
 `context/` as soon as the project type and folder name are clear. These files
-are the resumable checkpoint for kickoff, including during question gathering.
+are the resumable checkpoint for starting the project, including during question
+gathering.
 
 Maintain the open-question queue in `context/questions.md`, with compact
 statuses such as `unanswered`, `answered`, `assumed default`, and `blocked`.
@@ -188,7 +190,7 @@ Use sub-agents only when independent perspectives materially improve the result:
 - plan critique from engineering, design, or product angles
 - risk review before handoff
 
-Fresh sub-agents read only the relevant kickoff artifacts: `BRIEF.md`,
+Fresh sub-agents read only the relevant start-new-project artifacts: `BRIEF.md`,
 `DESIGN.md` when available, `DECISIONS.md`, and current context notes.
 
 ## Handoff
@@ -211,5 +213,5 @@ Then it should:
 - identify blockers
 - route implementation slices
 
-Implementation agents receive project-manager issue context plus kickoff
-artifacts, not raw kickoff output alone.
+Implementation agents receive project-manager issue context plus
+start-new-project artifacts, not raw shaping output alone.
