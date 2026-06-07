@@ -131,11 +131,11 @@ Create the project folder at Phase 1 with `BRIEF.md`, `DECISIONS.md`, and
 `context/` as soon as the project type and folder name are clear. These files
 are the resumable checkpoint for kickoff, including during question gathering.
 
-Maintain an explicit open-question queue in `BRIEF.md` or
-`context/questions.md`, with compact statuses such as `unanswered`, `answered`,
-`assumed default`, and `blocked`. After each user answer, update `BRIEF.md` and
-`DECISIONS.md` before asking the next question. If the user answers everything
-in one run, apply the same updates in one pass.
+Maintain the open-question queue in `context/questions.md`, with compact
+statuses such as `unanswered`, `answered`, `assumed default`, and `blocked`.
+After each user answer, update `BRIEF.md`, `DECISIONS.md`, and the question
+queue before asking the next question. If the user answers everything in one
+run, apply the same updates in one pass.
 
 Visual frontend Phase 2 may use temporary competing design folders owned by
 [[frontend-design]]. After Phase 3, the stable handoff set normally contains
