@@ -58,7 +58,7 @@ Local adaptation:
 
 ### Existing Local Skills
 
-- `project-kickoff/SKILL.md`
+- `start-new-project/SKILL.md`
 - `implement-issue/SKILL.md`
 - `browser-qa/SKILL.md`
 - `test-planning/SKILL.md`
@@ -87,11 +87,11 @@ Local adaptation:
 - Source: local research/discovery review
 - Reviewed ref: `feat/research-discovery-adaptation` on 2026-05-27
 - Reviewed material: `methodology/disciplines/research-and-discovery.md`,
-  `project-kickoff/SKILL.md`
+  `start-new-project/SKILL.md`
 - License: repository-local decision
 
 What we took:
-- Early research/discovery belongs in `project-kickoff`, where it can shape the
+- Early research/discovery belongs in `start-new-project`, where it can shape the
   brief, design direction, and planning guardrails.
 - Project-manager should refresh research or memory only when it changes
   backlog, scope, priority, setup, or next-work decisions.

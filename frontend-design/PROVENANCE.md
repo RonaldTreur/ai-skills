@@ -7,7 +7,7 @@ This document records the source material and local decisions that shaped
 
 Keep these behaviors:
 
-1. Own visual frontend exploration separately from project kickoff.
+1. Own visual frontend exploration separately from start-new-project.
 2. Use divergent design variants when visual direction is undecided.
 3. Start from context detection and a visual thesis.
 4. Compare variants, collect structured feedback, and iterate.
@@ -194,7 +194,7 @@ What we took:
 Local adaptation:
 
 - Added context classification, thesis checkpoints, browser review, and
-  project-kickoff/project-manager boundaries.
+  start-new-project/project-manager boundaries.
 
 ### SuperPowers
 
@@ -230,7 +230,7 @@ What we took:
 Local adaptation:
 
 - The skill asks concise checkpoint questions for ambiguous design direction,
-  while project kickoff keeps broader domain grilling.
+  while start-new-project keeps broader domain grilling.
 
 ## Formal Trail
 
