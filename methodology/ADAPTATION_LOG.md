@@ -1208,3 +1208,63 @@ credit_note: Deferred after comparing Impeccable and Hallmark tooling with OpenC
 reviewer: Merlin
 next_review: Revisit after a real project needs repeated visual detector runs or browser-overlay iteration
 ```
+
+```yaml
+id: 2026-07-07-design-tokens-gtc-rulebook-adapted
+date: 2026-07-07
+discipline: design-tokens-css
+status: adapted
+source: Buninux GTC (article + gtc-tokens repo)
+source_url: https://buninux.com/design-tokens; https://github.com/bunind/gtc-tokens
+source_ref: article retrieved 2026-07-07; repo bf6c2e4cc526931e9ade3d550425c0013feaa6c2
+source_path: article (full); skill/reference.md; skill/SKILL.md (:audit rule pass)
+license: MIT (repo); article publicly published
+local_target: css-design-tokens/SKILL.md; css-design-tokens/assets/global.css; css-design-tokens/assets/theme.css
+influence_type: paraphrased
+summary: GTC three-group model, naming taxonomy, component-never-ships-color, varies-by group selection, factual scale keys, classifier discipline, mode rules, and the audit rule pass, translated from DTCG JSON to pure CSS custom properties.
+local_adaptation: Dot paths became hyphenated custom properties; DTCG modes became scoped theme-token re-assignment under data-theme; factual px keys hybridized with the local rem rule (px-equivalent names, rem values); audit commands became an always-on checklist section.
+rationale: Ronald adopted the GTC model for all future pure-CSS projects; the upstream rulebook is richer and more operational than the article alone, but its JSON runtime does not fit no-build-step CSS.
+credit_note: Adapted from the Buninux GTC design token model and the bunind/gtc-tokens rulebook (MIT).
+reviewer: Claude (Fable 5), decisions by Ronald
+next_review: On a new gtc-tokens release or GTC spec change
+```
+
+```yaml
+id: 2026-07-07-design-tokens-gtc-skill-rejected-as-is
+date: 2026-07-07
+discipline: design-tokens-css
+status: rejected
+source: bunind/gtc-tokens Claude Code skill
+source_url: https://github.com/bunind/gtc-tokens
+source_ref: bf6c2e4cc526931e9ade3d550425c0013feaa6c2
+source_path: skill/SKILL.md; skill/template/; validate.py
+license: MIT
+local_target: css-design-tokens/SKILL.md
+influence_type: negative-example
+summary: Do not install the upstream /gtc-tokens skill verbatim; its runtime operates DTCG JSON token files with a Python validator and an interactive command menu.
+local_adaptation: Rulebook content was adapted instead (see adapted entry); the JSON pipeline, command menu, and validator were left out.
+rationale: Pure-CSS, no-build-step projects have no JSON token files for the skill to operate on, and its triggers would overlap with css-design-tokens.
+credit_note: Reviewed and intentionally did not install the gtc-tokens runtime.
+reviewer: Claude (Fable 5), decisions by Ronald
+next_review: n/a — superseded by the deferred entry for sync tooling
+```
+
+```yaml
+id: 2026-07-07-design-tokens-gtc-sync-validator-deferred
+date: 2026-07-07
+discipline: design-tokens-css
+status: deferred
+source: bunind/gtc-tokens
+source_url: https://github.com/bunind/gtc-tokens
+source_ref: bf6c2e4cc526931e9ade3d550425c0013feaa6c2
+source_path: skill/SKILL.md (:sync); validate.py
+license: MIT
+local_target: css-design-tokens/
+influence_type: comparison-only
+summary: Defer the DTCG/Figma JSON sync workflow and a mechanical CSS token validator script.
+local_adaptation: The audit is a manual checklist for now; no validator script bundled.
+rationale: No current project syncs tokens with Figma/JSON exports; a CSS validator is worth building only if audits become frequent.
+credit_note: Sync and validation concepts noted from gtc-tokens for possible future adaptation.
+reviewer: Claude (Fable 5), decisions by Ronald
+next_review: When a project needs Figma/DTCG token sync, or token audits become recurring work
+```

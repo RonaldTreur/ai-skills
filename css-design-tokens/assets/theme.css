@@ -1,0 +1,77 @@
+/* Theme tokens — "how should this look right now".
+   Every token aliases a Global token; no raw values here.
+   ALL look lives in this tier — component tokens never carry color.
+   Modes only ever re-assign theme tokens: globals and component structure never change. */
+
+:root {
+	color-scheme: light dark;
+
+	/* surfaces */
+	--theme-surface-page: var(--global-color-base-0);
+	--theme-surface-raised: var(--global-color-base-1);
+	--theme-surface-sunken: var(--global-color-base-2);
+
+	/* text */
+	--theme-text-default: var(--global-color-base-9);
+	--theme-text-subtle: var(--global-color-base-6);
+	--theme-text-accent: var(--global-color-accent-4);
+
+	/* icons */
+	--theme-icon-default: var(--global-color-base-7);
+
+	/* borders */
+	--theme-border-default: var(--global-color-base-3);
+	--theme-border-strong: var(--global-color-base-5);
+	--theme-border-focus: var(--global-color-accent-3);
+
+	/* shadows (mode-dependent: dark surfaces need stronger shadows) */
+	--theme-shadow-raised: var(--global-shadow-1);
+	--theme-shadow-overlay: var(--global-shadow-3);
+
+	/* component looks — per-state colors live HERE, not in component tokens */
+	--theme-button-primary: var(--global-color-accent-3);
+	--theme-button-primary-hover: var(--global-color-accent-4);
+	--theme-button-primary-active: var(--global-color-accent-5);
+	--theme-button-primary-disabled: var(--global-color-base-3);
+	--theme-button-primary-text: var(--global-color-base-0);
+	--theme-button-primary-text-disabled: var(--global-color-base-6);
+}
+
+/* dark mode — same theme tokens, different globals.
+   Scoped: set data-theme on <html> for the whole page, or on any element for a subtree.
+   Activation: CSS cannot read the OS preference into an attribute — prefer a few lines
+   of head JS (prefers-color-scheme + stored user override). CSS-only alternative:
+   repeat this block inside
+   @media (prefers-color-scheme: dark) { :root:not([data-theme='light']) { … } }
+   and keep the copies in sync by hand for every new theme token. */
+[data-theme='dark'] {
+	color-scheme: dark;
+
+	--theme-surface-page: var(--global-color-base-10);
+	--theme-surface-raised: var(--global-color-base-9);
+	--theme-surface-sunken: var(--global-color-base-8);
+
+	--theme-text-default: var(--global-color-base-1);
+	--theme-text-subtle: var(--global-color-base-4);
+	--theme-text-accent: var(--global-color-accent-2);
+
+	--theme-icon-default: var(--global-color-base-3);
+
+	--theme-border-default: var(--global-color-base-8);
+	--theme-border-strong: var(--global-color-base-6);
+
+	--theme-shadow-raised: var(--global-shadow-2);
+	--theme-shadow-overlay: var(--global-shadow-3);
+
+	--theme-button-primary: var(--global-color-accent-3);
+	--theme-button-primary-hover: var(--global-color-accent-2);
+	--theme-button-primary-active: var(--global-color-accent-1);
+	--theme-button-primary-disabled: var(--global-color-base-8);
+	--theme-button-primary-text: var(--global-color-base-10);
+	--theme-button-primary-text-disabled: var(--global-color-base-6);
+}
+
+/* pin UA-rendered controls/scrollbars when a theme is forced against the OS preference */
+[data-theme='light'] {
+	color-scheme: light;
+}

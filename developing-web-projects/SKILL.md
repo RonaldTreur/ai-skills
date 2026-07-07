@@ -51,7 +51,7 @@ CSS hygiene rules:
 - When markup changes, remove selectors for removed structure in the same patch.
 - Treat pruning as part of CSS editing, not optional cleanup after the feature is "done".
 - Review for duplicate or immediately overridden declarations while editing; do not leave additive-only CSS patches that silently stack dead rules.
-- Reuse the established token system. Do not freelance new colors, spacing, or custom properties unless the design direction actually changed and the new token is used deliberately.
+- Reuse the established token system. Do not freelance new colors, spacing, or custom properties unless the design direction actually changed and the new token is used deliberately. Token structure and naming follow [[css-design-tokens]].
 
 Frontend design guidance for this repo:
 
@@ -73,6 +73,8 @@ If the work involves **Web Components**, use the dedicated skill:
 - `generating-web-components/SKILL.md`
 
 That skill is the source of truth for the base component, decorators, file structure, and examples. Only apply it when the task actually includes Web Components.
+
+If the work involves **CSS custom properties as design tokens** — new-project styling foundations, theming/dark mode, or adding token values — use [[css-design-tokens]]. It is the source of truth for token naming, tiering (GTC: Global → Theme → Component), and the starter scaffold.
 
 Unless the user explicitly asks not to, create tests and run them. For test coverage standards and tooling, also use:
 
