@@ -1268,3 +1268,63 @@ credit_note: Sync and validation concepts noted from gtc-tokens for possible fut
 reviewer: Claude (Fable 5), decisions by Ronald
 next_review: When a project needs Figma/DTCG token sync, or token audits become recurring work
 ```
+
+```yaml
+id: 2026-10-04-testing-test-audit-adapted
+date: 2026-10-04
+discipline: testing-and-qa
+status: adapted
+source: OpenClaw test-audit skill
+source_url: https://github.com/openclaw/openclaw/tree/main/.agents/skills/test-audit
+source_ref: 80930af448eb (2026-09-23)
+source_path: .agents/skills/test-audit/SKILL.md; .agents/skills/test-audit/CAMPAIGN.md
+license: MIT
+local_target: test-audit/SKILL.md; test-audit/CAMPAIGN.md
+influence_type: paraphrased
+summary: Three-mode test value discipline (authoring gate, audit sweep, subsystem campaign) with a shared value bar, junk-pattern checklist, retention bar, candidate-evidence fields, net-negative edit shape, and an eight-step campaign with an R/F/C/D ledger, keeper layer plans, and mutation-checked preservation review.
+local_adaptation: OpenClaw commands, sandbox rules, PR tooling, and $-prefixed skill references replaced by local owners (unit-vitest, test-ci-policy, code-review, implement-issue, agent-delegation, TEST_PLAN.md); campaign anecdotes removed; junk patterns regrouped by failure family; description narrowed so ordinary test writing still routes to unit-vitest.
+rationale: Local testing skills lacked a procedure for judging whether a test earns its place or for pruning a suite safely; project AGENTS.md files carried ad-hoc retention rules instead.
+credit_note: Adapted from the OpenClaw test-audit skill (MIT).
+reviewer: Claude (Fable 5.1), decisions by Ronald
+next_review: When OpenClaw materially changes .agents/skills/test-audit/, or before the next revision of the local testing skills
+```
+
+```yaml
+id: 2026-10-04-testing-test-audit-verbatim-rejected
+date: 2026-10-04
+discipline: testing-and-qa
+status: rejected
+source: OpenClaw test-audit skill (verbatim install)
+source_url: https://github.com/openclaw/openclaw/tree/main/.agents/skills/test-audit
+source_ref: 80930af448eb (2026-09-23)
+source_path: .agents/skills/test-audit/SKILL.md (validation, landing, description)
+license: MIT
+local_target: test-audit/SKILL.md
+influence_type: negative-example
+summary: Do not install the upstream skill as-is; its validation and landing steps call OpenClaw-only scripts and skills, and its description triggers on every test write.
+local_adaptation: Content adapted instead (see adapted entry); the OpenClaw tooling, mandatory $autoreview step, and always-on trigger were left out.
+rationale: Local projects have none of the referenced tooling, and an always-on trigger would compete with unit-vitest during ordinary implementation.
+credit_note: Reviewed and intentionally did not install the OpenClaw runtime skill.
+reviewer: Claude (Fable 5.1), decisions by Ronald
+next_review: n/a
+```
+
+```yaml
+id: 2026-10-04-testing-test-audit-tooling-deferred
+date: 2026-10-04
+discipline: testing-and-qa
+status: deferred
+source: OpenClaw test-audit skill (campaign mechanics)
+source_url: https://github.com/openclaw/openclaw/tree/main/.agents/skills/test-audit
+source_ref: 80930af448eb (2026-09-23)
+source_path: .agents/skills/test-audit/CAMPAIGN.md (ledger, mutation checks, line-cap baselines)
+license: MIT
+local_target: test-ci-policy/SKILL.md (possible future owner)
+influence_type: comparison-only
+summary: Ledger and mutation-check automation, and shrink-only line-cap baselines for test and support code, could make campaigns repeatable.
+local_adaptation: Not adopted; the manual procedure landed in test-audit/CAMPAIGN.md.
+rationale: No local project has run a campaign yet; tooling should follow a real campaign's needs rather than precede them.
+credit_note: Campaign tooling ideas noted from the OpenClaw test-audit skill for possible future adaptation.
+reviewer: Claude (Fable 5.1), decisions by Ronald
+next_review: After the first local test-pruning campaign
+```

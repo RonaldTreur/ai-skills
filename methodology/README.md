@@ -24,5 +24,6 @@ Use the `external-skill-adaptation` skill when adding to this folder.
 - Compound Engineering
 - Matt Pocock skills
 - Steipete Agent Scripts
+- OpenClaw test-audit skill
 
 This list is intentionally small. Add sources only when they are worth comparing deeply.

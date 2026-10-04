@@ -52,6 +52,7 @@ Testing and QA owners:
 - `e2e-playwright/`: durable Playwright E2E tests, fixtures, locators, storage state, and E2E artifacts.
 - `browser-qa/`: web preview, PR, and post-merge QA that needs an actual browser pass.
 - `test-ci-policy/`: test scripts, CI entrypoints, coverage thresholds, and local/CI parity. Do not use it as the default workflow for ordinary feature implementation.
+- `test-audit/`: test value decisions: the authoring gate for new tests, focused audits of low-value or implementation-coupled tests, and one-subsystem pruning campaigns.
 
 Design and frontend owners:
 

@@ -20,6 +20,7 @@ Use this map to review external sources against the real project-development rou
 - Unit and integration tests: `unit-vitest`
 - Playwright E2E tests: `e2e-playwright`
 - Test/CI enforcement policy: `test-ci-policy`
+- Test value and pruning: `test-audit`
 - Frontend design: `frontend-design`
 - Web architecture and implementation conventions: `developing-web-projects`
 - Design prompt export: `design-prompt-export`
