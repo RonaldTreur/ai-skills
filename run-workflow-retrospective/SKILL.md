@@ -32,7 +32,7 @@ Evidence collection and diagnosis are read-only. Do not mutate repositories, iss
 
 ## Gather evidence and build the scorecard
 
-Use raw user handoffs, issue/PR history, exact heads, checks, reviews, merge events, claim/recovery/watchdog state, retries, guard failures, partial mutations, and gate reruns. For a provider- or model-specific review requirement, verify the completed review's resolved provider/model from runtime evidence, not its agent label or requested model. A fallback review may contribute findings but does not satisfy the named-reviewer requirement; an authentication failure is an incomplete review. Keep that requirement open unless a matching completed review is evidenced. Redact private data; mark unavailable evidence rather than estimating it.
+Use raw user handoffs, issue/PR history, exact heads, checks, reviews, merge events, claim/recovery/watchdog state, retries, guard failures, partial mutations, and gate reruns. For rolling dispatch claims, prefer the recorder's retained `stageFirstStartedAt` map when the whole relevant claim thread carries it. Never backfill a legacy claim from its current `startedAt` or edited comment timestamp. For a provider- or model-specific review requirement, verify the completed review's resolved provider/model from runtime evidence, not its agent label or requested model. A fallback review may contribute findings but does not satisfy the named-reviewer requirement; an authentication failure is an incomplete review. Keep that requirement open unless a matching completed review is evidenced. Redact private data; mark unavailable evidence rather than estimating it.
 
 Build one timestamped timeline keyed by exact head or claim and collapse duplicates. Report elapsed time, meaningful LOC, implementation heads, QA/review outcomes, repeated findings, handoff latency, recovery failures, gate reruns, and observable quota change. Identify the critical path and avoidable delay.
 
@@ -43,6 +43,8 @@ When building the scorecard, follow [lifecycle validation](references/lifecycle-
 Classify each problem once as specification/intake, implementation/design, QA, independent review, orchestration, or operational cost. Anchor claims in evidence and assign system defects to the system.
 
 For repeated failures, minimize a deterministic red-capable reproduction, rank falsifiable hypotheses, and change one variable per probe. Record an architectural finding when no valid test seam exists. Verify each implementation leaf fits one fresh context, has one independently testable outcome, and declares dependencies. Review spec fidelity separately from engineering quality.
+
+Lead with findings in the product repository. Route a RoundTable pipeline action only for a concrete, reproducible pipeline defect. Repeated missing historical evidence is an aggregate signal, not a reason to open one issue per merged PR.
 
 Report historically whether the separate circuit breaker fired or should have fired under configured limits; route any defect as a normal improvement action.
 
@@ -61,6 +63,8 @@ Limit the main action list to five high-impact items. Each action must include:
 - whether explicit approval is required.
 
 Prefer systemic fixes and user corrections over prompt patches and one-off tool noise.
+
+Missing lifecycle boundaries keep their exact per-cause disposition rows, but use `Retrospective ledger` as the follow-up. Use the same rolling-ledger route for a recurring systemic excessive-delay cause already visible across reports. Do not create a fingerprinted issue for each historical gap. An unknown stage may use `Investigation required: Action N` only when there is a specific, reproducible hypothesis that a bounded action can test.
 
 ## Classify actions
 
@@ -133,6 +137,8 @@ Record:
 - validation outcome;
 - approval blockers or pending Skill Workshop proposal IDs.
 
+The rolling retrospective ledger is separate from the exact-event ledger. Missing lifecycle evidence and recurring systemic timing causes remain visible there without becoming duplicate per-event GitHub actions. Refresh the one trusted ledger issue through the target RoundTable checkout's `retrospective-ledger` command; create it once, then update that exact issue. Never substitute an ad hoc historical-gap issue.
+
 Before recording the terminal event marker, recompute every action fingerprint, reject duplicates, and verify every safe/approval GitHub result exists and contains a trusted matching action marker. Safe issue results must be closed or carry `roundtable:reviewed`/`agent:*`; safe PR results must be non-draft and target `main` or `develop`. Approval results must be open issues with a `needs:*` label and no active `agent:*` label. Classification-specific result formats are mandatory; prose such as "queued issue #N" is not evidence.
 
 Repeated scans must not rerun a recorded report or recreate an action. New work is permitted only for a new merged PR event or an explicitly versioned replacement action.
@@ -158,6 +164,7 @@ The report must include:
 - historical assessment of the separate circuit breaker;
 - no more than five actions;
 - action fingerprints and classifications (`safe automatic`, `approval required`, or `no action`);
+- rolling-ledger dispositions for lifecycle gaps and recurring systemic timing causes;
 - validation plan or outcome;
 - implementation/queue/proposal identifiers;
 - remaining risks.
@@ -171,6 +178,7 @@ A retrospective is complete when:
 - the exact merged PR is verified;
 - the report is recorded once;
 - every safe finding has entered or completed guarded implementation;
+- missing lifecycle evidence and recurring systemic timing causes are routed to the rolling retrospective ledger instead of per-event issues;
 - unsafe actions fail closed;
 - skill changes remain pending proposals;
 - duplicate scans create nothing;

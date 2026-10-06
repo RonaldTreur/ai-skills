@@ -34,7 +34,7 @@
 
 ## Timing analysis
 
-<Insert the exact timing structure from the target checkout's docs/retrospective-timing-analysis.md. Follow references/lifecycle-validation.md: include all lifecycle boundaries, exclusive stage accounting, merge-to-retrospective wait and per-cause delay dispositions. Preserve unknowns and route missing evidence to fingerprinted investigations; do not fill gaps with estimated timestamps.>
+<Insert the exact timing structure from the target checkout's docs/retrospective-timing-analysis.md. Follow references/lifecycle-validation.md: include all lifecycle boundaries, exclusive stage accounting, merge-to-retrospective wait and per-cause delay dispositions. Preserve unknowns; route lifecycle gaps and recurring systemic timing causes to `Retrospective ledger`, and use a fingerprinted investigation only for a specific reproducible hypothesis. Do not fill gaps with estimated timestamps or open one issue per historical gap.>
 
 ## What worked
 
@@ -68,6 +68,8 @@
 
 ## Prioritized improvements
 
+<Do not duplicate `Retrospective ledger` timing dispositions as per-event actions. Include an action below only when the report identifies a bounded implementation, approval decision, or specific reproducible investigation.>
+
 ### 1. <action>
 
 - **Action fingerprint:**
@@ -93,5 +95,5 @@
 
 - **Retrospective event fingerprint:**
 - **Report marker:**
-- **Action states:** <Separate queued investigations, implemented/verified remedies and approval blockers.>
+- **Action states:** <Separate rolling-ledger evidence gaps, queued concrete investigations, implemented/verified remedies and approval blockers.>
 - **Proof markers:** each GitHub result contains `<!-- roundtable-retrospective-action:<fingerprint> -->`
