@@ -5,6 +5,9 @@ require "digest"
 require "optparse"
 require "set"
 
+Encoding.default_external = Encoding::UTF_8
+Encoding.default_internal = Encoding::UTF_8
+
 options = {
   roots: [],
   long_description: 280,

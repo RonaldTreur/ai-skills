@@ -1,6 +1,7 @@
 ---
 name: external-skill-adaptation
 description: Compare external agent skills, prompts, instructions, or methodology repos against this ai-skills repository, adapt useful local improvements, and maintain attribution/provenance.
+disable-model-invocation: true
 ---
 
 # External Skill Adaptation
@@ -41,7 +42,7 @@ Store entries under `methodology/sources/`.
 
 Create or update `methodology/disciplines/<discipline>.md` using `templates/discipline-review.md`.
 
-For each source, capture useful practices, exact source locations, fit with current ai-skills and OpenClaw conventions, conflicts or risks, questions for the user, and adoption recommendation.
+For each source, capture useful practices, exact source locations, fit with current ai-skills conventions, conflicts or risks, questions for the user, and adoption recommendation.
 
 Keep source quotes short. Summarize and link to exact files/commits wherever possible.
 
@@ -52,7 +53,7 @@ Before changing existing local skills, ask targeted questions for decisions that
 Good questions are concrete:
 
 - "Should this become a hard gate or advisory guidance?"
-- "Should this apply to Merlin/main, Vectrix, or only project-specific agents?"
+- "Should this apply to every project, or only to the ones that opt in?"
 - "Is the extra planning artifact worth the friction for this class of task?"
 
 Avoid broad questions like "What do you think?"

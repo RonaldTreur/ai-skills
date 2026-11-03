@@ -1,6 +1,7 @@
 ---
 name: gh-pipeline
 description: "Operate label-driven GitHub issue automation that moves agent work through build, test, review, fix, approved, blocked, and failed states."
+disable-model-invocation: true
 ---
 
 # GitHub Pipeline

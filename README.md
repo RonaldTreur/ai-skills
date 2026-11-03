@@ -40,8 +40,8 @@ Specialist owners:
 
 - `debugging/`: investigation-first bug fixing with a trivial-bug fast path and hard verification gates.
 - `code-review/`: architecture, security, maintainability, correctness, convention, and test-risk review.
-- `skill-review/`: skill activation accuracy, context cost, progressive disclosure, safety, and realistic behavior.
-- `skill-maintenance/`: skill inventory audits and focused cleanup for duplicate skills, superseded skills, long descriptions, repeated prose, overlap, and prompt-budget pressure.
+- `skill-review/`: one skill or a whole library: activation accuracy, context cost, no-op instructions, progressive disclosure, safety, and the read-only inventory audit script.
+- `retro/`: user-invoked retrospective on a session or merged PR that proposes environment changes (pointers, checks, review rules, deleted no-ops) for the person to approve.
 - `agent-delegation/`: handoff mechanics for work sent to another agent, runtime, or subagent.
 
 Testing and QA owners:

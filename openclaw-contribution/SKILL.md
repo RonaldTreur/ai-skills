@@ -1,6 +1,7 @@
 ---
 name: openclaw-contribution
 description: Use when creating or updating OpenClaw GitHub issues or PRs. Read current templates and CONTRIBUTING first, then submit with gh or draft ready-to-paste text.
+disable-model-invocation: true
 ---
 
 # OpenClaw Contribution

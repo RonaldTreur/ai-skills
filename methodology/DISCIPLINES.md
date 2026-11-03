@@ -10,8 +10,8 @@ Use this map to review external sources against the real project-development rou
 - Documentation and handoff: `documentation-handoff`
 - Debugging: `debugging`
 - Code review: `code-review`
-- Skill review and promotion: `skill-review`
-- Skill inventory maintenance and cleanup: `skill-maintenance`
+- Skill review, library audit and cleanup: `skill-review`
+- Session and post-merge retrospectives: `retro`
 - Agent orchestration and delegation: `agent-delegation`
 - GitHub label automation: `gh-pipeline`
 - Browser QA: `browser-qa`
@@ -68,6 +68,7 @@ Use this map to review external sources against the real project-development rou
 - GitHub issue automation
 - Documentation and handoff
 - Final taxonomy cleanup
+- Skill meta (November 2026): writing-for-agents yardstick, skill-review and skill-maintenance merge, retro, user-invoked flip
 
 ## Rejected Or Superseded Runtime Owners
 
@@ -76,6 +77,8 @@ Use this map to review external sources against the real project-development rou
 - `enforcing-test-coverage-vitest-playwright`: superseded by
   `test-ci-policy`, `test-planning`, `testing-orchestrator`, `unit-vitest`,
   `e2e-playwright`, and `browser-qa`.
+- `skill-maintenance`: superseded by `skill-review` (2026-11-03); the audit script moved to `skill-review/scripts/`.
+- `run-workflow-retrospective`: superseded by `retro` (2026-11-03); RoundTable v1 is decommissioned and its scorecard machinery was deleted.
 - Broad external-source runtime imports: rejected. External sources stay in
   methodology/provenance artifacts; runtime skills keep local operational
   language.
