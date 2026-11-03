@@ -1448,3 +1448,23 @@ credit_note: Invocation split per Matt Pocock's SKILL-MECHANICS.md (MIT).
 reviewer: Claude (Fable 5.1), with Ronald
 next_review: After the Ockto work skills in ~/.claude/skills get the same pass
 ```
+
+```yaml
+id: 2026-11-03-role-script-removal
+date: 2026-11-03
+discipline: implementation lifecycle, delegation, review, QA, kickoff (cross-cutting)
+status: superseded
+source: local (OpenClaw role scripts: Merlin, Vectrix, Claude-review, loop evidence, OpenClaw tool names)
+source_url: none
+source_ref: commit d22f048 (last version before removal)
+source_path: project-manager/SKILL.md; implement-issue/SKILL.md; agent-delegation/SKILL.md; start-new-project/SKILL.md; browser-qa/SKILL.md; code-review/SKILL.md; e2e-playwright/roles/planner.md; e2e-playwright/roles/generator.md; e2e-playwright/roles/healer.md; external-skill-adaptation/templates/discipline-review.md; README.md
+license: repository-local
+local_target: the same files
+influence_type: negative-example
+summary: Every runtime line that named an agent (Merlin, Vectrix, Claude-review), a loop-evidence report contract, or an OpenClaw-only tool (autoreview, last30days, x_search, deep-research, the OpenClaw browser profile and memory) was replaced by a gate stated as a required artifact or by harness-neutral wording.
+local_adaptation: project-manager gained a Merge Gate (branch with tests and verification, independent review of the PR diff with P0-P3 fixed, PR links the issue). implement-issue and agent-delegation verify the artifact a report points to instead of demanding report fields. code-review describes any automated helper the harness provides. Who implements and who reviews is left to the harness.
+rationale: Decision 2 of the November 2026 re-review. The role scripts built trust between agents that could not see each other's work; the harness now shows every participant the same diff, PR and CI, so the report fields were a cache of the environment. Decision 1 (harness-agnostic skills) removes the tool names.
+credit_note: None; the artifact-gate framing follows Matt Pocock's cache rule in writing-for-agents (MIT).
+reviewer: Claude (Fable 5.1), with Ronald
+next_review: None
+```

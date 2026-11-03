@@ -29,10 +29,9 @@ Use this map to review external sources against the real project-development rou
 ## Folded Or Deferred Disciplines
 
 - Research and discovery: folded into `start-new-project` as grounding before
-  shaping. Use `deep-research`, `last30days`, `x_search`, Brave/web search,
-  repo discovery, and memory/session lookup only when they can change project
-  shaping,
-  backlog, scope, setup, or next-work decisions.
+  shaping. Use web and social search, deep research reports, repo discovery,
+  and the harness's memory and session history only when they can change
+  project shaping, backlog, scope, setup, or next-work decisions.
 - Product thinking and non-visual design: owned by `start-new-project`.
 - Architecture: owned by the relevant domain skill when one exists, otherwise by
   `start-new-project`, `project-manager`, `implement-issue`, and `code-review`
@@ -69,6 +68,7 @@ Use this map to review external sources against the real project-development rou
 - Documentation and handoff
 - Final taxonomy cleanup
 - Skill meta (November 2026): writing-for-agents yardstick, skill-review and skill-maintenance merge, retro, user-invoked flip
+- Role-script removal (November 2026): agent names and OpenClaw tool names replaced by artifact gates across the lifecycle skills
 
 ## Rejected Or Superseded Runtime Owners
 

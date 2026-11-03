@@ -41,25 +41,18 @@ invoke [[implement-issue]] with a compact handoff.
 - Agents may choose conservative implementation defaults inside approved scope.
 - Every handoff must be recoverable from files and GitHub state.
 
-## Default Agent Roles
+## Merge Gate
 
-For Ronald's OpenClaw projects, use this delivery split unless the user says
-otherwise:
+An issue is ready to merge only when all three hold:
 
-- Merlin/main coordinates project state, issue routing, verification, and merge
-  judgment.
-- Vectrix owns implementation and the first implementation review/fix loop for
-  ready build issues.
-- Claude-review is the independent read-only review gate before merge for
-  non-trivial PRs.
-- Vectrix fixes valid Claude-review P0-P3 findings and reruns targeted
-  verification before merge.
+- the branch carries the implementation and its tests, and the
+  [[implement-issue]] verification ran on that branch;
+- an independent review ran on the PR diff, and valid P0-P3 findings are fixed
+  with targeted verification rerun;
+- the PR links the issue.
 
-Merlin must not route a Vectrix implementation report to Claude-review until the
-report includes the [[implement-issue]] loop evidence: active skills used,
-tests-first or behavior-coverage decision, verification results, browser-QA
-applicability/result, code-review result, P0-P3 fix status, and `ready for
-independent review: yes`. A PR link or "checks passed" is not enough.
+Judge readiness from the branch, the PR and the checks, never from a report
+alone.
 
 ## Default Authority
 
@@ -89,7 +82,7 @@ Ask before:
    - `AGENTS.md`
    - `README.md`
    - `.github/copilot-instructions.md`
-   - `.codex/*`
+   - any other agent instruction file the repo carries
 3. Read project memory when present:
    - `BRIEF.md`
    - `DESIGN.md`
@@ -149,9 +142,7 @@ Compact prompt this skill should satisfy:
 ```text
 Use project-manager to convert this TODO list into GitHub issues, order
 dependencies, identify ready vs blocked work, then start the first ready issue
-with Vectrix using implement-issue. Use the default roles: Merlin coordinates,
-Vectrix implements and self-reviews, Claude-review is the independent pre-merge
-review gate.
+with implement-issue.
 ```
 
 ## Lifecycle Flow
@@ -191,9 +182,8 @@ review gate.
    or two, identify safe parallel work, and ask only before changing backlog,
    scope, labels, or project state. When selected, invoke [[implement-issue]]
    with a compact [[documentation-handoff]] packet.
-   When a delegate returns, reject incomplete implementation handoffs before
-   independent review: no loop evidence means the issue is still in
-   implementation.
+   When a delegate returns, judge readiness from the branch, PR and checks
+   before independent review; a report alone does not move the issue.
 6. **Status and recovery:** report:
    - phase
    - active issue/branch/PR
@@ -225,7 +215,6 @@ Use simple labels unless the repo already has its own taxonomy:
 - phase: `phase:kickoff`, `phase:design`, `phase:planning`,
   `phase:build`, `phase:review`, `phase:qa`
 - state: `needs-human`, `blocked`
-- agent: `agent:vectrix`, `agent:merlin`
 
 Do not create or mutate labels in bulk without approval.
 

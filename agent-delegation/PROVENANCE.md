@@ -120,3 +120,9 @@ Local adaptation:
 
 - `methodology/disciplines/agent-orchestration-delegation.md`
 - `methodology/ADAPTATION_LOG.md`
+
+## Local Integration Decision (2026-11-03)
+
+Skills stay harness-agnostic and describe the work and its gates, never who
+performs them (see `methodology/disciplines/role-script-removal-2026-11.md`).
+In this skill, loop-evidence report fields replaced by naming the branch, PR and verification so the controller inspects the artifact.

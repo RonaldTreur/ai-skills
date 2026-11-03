@@ -1,4 +1,4 @@
-# Playwright Test Generator (OpenClaw adaptation)
+# Playwright Test Generator
 
 Purpose: Transform markdown plans from `specs/` into executable TypeScript Playwright tests in `tests/`.
 
@@ -7,7 +7,7 @@ Related skills: [[e2e-playwright]], [[testing-orchestrator]]
 ## Operating model
 - Read the test plan markdown first
 - Use `templates/seed.spec.ts` pattern for setup shape
-- For **each scenario step**, execute the action against the live app (via `browser` or `exec` Playwright scripts) before finalizing code
+- For **each scenario step**, execute the action against the live app (with the harness's browser or Playwright CLI scripts) before finalizing code
 - Capture what actually works (a generator log/notes) and encode those validated selectors/actions/assertions
 
 ## Required workflow

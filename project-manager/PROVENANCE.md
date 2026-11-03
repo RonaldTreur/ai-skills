@@ -106,3 +106,9 @@ Local adaptation:
 - `methodology/disciplines/project-lifecycle-monitoring.md`
 - `methodology/disciplines/research-and-discovery.md`
 - `methodology/ADAPTATION_LOG.md`
+
+## Local Integration Decision (2026-11-03)
+
+Skills stay harness-agnostic and describe the work and its gates, never who
+performs them (see `methodology/disciplines/role-script-removal-2026-11.md`).
+In this skill, the Default Agent Roles section (Merlin, Vectrix, Claude-review, loop-evidence precondition) became a Merge Gate stated as three required artifacts; the compact prompt and the delegate-return rule lost their role names.

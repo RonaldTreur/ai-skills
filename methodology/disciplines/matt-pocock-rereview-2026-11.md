@@ -164,6 +164,8 @@ Why the roles can go entirely. They existed to choreograph trust between agents 
 
 Methodology files keep their history unchanged; they are provenance, not runtime text.
 
+Landed 2026-11-03 in `role-script-removal-2026-11.md`; `openclaw-contribution` kept pending Ronald's call.
+
 ## 5. Open questions for Ronald
 
 Decisions that depend on preference or operating style rather than correctness:

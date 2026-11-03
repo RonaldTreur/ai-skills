@@ -46,11 +46,10 @@ say that QA was not run and report the blocker.
 2. Prefer the project's existing build/preview/dev commands.
 3. Use a built preview when the project convention supports it; use dev mode
    when hot reload or framework behavior requires it.
-4. Use the active agent's own controlled browser profile unless the user
-   explicitly instructs otherwise. In OpenClaw, this means the OpenClaw-managed
-   browser profile. Avoid switching to personal or project-specific profiles by
-   default; missing extensions, permissions, or profile state can break
-   automated flows and can expose unrelated private context.
+4. Use the harness's own controlled browser profile unless the user explicitly
+   instructs otherwise. Personal or project-specific profiles can break
+   automated flows through missing extensions, permissions or profile state, and
+   can expose unrelated private context.
 5. Do not use production accounts, secrets, billing flows, or destructive user
    actions unless the user explicitly authorizes them.
 6. If login, CAPTCHA, paid services, or missing data blocks the pass, ask for

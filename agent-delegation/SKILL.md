@@ -46,10 +46,8 @@ Every delegated task needs a compact packet:
 - **Verification**: tests, checks, browser pass, or review expected before
   reporting done.
 - **Return format**: status, changed files, checks run, blockers, and concerns.
-  For implementation work, include explicit loop evidence: active skills used,
-  tests-first or behavior-coverage decision, verification results, browser-QA
-  applicability/result, code-review result, P0-P3 fix status, and whether the
-  work is ready for independent review.
+  For implementation work, name the branch, the PR and the verification that
+  ran, so the controller can inspect the artifact.
 
 Pass file paths and durable artifact names instead of pasting long context when
 the delegate can read the files directly.
@@ -105,9 +103,8 @@ After return:
 
 Delegate reports are evidence, not proof. The controller must still inspect the
 work before treating it as done.
-For implementation work, a report that only says "implemented", "checks passed",
-or "PR opened" is incomplete. Ask for the missing loop evidence before routing
-to an independent reviewer.
+For implementation work, inspect the branch, checks and PR the report points to
+before routing to an independent reviewer.
 
 ## Prompt Shape
 
@@ -139,9 +136,7 @@ Return:
 - Status: DONE | DONE_WITH_CONCERNS | NEEDS_CONTEXT | BLOCKED
 - Changed files or artifacts
 - Checks run and results
-- For implementation: active skills used, tests-first/coverage decision,
-  browser-QA applicability/result, code-review result, P0-P3 fix status, and
-  ready for independent review: yes|no
+- For implementation: branch, PR, and the verification that ran
 - Blockers, concerns, or follow-up needed
 ```
 

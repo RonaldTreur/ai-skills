@@ -172,3 +172,9 @@ Why:
 - Discipline review: `methodology/disciplines/browser-qa.md`
 - Design source review:
   `methodology/disciplines/frontend-design-impeccable-hallmark.md`
+
+## Local Integration Decision (2026-11-03)
+
+Skills stay harness-agnostic and describe the work and its gates, never who
+performs them (see `methodology/disciplines/role-script-removal-2026-11.md`).
+In this skill, the OpenClaw-managed browser profile sentence removed; the rule now names the harness's own controlled profile.
