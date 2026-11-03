@@ -77,14 +77,14 @@ plan. Do not turn this skill into a standing research report workflow.
 
 Classify the research need:
 
-- **Current/social signal**: use `last30days`, `x_search`, Reddit/X, and
-  Brave-backed web search only when current signal can change direction.
-- **Deep external research**: use `deep-research` when a saved report is worth
-  the time and token cost.
+- **Current/social signal**: use web and social search only when current
+  signal can change direction.
+- **Deep external research**: use the harness's deep-research tool, if one
+  exists, only when a saved report is worth the time and token cost.
 - **Repo/project discovery**: read existing docs, code, issues, decisions, and
   prior artifacts before asking the user to restate them.
-- **Memory/session discovery**: use relevant OpenClaw memory/session/channel
-  history when continuity affects framing.
+- **Memory/session discovery**: use the harness's memory and session history
+  when continuity affects framing.
 
 Default to a compact grounding digest in `<project>/context/grounding.md` or
 `BRIEF.md` when short:

@@ -63,4 +63,4 @@ Design and frontend owners:
 
 GitHub label automation lives in `gh-pipeline/`. It is dormant infrastructure unless a repo is actually using labels to drive build, test, review, fix, approved, blocked, and failed states across the lifecycle skills.
 
-Research and discovery does not have a standalone runtime skill. The useful behavior is folded into `start-new-project/` as "Grounding Before Shaping"; `deep-research`, `last30days`, `x_search`, Brave/web search, repo context, and memory/session lookup are routed only when they can change the brief, design direction, platform choice, backlog, or setup decision.
+Research and discovery does not have a standalone runtime skill. The useful behavior is folded into `start-new-project/` as "Grounding Before Shaping"; web and social search, deep research reports, repo context, and the harness's memory and session history are used only when they can change the brief, design direction, platform choice, backlog, or setup decision.

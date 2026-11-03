@@ -9,7 +9,7 @@
 
 ## Local Baseline
 
-Summarize how this discipline currently works in ai-skills/OpenClaw.
+Summarize how this discipline currently works in ai-skills.
 
 ## Source Comparison
 

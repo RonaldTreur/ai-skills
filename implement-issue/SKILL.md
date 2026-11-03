@@ -51,7 +51,7 @@ Ask before:
    - `git remote -v`
    - `git branch --show-current`
 2. Resolve the selected issue and current handoff context.
-3. Read repo-local instructions: `AGENTS.md`, `.github/copilot-instructions.md`, `.codex/*`.
+3. Read repo-local instructions: `AGENTS.md`, `.github/copilot-instructions.md`, and any other agent instruction file the repo carries.
 4. Read only issue-relevant docs: selected issue, linked issue/PR context,
    `DELIVERY_STATE.md`, named handoff sections, and planning/spec/ADR docs only
    when linked, stale, missing from the handoff, or needed for a concrete
@@ -99,22 +99,11 @@ private structure unless the structure is itself the contract.
 ## Delegation
 
 Use [[agent-delegation]] for packet shape, write scopes, parallel safety, and status.
-Prefer Vectrix for substantial implementation unless requested otherwise or blocked.
 
 Delegation packets include issue, branch, repo path, relevant docs, active skills,
-checkpoint, and expected report: changed files, tests, status, blockers, concerns.
-For implementation delegates, require explicit loop evidence in the report:
-
-- active skills used
-- tests-first or behavior-coverage decision
-- verification commands and results
-- browser-QA applicability and result
-- [[code-review]] result
-- P0-P3 fix loop status
-- explicit `ready for independent review: yes|no`
-
-Use "subagent" only for actual spawned Codex/OpenClaw subagents, not for
-Vectrix.
+checkpoint, and expected report: branch, PR, changed files, tests, status,
+blockers, concerns. A delegate's report is a pointer; verify the artifact it points to: the branch,
+its commits, the test output and the PR.
 
 ## Verification Gates
 
@@ -129,22 +118,20 @@ Before review:
 
 Review loop:
 
-1. Run [[code-review]]. For non-trivial diffs, let `code-review` use
-   `autoreview` as its executable closeout helper when available.
+1. Run [[code-review]].
 2. Fix valid P0-P3 findings.
 3. Rerun the smallest meaningful verification.
 4. Repeat until clean or rejected findings are justified.
-5. Use one independent review for non-trivial PRs when available. For Ronald's
-   OpenClaw projects, default to Claude-review as a read-only review gate before
-   merge, then fix valid P0-P3 findings and rerun targeted verification.
+5. Use one independent review of the PR diff for non-trivial PRs, then fix
+   valid P0-P3 findings and rerun targeted verification.
 
 After review fixes, rerun checks most likely to catch regressions. If UI/routing
 changed, repeat [[browser-qa]].
 
-Do not start the independent review gate from a delegate's "implemented",
-"checks passed", or "PR opened" report alone. If the delegate report lacks the
-loop evidence above, treat the issue as still in implementation and ask for the
-missing review/verification artifact first.
+Start the independent review from the artifact: a branch whose checks ran and
+a PR whose body records the checks, browser QA and review findings listed under
+PR And Merge. A report that says implemented, checks passed or PR opened points
+at those; it does not replace them.
 
 ## PR And Merge
 
@@ -164,6 +151,7 @@ PR body includes:
 Merge only when:
 
 - required checks are green
+- an independent review ran on the PR diff for non-trivial PRs
 - valid P0-P3 findings are fixed
 - acceptance criteria are satisfied
 - browser QA can cover user-visible behavior, including changed auth flows

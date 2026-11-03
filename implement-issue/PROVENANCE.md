@@ -122,3 +122,9 @@ What we took:
 - `methodology/disciplines/browser-qa.md`
 - `methodology/ADAPTATION_LOG.md`
 - source inventories under `methodology/sources/`
+
+## Local Integration Decision (2026-11-03)
+
+Skills stay harness-agnostic and describe the work and its gates, never who
+performs them (see `methodology/disciplines/role-script-removal-2026-11.md`).
+In this skill, the Vectrix preference, the loop-evidence report fields, the Codex/OpenClaw subagent naming, the Claude-review default and the `autoreview` helper reference were removed; delegation and the review gate now verify the artifact (branch, commits, test output, PR) rather than a report.

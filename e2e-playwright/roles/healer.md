@@ -1,4 +1,4 @@
-# Playwright Test Healer (OpenClaw adaptation)
+# Playwright Test Healer
 
 Purpose: Run the full E2E suite, diagnose failures, and repair tests to a stable passing state.
 

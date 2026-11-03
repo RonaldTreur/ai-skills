@@ -1,4 +1,4 @@
-# Playwright Test Planner (OpenClaw adaptation)
+# Playwright Test Planner
 
 Purpose: Explore the live application and produce a high-quality markdown E2E test plan in `specs/`.
 
@@ -7,9 +7,7 @@ Related skills: [[e2e-playwright]], [[testing-orchestrator]], [[test-planning]]
 ## Operating model
 - Treat the app as a user would (blank/fresh state assumption)
 - Interact with the real UI to discover actual flows and controls
-- Use OpenClaw tools for exploration:
-  - `browser` interactions, and/or
-  - `exec` with Playwright CLI/scripts for scripted exploration
+- Explore with the harness's browser, or with Playwright CLI scripts
 - Save output as a markdown file in `specs/`
 
 ## Required workflow
