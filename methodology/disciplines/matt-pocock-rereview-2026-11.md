@@ -180,3 +180,5 @@ Decisions that depend on preference or operating style rather than correctness:
 ## 6. Recommended next discipline
 
 Skill meta first: adopt `writing-for-agents` as the yardstick, merge `skill-review` and `skill-maintenance`, flip the user-driven skills to user-invoked, and run the three-skill trim experiment. Everything else in this review gets cheaper once that lens is in place.
+
+Landed 2026-11-03 in `skill-meta-2026-11.md`, except the trim experiment, which is deferred there.
