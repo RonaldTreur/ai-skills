@@ -1328,3 +1328,23 @@ credit_note: Campaign tooling ideas noted from the OpenClaw test-audit skill for
 reviewer: Claude (Fable 5.1), decisions by Ronald
 next_review: After the first local test-pruning campaign
 ```
+
+```yaml
+id: 2026-11-03-matt-pocock-rereview-deferred
+date: 2026-11-03
+discipline: cross-discipline re-review (skill meta, debugging, testing, planning, docs, architecture)
+status: deferred
+source: Matt Pocock Skills
+source_url: https://github.com/mattpocock/skills
+source_ref: 4ae2317ddb22b046e26455e4f9c9b3aaaf62212d
+source_path: skills/productivity/writing-for-agents/SKILL.md; skills/engineering/retro/SKILL.md; skills/engineering/diagnosing-bugs/SKILL.md; skills/engineering/pr/SKILL.md; skills/productivity/grilling/SKILL.md; skills/engineering/domain-modeling/SKILL.md; skills/engineering/tdd/SKILL.md; skills/engineering/codebase-design/SKILL.md; skills/engineering/to-tickets/SKILL.md; SCOPE.md; .out-of-scope/new-skills.md; CHANGELOG.md
+license: MIT
+local_target: methodology/disciplines/matt-pocock-rereview-2026-11.md; methodology/sources/matt-pocock-skills.md
+influence_type: research
+summary: Six-month re-review of upstream against all 33 local skills plus the Ockto work skills; ranked relevance, overlap map, six local merge candidates, and a classification for trimming instructions that smarter models no longer need.
+local_adaptation: None yet. Adoption, merges, and the user-invoked flip wait on Ronald's answers to the open questions in the review; each will get its own log entry and PROVENANCE update when it lands.
+rationale: The review is cross-discipline at the user's request, so decisions are deferred rather than taken one discipline at a time inside this pass.
+credit_note: Ideas under consideration credit Matt Pocock's writing-for-agents, retro, diagnosing-bugs, pr, grilling, domain-modeling, tdd, codebase-design, and to-tickets skills; the pr skill itself credits Dex Horthy's show-me.
+reviewer: Claude (Fable 5.1)
+next_review: After the skill-meta slice (writing-for-agents yardstick, skill-review and skill-maintenance merge, user-invoked flip, three-skill trim experiment) lands or is rejected
+```
