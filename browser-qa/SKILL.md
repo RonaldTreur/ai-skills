@@ -8,15 +8,9 @@ description: "Run browser QA for web apps: preview smoke tests, PR/post-merge ch
 Use this skill to verify web behavior in a browser like a careful user and
 report defects with evidence.
 
-## Ownership Boundary
-
-- `browser-qa` owns browser-based exploratory verification, smoke checks,
-  post-merge QA, defect evidence, and QA summaries.
-- [[e2e-playwright]] owns durable automated Playwright test creation and repair.
-- [[testing]] owns larger test-planning and test-generation cycles.
-- [[debugging]] owns root-cause investigation for non-trivial defects.
-- [[implement-issue]] calls this skill before merge for user-visible browser
-  changes and after merge for preview or `dev` QA.
+Owns exploratory browser verification, smoke checks, post-merge QA and defect
+evidence. [[e2e-playwright]] owns durable tests; [[debugging]] owns root cause;
+[[implement-issue]] calls this skill before and after merge.
 
 ## Modes
 
@@ -43,45 +37,22 @@ say that QA was not run and report the blocker.
    - URL, local dev server, preview, PR build, or merged `dev`
    - branch, PR, issue, and acceptance criteria when available
    - changed routes, components, forms, and user flows
-2. Prefer the project's existing build/preview/dev commands.
-3. Use a built preview when the project convention supports it; use dev mode
-   when hot reload or framework behavior requires it.
-4. Use the harness's own controlled browser profile unless the user explicitly
-   instructs otherwise. Personal or project-specific profiles can break
-   automated flows through missing extensions, permissions or profile state, and
-   can expose unrelated private context.
-5. Do not use production accounts, secrets, billing flows, or destructive user
+2. Use the harness's own controlled browser profile unless the user explicitly
+   instructs otherwise.
+3. Do not use production accounts, secrets, billing flows, or destructive user
    actions unless the user explicitly authorizes them.
-6. If login, CAPTCHA, paid services, or missing data blocks the pass, ask for
+4. If login, CAPTCHA, paid services, or missing data blocks the pass, ask for
    the narrow unblocker or record the blocked coverage.
 
-## Auth And Test Accounts
+## Auth
 
-Authenticated QA needs a safe, repeatable auth path. Do not depend on the user's
-personal browser session or production credentials as the default way to test.
-
-Preferred order:
-
-1. Use the project's documented QA/test account, seeded local user, fixture, or
-   preview-environment auth path.
-2. Read credentials only from approved local secret stores, environment
-   variables, or repo-documented secret names. Never print, commit, screenshot,
-   or summarize passwords, tokens, cookies, or magic links.
-3. Use local-only browser storage state when the project already supports it.
-   Keep generated auth state out of git.
-4. Use a developer-only login bypass or seeded session only when it is clearly
-   disabled in production and documented by the project.
-5. If CAPTCHA, 2FA, missing seed data, account approval, or external identity
-   provider state blocks coverage, record the blocked flows and ask for the
-   narrow unblocker.
-
-If a project has protected areas but no safe QA auth path, report that as a QA
-infrastructure blocker. Recommend a follow-up issue for a non-production test
-account, seed script, fixture, or documented preview auth workflow.
-
-When QA runs during [[implement-issue]], treat missing auth setup for changed or
-new protected behavior as an implementation blocker, not a normal deferred QA
-finding.
+Authenticated QA follows the auth and test-data rules in [[testing]]. In the
+browser: read credentials only from approved local secret stores or
+repo-documented secret names, and never print, screenshot or summarize
+passwords, tokens, cookies or magic links; use a developer login bypass only
+when it is disabled in production and documented. A protected area with no safe
+QA auth path is a QA infrastructure blocker, and during [[implement-issue]] it
+blocks implementation for changed protected behavior.
 
 ## Browser Pass
 
@@ -90,58 +61,20 @@ evidence matters or when reporting a defect.
 
 For each tested page or flow:
 
-1. Load the page and check that the primary content appears.
-2. Inspect console errors after load and after major interactions.
-3. Exercise the user path, not only the happy button:
+1. Inspect console errors after load and after major interactions.
+2. Exercise the user path, not only the happy button:
    - navigation and deep links
    - forms, validation, empty states, loading states, and error states
    - browser back/forward for routed apps
    - keyboard focus and basic accessibility affordances where relevant
-4. Check at least one narrow mobile viewport for user-visible layout changes.
-5. Record defects immediately with reproduction steps and evidence.
+3. Check at least one narrow mobile viewport for user-visible layout changes.
+4. Record defects immediately with reproduction steps and evidence.
 
 For `focused` mode, bias coverage toward changed behavior and nearby regression
 risks. For `quick` mode, stop after the highest-signal smoke checks.
 
-For `visual` mode or significant visual changes:
-
-1. Check desktop plus 320, 375, 414, and 768 px widths when practical.
-2. Fail horizontal scrolling unless the design intentionally owns a horizontal
-   interaction and makes it obvious.
-3. Check that CTA, nav, tab, breadcrumb, and footer link text does not wrap into
-   awkward two-line clickable affordances.
-4. Check long display words and headings for overflow or overlap.
-5. For image-bearing grid tracks, inspect that images do not force the grid
-   wider than the viewport.
-6. Check focus-visible, active, disabled, loading, error, and success states
-   when the changed component exposes those states.
-7. Treat fake browser/device/IDE chrome, invented proof stats, token drift, and
-   generic AI layout tells as design defects when they are visible in scope.
-
-Optional detector evidence:
-
-- Prefer the project's pinned Impeccable command: a package script, checked-in
-  dependency, or repo-documented tool invocation.
-- Do not run ad-hoc `npx impeccable ...` unless the user explicitly approves
-  that external package execution for this task or the repo has an explicit
-  allowlist/policy permitting it.
-- Load `references/impeccable-detector.md` only when command examples or output
-  interpretation details are needed.
-- Treat detector output as evidence, not authority. Product UI may legitimately
-  use familiar fonts or one family; brand surfaces need more distinctiveness.
-- Do not block QA on detector installation, network access, or broad scans.
-  Report detector coverage as skipped when unavailable.
-
-For significant CSS cleanup or visual changes:
-
-1. Inspect the rendered DOM and the states the CSS claims to style before
-   deleting selectors.
-2. Check responsive viewports, not just desktop, because dead-looking rules can
-   still be active in narrow layouts.
-3. Where browser tooling makes it available, gather CSS coverage or equivalent
-   unused-rule evidence to support deletions.
-4. Do not justify CSS removal by guesswork alone; back it with DOM, state, or
-   coverage evidence.
+For `visual` mode, or when the change touches CSS, read
+`references/visual-pass.md`.
 
 ## Defect Handling
 

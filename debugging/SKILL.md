@@ -11,20 +11,17 @@ Default discipline for investigating and fixing active failures.
 
 - Build the smallest reliable repro or feedback loop before non-trivial fixes.
 - Fix the cause at the right seam, not the nearest symptom.
-- Rerun the original repro before declaring success.
-- Remove temporary debug instrumentation before finishing.
+- Before declaring success: the original repro passes, not just a nearby test
+  or narrower probe; the smallest relevant regression guardrail has run;
+  temporary instrumentation, probes and throwaway scripts are removed.
 
 ## Fast path for trivial bugs
 
 For obvious low-risk bugs such as typos, missing imports, wrong variables,
 clear off-by-ones, broken selectors, or obvious wiring mistakes:
 
-1. Confirm the bug with the smallest practical repro.
-2. Apply the obvious fix.
-3. Rerun the original repro.
-4. Remove any temporary instrumentation.
-
-Do not add hypothesis lists or causal-chain narration for trivial fixes.
+confirm with the smallest practical repro, apply the obvious fix, then meet the
+non-negotiables. No hypothesis lists or causal-chain narration.
 
 ## Standard workflow
 
@@ -61,12 +58,9 @@ them to the user only when they affect a decision or explain a stall.
 - If the real issue is product design, interface ambiguity, or architecture,
   say so instead of forcing a fake code-only fix.
 
-### 5. Finish gates
+### 5. Finish
 
-Do not claim the bug is fixed until:
-- the original repro passes, not just a nearby test or narrower probe
-- the smallest relevant regression guardrail has run
-- temporary debug instrumentation, probes, and throwaway scripts are removed
+Claim the fix only when the non-negotiables hold.
 
 ## Defense-in-depth is conditional
 
@@ -94,8 +88,7 @@ When you stop, summarize:
 
 ## Integration notes
 
-- Use `[[testing]]`, `[[unit-vitest]]`, and `[[e2e-playwright]]`
-  when a regression test should carry the fix forward.
-- Use `[[code-review]]` if the bug history suggests symptom-layering or
+- Use [[testing]], [[unit-vitest]], and [[e2e-playwright]] when a regression
+  test should carry the fix forward.
+- Use [[code-review]] if the bug history suggests symptom-layering or
   architecture drift rather than a single isolated defect.
-- Follow repo git rules and keep debug-only changes out of final commits.

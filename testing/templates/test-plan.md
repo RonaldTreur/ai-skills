@@ -9,7 +9,7 @@
 ## Test Strategy Summary
 - Outside-in sequence:
 - Risk areas:
-- Coverage target (default 100% unit thresholds):
+- Coverage target:
 
 ## E2E Tests (`tests/e2e/`)
 

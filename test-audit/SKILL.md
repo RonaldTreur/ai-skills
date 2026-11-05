@@ -17,7 +17,7 @@ Read the repository's root and scoped `AGENTS.md`, `TEST_PLAN.md` and CI config 
 
 ## Value bar
 
-A test pays for its maintenance by protecting behavior, a credible regression, or an independently meaningful contract. A test that must change for behavior-preserving source reorganization is suspect, not automatically deletable.
+A test pays for its maintenance by protecting behavior, a credible regression, or an independently meaningful contract.
 
 Before judging a candidate, read the complete test and its production owner: entry point, callers, callees, sibling implementations, overlapping tests, CI routing and history. When a test claims dependency-backed behavior, read the dependency's source or types.
 
@@ -27,10 +27,9 @@ Keep a test that independently enforces a public API, protocol, config, migratio
 
 - call ordering when the order is observable behavior;
 - regressions with a credible failure mode;
-- source inspection when it is the cheapest independent guard: it fails when the user-facing key, byte or path changes and survives an identifier-only refactor;
-- a retained test that fails on the baseline: treat it as a possible product bug, reproduce it, and repair the owner rather than deleting the test.
+- source inspection when it is the cheapest independent guard: it fails when the user-facing key, byte or path changes and survives an identifier-only refactor.
 
-Slow or static is not a deletion reason. A test that resembles implementation may still be the independent contract; prove otherwise before removing it.
+A retained test that fails on the baseline is a possible product bug: reproduce it and repair the owner rather than deleting the test. Slow or static is not a deletion reason. A test that resembles implementation may still be the independent contract; prove otherwise before removing it.
 
 ## Discovery and evidence
 
@@ -52,7 +51,7 @@ Work in one coherent owner-boundary batch. Delete obsolete test-only exports, gl
 
 ## Validation and landing
 
-Never edit source or tests while a Vitest watcher runs in the checkout.
+Stop any Vitest watcher in the checkout before editing.
 
 1. Run the smallest owner and sibling tests with the project's runner.
 2. For a removed source-grep or plan assertion, run the executable script or dry-run that owns the real contract.

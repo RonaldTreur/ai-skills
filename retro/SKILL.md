@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Retro
 
-A retrospective proposes changes to the **environment** the agent works in, so the next run goes better. Propose only. Apply a proposal after the person approves it; the classes named in step 4 need approval per item.
+A retrospective proposes changes to the **environment** the agent works in, so the next run goes better. Propose only; apply a proposal after the person approves it.
 
 ## Steps
 
