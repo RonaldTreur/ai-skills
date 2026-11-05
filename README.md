@@ -31,8 +31,7 @@ The current methodology taxonomy is split by workflow ownership, not by source r
 Core lifecycle owners:
 
 - `start-new-project/`: early grounding, brief, product/design direction, `BRIEF.md`, `DESIGN.md`, `PLAN.md`, and `DECISIONS.md`.
-- `add-feature/`: existing-project feature request classification, minimal issue creation, and routing into the normal lifecycle.
-- `project-manager/`: repo/project setup, readiness, issue decomposition, backlog ordering, status, and next-work selection.
+- `project-manager/`: repo/project setup, readiness, feature intake, issue decomposition, backlog ordering, status, and next-work selection; `references/delegation.md` holds the packet and status contract for work sent to another agent.
 - `implement-issue/`: one ready issue or backlog slice through branch, tests, implementation, review, PR, merge, and post-merge QA.
 - `documentation-handoff/`: README/AGENTS roles, project artifacts, `DELIVERY_STATE.md`, `DECISIONS.md`, ADRs, PR/issue handoffs, blockers, and recovery summaries.
 
@@ -42,7 +41,6 @@ Specialist owners:
 - `code-review/`: architecture, security, maintainability, correctness, convention, and test-risk review.
 - `skill-review/`: one skill or a whole library: activation accuracy, context cost, no-op instructions, progressive disclosure, safety, and the read-only inventory audit script.
 - `retro/`: user-invoked retrospective on a session or merged PR that proposes environment changes (pointers, checks, review rules, deleted no-ops) for the person to approve.
-- `agent-delegation/`: handoff mechanics for work sent to another agent, runtime, or subagent.
 
 Testing and QA owners:
 
@@ -54,9 +52,8 @@ Testing and QA owners:
 
 Design and frontend owners:
 
-- `frontend-design/`: divergent UI variants, visual thesis, shareable browser previews, feedback rounds, and approved frontend design artifacts.
+- `frontend-design/`: divergent UI variants, visual thesis, shareable browser previews, feedback rounds, approved frontend design artifacts, and prompt export for external UI generators.
 - `developing-web-projects/`: web architecture and implementation conventions.
-- `design-prompt-export/`: export approved UI direction into copy-paste prompts for external UI generators or one-off design workers.
 - `generating-web-components/`: repository-patterned Web Component generation.
 
 GitHub label automation lives in `gh-pipeline/`. It is dormant infrastructure unless a repo is actually using labels to drive build, test, review, fix, approved, blocked, and failed states across the lifecycle skills.

@@ -16,7 +16,7 @@ orchestrator behavior. It does not replace:
 - [[implement-issue]] for building one selected issue
 - [[testing]] for test strategy and execution flow
 - [[code-review]] for review method and finding severity
-- [[agent-delegation]] for task packets and multi-agent handoffs
+- `references/delegation.md` under [[project-manager]] for task packets and multi-agent handoffs
 
 ## Core Model
 

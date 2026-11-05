@@ -8,7 +8,6 @@ description: "Write and maintain durable Playwright E2E tests for web apps, incl
 Use this skill to validate real user behavior in browser flows.
 
 Related workflow: [[testing]]
-Related delegation workflow: [[agent-delegation]]
 
 ## Role Pattern
 
@@ -30,8 +29,9 @@ Role guides:
 
 These role files define **agent behavior**. The guides below remain your **reference knowledge** for implementation details.
 
-When the role files are assigned to separate agents, use [[agent-delegation]]
-for the task packet, write scope, status, and blocker reporting.
+When the role files are assigned to separate agents, use
+`references/delegation.md` under [[project-manager]] for the task packet,
+write scope, status, and blocker reporting.
 
 ## Golden rules
 - Prefer `getByRole()` locators first

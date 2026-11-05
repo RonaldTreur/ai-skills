@@ -90,6 +90,8 @@ These reduce skill count and always-loaded descriptions without losing a gate.
 5. **`agent-delegation` → a reference file.** It is a packet shape, a status contract and a prompt template. Nothing in it needs a description in context; the skills that delegate (`implement-issue`, `project-manager`, `start-new-project`) can link `references/delegation-packet.md`. Note that the Claude desktop app now has its own session hand-off, task list and side-session mechanics that cover half of what the packet describes.
 6. **`design-prompt-export` into `frontend-design`.** 368 words whose description already says "do not use as the primary design workflow". That is a section, not a skill.
 
+Candidates 2, 5 and 6 landed 2026-11-05 in `small-merges-2026-11.md`.
+
 Net effect if all six land: 33 → about 24 skills, and the always-loaded description text drops by roughly a third before any individual description is tightened.
 
 ### The Ockto work skills (not in this repo)

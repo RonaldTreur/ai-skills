@@ -22,7 +22,7 @@ regression-test rule) and the junk-pattern list moved to the model-invoked
 `testing` skill, because they must fire whenever tests are written. This skill
 keeps the audit sweep and the campaign, is user-invoked
 (`disable-model-invocation: true`) so its description costs nothing per turn,
-and reads the junk patterns from `../testing/references/junk-patterns.md`.
+and reads the junk patterns from `references/junk-patterns.md` under `testing`.
 `CAMPAIGN.md` became `references/pruning-campaign.md`, trimmed from 798 to
 about 510 words: the ledger marks, the layer plan, the preservation review with
 one mutation per restored contract, and the control-run rule stayed; baseline,

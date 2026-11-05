@@ -1,6 +1,6 @@
 ---
 name: frontend-design
-description: "Explore and refine visual frontend direction for web apps, dashboards, landing pages, and UI-heavy features through concepts, variants, prototypes, and approval."
+description: "Explore and refine visual frontend direction for web apps, dashboards, landing pages, and UI-heavy features through concepts, variants, prototypes, and approval; export an approved direction as a prompt for an external UI generator."
 ---
 
 # Frontend Design
@@ -19,8 +19,8 @@ implementation.
 - [[developing-web-projects]] owns web stack and implementation conventions.
 - [[browser-qa]] owns real browser verification of prototypes.
 - [[project-manager]] consumes approved design artifacts later for issue slicing.
-- [[agent-delegation]] owns delegation mechanics when variant or critique agents
-  are used.
+- `references/delegation.md` under [[project-manager]] holds the packet and
+  status contract when variant or critique agents are used.
 
 ## Core Idea
 
@@ -37,6 +37,10 @@ Use a divergent-variant workflow:
 The goal is not "two versions of the same page." The goal is to expose real
 tradeoffs in information architecture, density, hierarchy, tone, and visual
 language.
+
+Two requests bypass the variant workflow: one component inside a settled
+system (Component Scope), and a prompt for an already settled direction
+(Prompt Export).
 
 ## When To Use
 
@@ -147,9 +151,8 @@ brief, or prompt for a design worker:
 - **Constraints**: stack, accessibility, data shape, existing tokens, viewport,
   and hard boundaries.
 
-When a worker or external tool needs a prompt, assemble it from these inputs
-plus the chosen macrostructure, visual thesis, content plan, and interaction
-plan. The prompt is an execution artifact; it does not replace `DESIGN.md` or
+When a worker or external tool needs a prompt, assemble it as in Prompt
+Export. The prompt is an execution artifact; it does not replace `DESIGN.md` or
 human approval of the direction.
 
 ## Visual Thesis
@@ -408,6 +411,26 @@ Iteration rules:
 - iterate existing designs instead of restarting by default
 - show what changed and why
 - stop when the user approves a direction or explicitly asks for another round
+
+## Prompt Export
+
+When the requested output is a prompt for an external UI generator or a bounded
+one-off design worker, and the direction is already settled, export it instead
+of designing again. Read `BRIEF.md`, `DESIGN.md`, `DECISIONS.md` and the
+relevant references or brand assets, then assemble the prompt in this frame:
+Task (what to generate, bounded), Context (audience, product, workflow
+frequency, brand tone), Examples (references to preserve, translate or avoid),
+Visual Thesis (macrostructure, tone, type roles, density, motion stance, color
+anchors), Behavior (interactions, states, permissions, responsive rules),
+Constraints (stack, accessibility, data shape, viewport, existing tokens, hard
+boundaries), Output Contract (files, fidelity, states, prompt-only or code,
+what not to invent).
+
+Produce the prompt only, unless the user asks to run it. Keep the approved
+macrostructure, thesis, tokens and anti-pattern notes intact, state which
+artifacts the prompt was built from, and mark unknowns rather than inventing
+proof, metrics or brand assets. If the prompt would require choosing a new
+direction, stop and run the workflow above.
 
 ## Finalize
 
