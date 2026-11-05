@@ -94,7 +94,7 @@ When you stop, summarize:
 
 ## Integration notes
 
-- Use `[[testing-orchestrator]]`, `[[unit-vitest]]`, and `[[e2e-playwright]]`
+- Use `[[testing]]`, `[[unit-vitest]]`, and `[[e2e-playwright]]`
   when a regression test should carry the fix forward.
 - Use `[[code-review]]` if the bug history suggests symptom-layering or
   architecture drift rather than a single isolated defect.

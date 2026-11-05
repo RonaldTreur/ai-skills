@@ -9,7 +9,7 @@ Opinionated review workflow for TypeScript-first projects.
 
 This skill is a quality gate:
 
-- [[testing-orchestrator]] verifies behavior with tests.
+- [[testing]] verifies behavior with tests.
 - [[code-review]] verifies architecture, security, maintainability, and conventions.
 - [[developing-web-projects]] conventions are enforced during review.
 
@@ -82,7 +82,7 @@ CSS severity guidance:
 
 ## Integration Notes
 
-- Link and align with [[testing-orchestrator]] for coverage expectations.
+- Link and align with [[testing]] for coverage expectations.
 - Enforce standards from [[developing-web-projects]].
 - Apply Cloudflare checks when relevant via `references/cloudflare.md` and [[architecting-cloudflare-systems]].
 

@@ -13,7 +13,7 @@ Use this skill for active implementation of one ready issue or backlog slice.
   multi-issue status.
 - `implement-issue`: one active slice from branch through post-merge QA.
 - [[developing-web-projects]]: web architecture and implementation defaults.
-- [[testing-orchestrator]], [[test-planning]], [[e2e-playwright]],
+- [[testing]], [[e2e-playwright]],
   [[unit-vitest]]: testing strategy and tooling.
 - [[browser-qa]]: exploratory/post-merge browser QA for user-visible behavior.
 - [[code-review]]: review method and P0-P3 severity.

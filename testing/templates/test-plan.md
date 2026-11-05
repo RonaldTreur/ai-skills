@@ -29,6 +29,10 @@
 - [ ] ER-1:
 - [ ] ER-2:
 
+## Integration/API Tests
+- [ ] Worker/API boundary:
+- [ ] Persistence, queue, auth callback or external-service seam:
+
 ## Unit Tests
 
 ### Module: `src/...`
@@ -41,6 +45,19 @@
 ### Module: `src/...`
 - Function: `name()`
   - [ ] behavior 1
+
+## Browser QA
+- Smoke / focused / post-merge flows for [[browser-qa]]:
+- Responsive and console-error checks:
+
+## Auth and Test Data
+- Safe non-production auth path for protected flows:
+- Seed users, fixtures, storage state, reset steps:
+- Forbidden production credentials or actions:
+
+## CI and Commands
+- install / build / typecheck / lint / unit / E2E / preview / coverage:
+- Artifacts kept on failing E2E runs:
 
 ## Coverage Gaps
 - Existing tests found:

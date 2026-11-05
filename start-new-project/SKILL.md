@@ -16,7 +16,7 @@ decomposition, long-running delivery, or active implementation.
   `DECISIONS.md`.
 - [[project-manager]]: repo setup, readiness, issues, project boards, next
   implementation slices.
-- [[test-planning]]: `TEST_PLAN.md` before broad test work.
+- [[testing]]: `TEST_PLAN.md` before broad test work.
 - [[developing-web-projects]]: web architecture and stack conventions.
 - [[frontend-design]]: visual frontend exploration.
 - [[browser-qa]]: real browser verification for generated web prototypes.

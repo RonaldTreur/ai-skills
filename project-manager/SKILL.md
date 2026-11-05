@@ -17,7 +17,7 @@ Do not own per-issue implementation; route active execution to
 - `project-manager`: repo setup, planning docs, issue decomposition,
   dependency graph, status, approval gates.
 - [[implement-issue]]: active per-issue build execution.
-- [[test-planning]] / [[testing-orchestrator]]: test strategy and workflow.
+- [[testing]]: test strategy and workflow.
 - [[browser-qa]]: browser verification; ensure setup makes it possible.
 - [[documentation-handoff]]: durable docs, continuation state, handoffs.
 - [[agent-delegation]]: delegation packets, write scopes, status, parallel

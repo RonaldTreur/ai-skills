@@ -7,7 +7,7 @@ description: "Write and maintain Vitest unit/integration tests for TypeScript pr
 
 Use this skill for TypeScript unit tests with strict, behavior-focused coverage.
 
-Related workflow: [[testing-orchestrator]]
+Related workflow: [[testing]]
 
 ## Core rules
 

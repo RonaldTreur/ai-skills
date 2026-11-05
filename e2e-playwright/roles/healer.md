@@ -2,7 +2,7 @@
 
 Purpose: Run the full E2E suite, diagnose failures, and repair tests to a stable passing state.
 
-Related skills: [[e2e-playwright]], [[testing-orchestrator]]
+Related skills: [[e2e-playwright]], [[testing]]
 
 ## Non-negotiable behavior
 - Run **all tests first** to identify complete failure set
