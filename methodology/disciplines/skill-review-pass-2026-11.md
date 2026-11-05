@@ -6,7 +6,7 @@
   applied by three separate agents to the final text of every skill the
   branch added or changed, without this session's reading. The audit script
   was not rerun (clean at the previous commit).
-- Status: findings recorded, not yet applied
+- Status: applied on 2026-11-05 in three commits (testing and QA group, lifecycle group, meta group); see Applied below
 
 ## Verdicts
 
@@ -207,3 +207,32 @@ Every `[[link]]` resolves and no model-invoked skill links a user-invoked one.
 - The pattern across the thirteen NEEDS WORK verdicts is the same: a rule
   stated two to four times inside one skill or across siblings, and branch-only
   material inline. Both are what the cache and hierarchy checks exist to find.
+
+## Applied
+
+Every finding above was applied on 2026-11-05, with these judgment calls:
+
+- The five lifecycle Ownership Boundary blocks: `project-manager` keeps the
+  routing table as the hub; `implement-issue`, `browser-qa` and `gh-pipeline`
+  now open with one pointer line; `start-new-project` and `frontend-design`
+  keep theirs because every entry is a link the body uses.
+- The safe-auth paragraph lives in `testing`; `browser-qa` keeps only the
+  browser-specific rules and `e2e-playwright` one pointer.
+- `start-new-project` Phase 1 was inlined and compressed rather than kept as a
+  file opened on every run; `phase-1-brief.md` and `phase-2-design.md` are
+  deleted. Phase 3 and the Discord phase stay as gated files.
+- `frontend-design` moved Component Scope, Reference Study and Prompt Export
+  behind references and went from 447 to 321 lines; the feedback template is
+  one sentence.
+- `code-review` gates its four reference checklists at the matching workflow
+  steps instead of deleting them.
+- `implement-issue/agents/openai.yaml` was deleted, as `skill-maintenance`'s
+  was; the earlier claim that no other skill carried a Codex manifest was
+  wrong, and now none does.
+- `openclaw-contribution` gained the approval gate before `gh` creates
+  anything public; its reference keeps only paths and the contributing rules
+  the templates do not state.
+- `openclaw-contribution` had no `PROVENANCE.md`; one was created.
+
+A second fresh-eyes pass over the trimmed text follows in the same discipline
+review.

@@ -29,3 +29,10 @@ one mutation per restored contract, and the control-run rule stayed; baseline,
 lanes, cutover and reconciliation shrank to a step each. The `test-ci-policy`
 references now point at `testing`. See
 `methodology/disciplines/testing-merge-2026-11.md`.
+
+## Local Integration Decision (2026-11-05, skill-review pass)
+
+Trimmed per `methodology/disciplines/skill-review-pass-2026-11.md`: rules
+stated once, environment facts the agent can look up removed, branch-only
+material moved behind gated references, harness-specific names removed. The
+findings and the fixes applied are listed there per skill.

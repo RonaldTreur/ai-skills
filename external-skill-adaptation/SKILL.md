@@ -6,23 +6,15 @@ disable-model-invocation: true
 
 # External Skill Adaptation
 
-Use this skill to turn external agent-methodology sources into durable, attributed improvements to this repository.
-
 The goal is not to vendor external skills. The goal is to compare sources by discipline, decide what fits the user's workflow, adapt the useful parts into local conventions, and leave a provenance trail clear enough for credit, future re-review, and public explanation.
 
 ## Core Rules
 
 1. Work on a dedicated branch.
-2. Record source repo, URL, license, commit or release, source file path, and review date before adapting ideas.
-3. Prefer paraphrased/adapted guidance over copied text unless copying is explicitly needed and license-compatible.
-4. Track every material influence in `methodology/ADAPTATION_LOG.md`.
-5. Keep rejected ideas. A future re-review needs to know why something did not land.
-6. Do one discipline at a time unless the user explicitly asks for a broader pass.
-7. Ask the user discipline-specific questions before finalizing adoption choices when the tradeoff is taste, workflow friction, or behavior policy rather than a clear technical correctness issue.
-8. When a discipline produces or changes a local skill, add a concise source-influence artifact at `<skill>/PROVENANCE.md`.
-9. Keep attribution and rebuild notes out of runtime `SKILL.md` files unless the user explicitly asks for them there.
-10. Do not install or activate third-party skills, hooks, daemons, telemetry, or auto-update systems as part of this workflow.
-11. End every created or changed runtime skill with a `[[skill-review]]` pass before closing.
+2. Prefer paraphrased/adapted guidance over copied text unless copying is explicitly needed and license-compatible.
+3. Keep rejected ideas. A future re-review needs to know why something did not land.
+4. Do one discipline at a time unless the user explicitly asks for a broader pass.
+5. Do not install or activate third-party skills, hooks, daemons, telemetry, or auto-update systems as part of this workflow.
 
 ## Workflow
 
@@ -30,7 +22,7 @@ The goal is not to vendor external skills. The goal is to compare sources by dis
 
 Identify the target discipline, sources to compare, local skills or instructions affected, and whether the output is research only, draft skill text, or a ready-to-merge skill change.
 
-If the user has not named a discipline, recommend one vertical slice. Prefer debugging first because it has clear observable failure modes and high reuse.
+If the user has not named a discipline, recommend the one with no review yet in `methodology/disciplines/`.
 
 ### 2. Inventory Sources
 
@@ -89,7 +81,12 @@ Categories:
 
 ### 8. Verify
 
-Before closing, run validation when available; run `[[skill-review]]` against every created or changed runtime `SKILL.md`; inspect `git diff` for copied text, missing attribution, or unrelated changes; ensure every changed skill has a matching log entry and `<skill>/PROVENANCE.md` or a documented exception; keep provenance-only notes out of runtime `SKILL.md`; ignore local `[[skill-name]]` references during review; and summarize branch, files changed, reviewed refs, and open questions.
+Before closing:
+
+- run [[skill-review]] against every created or changed runtime `SKILL.md`;
+- inspect `git diff` for copied text, missing attribution, or unrelated changes;
+- confirm every changed skill has a matching log entry and `<skill>/PROVENANCE.md` or a documented exception, and no provenance notes in runtime `SKILL.md`;
+- summarize branch, files changed, reviewed refs, and open questions.
 
 ## Output Shape
 
@@ -101,9 +98,3 @@ For a complete discipline pass, produce:
 - a concise skill-level source-influence artifact at `<skill>/PROVENANCE.md` for every adopted local skill
 - skill changes or draft skill files when adoption is approved
 - a concise summary with recommended next discipline
-
-## References
-
-- `references/provenance-schema.md`
-- `templates/discipline-review.md`
-- `templates/source-inventory-entry.md`

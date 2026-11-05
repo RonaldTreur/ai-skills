@@ -128,3 +128,10 @@ What we took:
 Skills stay harness-agnostic and describe the work and its gates, never who
 performs them (see `methodology/disciplines/role-script-removal-2026-11.md`).
 In this skill, the Vectrix preference, the loop-evidence report fields, the Codex/OpenClaw subagent naming, the Claude-review default and the `autoreview` helper reference were removed; delegation and the review gate now verify the artifact (branch, commits, test output, PR) rather than a report.
+
+## Local Integration Decision (2026-11-05, skill-review pass)
+
+Trimmed per `methodology/disciplines/skill-review-pass-2026-11.md`: rules
+stated once, environment facts the agent can look up removed, branch-only
+material moved behind gated references, harness-specific names removed. The
+findings and the fixes applied are listed there per skill.

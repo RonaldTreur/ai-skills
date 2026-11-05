@@ -176,3 +176,10 @@ checklists as runtime context.
 - `methodology/sources/anthropic-agent-skills.md`
 - `methodology/sources/codex-system-skill-creator.md`
 - `methodology/sources/community-skill-review-tools.md`
+
+## Local Integration Decision (2026-11-05, skill-review pass)
+
+Trimmed per `methodology/disciplines/skill-review-pass-2026-11.md`: rules
+stated once, environment facts the agent can look up removed, branch-only
+material moved behind gated references, harness-specific names removed. The
+findings and the fixes applied are listed there per skill.

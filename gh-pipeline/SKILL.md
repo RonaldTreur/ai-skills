@@ -1,22 +1,14 @@
 ---
 name: gh-pipeline
-description: "Operate label-driven GitHub issue automation that moves agent work through build, test, review, fix, approved, blocked, and failed states."
+description: "Operate label-driven GitHub issue automation that moves agent work through build, test, review, fix, approved, blocked, and failed states. Use when asked to run, set up or report on the agent label pipeline."
 disable-model-invocation: true
 ---
 
 # GitHub Pipeline
 
-Use this skill when GitHub labels are the durable state machine for agent-driven
-issue work.
-
-This skill owns pipeline state, label transitions, locks, recovery, and
-orchestrator behavior. It does not replace:
-
-- [[project-manager]] for backlog decomposition and next-work selection
-- [[implement-issue]] for building one selected issue
-- [[testing]] for test strategy and execution flow
-- [[code-review]] for review method and finding severity
-- `references/delegation.md` under [[project-manager]] for task packets and multi-agent handoffs
+Owns pipeline state, label transitions, locks, recovery and orchestrator
+behavior. Task packets and multi-agent handoffs: `references/delegation.md`
+under [[project-manager]].
 
 ## Core Model
 
@@ -50,22 +42,10 @@ Status labels:
 Priority labels are project-specific. If none exist, prefer `P0`, `P1`, `P2`,
 `P3`; do not invent a second priority taxonomy for the pipeline.
 
-Ask before creating labels in bulk. If labels already exist and the user has
-asked to operate the pipeline, normal stage transitions are in scope.
+If labels already exist and the user has asked to operate the pipeline, normal
+stage transitions are in scope.
 
 ## State Machine
-
-Use this default flow:
-
-```text
-agent:build -> agent:test -> agent:review -> status:approved
-                                  |
-                                  v
-                           agent:fix-comments
-                                  |
-                                  v
-                            agent:review
-```
 
 Allowed transitions:
 
@@ -201,20 +181,9 @@ Every blocked or failed transition needs a comment with:
 
 ## Setup
 
-Before enabling a repository:
-
-1. Confirm the repo has [[project-manager]]-level readiness: integration branch,
-   runnable checks, issue conventions, and enough test/QA setup for feature
-   work.
-2. Ask before creating the pipeline labels in bulk.
-3. Decide whether the orchestrator may mutate issues automatically or should run
-   in dry-run/report-only mode.
-4. Decide lock timeout, max concurrent issues, and notification channel.
-5. Record the repo allow-list and settings in the local project handoff or
-   approved config location.
-
-Do not wire production-impacting deployment, release, or billing actions into
-the pipeline unless the user explicitly authorizes that specific automation.
+Before enabling a repository, read `references/setup.md`. Production-impacting
+deployment, release or billing actions stay out of the pipeline unless the user
+explicitly authorizes that specific automation.
 
 ## Status Output
 

@@ -133,3 +133,10 @@ Two skills folded in (see `methodology/disciplines/small-merges-2026-11.md`):
   2026-05-25 (delegation is a protocol, not a default) stays as the reference's
   first paragraph. Rejected upstream material is recorded in
   `methodology/disciplines/agent-orchestration-delegation.md`.
+
+## Local Integration Decision (2026-11-05, skill-review pass)
+
+Trimmed per `methodology/disciplines/skill-review-pass-2026-11.md`: rules
+stated once, environment facts the agent can look up removed, branch-only
+material moved behind gated references, harness-specific names removed. The
+findings and the fixes applied are listed there per skill.
