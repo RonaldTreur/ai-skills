@@ -70,8 +70,8 @@ All under log entry `2026-11-03-role-script-removal`.
 
 Kept on purpose: `openclaw-contribution`. It is a contribution workflow for one
 external repository, now user-invoked, so it costs nothing until typed. It still
-names a local clone path on another machine; whether Ronald still contributes
-there decides if it stays.
+names a local clone path on another machine. Decided 2026-11-05: it stays; it
+serves the OpenClaw machine and costs nothing here.
 
 Runtime lines: 115 added, 91 removed across 20 files, with the removed lines
 denser. The six changed skills now total about 6,400 words.
