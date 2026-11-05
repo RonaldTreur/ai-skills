@@ -28,26 +28,13 @@ code-level choreography too early.
 It is not an implementation script. Avoid exact code, imports, signatures,
 micro-steps, and shell choreography unless they are truly contractual.
 
-## 1. Independent Plan Drafts
+## 1. Independent Critique
 
-Use one or more independent planning perspectives when the project is large or
-risky:
-
-- engineering architecture
-- product scope and sequencing
-- design/UX implementation risk
-- testability and operations
-
-For small projects, one planner plus a critique pass is enough.
-
-Each planner should read:
-
-```text
-<project>/BRIEF.md
-<project>/DESIGN.md
-<project>/DECISIONS.md
-<project>/src/ or <project>/docs/
-```
+For a large or risky project, obtain independent plan critiques covering
+architecture and platform fit, scope and sequencing, design-to-implementation
+risk, and testability and operations, each reading `BRIEF.md`, `DESIGN.md`,
+`DECISIONS.md` and `src/` or `docs/`. For a small project, one plan plus a
+critique pass is enough.
 
 Ask for:
 
@@ -133,10 +120,5 @@ Record:
 
 The phase exits when the user approves `PLAN.md`.
 
-Do not hand directly to implementation. The next step is [[project-manager]]:
-
-- verify setup/readiness
-- create or update `TEST_PLAN.md` through [[testing]]
-- turn work units into GitHub issues
-- establish dependency order and labels
-- route the first issue to the selected implementer
+Do not hand directly to implementation; hand off to [[project-manager]] as in
+`SKILL.md`.

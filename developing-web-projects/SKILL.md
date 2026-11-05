@@ -1,6 +1,6 @@
 ---
 name: developing-web-projects
-description: "Use when creating websites or web applications. Enforces the user's personal web development philosophy: vanilla web, MPAs, semantic CSS, and minimal frameworks."
+description: "Use when creating or changing websites or web applications. Enforces the user's personal web development philosophy: vanilla web, MPAs, semantic CSS, and minimal frameworks."
 ---
 
 # Personal Web Development Skill
@@ -53,12 +53,8 @@ CSS hygiene rules:
 - Review for duplicate or immediately overridden declarations while editing; do not leave additive-only CSS patches that silently stack dead rules.
 - Reuse the established token system. Do not freelance new colors, spacing, or custom properties unless the design direction actually changed and the new token is used deliberately. Token structure and naming follow [[css-design-tokens]].
 
-Frontend design guidance for this repo:
-
-- Choose macrostructure before palette or component ornament.
-- Start from a visual thesis, type roles, density, and motion stance instead of defaulting to generic SaaS polish.
-- Reuse a deliberate token system once chosen; do not freelance colors or spacing from section to section.
-- Avoid shallow trends by default: hero-plus-three-cards, fake browser chrome, emoji feature icons, gradient text as the whole idea, nested cards for cosmetic depth, and unreadable mobile CTAs.
+Design direction comes from [[frontend-design]]; implementation reuses its
+`DESIGN.md` tokens, state inventory and anti-pattern notes.
 
 ## HTML First
 
@@ -70,15 +66,15 @@ Prefer standard HTML semantics over JS when possible. Example: use an `<a href="
 
 If the work involves **Web Components**, use the dedicated skill:
 
-- `generating-web-components/SKILL.md`
+- [[generating-web-components]]
 
 That skill is the source of truth for the base component, decorators, file structure, and examples. Only apply it when the task actually includes Web Components.
 
-If the work involves **CSS custom properties as design tokens** — new-project styling foundations, theming/dark mode, or adding token values — use [[css-design-tokens]]. It is the source of truth for token naming, tiering (GTC: Global → Theme → Component), and the starter scaffold.
+If the work involves **CSS custom properties as design tokens**: new-project styling foundations, theming/dark mode, or adding token values: use [[css-design-tokens]]. It is the source of truth for token naming, tiering (Global, Theme, Component), and the starter scaffold.
 
 Unless the user explicitly asks not to, create tests and run them. For test coverage standards and tooling, also use:
 
-- `testing/SKILL.md` for test strategy, sequencing and CI policy
+- [[testing]] for test strategy, sequencing and CI policy
 
 ## TypeScript Preferences
 - TypeScript is the default
@@ -93,31 +89,13 @@ Unless the user explicitly asks not to, create tests and run them. For test cove
 
 For new projects, always use tabs (width 4) for indentation. Otherwise follow the existing project style. If in doubt, use tabs.
 
-## Default Behavior When Starting Projects
+## Defaults
 
-When the user asks to build a new site/app/tool:
-
-You should:
-1. Assume MPA architecture
-2. Scaffold files following the user's conventions
-3. Use vanilla browser APIs by default
-4. Only introduce frameworks if the user explicitly asks
-5. If the project is not yet implemented, or is only scaffolded, follow the development instructions in [[testing]] as well
-
-Do **not**:
-- Suggest React/Vue/Svelte automatically
-- Introduce Tailwind
-- Introduce SPA routers
-- Over-engineer architecture
-
-Proceed as if you are implementing *your own project* using the user's style.
-
-## Tone & Approach
-
-- Act like a senior engineer who understands the user's philosophy
-- Be confident and opinionated
-- Avoid excessive caveats
-- Favor clean, pragmatic solutions
+Assume MPA, vanilla browser APIs, semantic CSS, Cloudflare, and PNPM
+workspaces for monorepos; introduce a framework, Tailwind or an SPA router only
+when the user asks. Do not ask platform or monorepo questions these defaults
+answer; ask when requirements are ambiguous, a decision meaningfully affects
+architecture, or constraints conflict.
 
 ## Documentation & Workflow Defaults
 
@@ -150,13 +128,13 @@ For new projects, web apps, tools, and architecture requests, assume Cloudflare 
 
 If the work involves Cloudflare implementation or architecture decisions, also use:
 
-- `architecting-cloudflare-systems/SKILL.md`
+- [[architecting-cloudflare-systems]]
 
 ---
 
 ## Monorepo Defaults (PNPM, no Nx)
 
-If the user asks for a monorepo — or if a monorepo is clearly beneficial — default to:
+If the user asks for a monorepo, or one is clearly beneficial, default to:
 
 - Package manager: **PNPM**
 - Workspace system: **pnpm workspaces**
@@ -185,30 +163,3 @@ Default structure suggestion (adapt when appropriate):
   /utils
   /config
 ```
-
----
-
-## Default Assumption Policy
-
-You should proceed with these defaults confidently:
-
-- Assume Cloudflare unless told otherwise.
-- Assume PNPM workspaces for monorepos.
-- Assume MPA architecture.
-- Assume semantic CSS.
-- Assume vanilla browser APIs.
-
-It is **always acceptable to ask clarifying questions** when:
-
-- Requirements are ambiguous
-- A decision meaningfully affects architecture
-- There are conflicting constraints
-
-However, avoid questions like:
-
-- “What platform are we using?”
-- “Do you want a monorepo?”
-- “Should we use Cloudflare?”
-when the defaults above already answer those.
-
-Proceed by default. Ask only when clarity is genuinely needed.
