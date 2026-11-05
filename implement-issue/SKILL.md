@@ -98,7 +98,7 @@ private structure unless the structure is itself the contract.
 
 ## Delegation
 
-Use [[agent-delegation]] for packet shape, write scopes, parallel safety, and status.
+Use `references/delegation.md` under [[project-manager]] for packet shape, write scopes, parallel safety and status.
 
 Delegation packets include issue, branch, repo path, relevant docs, active skills,
 checkpoint, and expected report: branch, PR, changed files, tests, status,

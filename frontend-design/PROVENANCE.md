@@ -236,3 +236,12 @@ Local adaptation:
 
 - `methodology/disciplines/project-kickoff.md`
 - `methodology/ADAPTATION_LOG.md`
+
+## Local Integration Decision (2026-11-05)
+
+`design-prompt-export` (368 words, itself the narrowed `ui-design-prompt`)
+became the Prompt Export section of this skill: the TC-EBC frame, the
+prompt-only output rule, and the stop when a new direction would be needed.
+Its "when to use" and "do not use for" lists were caches of this skill's own
+boundary and were dropped. See
+`methodology/disciplines/small-merges-2026-11.md`.

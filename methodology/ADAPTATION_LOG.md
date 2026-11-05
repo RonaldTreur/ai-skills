@@ -1508,3 +1508,23 @@ credit_note: Campaign mechanics credit the OpenClaw test-audit skill (MIT), alre
 reviewer: Claude (Fable 5.1), with Ronald
 next_review: After the first pruning campaign run with the trimmed reference
 ```
+
+```yaml
+id: 2026-11-05-small-merges
+date: 2026-11-05
+discipline: project lifecycle, delegation, frontend design (cross-cutting)
+status: superseded
+source: local (add-feature, agent-delegation, design-prompt-export)
+source_url: none
+source_ref: commit 6fb3405 (last version before the merge)
+source_path: add-feature/SKILL.md; agent-delegation/SKILL.md; design-prompt-export/SKILL.md
+license: repository-local
+local_target: project-manager/SKILL.md; project-manager/references/delegation.md; project-manager/PROVENANCE.md; frontend-design/SKILL.md; frontend-design/PROVENANCE.md; README.md; methodology/DISCIPLINES.md; every runtime [[agent-delegation]] link
+influence_type: structural
+summary: Three skills whose behaviour composes from existing owners folded in: add-feature as a Feature Intake section of project-manager, agent-delegation as a reference read only when delegating, design-prompt-export as a Prompt Export section of frontend-design.
+local_adaptation: Boundary restatements and "when to use" lists dropped as caches; the classification, the packet, the status contract, the controller duties and the TC-EBC frame kept whole. Three always-loaded descriptions removed.
+rationale: Merge candidates 2, 5 and 6 of the November 2026 re-review; upstream's closed-catalog rule (no skill when the behaviour composes).
+credit_note: Delegation sources (SuperPowers, Compound Engineering, GStack, Matt Pocock, all MIT) recorded in project-manager/PROVENANCE.md.
+reviewer: Claude (Fable 5.1), with Ronald
+next_review: None
+```

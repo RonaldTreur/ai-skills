@@ -112,3 +112,24 @@ Local adaptation:
 Skills stay harness-agnostic and describe the work and its gates, never who
 performs them (see `methodology/disciplines/role-script-removal-2026-11.md`).
 In this skill, the Default Agent Roles section (Merlin, Vectrix, Claude-review, loop-evidence precondition) became a Merge Gate stated as three required artifacts; the compact prompt and the delegate-return rule lost their role names.
+
+## Local Integration Decision (2026-11-05)
+
+Two skills folded in (see `methodology/disciplines/small-merges-2026-11.md`):
+
+- `add-feature` (339 words, created 2026-05 from local workflow discussion)
+  became the Feature Intake section: classify an existing-project feature
+  request, create the smallest issue shape, continue at dependency ordering.
+- `agent-delegation` (789 words) became `references/delegation.md`, read only
+  when another agent will do the work. Its sources carry over: SuperPowers
+  (`f2cbfbefebbfef77321e4c9abc9e949826bea9d7`, MIT: one problem domain per
+  agent, explicit context and output, status vocabulary, review before
+  integration); Compound Engineering
+  (`5297a9440fa009822ceef8052b9e644e782281e1`, MIT: strict output contracts,
+  compact summaries to the orchestrator, orchestrator owns final writes);
+  GStack (`61c9a20bd2e3a579c3d6184ed2fc95b51a528f7c`, MIT: optional specialist
+  passes); Matt Pocock (`b8be62ffacb0118fa3eaa29a0923c87c8c11985c`, MIT: ask
+  only when a decision needs human input). The local restraint rule from
+  2026-05-25 (delegation is a protocol, not a default) stays as the reference's
+  first paragraph. Rejected upstream material is recorded in
+  `methodology/disciplines/agent-orchestration-delegation.md`.

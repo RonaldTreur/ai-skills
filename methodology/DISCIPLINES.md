@@ -12,7 +12,7 @@ Use this map to review external sources against the real project-development rou
 - Code review: `code-review`
 - Skill review, library audit and cleanup: `skill-review`
 - Session and post-merge retrospectives: `retro`
-- Agent orchestration and delegation: `agent-delegation`
+- Agent orchestration and delegation: `project-manager/references/delegation.md`
 - GitHub label automation: `gh-pipeline`
 - Browser QA: `browser-qa`
 - Test strategy, sequencing, authoring gate and CI policy: `testing`
@@ -21,7 +21,7 @@ Use this map to review external sources against the real project-development rou
 - Test pruning (user-invoked): `test-audit`
 - Frontend design: `frontend-design`
 - Web architecture and implementation conventions: `developing-web-projects`
-- Design prompt export: `design-prompt-export`
+- Design prompt export: `frontend-design` (Prompt Export section)
 - Web Component generation: `generating-web-components`
 
 ## Folded Or Deferred Disciplines
@@ -68,6 +68,7 @@ Use this map to review external sources against the real project-development rou
 - Skill meta (November 2026): writing-for-agents yardstick, skill-review and skill-maintenance merge, retro, user-invoked flip
 - Role-script removal (November 2026): agent names and OpenClaw tool names replaced by artifact gates across the lifecycle skills
 - Testing merge (November 2026): test-planning, testing-orchestrator and test-ci-policy merged into testing; test-audit split into the authoring gate (in testing) and a user-invoked pruning skill
+- Small merges (November 2026): add-feature into project-manager, agent-delegation into a project-manager reference, design-prompt-export into frontend-design
 
 ## Rejected Or Superseded Runtime Owners
 
@@ -78,6 +79,11 @@ Use this map to review external sources against the real project-development rou
   `testing` (2026-11-05).
 - `test-planning`, `testing-orchestrator`, `test-ci-policy`: superseded by
   `testing` (2026-11-05); templates moved to `testing/templates/`.
+- `add-feature`: folded into `project-manager` (Feature Intake, 2026-11-05).
+- `agent-delegation`: now `project-manager/references/delegation.md`
+  (2026-11-05).
+- `design-prompt-export`: folded into `frontend-design` (Prompt Export,
+  2026-11-05).
 - `skill-maintenance`: superseded by `skill-review` (2026-11-03); the audit script moved to `skill-review/scripts/`.
 - `run-workflow-retrospective`: superseded by `retro` (2026-11-03); RoundTable v1 is decommissioned and its scorecard machinery was deleted.
 - Broad external-source runtime imports: rejected. External sources stay in

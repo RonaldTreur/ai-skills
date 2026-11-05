@@ -20,7 +20,7 @@ decomposition, long-running delivery, or active implementation.
 - [[developing-web-projects]]: web architecture and stack conventions.
 - [[frontend-design]]: visual frontend exploration.
 - [[browser-qa]]: real browser verification for generated web prototypes.
-- [[agent-delegation]]: critique/risk/variant agent handoffs.
+- `references/delegation.md` under [[project-manager]]: critique, risk or variant agent handoffs.
 - [[documentation-handoff]]: artifact roles, decisions, handoff shape.
 
 ## Ground Rules
@@ -180,8 +180,8 @@ relevant ADR before handing off.
 
 ## Sub-Agent Pattern
 
-Use [[agent-delegation]] for prompt shape, status handling, and parallel-safety
-rules.
+Use `references/delegation.md` under [[project-manager]] for prompt shape,
+status handling, and parallel-safety rules.
 
 Use sub-agents only when independent perspectives materially improve the result:
 

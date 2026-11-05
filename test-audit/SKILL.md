@@ -13,7 +13,7 @@ Two modes:
 - **Audit**: a focused sweep that removes a few high-confidence low-value tests. Ship each sweep as its own coherent PR.
 - **Campaign**: prune one subsystem's whole test surface. Read `references/pruning-campaign.md` before starting one.
 
-Read the repository's root and scoped `AGENTS.md`, `TEST_PLAN.md` and CI config first; project rules about what must stay tested win over this skill's defaults. The junk patterns to hunt for are in `../testing/references/junk-patterns.md`.
+Read the repository's root and scoped `AGENTS.md`, `TEST_PLAN.md` and CI config first; project rules about what must stay tested win over this skill's defaults. The junk patterns to hunt for are in `references/junk-patterns.md` under [[testing]].
 
 ## Value bar
 
@@ -34,7 +34,7 @@ Slow or static is not a deletion reason. A test that resembles implementation ma
 
 ## Discovery and evidence
 
-Discovery is read-only; report evidence before editing. Outside a campaign, prefer a few high-confidence candidates over a long speculative inventory. For broad scope, split lanes along production owner boundaries and run them in parallel through [[agent-delegation]].
+Discovery is read-only; report evidence before editing. Outside a campaign, prefer a few high-confidence candidates over a long speculative inventory. For broad scope, split lanes along production owner boundaries and run them in parallel with the packet and status contract in `references/delegation.md` under [[project-manager]].
 
 Record every field before editing; a missing field means the candidate is not ready:
 

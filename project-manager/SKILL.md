@@ -1,6 +1,6 @@
 ---
 name: project-manager
-description: "Manage GitHub-backed project lifecycle: repo setup, planning docs, issue decomposition, dependency ordering, status recovery, and next-work selection."
+description: "Manage GitHub-backed project lifecycle: repo setup, planning docs, turning feature requests into issues, issue decomposition, dependency ordering, status recovery, and next-work selection."
 ---
 
 # Project Manager
@@ -14,14 +14,12 @@ Do not own per-issue implementation; route active execution to
 ## Ownership Boundary
 
 - [[start-new-project]]: brief, design, plan, decisions.
-- `project-manager`: repo setup, planning docs, issue decomposition,
-  dependency graph, status, approval gates.
+- `project-manager`: repo setup, planning docs, feature requests into issues,
+  issue decomposition, dependency graph, status, approval gates.
 - [[implement-issue]]: active per-issue build execution.
 - [[testing]]: test strategy and workflow.
 - [[browser-qa]]: browser verification; ensure setup makes it possible.
 - [[documentation-handoff]]: durable docs, continuation state, handoffs.
-- [[agent-delegation]]: delegation packets, write scopes, status, parallel
-  safety.
 
 When this skill reaches "build this issue", stop orchestrating code details and
 invoke [[implement-issue]] with a compact handoff.
@@ -145,6 +143,28 @@ dependencies, identify ready vs blocked work, then start the first ready issue
 with implement-issue.
 ```
 
+## Feature Intake
+
+For an "add this feature" request on an existing project, inspect the repo,
+open issues and docs first, then classify:
+
+- a ready issue already exists: invoke [[implement-issue]], no duplicate;
+- one clear slice: one issue with acceptance criteria, test and QA scope,
+  dependencies and out-of-scope notes;
+- separable setup, backend, frontend, test or QA work: the fewest independently
+  mergeable issues;
+- unclear users, scope, product direction, visual design, architecture,
+  data/auth/deployment boundaries, or multiple phases: route to
+  [[start-new-project]].
+
+Prefer one issue until the work clearly needs more. When creating issues would
+encode a product or architecture decision, ask the smallest blocking question.
+Reuse the repo's labels, milestones and issue style; ask before creating many
+issues, labels or milestones. Skip issue creation only when the user explicitly
+asks for direct local implementation. Then run the ADR check of Issue
+decomposition and continue at Dependency ordering; if the user asked to start
+and exactly one issue is ready, invoke [[implement-issue]] on it.
+
 ## Lifecycle Flow
 
 1. **Kickoff handoff:** if the project is still being shaped, invoke
@@ -181,7 +201,9 @@ with implement-issue.
 5. **Next-work proposal:** list ready and blocked issues, recommend the next one
    or two, identify safe parallel work, and ask only before changing backlog,
    scope, labels, or project state. When selected, invoke [[implement-issue]]
-   with a compact [[documentation-handoff]] packet.
+   with a compact [[documentation-handoff]] packet; when another agent will do
+   the work, read `references/delegation.md` for the packet, write scope,
+   parallel safety and status contract.
    When a delegate returns, judge readiness from the branch, PR and checks
    before independent review; a report alone does not move the issue.
 6. **Status and recovery:** report:
