@@ -1468,3 +1468,43 @@ credit_note: None; the artifact-gate framing follows Matt Pocock's cache rule in
 reviewer: Claude (Fable 5.1), with Ronald
 next_review: None
 ```
+
+```yaml
+id: 2026-11-05-testing-merge
+date: 2026-11-05
+discipline: testing
+status: superseded
+source: local (test-planning, testing-orchestrator, test-ci-policy; authoring gate from test-audit)
+source_url: none
+source_ref: commit fc51b4b (last version before the merge)
+source_path: test-planning/SKILL.md; test-planning/templates/*; testing-orchestrator/SKILL.md; test-ci-policy/SKILL.md; test-audit/SKILL.md (authoring gate and junk patterns)
+license: repository-local
+local_target: testing/SKILL.md; testing/references/ci-policy.md; testing/references/junk-patterns.md; testing/templates/test-plan.md; testing/templates/coverage-gap.md; testing/PROVENANCE.md; README.md; methodology/DISCIPLINES.md; every runtime [[link]] to the three removed skills
+influence_type: structural
+summary: Three model-invoked skills and the authoring half of a fourth merged into one testing skill: plan, outside-in loop, authoring gate, auth and test data, enforcement. Script and CI shapes and the audit questions became a reference read only when wiring a project; junk patterns became a reference shared with test-audit.
+local_adaptation: Ownership-boundary restatements, example phase prompts, the seed.spec.ts note and the stack-alignment list were dropped as caches and choreography; every gate survived as a list item. Hot words for the activity went from about 3,100 across four skills to about 800 in one.
+rationale: Merge candidate 1 and open question 3 of the November 2026 re-review; four always-loaded descriptions for one activity.
+credit_note: Sources carried over in testing/PROVENANCE.md: OpenClaw test-audit, Matt Pocock tdd, GStack, SuperPowers, Compound Engineering (all MIT).
+reviewer: Claude (Fable 5.1), with Ronald
+next_review: None
+```
+
+```yaml
+id: 2026-11-05-test-audit-user-invoked
+date: 2026-11-05
+discipline: testing
+status: adapted
+source: Matt Pocock Skills (invocation split) applied to the local test-audit skill
+source_url: https://github.com/mattpocock/skills
+source_ref: 4ae2317ddb22b046e26455e4f9c9b3aaaf62212d
+source_path: skills/productivity/writing-for-agents/SKILL-MECHANICS.md
+license: MIT
+local_target: test-audit/SKILL.md; test-audit/references/pruning-campaign.md; test-audit/PROVENANCE.md
+influence_type: behavioral
+summary: test-audit keeps the audit sweep and campaign as a user-invoked skill run on a folder, package or repo; the authoring gate moved to testing.
+local_adaptation: CAMPAIGN.md trimmed from 798 to about 510 words and moved under references/; SKILL.md trimmed from 1,181 to about 700 words; junk patterns read from testing/references/junk-patterns.md so there is one source.
+rationale: Open question 3 of the November 2026 re-review: the skill has paid off in practice, but it fires only when typed, so its description should cost nothing.
+credit_note: Campaign mechanics credit the OpenClaw test-audit skill (MIT), already recorded in test-audit/PROVENANCE.md.
+reviewer: Claude (Fable 5.1), with Ronald
+next_review: After the first pruning campaign run with the trimmed reference
+```

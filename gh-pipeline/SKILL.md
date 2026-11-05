@@ -14,7 +14,7 @@ orchestrator behavior. It does not replace:
 
 - [[project-manager]] for backlog decomposition and next-work selection
 - [[implement-issue]] for building one selected issue
-- [[testing-orchestrator]] for test strategy and execution flow
+- [[testing]] for test strategy and execution flow
 - [[code-review]] for review method and finding severity
 - [[agent-delegation]] for task packets and multi-agent handoffs
 
@@ -133,7 +133,7 @@ Required output before moving to `agent:test`:
 
 ### Test
 
-Use [[testing-orchestrator]] for non-trivial behavior changes. For tiny changes,
+Use [[testing]] for non-trivial behavior changes. For tiny changes,
 [[implement-issue]] may add the focused tests directly.
 
 Required output before moving to `agent:review`:

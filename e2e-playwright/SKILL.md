@@ -7,7 +7,7 @@ description: "Write and maintain durable Playwright E2E tests for web apps, incl
 
 Use this skill to validate real user behavior in browser flows.
 
-Related workflow: [[testing-orchestrator]]
+Related workflow: [[testing]]
 Related delegation workflow: [[agent-delegation]]
 
 ## Role Pattern
@@ -19,7 +19,7 @@ scenario-driven E2E coverage:
 2. **Generator** → reads that plan and generates TypeScript Playwright tests in `tests/`
 3. **Healer** → runs all tests, debugs failures, and repairs tests until stable
 
-For tiny issue-local changes, [[implement-issue]] or [[testing-orchestrator]]
+For tiny issue-local changes, [[implement-issue]] or [[testing]]
 may add one focused failing Playwright test directly. Do not force the full role
 sequence when it would add ceremony without improving confidence.
 

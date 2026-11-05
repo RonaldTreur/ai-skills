@@ -13,7 +13,7 @@ report defects with evidence.
 - `browser-qa` owns browser-based exploratory verification, smoke checks,
   post-merge QA, defect evidence, and QA summaries.
 - [[e2e-playwright]] owns durable automated Playwright test creation and repair.
-- [[testing-orchestrator]] owns larger test-planning and test-generation cycles.
+- [[testing]] owns larger test-planning and test-generation cycles.
 - [[debugging]] owns root-cause investigation for non-trivial defects.
 - [[implement-issue]] calls this skill before merge for user-visible browser
   changes and after merge for preview or `dev` QA.

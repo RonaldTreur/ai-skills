@@ -78,8 +78,7 @@ If the work involves **CSS custom properties as design tokens** — new-project 
 
 Unless the user explicitly asks not to, create tests and run them. For test coverage standards and tooling, also use:
 
-- `testing-orchestrator/SKILL.md` for active test workflow
-- `test-ci-policy/SKILL.md` only when setting up or changing project-wide test scripts, CI, or coverage thresholds
+- `testing/SKILL.md` for test strategy, sequencing and CI policy
 
 ## TypeScript Preferences
 - TypeScript is the default
@@ -103,7 +102,7 @@ You should:
 2. Scaffold files following the user's conventions
 3. Use vanilla browser APIs by default
 4. Only introduce frameworks if the user explicitly asks
-5. If the project is not yet implemented, or is only scaffolded, follow the development instructions in [[testing-orchestrator]] as well
+5. If the project is not yet implemented, or is only scaffolded, follow the development instructions in [[testing]] as well
 
 Do **not**:
 - Suggest React/Vue/Svelte automatically

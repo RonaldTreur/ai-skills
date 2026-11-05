@@ -2,7 +2,7 @@
 
 Purpose: Explore the live application and produce a high-quality markdown E2E test plan in `specs/`.
 
-Related skills: [[e2e-playwright]], [[testing-orchestrator]], [[test-planning]]
+Related skills: [[e2e-playwright]], [[testing]]
 
 ## Operating model
 - Treat the app as a user would (blank/fresh state assumption)

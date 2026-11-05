@@ -46,13 +46,11 @@ Specialist owners:
 
 Testing and QA owners:
 
-- `test-planning/`: `TEST_PLAN.md`, coverage intent, exclusions, auth/test-data readiness, and browser-QA scope.
-- `testing-orchestrator/`: outside-in execution across E2E, integration, unit, and browser-QA verification.
+- `testing/`: test strategy (`TEST_PLAN.md`), outside-in sequencing, the authoring gate every new test must clear, safe auth and test data, and CI parity with coverage thresholds.
 - `unit-vitest/`: behavior-focused Vitest unit and integration tests.
 - `e2e-playwright/`: durable Playwright E2E tests, fixtures, locators, storage state, and E2E artifacts.
 - `browser-qa/`: web preview, PR, and post-merge QA that needs an actual browser pass.
-- `test-ci-policy/`: test scripts, CI entrypoints, coverage thresholds, and local/CI parity. Do not use it as the default workflow for ordinary feature implementation.
-- `test-audit/`: test value decisions: the authoring gate for new tests, focused audits of low-value or implementation-coupled tests, and one-subsystem pruning campaigns.
+- `test-audit/`: user-invoked pruning of existing tests: focused audits of low-value or implementation-coupled tests, and one-subsystem pruning campaigns.
 
 Design and frontend owners:
 

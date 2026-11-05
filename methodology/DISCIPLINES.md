@@ -15,12 +15,10 @@ Use this map to review external sources against the real project-development rou
 - Agent orchestration and delegation: `agent-delegation`
 - GitHub label automation: `gh-pipeline`
 - Browser QA: `browser-qa`
-- Test planning: `test-planning`
-- Test orchestration: `testing-orchestrator`
+- Test strategy, sequencing, authoring gate and CI policy: `testing`
 - Unit and integration tests: `unit-vitest`
 - Playwright E2E tests: `e2e-playwright`
-- Test/CI enforcement policy: `test-ci-policy`
-- Test value and pruning: `test-audit`
+- Test pruning (user-invoked): `test-audit`
 - Frontend design: `frontend-design`
 - Web architecture and implementation conventions: `developing-web-projects`
 - Design prompt export: `design-prompt-export`
@@ -69,14 +67,17 @@ Use this map to review external sources against the real project-development rou
 - Final taxonomy cleanup
 - Skill meta (November 2026): writing-for-agents yardstick, skill-review and skill-maintenance merge, retro, user-invoked flip
 - Role-script removal (November 2026): agent names and OpenClaw tool names replaced by artifact gates across the lifecycle skills
+- Testing merge (November 2026): test-planning, testing-orchestrator and test-ci-policy merged into testing; test-audit split into the authoring gate (in testing) and a user-invoked pruning skill
 
 ## Rejected Or Superseded Runtime Owners
 
 - Standalone `research-discovery`: rejected for now. The repeated value is early
   project grounding, so the behavior belongs in `start-new-project`.
-- `enforcing-test-coverage-vitest-playwright`: superseded by
-  `test-ci-policy`, `test-planning`, `testing-orchestrator`, `unit-vitest`,
-  `e2e-playwright`, and `browser-qa`.
+- `enforcing-test-coverage-vitest-playwright`: superseded in May 2026 by
+  `test-ci-policy` and the other testing skills, which are in turn superseded by
+  `testing` (2026-11-05).
+- `test-planning`, `testing-orchestrator`, `test-ci-policy`: superseded by
+  `testing` (2026-11-05); templates moved to `testing/templates/`.
 - `skill-maintenance`: superseded by `skill-review` (2026-11-03); the audit script moved to `skill-review/scripts/`.
 - `run-workflow-retrospective`: superseded by `retro` (2026-11-03); RoundTable v1 is decommissioned and its scorecard machinery was deleted.
 - Broad external-source runtime imports: rejected. External sources stay in

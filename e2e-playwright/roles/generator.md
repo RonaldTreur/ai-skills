@@ -2,7 +2,7 @@
 
 Purpose: Transform markdown plans from `specs/` into executable TypeScript Playwright tests in `tests/`.
 
-Related skills: [[e2e-playwright]], [[testing-orchestrator]]
+Related skills: [[e2e-playwright]], [[testing]]
 
 ## Operating model
 - Read the test plan markdown first

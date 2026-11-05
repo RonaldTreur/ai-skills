@@ -109,7 +109,7 @@ Use this structure:
 [Repo, CI, scripts, safe auth/test data, seed/reset, preview, deployment.]
 
 ## Test Strategy
-[What [[test-planning]] should turn into TEST_PLAN.md.]
+[What [[testing]] should turn into TEST_PLAN.md.]
 
 ## Issue Decomposition Notes
 [How [[project-manager]] should slice issues and what must happen first.]
@@ -136,7 +136,7 @@ The phase exits when the user approves `PLAN.md`.
 Do not hand directly to implementation. The next step is [[project-manager]]:
 
 - verify setup/readiness
-- create or update `TEST_PLAN.md` through [[test-planning]]
+- create or update `TEST_PLAN.md` through [[testing]]
 - turn work units into GitHub issues
 - establish dependency order and labels
 - route the first issue to the selected implementer
