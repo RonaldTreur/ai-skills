@@ -5,7 +5,7 @@ description: "Use when creating or changing websites or web applications. Enforc
 
 # Personal Web Development Skill
 
-Use the user's default web-development approach unless he explicitly requests otherwise. Do not ask many exploratory questions; proceed confidently from these defaults.
+Use the user's default web-development approach unless the user explicitly requests otherwise. Proceed from these defaults; ask only when requirements are ambiguous, a decision meaningfully affects architecture, or constraints conflict.
 
 ## Scope Boundary
 
@@ -51,7 +51,7 @@ CSS hygiene rules:
 - When markup changes, remove selectors for removed structure in the same patch.
 - Treat pruning as part of CSS editing, not optional cleanup after the feature is "done".
 - Review for duplicate or immediately overridden declarations while editing; do not leave additive-only CSS patches that silently stack dead rules.
-- Reuse the established token system. Do not freelance new colors, spacing, or custom properties unless the design direction actually changed and the new token is used deliberately. Token structure and naming follow [[css-design-tokens]].
+- Reuse the established token system. Do not freelance new colors, spacing, or custom properties unless the design direction actually changed and the new token is used deliberately.
 
 Design direction comes from [[frontend-design]]; implementation reuses its
 `DESIGN.md` tokens, state inventory and anti-pattern notes.
@@ -59,8 +59,6 @@ Design direction comes from [[frontend-design]]; implementation reuses its
 ## HTML First
 
 Prefer standard HTML semantics over JS when possible. Example: use an `<a href="...">` for navigation instead of a JS click handler.
-
----
 
 ## Optional Skill Delegation
 
@@ -89,14 +87,6 @@ Unless the user explicitly asks not to, create tests and run them. For test cove
 
 For new projects, always use tabs (width 4) for indentation. Otherwise follow the existing project style. If in doubt, use tabs.
 
-## Defaults
-
-Assume MPA, vanilla browser APIs, semantic CSS, Cloudflare, and PNPM
-workspaces for monorepos; introduce a framework, Tailwind or an SPA router only
-when the user asks. Do not ask platform or monorepo questions these defaults
-answer; ask when requirements are ambiguous, a decision meaningfully affects
-architecture, or constraints conflict.
-
 ## Documentation & Workflow Defaults
 
 Use [[documentation-handoff]] for README/AGENTS roles and handoff state.
@@ -107,8 +97,6 @@ Use [[documentation-handoff]] for README/AGENTS roles and handoff state.
 - Treat `AGENTS.md` as instructions for AI assistants.
 - For standalone web implementation requests, provide a short outline before editing and wait for approval.
 - Inside an approved [[implement-issue]] run, the short outline is a checkpoint/status update rather than a blocking approval request unless the work would deviate from these web defaults or change user-visible scope beyond the issue/spec.
-
----
 
 ## Platform Defaults: Cloudflare-first
 
@@ -129,8 +117,6 @@ For new projects, web apps, tools, and architecture requests, assume Cloudflare 
 If the work involves Cloudflare implementation or architecture decisions, also use:
 
 - [[architecting-cloudflare-systems]]
-
----
 
 ## Monorepo Defaults (PNPM, no Nx)
 

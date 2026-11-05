@@ -1,6 +1,6 @@
 # Pruning campaign
 
-A campaign prunes one subsystem's whole test surface (a package, a public entry point, a plugin, one core area) in one long-lived PR. The value bar, retention bar, candidate evidence and validation in `SKILL.md` apply to every lane; this file adds the order of work. Each step ends on its completion criterion; start the next one only when it is met.
+A campaign prunes one subsystem's whole test surface (a package, a public entry point, a plugin, one core area) in one long-lived PR. The value bar, retention bar, discovery and evidence, and validation in `SKILL.md` apply to every lane; this file adds the order of work. Each step ends on its completion criterion; start the next one only when it is met.
 
 1. **Baseline.** Pin the base SHA; record the subsystem's test and support line counts and every in-scope test file's pass or fail state. Keep baseline failures in their own list: they are often product bugs, not stale tests. Done when every in-scope test file has a recorded baseline result.
 2. **Lanes.** Split the surface along production owner boundaries, not file prefixes, until every test file and QA scenario belongs to exactly one lane.

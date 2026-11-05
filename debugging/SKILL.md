@@ -58,10 +58,6 @@ them to the user only when they affect a decision or explain a stall.
 - If the real issue is product design, interface ambiguity, or architecture,
   say so instead of forcing a fake code-only fix.
 
-### 5. Finish
-
-Claim the fix only when the non-negotiables hold.
-
 ## Defense-in-depth is conditional
 
 Add extra guards only when the bug class justifies it: recurring patterns,

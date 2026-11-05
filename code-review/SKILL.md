@@ -6,8 +6,8 @@ description: Review code changes for architecture, security, quality, and conven
 # Code Review Skill
 
 Opinionated review workflow for TypeScript-first projects. [[testing]] owns
-coverage expectations; this skill enforces the project's conventions,
-[[developing-web-projects]] for web.
+coverage expectations; this skill enforces the project's conventions, and
+[[developing-web-projects]] for web projects.
 
 ## Review Posture
 
@@ -70,6 +70,4 @@ CSS severity guidance:
 - Design-system drift, token freelancing, fake proof, or fake chrome in a UI diff
   is usually **P2**; raise to **P1** when it breaks approved design direction,
   accessibility, trust, or primary mobile usability.
-- Detector output is evidence to inspect, not automatic findings. Anchor the final review finding in code,
-  rendered behavior, or the approved design artifact.
 

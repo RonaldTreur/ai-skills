@@ -5,9 +5,6 @@ description: "Explore and refine visual frontend direction for web apps, dashboa
 
 # Frontend Design
 
-Use this skill when a project has a visual frontend and needs a deliberate UI
-direction before implementation.
-
 This skill owns visual frontend exploration and approval. It does not own
 overall product kickoff, backend architecture, issue decomposition, or active
 implementation.
@@ -39,8 +36,8 @@ tradeoffs in information architecture, density, hierarchy, tone, and visual
 language.
 
 Two requests bypass the variant workflow: one component inside a settled
-system (Component Scope), and a prompt for an already settled direction
-(Prompt Export).
+system (`references/component-scope.md`), and a prompt for an already settled
+direction (`references/prompt-export.md`).
 
 ## Context Detection
 
@@ -109,9 +106,6 @@ concrete stance such as utilitarian, editorial, austere, playful, technical,
 atmospheric, luxury or brutal). Answering is optional: on "proceed", infer,
 state the values in one sentence, and record them so the user can redirect.
 
-This frame is also the input frame for any brief or prompt for a design worker
-(`references/prompt-export.md`).
-
 ## Visual Thesis
 
 Before building prototype files, write a short thesis for each concept:
@@ -144,11 +138,6 @@ Anti-reflex check:
 - Across consecutive greenfield variants or pages for the same project, avoid
   repeating the same macrostructure unless `DESIGN.md` intentionally locks it as
   the system.
-
-## Component Scope
-
-For one component or element, read `references/component-scope.md` instead of
-running the page workflow.
 
 ## Divergent Variants
 
@@ -300,11 +289,6 @@ Iteration rules:
 - iterate existing designs instead of restarting by default
 - show what changed and why
 - stop when the user approves a direction or explicitly asks for another round
-
-## Prompt Export
-
-For a prompt for an external UI generator or a one-off design worker on an
-already settled direction, read `references/prompt-export.md`.
 
 ## Finalize
 

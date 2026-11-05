@@ -5,9 +5,8 @@ description: "Write and maintain durable Playwright E2E tests for web apps, incl
 
 # E2E Testing with Playwright
 
-Use this skill to validate real user behavior in browser flows.
-
-Related workflow: [[testing]]
+Use this skill to validate real user behavior in browser flows; strategy and
+sequencing come from [[testing]].
 
 ## Role Pattern
 
@@ -63,10 +62,13 @@ export default defineConfig({
 ```
 
 ## Guides
-- `guides/locators.md`
-- `guides/assertions.md`
-- `guides/fixtures.md`
-- `guides/network.md`
-- `guides/data.md`
-- `guides/debugging.md`
-- `guides/ci.md`
+
+Read the one the task needs:
+
+- `guides/locators.md` when choosing or fixing a locator
+- `guides/assertions.md` when an assertion is flaky or weak
+- `guides/fixtures.md` when adding fixtures or auth setup
+- `guides/network.md` when mocking or waiting on requests
+- `guides/data.md` when seeding or resetting test data
+- `guides/debugging.md` when a test fails and the cause is unclear
+- `guides/ci.md` when wiring or fixing the CI run

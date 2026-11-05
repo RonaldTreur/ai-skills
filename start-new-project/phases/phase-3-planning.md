@@ -14,29 +14,10 @@ code-level choreography too early.
 - Current `DECISIONS.md`
 - [[developing-web-projects]] for web projects
 
-## Planning Philosophy
+## 1. Draft The Plan
 
-`PLAN.md` is a guardrail document:
-
-- what must be built
-- what decisions must be honored
-- what work units exist
-- what files or areas are likely involved
-- what dependencies and risks matter
-- what tests and browser QA must prove
-
-It is not an implementation script. Avoid exact code, imports, signatures,
-micro-steps, and shell choreography unless they are truly contractual.
-
-## 1. Independent Critique
-
-For a large or risky project, obtain independent plan critiques covering
-architecture and platform fit, scope and sequencing, design-to-implementation
-risk, and testability and operations, each reading `BRIEF.md`, `DESIGN.md`,
-`DECISIONS.md` and `src/` or `docs/`. For a small project, one plan plus a
-critique pass is enough.
-
-Ask for:
+Draft `PLAN.md` from `BRIEF.md`, `DESIGN.md`, `DECISIONS.md` and `src/` or
+`docs/`, covering:
 
 - architecture and platform fit
 - data model and integrations
@@ -47,17 +28,14 @@ Ask for:
 - risks, unknowns, and setup blockers
 - explicit non-goals
 
-## 2. Debate And Merge
+## 2. Critique And Resolve
 
-Compare plans by decision quality, not volume.
-
-Surface:
-
-- where planners agree
-- where they disagree
-- what the real tradeoff is
-- which recommendation you prefer and why
-- what user choice is still needed
+For a large or risky project, obtain the critique described under Independent
+Critique in `SKILL.md` (architecture and platform fit, scope and sequencing,
+design-to-implementation risk, testability and operations). Compare draft and
+critique by decision quality, not volume: where they agree, where they
+disagree, the real tradeoff, which recommendation you prefer and why, and what
+user choice is still needed.
 
 If a disagreement can be resolved from `BRIEF.md`, `DESIGN.md`, existing code,
 or [[developing-web-projects]], resolve it directly and record the decision.

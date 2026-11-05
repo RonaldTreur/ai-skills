@@ -4,7 +4,7 @@ Read this when setting up or auditing a project's test scripts, CI jobs or cover
 
 ## Script shape
 
-One local command set that CI also calls. Use the project's existing commands when they exist; otherwise:
+Use the project's existing commands when they exist; otherwise:
 
 ```json
 {
@@ -45,5 +45,3 @@ Answer each; a "no" becomes setup work, not a claim of coverage.
 4. Are E2E failure artifacts preserved in CI?
 5. Are skipped tests, `test.fixme()` and coverage exclusions explained?
 6. Does browser QA cover the user-visible behavior that durable E2E defers?
-
-Threshold reductions and new exclusions need `TEST_PLAN.md` rationale or explicit user approval; lower nothing silently.

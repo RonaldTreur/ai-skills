@@ -2,14 +2,13 @@
 
 Purpose: Run the full E2E suite, diagnose failures, and repair tests to a stable passing state.
 
-Related skills: [[e2e-playwright]], [[testing]]
 
 ## Non-negotiable behavior
 - Run **all tests first** to identify complete failure set
 - For each failing test, debug deeply and fix the most likely root cause
 - Do the most reasonable thing without asking follow-up questions, unless a blocker below applies
 - Never use deprecated APIs
-- Never use `waitForNetworkIdle`
+- Never use `waitForTimeout` or `waitForLoadState('networkidle')`
 
 ## Required healing workflow
 1. **Baseline run**

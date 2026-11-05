@@ -23,8 +23,8 @@ Choose the smallest mode that fits the request.
 - `visual`: significant visual, CSS, responsive, or design-system change where
   layout, states, anti-patterns, and mobile behavior matter more than broad
   route coverage.
-- `post-merge`: merged `dev` or preview URL smoke check plus issue creation for
-  defects found.
+- `post-merge`: merged integration branch or preview URL smoke check plus issue
+  creation for defects found.
 - `full`: broader exploratory pass across reachable pages when the user
   explicitly asks for complete QA.
 
@@ -34,7 +34,7 @@ say that QA was not run and report the blocker.
 ## Setup
 
 1. Identify the target:
-   - URL, local dev server, preview, PR build, or merged `dev`
+   - URL, local dev server, preview, PR build, or merged integration branch
    - branch, PR, issue, and acceptance criteria when available
    - changed routes, components, forms, and user flows
 2. Use the harness's own controlled browser profile unless the user explicitly

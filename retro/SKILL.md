@@ -1,6 +1,6 @@
 ---
 name: retro
-description: Retrospective on a coding session or merged PR that proposes changes to the agent's environment. Use when asked for a retro, post-mortem or lessons from an agent session or merged PR.
+description: Propose changes to the agent's environment after a coding session or merged PR. Use when asked for a retro, post-mortem or lessons learned.
 disable-model-invocation: true
 ---
 

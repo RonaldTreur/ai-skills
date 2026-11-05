@@ -42,8 +42,8 @@ Status labels:
 Priority labels are project-specific. If none exist, prefer `P0`, `P1`, `P2`,
 `P3`; do not invent a second priority taxonomy for the pipeline.
 
-If labels already exist and the user has asked to operate the pipeline, normal
-stage transitions are in scope.
+Labels missing: follow Setup before any transition. Labels present and the user
+asked to operate the pipeline: normal stage transitions are in scope.
 
 ## State Machine
 
@@ -79,8 +79,7 @@ On each poll:
    - terminal status plus active stage
    - closed issue with active stage
 4. Sort by project priority, dependency readiness, age, then issue number.
-5. Claim one issue by adding `status:in-progress` and commenting the intended
-   stage action when useful.
+5. Claim one issue per Locks And Stale Work.
 6. Invoke the owning workflow for that stage.
 7. Transition labels only after the owning workflow returns an artifact or a
    named blocker.

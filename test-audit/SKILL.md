@@ -47,11 +47,9 @@ Record every field before editing; a missing field means the candidate is not re
 
 ## Edit shape
 
-Work in one coherent owner-boundary batch. Delete obsolete test-only exports, globals, wrappers and dead production paths instead of keeping aliases. Move retained regressions to their canonical owners. Fold repeated package or dependency assertions into one generic contract. Prefer net-negative production lines. Add no replacement tests that restate the same implementation, and turn no uncertain candidate into cleanup to raise the count.
+Stop any Vitest watcher in the checkout before editing. Work in one coherent owner-boundary batch. Delete obsolete test-only exports, globals, wrappers and dead production paths instead of keeping aliases. Move retained regressions to their canonical owners. Fold repeated package or dependency assertions into one generic contract. Prefer net-negative production lines. Add no replacement tests that restate the same implementation, and turn no uncertain candidate into cleanup to raise the count.
 
 ## Validation and landing
-
-Stop any Vitest watcher in the checkout before editing.
 
 1. Run the smallest owner and sibling tests with the project's runner.
 2. For a removed source-grep or plan assertion, run the executable script or dry-run that owns the real contract.
