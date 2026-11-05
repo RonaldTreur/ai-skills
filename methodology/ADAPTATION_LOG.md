@@ -1328,3 +1328,223 @@ credit_note: Campaign tooling ideas noted from the OpenClaw test-audit skill for
 reviewer: Claude (Fable 5.1), decisions by Ronald
 next_review: After the first local test-pruning campaign
 ```
+
+```yaml
+id: 2026-11-03-matt-pocock-rereview-deferred
+date: 2026-11-03
+discipline: cross-discipline re-review (skill meta, debugging, testing, planning, docs, architecture)
+status: deferred
+source: Matt Pocock Skills
+source_url: https://github.com/mattpocock/skills
+source_ref: 4ae2317ddb22b046e26455e4f9c9b3aaaf62212d
+source_path: skills/productivity/writing-for-agents/SKILL.md; skills/engineering/retro/SKILL.md; skills/engineering/diagnosing-bugs/SKILL.md; skills/engineering/pr/SKILL.md; skills/productivity/grilling/SKILL.md; skills/engineering/domain-modeling/SKILL.md; skills/engineering/tdd/SKILL.md; skills/engineering/codebase-design/SKILL.md; skills/engineering/to-tickets/SKILL.md; SCOPE.md; .out-of-scope/new-skills.md; CHANGELOG.md
+license: MIT
+local_target: methodology/disciplines/matt-pocock-rereview-2026-11.md; methodology/sources/matt-pocock-skills.md
+influence_type: research
+summary: Six-month re-review of upstream against all 33 local skills plus the Ockto work skills; ranked relevance, overlap map, six local merge candidates, and a classification for trimming instructions that smarter models no longer need.
+local_adaptation: None yet. Adoption, merges, and the user-invoked flip wait on Ronald's answers to the open questions in the review; each will get its own log entry and PROVENANCE update when it lands.
+rationale: The review is cross-discipline at the user's request, so decisions are deferred rather than taken one discipline at a time inside this pass.
+credit_note: Ideas under consideration credit Matt Pocock's writing-for-agents, retro, diagnosing-bugs, pr, grilling, domain-modeling, tdd, codebase-design, and to-tickets skills; the pr skill itself credits Dex Horthy's show-me.
+reviewer: Claude (Fable 5.1)
+next_review: After the skill-meta slice (writing-for-agents yardstick, skill-review and skill-maintenance merge, user-invoked flip, three-skill trim experiment) lands or is rejected
+```
+
+```yaml
+id: 2026-11-03-skill-meta-writing-for-agents-yardstick
+date: 2026-11-03
+discipline: skill meta
+status: adapted
+source: Matt Pocock Skills
+source_url: https://github.com/mattpocock/skills
+source_ref: 4ae2317ddb22b046e26455e4f9c9b3aaaf62212d
+source_path: skills/productivity/writing-for-agents/SKILL.md; skills/productivity/writing-for-agents/SKILL-MECHANICS.md
+license: MIT
+local_target: skill-review/SKILL.md; skill-review/references/writing-levers.md; skill-review/PROVENANCE.md
+influence_type: paraphrased
+summary: The two loads, the model-relative no-op test, the cache rule, the information hierarchy, leading words and the invocation choice become the review order of skill-review and a writing reference reached only when authoring.
+local_adaptation: Review checks in the body, fuller levers in a reference; added the five-kind trimming classification from the local re-review; user-invoked skills keep a one-sentence trigger-bearing description because other harnesses ignore the flag; harness-specific tool names added to the safety check.
+rationale: The local library had the rules spread over two skills and no stated yardstick; upstream states one that is testable by running the document.
+credit_note: Review order and writing levers adapted from Matt Pocock's writing-for-agents skill (MIT).
+reviewer: Claude (Fable 5.1), with Ronald
+next_review: When upstream writing-for-agents changes behaviour per its CHANGELOG
+```
+
+```yaml
+id: 2026-11-03-skill-meta-skill-maintenance-superseded
+date: 2026-11-03
+discipline: skill meta
+status: superseded
+source: local (skill-maintenance, itself adapted from Peter Steinberger's agent-scripts)
+source_url: https://github.com/steipete/agent-scripts
+source_ref: 737040cf3a196b1a11aeb1c1c7508ce721545745
+source_path: skill-maintenance/SKILL.md; skill-maintenance/scripts/audit-skills.rb; skill-maintenance/agents/openai.yaml; skill-maintenance/PROVENANCE.md
+license: MIT
+local_target: skill-review/SKILL.md; skill-review/scripts/audit-skills.rb; skill-review/PROVENANCE.md; README.md; methodology/DISCIPLINES.md
+influence_type: structural
+summary: skill-maintenance merged into skill-review. Both answered "is this skill text earning its context cost", one for a skill and one for a library; the audit script, the three-way finding sort and the "evidence, not verdict" rule carried over.
+local_adaptation: Audit example roots updated to the two roots that exist now; Codex interface file dropped because no other local skill carries one; Steinberger attribution moved into skill-review/PROVENANCE.md.
+rationale: Two always-loaded descriptions for one bar; decided in the November 2026 re-review (merge candidate 3).
+credit_note: Inventory audit approach credits Peter Steinberger's skill-cleaner (MIT).
+reviewer: Claude (Fable 5.1), with Ronald
+next_review: None
+```
+
+```yaml
+id: 2026-11-03-skill-meta-retro-adapted
+date: 2026-11-03
+discipline: skill meta
+status: adapted
+source: Matt Pocock Skills
+source_url: https://github.com/mattpocock/skills
+source_ref: 4ae2317ddb22b046e26455e4f9c9b3aaaf62212d
+source_path: skills/engineering/retro/SKILL.md
+license: MIT
+local_target: retro/SKILL.md; retro/PROVENANCE.md
+influence_type: paraphrased
+summary: A user-invoked retrospective that reads primary sources, searches eight categories with cues, and proposes at most five environment changes for the person to approve.
+local_adaptation: Added a skills category routed through skill-review; replaced CODING_STANDARDS.md with wherever code-review reads rules locally; added the merged-PR source set; carried over the read-only start, fail-closed list, five-action cap and systemic-fix preference from the superseded local skill.
+rationale: Decided in the November 2026 re-review (open question 5): propose and let the person decide is the cheap path now that a person is at the keyboard.
+credit_note: Categories and posture adapted from Matt Pocock's retro skill (MIT).
+reviewer: Claude (Fable 5.1), with Ronald
+next_review: When upstream retro changes behaviour per its CHANGELOG
+```
+
+```yaml
+id: 2026-11-03-skill-meta-run-workflow-retrospective-superseded
+date: 2026-11-03
+discipline: skill meta
+status: superseded
+source: local (run-workflow-retrospective)
+source_url: none
+source_ref: commit 5169d61 (last version before removal)
+source_path: run-workflow-retrospective/SKILL.md; run-workflow-retrospective/references/lifecycle-validation.md; run-workflow-retrospective/references/design-sources.md; run-workflow-retrospective/templates/workflow-retrospective.md
+license: repository-local
+local_target: retro/SKILL.md; retro/PROVENANCE.md; methodology/DISCIPLINES.md
+influence_type: negative-example
+summary: Deleted. It was a RoundTable scheduler runbook (fingerprints, ledgers, labels, Skill Workshop proposals, named agent path) rather than a retrospective, and RoundTable v1 is decommissioned.
+local_adaptation: Five gates carried into retro; everything else removed, nothing moved to another repository.
+rationale: Environment fact for one decommissioned system plus choreography; broke the 2026-11-03 decisions on harness-agnostic skills and role-free gates.
+credit_note: None.
+reviewer: Claude (Fable 5.1), with Ronald
+next_review: None
+```
+
+```yaml
+id: 2026-11-03-skill-meta-user-invoked-flip
+date: 2026-11-03
+discipline: skill meta
+status: adapted
+source: Matt Pocock Skills
+source_url: https://github.com/mattpocock/skills
+source_ref: 4ae2317ddb22b046e26455e4f9c9b3aaaf62212d
+source_path: skills/productivity/writing-for-agents/SKILL-MECHANICS.md
+license: MIT
+local_target: external-skill-adaptation/SKILL.md; openclaw-contribution/SKILL.md; gh-pipeline/SKILL.md; retro/SKILL.md
+influence_type: behavioral
+summary: Skills that only ever fire when typed get disable-model-invocation true, removing their descriptions from every turn.
+local_adaptation: Only skills with no inbound [[links]] from other skills were flipped; start-new-project stays model-invoked because three skills reach it. Descriptions kept as one trigger-bearing sentence for harnesses that ignore the flag.
+rationale: Upstream runs 16 of 27 skills user-invoked; this repository ran none. Zero-cost change decided in the November 2026 re-review.
+credit_note: Invocation split per Matt Pocock's SKILL-MECHANICS.md (MIT).
+reviewer: Claude (Fable 5.1), with Ronald
+next_review: After the Ockto work skills in ~/.claude/skills get the same pass
+```
+
+```yaml
+id: 2026-11-03-role-script-removal
+date: 2026-11-03
+discipline: implementation lifecycle, delegation, review, QA, kickoff (cross-cutting)
+status: superseded
+source: local (OpenClaw role scripts: Merlin, Vectrix, Claude-review, loop evidence, OpenClaw tool names)
+source_url: none
+source_ref: commit d22f048 (last version before removal)
+source_path: project-manager/SKILL.md; implement-issue/SKILL.md; agent-delegation/SKILL.md; start-new-project/SKILL.md; browser-qa/SKILL.md; code-review/SKILL.md; e2e-playwright/roles/planner.md; e2e-playwright/roles/generator.md; e2e-playwright/roles/healer.md; external-skill-adaptation/templates/discipline-review.md; README.md
+license: repository-local
+local_target: the same files
+influence_type: negative-example
+summary: Every runtime line that named an agent (Merlin, Vectrix, Claude-review), a loop-evidence report contract, or an OpenClaw-only tool (autoreview, last30days, x_search, deep-research, the OpenClaw browser profile and memory) was replaced by a gate stated as a required artifact or by harness-neutral wording.
+local_adaptation: project-manager gained a Merge Gate (branch with tests and verification, independent review of the PR diff with P0-P3 fixed, PR links the issue). implement-issue and agent-delegation verify the artifact a report points to instead of demanding report fields. code-review describes any automated helper the harness provides. Who implements and who reviews is left to the harness.
+rationale: Decision 2 of the November 2026 re-review. The role scripts built trust between agents that could not see each other's work; the harness now shows every participant the same diff, PR and CI, so the report fields were a cache of the environment. Decision 1 (harness-agnostic skills) removes the tool names.
+credit_note: None; the artifact-gate framing follows Matt Pocock's cache rule in writing-for-agents (MIT).
+reviewer: Claude (Fable 5.1), with Ronald
+next_review: None
+```
+
+```yaml
+id: 2026-11-05-testing-merge
+date: 2026-11-05
+discipline: testing
+status: superseded
+source: local (test-planning, testing-orchestrator, test-ci-policy; authoring gate from test-audit)
+source_url: none
+source_ref: commit fc51b4b (last version before the merge)
+source_path: test-planning/SKILL.md; test-planning/templates/*; testing-orchestrator/SKILL.md; test-ci-policy/SKILL.md; test-audit/SKILL.md (authoring gate and junk patterns)
+license: repository-local
+local_target: testing/SKILL.md; testing/references/ci-policy.md; testing/references/junk-patterns.md; testing/templates/test-plan.md; testing/templates/coverage-gap.md; testing/PROVENANCE.md; README.md; methodology/DISCIPLINES.md; every runtime [[link]] to the three removed skills
+influence_type: structural
+summary: Three model-invoked skills and the authoring half of a fourth merged into one testing skill: plan, outside-in loop, authoring gate, auth and test data, enforcement. Script and CI shapes and the audit questions became a reference read only when wiring a project; junk patterns became a reference shared with test-audit.
+local_adaptation: Ownership-boundary restatements, example phase prompts, the seed.spec.ts note and the stack-alignment list were dropped as caches and choreography; every gate survived as a list item. Hot words for the activity went from about 3,100 across four skills to about 800 in one.
+rationale: Merge candidate 1 and open question 3 of the November 2026 re-review; four always-loaded descriptions for one activity.
+credit_note: Sources carried over in testing/PROVENANCE.md: OpenClaw test-audit, Matt Pocock tdd, GStack, SuperPowers, Compound Engineering (all MIT).
+reviewer: Claude (Fable 5.1), with Ronald
+next_review: None
+```
+
+```yaml
+id: 2026-11-05-test-audit-user-invoked
+date: 2026-11-05
+discipline: testing
+status: adapted
+source: Matt Pocock Skills (invocation split) applied to the local test-audit skill
+source_url: https://github.com/mattpocock/skills
+source_ref: 4ae2317ddb22b046e26455e4f9c9b3aaaf62212d
+source_path: skills/productivity/writing-for-agents/SKILL-MECHANICS.md
+license: MIT
+local_target: test-audit/SKILL.md; test-audit/references/pruning-campaign.md; test-audit/PROVENANCE.md
+influence_type: behavioral
+summary: test-audit keeps the audit sweep and campaign as a user-invoked skill run on a folder, package or repo; the authoring gate moved to testing.
+local_adaptation: CAMPAIGN.md trimmed from 798 to about 510 words and moved under references/; SKILL.md trimmed from 1,181 to about 700 words; junk patterns read from testing/references/junk-patterns.md so there is one source.
+rationale: Open question 3 of the November 2026 re-review: the skill has paid off in practice, but it fires only when typed, so its description should cost nothing.
+credit_note: Campaign mechanics credit the OpenClaw test-audit skill (MIT), already recorded in test-audit/PROVENANCE.md.
+reviewer: Claude (Fable 5.1), with Ronald
+next_review: After the first pruning campaign run with the trimmed reference
+```
+
+```yaml
+id: 2026-11-05-small-merges
+date: 2026-11-05
+discipline: project lifecycle, delegation, frontend design (cross-cutting)
+status: superseded
+source: local (add-feature, agent-delegation, design-prompt-export)
+source_url: none
+source_ref: commit 6fb3405 (last version before the merge)
+source_path: add-feature/SKILL.md; agent-delegation/SKILL.md; design-prompt-export/SKILL.md
+license: repository-local
+local_target: project-manager/SKILL.md; project-manager/references/delegation.md; project-manager/PROVENANCE.md; frontend-design/SKILL.md; frontend-design/PROVENANCE.md; README.md; methodology/DISCIPLINES.md; every runtime [[agent-delegation]] link
+influence_type: structural
+summary: Three skills whose behaviour composes from existing owners folded in: add-feature as a Feature Intake section of project-manager, agent-delegation as a reference read only when delegating, design-prompt-export as a Prompt Export section of frontend-design.
+local_adaptation: Boundary restatements and "when to use" lists dropped as caches; the classification, the packet, the status contract, the controller duties and the TC-EBC frame kept whole. Three always-loaded descriptions removed.
+rationale: Merge candidates 2, 5 and 6 of the November 2026 re-review; upstream's closed-catalog rule (no skill when the behaviour composes).
+credit_note: Delegation sources (SuperPowers, Compound Engineering, GStack, Matt Pocock, all MIT) recorded in project-manager/PROVENANCE.md.
+reviewer: Claude (Fable 5.1), with Ronald
+next_review: None
+```
+
+```yaml
+id: 2026-11-05-skill-review-pass-applied
+date: 2026-11-05
+discipline: skill meta (cross-cutting trim)
+status: adopted
+source: local (skill-review library pass over the November 2026 branch)
+source_url: none
+source_ref: commit 32ff821 (findings) and the three commits that applied them
+source_path: methodology/disciplines/skill-review-pass-2026-11.md
+license: repository-local
+local_target: 17 runtime skills; see the discipline review
+influence_type: behavioral
+summary: The rewritten skill-review checklist applied to every skill the branch touched: rules stated once, caches of the environment removed, branch-only material gated, no-ops deleted, two deleted phase files, five new gated references.
+local_adaptation: Judgment calls recorded under Applied in the discipline review.
+rationale: Ronald asked for all thirteen NEEDS WORK verdicts to be fixed before the PR.
+credit_note: The checklist itself credits Matt Pocock's writing-for-agents (MIT).
+reviewer: Claude (Fable 5.1), with Ronald
+next_review: After the second fresh-eyes pass in the same review
+```

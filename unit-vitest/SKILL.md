@@ -1,76 +1,41 @@
 ---
 name: unit-vitest
-description: "Write and maintain Vitest unit/integration tests for TypeScript projects: behavior coverage, domain logic, API/Worker boundaries, mocks, factories, and TEST_PLAN.md coverage."
+description: "Write and maintain Vitest unit/integration tests for TypeScript projects: behavior coverage, domain logic, API/Worker boundaries, mocks, and factories."
 ---
 
 # Unit Testing with Vitest
 
-Use this skill for TypeScript unit tests with strict, behavior-focused coverage.
-
-Related workflow: [[testing-orchestrator]]
+Use this skill for TypeScript unit tests with strict, behavior-focused coverage;
+strategy and sequencing come from [[testing]].
 
 ## Core rules
 
 - Factory pattern is the default primitive:
   - `getMock<Thing>(overrides?: Partial<Thing>)`
 - Test location: top-level `tests/` directory with subdirectories:
-  - `tests/unit/` — unit tests, mirroring `src/` structure
-  - `tests/integration/` — integration tests (multiple modules wired together, real crypto/logic, but no browser)
-  - `tests/helpers/` — shared test utilities, factories, mocks
-  - `tests/e2e/` — Playwright browser tests (see [[e2e-playwright]])
-- Mocking rules:
-  - `vi.mock()` declarations before imports
-  - mock external dependencies only
-  - prefer dependency injection over heavy mocking
-- Coverage defaults:
-  - lines/statements/functions/branches = **100%**
-  - lower thresholds or exclusions only when `TEST_PLAN.md` documents the
-    rationale or the user explicitly approves
-- Structure tests with Arrange-Act-Assert
-- Keep `describe` blocks focused (usually 3–5 tests)
-- Test behavior, not implementation details
+  - `tests/unit/`: unit tests, mirroring `src/` structure
+  - `tests/integration/`: integration tests (multiple modules wired together, real crypto/logic, but no browser)
+  - `tests/helpers/`: shared test utilities, factories, mocks
+  - `tests/e2e/`: Playwright browser tests (see [[e2e-playwright]])
+- Mocking: `vi.mock()` declarations before imports; mock external services and
+  rare failure paths only, never local logic you own; prefer dependency
+  injection over heavy mocking
+- Coverage thresholds and exclusions: per [[testing]] Enforcement
+- Keep `describe` blocks focused (usually 3 to 5 tests)
 - Prefer public module/API contracts over private helpers and internal call
   order
 - Use integration tests for meaningful boundaries: Worker handlers, persistence,
   queues, auth callbacks, crypto, and other cross-module behavior
-- Mock external services and rare failure paths, not pure local logic you own
-
-## Practical defaults
-
-- Use explicit TypeScript types; avoid `any`.
-- Test null/undefined boundaries and malformed input.
-- Prefer deterministic tests (fake timers, stable factories).
-- Keep one behavior per `it()`.
-- Keep test data realistic enough to preserve behavior, but small enough to make
-  failures obvious.
-- If a coverage target pushes tests toward private structure or meaningless
-  assertions, update the coverage exclusion rationale in `TEST_PLAN.md` instead
-  of gaming the metric.
-
-## Typical setup snippet (TypeScript)
-
-```ts
-import { defineConfig } from 'vitest/config';
-
-export default defineConfig({
-	test: {
-		coverage: {
-			provider: 'v8',
-			thresholds: {
-				lines: 100,
-				statements: 100,
-				functions: 100,
-				branches: 100
-			}
-		}
-	}
-});
-```
+- Test null/undefined boundaries and malformed input; prefer deterministic
+  tests (fake timers, stable factories); keep test data realistic but small
+  enough to make failures obvious
 
 ## Guides
 
-- `guides/patterns.md`
-- `guides/mocking.md`
-- `guides/edge-cases.md`
-- `guides/async.md`
-- `guides/cloudflare.md`
+Read the one the task needs:
+
+- `guides/patterns.md` when structuring a new test file or factory
+- `guides/mocking.md` when mocking a module or dependency
+- `guides/edge-cases.md` when covering boundaries and malformed input
+- `guides/async.md` when testing timers, promises or streams
+- `guides/cloudflare.md` when the target is a Cloudflare Worker

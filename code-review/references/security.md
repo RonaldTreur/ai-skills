@@ -48,9 +48,3 @@ Use this checklist for TypeScript/web projects, including Cloudflare-based syste
 - Look for concurrent writes without coordination.
 - Identify TOCTOU bugs around reads/checks then writes.
 - Validate idempotency and retry safety in async workflows.
-
-## Reporting format for each security finding
-- **Severity (P0/P1/P2/P3)**
-- **Exploitability**: realistic attack preconditions
-- **Impact**: data exposure, integrity, availability, privilege escalation
-- **Suggested fix**: minimal safe mitigation path

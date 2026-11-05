@@ -31,8 +31,7 @@ The current methodology taxonomy is split by workflow ownership, not by source r
 Core lifecycle owners:
 
 - `start-new-project/`: early grounding, brief, product/design direction, `BRIEF.md`, `DESIGN.md`, `PLAN.md`, and `DECISIONS.md`.
-- `add-feature/`: existing-project feature request classification, minimal issue creation, and routing into the normal lifecycle.
-- `project-manager/`: repo/project setup, readiness, issue decomposition, backlog ordering, status, and next-work selection.
+- `project-manager/`: repo/project setup, readiness, feature intake, issue decomposition, backlog ordering, status, and next-work selection; `references/delegation.md` holds the packet and status contract for work sent to another agent.
 - `implement-issue/`: one ready issue or backlog slice through branch, tests, implementation, review, PR, merge, and post-merge QA.
 - `documentation-handoff/`: README/AGENTS roles, project artifacts, `DELIVERY_STATE.md`, `DECISIONS.md`, ADRs, PR/issue handoffs, blockers, and recovery summaries.
 
@@ -40,27 +39,23 @@ Specialist owners:
 
 - `debugging/`: investigation-first bug fixing with a trivial-bug fast path and hard verification gates.
 - `code-review/`: architecture, security, maintainability, correctness, convention, and test-risk review.
-- `skill-review/`: skill activation accuracy, context cost, progressive disclosure, safety, and realistic behavior.
-- `skill-maintenance/`: skill inventory audits and focused cleanup for duplicate skills, superseded skills, long descriptions, repeated prose, overlap, and prompt-budget pressure.
-- `agent-delegation/`: handoff mechanics for work sent to another agent, runtime, or subagent.
+- `skill-review/`: one skill or a whole library: activation accuracy, context cost, no-op instructions, progressive disclosure, safety, and the read-only inventory audit script.
+- `retro/`: user-invoked retrospective on a session or merged PR that proposes environment changes (pointers, checks, review rules, deleted no-ops) for the person to approve.
 
 Testing and QA owners:
 
-- `test-planning/`: `TEST_PLAN.md`, coverage intent, exclusions, auth/test-data readiness, and browser-QA scope.
-- `testing-orchestrator/`: outside-in execution across E2E, integration, unit, and browser-QA verification.
+- `testing/`: test strategy (`TEST_PLAN.md`), outside-in sequencing, the authoring gate every new test must clear, safe auth and test data, and CI parity with coverage thresholds.
 - `unit-vitest/`: behavior-focused Vitest unit and integration tests.
 - `e2e-playwright/`: durable Playwright E2E tests, fixtures, locators, storage state, and E2E artifacts.
 - `browser-qa/`: web preview, PR, and post-merge QA that needs an actual browser pass.
-- `test-ci-policy/`: test scripts, CI entrypoints, coverage thresholds, and local/CI parity. Do not use it as the default workflow for ordinary feature implementation.
-- `test-audit/`: test value decisions: the authoring gate for new tests, focused audits of low-value or implementation-coupled tests, and one-subsystem pruning campaigns.
+- `test-audit/`: user-invoked pruning of existing tests: focused audits of low-value or implementation-coupled tests, and one-subsystem pruning campaigns.
 
 Design and frontend owners:
 
-- `frontend-design/`: divergent UI variants, visual thesis, shareable browser previews, feedback rounds, and approved frontend design artifacts.
+- `frontend-design/`: divergent UI variants, visual thesis, shareable browser previews, feedback rounds, approved frontend design artifacts, and prompt export for external UI generators.
 - `developing-web-projects/`: web architecture and implementation conventions.
-- `design-prompt-export/`: export approved UI direction into copy-paste prompts for external UI generators or one-off design workers.
 - `generating-web-components/`: repository-patterned Web Component generation.
 
 GitHub label automation lives in `gh-pipeline/`. It is dormant infrastructure unless a repo is actually using labels to drive build, test, review, fix, approved, blocked, and failed states across the lifecycle skills.
 
-Research and discovery does not have a standalone runtime skill. The useful behavior is folded into `start-new-project/` as "Grounding Before Shaping"; `deep-research`, `last30days`, `x_search`, Brave/web search, repo context, and memory/session lookup are routed only when they can change the brief, design direction, platform choice, backlog, or setup decision.
+Research and discovery does not have a standalone runtime skill. The useful behavior is folded into `start-new-project/` as "Grounding Before Shaping"; web and social search, deep research reports, repo context, and the harness's memory and session history are used only when they can change the brief, design direction, platform choice, backlog, or setup decision.

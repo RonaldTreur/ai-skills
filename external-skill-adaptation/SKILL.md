@@ -1,27 +1,20 @@
 ---
 name: external-skill-adaptation
-description: Compare external agent skills, prompts, instructions, or methodology repos against this ai-skills repository, adapt useful local improvements, and maintain attribution/provenance.
+description: Compare external agent skills, prompts, instructions, or methodology repos against this ai-skills repository, adapt useful local improvements, and maintain attribution/provenance. Use when asked to compare, adopt or credit external skills or methodology repos.
+disable-model-invocation: true
 ---
 
 # External Skill Adaptation
-
-Use this skill to turn external agent-methodology sources into durable, attributed improvements to this repository.
 
 The goal is not to vendor external skills. The goal is to compare sources by discipline, decide what fits the user's workflow, adapt the useful parts into local conventions, and leave a provenance trail clear enough for credit, future re-review, and public explanation.
 
 ## Core Rules
 
 1. Work on a dedicated branch.
-2. Record source repo, URL, license, commit or release, source file path, and review date before adapting ideas.
-3. Prefer paraphrased/adapted guidance over copied text unless copying is explicitly needed and license-compatible.
-4. Track every material influence in `methodology/ADAPTATION_LOG.md`.
-5. Keep rejected ideas. A future re-review needs to know why something did not land.
-6. Do one discipline at a time unless the user explicitly asks for a broader pass.
-7. Ask the user discipline-specific questions before finalizing adoption choices when the tradeoff is taste, workflow friction, or behavior policy rather than a clear technical correctness issue.
-8. When a discipline produces or changes a local skill, add a concise source-influence artifact at `<skill>/PROVENANCE.md`.
-9. Keep attribution and rebuild notes out of runtime `SKILL.md` files unless the user explicitly asks for them there.
-10. Do not install or activate third-party skills, hooks, daemons, telemetry, or auto-update systems as part of this workflow.
-11. End every created or changed runtime skill with a `[[skill-review]]` pass before closing.
+2. Prefer paraphrased/adapted guidance over copied text unless copying is explicitly needed and license-compatible.
+3. Keep rejected ideas. A future re-review needs to know why something did not land.
+4. Do one discipline at a time unless the user explicitly asks for a broader pass.
+5. Do not install or activate third-party skills, hooks, daemons, telemetry, or auto-update systems as part of this workflow.
 
 ## Workflow
 
@@ -29,7 +22,7 @@ The goal is not to vendor external skills. The goal is to compare sources by dis
 
 Identify the target discipline, sources to compare, local skills or instructions affected, and whether the output is research only, draft skill text, or a ready-to-merge skill change.
 
-If the user has not named a discipline, recommend one vertical slice. Prefer debugging first because it has clear observable failure modes and high reuse.
+If the user has not named a discipline, recommend the one with no review yet in `methodology/disciplines/`.
 
 ### 2. Inventory Sources
 
@@ -41,7 +34,7 @@ Store entries under `methodology/sources/`.
 
 Create or update `methodology/disciplines/<discipline>.md` using `templates/discipline-review.md`.
 
-For each source, capture useful practices, exact source locations, fit with current ai-skills and OpenClaw conventions, conflicts or risks, questions for the user, and adoption recommendation.
+For each source, capture useful practices, exact source locations, fit with current ai-skills conventions, conflicts or risks, questions for the user, and adoption recommendation.
 
 Keep source quotes short. Summarize and link to exact files/commits wherever possible.
 
@@ -52,14 +45,14 @@ Before changing existing local skills, ask targeted questions for decisions that
 Good questions are concrete:
 
 - "Should this become a hard gate or advisory guidance?"
-- "Should this apply to Merlin/main, Vectrix, or only project-specific agents?"
+- "Should this apply to every project, or only to the ones that opt in?"
 - "Is the extra planning artifact worth the friction for this class of task?"
 
 Avoid broad questions like "What do you think?"
 
 ### 5. Adapt Locally
 
-When adopting an idea, fit it into the existing owner skill or create a focused skill only if no owner exists. Preserve local tone, remove external runtime assumptions, include the minimum procedural detail needed for reliable behavior, keep triggers conservative, and keep runtime `SKILL.md` text operational. Move rebuild notes and source-by-source attribution into the adjacent source-influence artifact.
+When adopting an idea, fit it into the existing owner skill or create a focused skill only if no owner exists. Preserve local tone, remove external runtime assumptions, include the minimum procedural detail needed for reliable behavior, keep triggers conservative, and keep runtime `SKILL.md` text operational. Move rebuild notes and source-by-source attribution into `<skill>/PROVENANCE.md` (step 6).
 
 ### 6. Add Skill-Level Attribution
 
@@ -88,7 +81,12 @@ Categories:
 
 ### 8. Verify
 
-Before closing, run validation when available; run `[[skill-review]]` against every created or changed runtime `SKILL.md`; inspect `git diff` for copied text, missing attribution, or unrelated changes; ensure every changed skill has a matching log entry and `<skill>/PROVENANCE.md` or a documented exception; keep provenance-only notes out of runtime `SKILL.md`; ignore local `[[skill-name]]` references during review; and summarize branch, files changed, reviewed refs, and open questions.
+Before closing:
+
+- run [[skill-review]] against every created or changed runtime `SKILL.md`;
+- inspect `git diff` for copied text, missing attribution, or unrelated changes;
+- confirm every changed skill has a matching log entry and `<skill>/PROVENANCE.md` or a documented exception, and no provenance notes in runtime `SKILL.md`;
+- summarize branch, files changed, reviewed refs, and open questions.
 
 ## Output Shape
 
@@ -100,9 +98,3 @@ For a complete discipline pass, produce:
 - a concise skill-level source-influence artifact at `<skill>/PROVENANCE.md` for every adopted local skill
 - skill changes or draft skill files when adoption is approved
 - a concise summary with recommended next discipline
-
-## References
-
-- `references/provenance-schema.md`
-- `templates/discipline-review.md`
-- `templates/source-inventory-entry.md`
