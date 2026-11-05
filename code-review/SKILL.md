@@ -5,20 +5,14 @@ description: Review code changes for architecture, security, quality, and conven
 
 # Code Review Skill
 
-Opinionated review workflow for TypeScript-first projects.
-
-This skill is a quality gate:
-
-- [[testing]] verifies behavior with tests.
-- [[code-review]] verifies architecture, security, maintainability, and conventions.
-- [[developing-web-projects]] conventions are enforced during review.
+Opinionated review workflow for TypeScript-first projects. [[testing]] owns
+coverage expectations; this skill enforces the project's conventions,
+[[developing-web-projects]] for web.
 
 ## Review Posture
 
-- Be direct and specific.
 - Prefer incremental refactors over rewrites.
 - Do not auto-fix without approval.
-- Always classify findings by severity (P0-P3).
 - Include exploitability and impact for security findings.
 - Separate review axes: **spec compliance**, **repo standards**, and **risk/quality**. A pass on one axis does not excuse a miss on another.
 - Scale review depth with risk. Small isolated diffs get a focused pass; auth, data, migrations, public APIs, shell execution, LLM output handling, and broad refactors get a deeper pass.
@@ -39,13 +33,13 @@ Suppress speculative best-practice notes, unchanged pre-existing issues unless t
 
 ## Workflow
 
-1. **Preflight context**: identify review range, spec source, standards sources, entry points, critical paths, and test coverage. Use `git status -sb`, `git diff --stat`, `git diff`, `git log --oneline <base>..HEAD`, and `rg` as needed. If tests or `TEST_PLAN.md` coverage are missing for risky behavior, flag at least **P1**.
+1. **Preflight context**: identify review range, spec source, standards sources, entry points, critical paths, and test coverage. If tests or `TEST_PLAN.md` coverage are missing for risky behavior, flag at least **P1**.
 2. **Critical-first scan**: check security/auth gaps, data loss, unsafe migrations, public API breaks, command injection, secret exposure, LLM or external-output trust boundaries, concurrency/race/TOCTOU bugs, incomplete enum handling, impossible states, and missing negative-path tests.
 3. **Spec compliance**: read the issue, PR description, ticket, design doc, or user request. Verify every acceptance criterion. Flag missing, incomplete, or divergent behavior as at least **P1**. Preserve intent, not just literal wording; if the spec references prior feedback, check that context too.
-4. **Architecture and conventions**: check SOLID concerns and enforce [[developing-web-projects]] rules: no React/Vue/Angular imports unless explicitly allowed, no Tailwind or utility CSS, no CSS resets, no SPA router, semantic CSS names, MPA documents/navigation, proper Web Components, and CSS selectors explainable from rendered markup and real states. Propose incremental refactors with risk/benefit.
-5. **Removal candidates**: find unused imports, dead code paths, redundant abstractions, and expired feature-flag branches. Classify as safe-delete-now or defer-with-plan.
-6. **Security and reliability**: check XSS, injection, auth/authz, secret exposure, race/TOCTOU, and CSRF. Always report exploitability, impact, and minimal mitigation.
-7. **Code quality**: check error handling, performance, boundaries, TypeScript quality, CSS hygiene, and symptom-layering. CSS findings include stale selectors, duplicate/overridden declarations, token freelancing, orphaned states, and additive-only CSS patches. For UI diffs, also check design-system drift, invented metrics/testimonials/logos, fake browser/device/IDE chrome, unreadable mobile CTAs, missing component states, and visual changes that contradict an approved `DESIGN.md`. Symptom-layering is usually **P1** when behavior changes and **P2** when it mainly adds fragility.
+4. **Architecture and conventions**: check SOLID concerns (checklist: `references/architecture.md`) and enforce [[developing-web-projects]]. Propose incremental refactors with risk/benefit.
+5. **Removal candidates**: find unused imports, dead code paths, redundant abstractions, and expired feature-flag branches. Classify as safe-delete-now or defer-with-plan (plan shape: `references/removal-plan.md`).
+6. **Security and reliability**: check XSS, injection, auth/authz, secret exposure, race/TOCTOU, and CSRF (checklist: `references/security.md`; for Workers, bindings or edge config also `references/cloudflare.md` and [[architecting-cloudflare-systems]]). Always report exploitability, impact, and minimal mitigation.
+7. **Code quality**: check error handling, performance, boundaries, TypeScript quality, CSS hygiene, and symptom-layering (checklist: `references/quality.md`). CSS findings include stale selectors, duplicate/overridden declarations, token freelancing, orphaned states, and additive-only CSS patches. For UI diffs, also check design-system drift, invented metrics/testimonials/logos, fake browser/device/IDE chrome, unreadable mobile CTAs, missing component states, and visual changes that contradict an approved `DESIGN.md`. Symptom-layering is usually **P1** when behavior changes and **P2** when it mainly adds fragility.
 8. **Output**: use `templates/review-output.md`. Lead with findings, then open questions, then secondary summary. End with numbered next-step options when action is needed.
 
 ## Automated Helper
@@ -76,25 +70,6 @@ CSS severity guidance:
 - Design-system drift, token freelancing, fake proof, or fake chrome in a UI diff
   is usually **P2**; raise to **P1** when it breaks approved design direction,
   accessibility, trust, or primary mobile usability.
-- Optional detector findings, such as `impeccable detect`, are evidence to
-  inspect, not automatic findings. Anchor the final review finding in code,
+- Detector output is evidence to inspect, not automatic findings. Anchor the final review finding in code,
   rendered behavior, or the approved design artifact.
 
-## Integration Notes
-
-- Link and align with [[testing]] for coverage expectations.
-- Enforce standards from [[developing-web-projects]].
-- Apply Cloudflare checks when relevant via `references/cloudflare.md` and [[architecting-cloudflare-systems]].
-
-## Output Contract
-
-A complete review includes:
-
-1. Scope summary
-2. Prioritized findings (P0-P3)
-3. Spec compliance assessment when applicable
-4. Standards/convention compliance assessment
-5. Test coverage assessment
-6. Risk/depth notes for critical paths reviewed
-7. Symptom-layering assessment when relevant
-8. Actionable next-step options

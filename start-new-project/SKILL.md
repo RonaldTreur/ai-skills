@@ -23,68 +23,40 @@ decomposition, long-running delivery, or active implementation.
 - `references/delegation.md` under [[project-manager]]: critique, risk or variant agent handoffs.
 - [[documentation-handoff]]: artifact roles, decisions, handoff shape.
 
-## Ground Rules
+## Rules
 
-- Keep the human in control of product and taste decisions.
-- Use this skill as the place to ask important product, domain, and taste
-  questions up front so later implementation can run autonomously.
-- Do not ask for information that can be discovered from existing context.
-- When asking, group the important choices into concise checkpoints, recommend
-  defaults, and explain the tradeoff.
-- Starting a project may run asynchronously over hours or days. Ask the next
-  most useful question or compact checkpoint, update durable artifacts after
-  each answer, and resume from those artifacts instead of relying on chat
-  memory.
-- Use competing options to widen product or interaction choices, not to create
+- The human controls product and taste decisions. Ask the questions that
+  affect taste, scope, audience, workflow and non-goals here, so implementation
+  can later run from the artifacts without reopening them.
+- Ask nothing that existing context answers. Group what remains into concise
+  checkpoints with recommended defaults and the tradeoff in outcome terms.
+- Grill the domain: resolve overloaded terms ("account", "project", "admin",
+  "publish", "sync") and hidden assumptions, and record the meaning in
+  `DECISIONS.md`.
+- Ground before shaping with the cheapest sufficient discovery pass; skip it
+  when it would not change the decision.
+- Shaping may run over hours or days: update the artifacts after each answer
+  and resume from them, never from chat memory. The project folder is the
+  durable state.
+- Use competing options to widen product or interaction choices, not for
   ceremony.
 - Record every significant choice and rejected alternative in `DECISIONS.md`
-  using [[documentation-handoff]].
-- Create an ADR via [[documentation-handoff]] when a technical choice shapes
-  architecture, data, auth, platform, deployment, or integration boundaries.
-  `DECISIONS.md` is the broad decision log; summarize or link ADRs there when
-  useful.
-- Prefer artifacts over chat summaries. The project folder is the durable state.
-- Do not hand directly to implementation until [[project-manager]] has checked
-  setup, testability, issue slicing, and dependencies.
-
-## Start Defaults
-
-- **Grill the domain before planning.** Resolve overloaded terms and hidden
-  assumptions before they become design or implementation drift.
-- **Front-load human judgment.** Ask the questions that affect taste, scope,
-  audience, workflow, and non-goals during shaping/design; after approval,
-  implementation agents should rely on the artifacts and conservative defaults
-  instead of reopening those choices.
-- **Ground before shaping.** Use the cheapest sufficient discovery pass before
-  locking the brief, design direction, or plan. Skip research when it would not
-  change the decision.
-- **Visual frontend work is routed out.** Browser UI, dashboards, landing pages,
-  and visual frontends use [[frontend-design]] for divergent design.
-- **Non-visual design stays here.** Bot-only, backend-only, CLI, and automation
-  projects still need interaction/artifact design, but not frontend-design.
-- **Plans are guardrails, not choreography.** `PLAN.md` records scope, work
-  units, dependencies, risks, files, and tests without pre-writing code.
-- **Use stable work-unit IDs.** Plan units use IDs such as `U1`, `U2`, `U3` so
-  later issues, blockers, and PRs can reference them without renumbering chaos.
-- **Stress-test fuzzy language.** If terms like "account", "project", "admin",
-  "publish", or "sync" are overloaded, resolve the domain meaning and record it
-  in `DECISIONS.md`.
+  via [[documentation-handoff]]; create an ADR there when a technical choice
+  shapes architecture, data, auth, platform, deployment or integration.
+- Visual frontend work goes to [[frontend-design]]. Non-visual design (bot,
+  backend, CLI, automation) stays here as interaction or artifact design.
+- `PLAN.md` is a guardrail, not choreography: scope, work units with stable IDs
+  (`U1`, `U2`), dependencies, risks, files and tests, no pre-written code.
+- Hand off to [[project-manager]], never directly to implementation.
 
 ## Grounding Before Shaping
 
 Use discovery when outside facts can change the brief, product direction, or
 plan. Do not turn this skill into a standing research report workflow.
 
-Classify the research need:
-
-- **Current/social signal**: use web and social search only when current
-  signal can change direction.
-- **Deep external research**: use the harness's deep-research tool, if one
-  exists, only when a saved report is worth the time and token cost.
-- **Repo/project discovery**: read existing docs, code, issues, decisions, and
-  prior artifacts before asking the user to restate them.
-- **Memory/session discovery**: use the harness's memory and session history
-  when continuity affects framing.
+Use web or social search, a deep-research report, repo discovery, or the
+harness's memory and session history only when the result can change the
+brief, design direction or plan.
 
 Default to a compact grounding digest in `<project>/context/grounding.md` or
 `BRIEF.md` when short:
@@ -147,17 +119,41 @@ Visual frontend Phase 2 may use temporary competing design folders owned by
 
 ### Phase 1: Functional Brief
 
-Use [[phases/phase-1-brief]].
+Goal: an approved `BRIEF.md` with overview, target users, core use cases, user
+flows (happy and error paths), data and state, grounding, surfaces, scope
+boundaries, constraints and open questions.
 
-Goal: produce an approved `BRIEF.md` that defines the user, problem, flows,
-scope boundaries, data, constraints, and the current open-question queue.
+1. Read the description and every linked note, sketch, doc, repo file, prior
+   decision or reference before asking anything; run the grounding pass when
+   outside context could change the brief.
+2. Draft the brief with stated assumptions, then ask one checkpoint:
+
+   ```markdown
+   I can draft the brief with these assumptions:
+   - [assumption + consequence]
+   The only blocking choices are:
+   1. [question with recommended default]
+   ```
+
+   Use a follow-up round only when an answer exposes a real product or design
+   fork, or the user wants deeper shaping.
+3. For a large, fuzzy or high-stakes idea, obtain an independent critique
+   (questions, assumptions, scope risks from a product and an engineering
+   angle) and merge it before showing the user; post nothing duplicate or
+   generic.
+4. Record each meaningful decision in `DECISIONS.md` as decision, why,
+   rejected alternatives, user input. Capture what a future implementer would
+   otherwise rediscover, not noise.
+5. Exit only when the user approves the brief or gives enough concrete edits to
+   finalize it.
 
 ### Phase 2: Surface Design
 
-For visual frontend work, use [[phases/phase-2-design]], which delegates to
-[[frontend-design]].
-
-For Discord bot work, use [[phases/phase-2-design-discord]].
+For visual frontend work, invoke [[frontend-design]] with `BRIEF.md`,
+`DECISIONS.md` and any brand assets, sketches or existing design system; it
+returns the approved `DESIGN.md`, the prototype under `src/` and the
+`DECISIONS.md` updates. For Discord bot work, use
+`phases/phase-2-design-discord.md`.
 
 For "both" projects, design non-visual interaction surfaces first, then run a
 separate [[frontend-design]] pass for each required visual interface.
@@ -168,7 +164,7 @@ projects.
 
 ### Phase 3: Implementation Guardrails
 
-Use [[phases/phase-3-planning]].
+Use `phases/phase-3-planning.md`.
 
 Goal: produce an approved `PLAN.md` with stable work units, dependencies,
 files, risks, and test scenarios. The plan should be specific enough for issue
@@ -178,40 +174,18 @@ live codebase.
 If Phase 3 settles a significant technical direction, create or update the
 relevant ADR before handing off.
 
-## Sub-Agent Pattern
+## Independent Critique
 
-Use `references/delegation.md` under [[project-manager]] for prompt shape,
-status handling, and parallel-safety rules.
-
-Use sub-agents only when independent perspectives materially improve the result:
-
-- brief critique or question generation
-- divergent product, interaction, or frontend design concepts
-- plan critique from engineering, design, or product angles
-- risk review before handoff
-
-Fresh sub-agents read only the relevant start-new-project artifacts: `BRIEF.md`,
-`DESIGN.md` when available, `DECISIONS.md`, and current context notes.
+Obtain an independent critique only when it materially improves the result: a
+large or fuzzy brief, divergent product or interaction concepts, a risky plan.
+A critique reads only `BRIEF.md`, `DESIGN.md` when available, `DECISIONS.md`
+and the current context notes. When another agent provides it, use
+`references/delegation.md` under [[project-manager]].
 
 ## Handoff
 
-After Phase 3, hand off to [[project-manager]], not directly to implementation.
-Tell it to read:
-
-- `BRIEF.md`
-- `DESIGN.md`
-- `PLAN.md`
-- `DECISIONS.md`
-- relevant `docs/adr/` records
-- `src/` or `docs/`
-
-Then it should:
-
-- verify readiness
-- create/update `TEST_PLAN.md`
-- decompose `PLAN.md` into issues
-- identify blockers
-- route implementation slices
-
-Implementation agents receive project-manager issue context plus
-start-new-project artifacts, not raw shaping output alone.
+After Phase 3, hand `BRIEF.md`, `DESIGN.md`, `PLAN.md`, `DECISIONS.md`, the
+ADRs and `src/` or `docs/` to [[project-manager]], which verifies readiness,
+creates `TEST_PLAN.md`, decomposes `PLAN.md` into issues and routes the
+slices. Implementation agents receive issue context plus these artifacts, never
+raw shaping output alone.

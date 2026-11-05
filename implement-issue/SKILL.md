@@ -5,21 +5,8 @@ description: "Implement one ready GitHub issue or backlog slice through branch, 
 
 # Implement Issue
 
-Use this skill for active implementation of one ready issue or backlog slice.
-
-## Ownership Boundary
-
-- [[project-manager]] owns lifecycle, issue decomposition, backlog ordering, and
-  multi-issue status.
-- `implement-issue`: one active slice from branch through post-merge QA.
-- [[developing-web-projects]]: web architecture and implementation defaults.
-- [[testing]], [[e2e-playwright]],
-  [[unit-vitest]]: testing strategy and tooling.
-- [[browser-qa]]: exploratory/post-merge browser QA for user-visible behavior.
-- [[code-review]]: review method and P0-P3 severity.
-- [[debugging]]: non-trivial failures discovered during implementation.
-- [[documentation-handoff]]: `DELIVERY_STATE.md`, PR/issue handoffs, decisions,
-  blockers, recovery summaries.
+Owns one active slice from branch through post-merge QA. Lifecycle ownership is
+in [[project-manager]].
 
 ## Authority
 
@@ -46,26 +33,18 @@ Ask before:
 
 ## Intake
 
-1. Inspect git state:
-   - `git status -sb`
-   - `git remote -v`
-   - `git branch --show-current`
-2. Resolve the selected issue and current handoff context.
-3. Read repo-local instructions: `AGENTS.md`, `.github/copilot-instructions.md`, and any other agent instruction file the repo carries.
-4. Read only issue-relevant docs: selected issue, linked issue/PR context,
+1. Resolve the selected issue and current handoff context.
+2. Read the repo's agent instruction files.
+3. Read only issue-relevant docs: selected issue, linked issue/PR context,
    `DELIVERY_STATE.md`, named handoff sections, and planning/spec/ADR docs only
    when linked, stale, missing from the handoff, or needed for a concrete
    implementation question.
-5. For web projects, load [[developing-web-projects]] before writing code.
-6. Identify issue number, acceptance criteria, dependencies, behavior,
+4. For web projects, load [[developing-web-projects]] before writing code.
+5. Identify issue number, acceptance criteria, dependencies, behavior,
    tests/checks, browser-QA/auth needs, and risks.
 
 If no issue is named, use [[project-manager]] rules to select one ready issue
 before entering this workflow.
-
-Avoid rereading broad planning documents already summarized by [[project-manager]]
-unless the handoff is incomplete, inconsistent with the repo, or directly
-insufficient for the selected issue.
 
 ## Branch And State
 
@@ -98,12 +77,8 @@ private structure unless the structure is itself the contract.
 
 ## Delegation
 
-Use `references/delegation.md` under [[project-manager]] for packet shape, write scopes, parallel safety and status.
-
-Delegation packets include issue, branch, repo path, relevant docs, active skills,
-checkpoint, and expected report: branch, PR, changed files, tests, status,
-blockers, concerns. A delegate's report is a pointer; verify the artifact it points to: the branch,
-its commits, the test output and the PR.
+When another agent does the work, use `references/delegation.md` under
+[[project-manager]] for the packet, write scope, parallel safety and status.
 
 ## Verification Gates
 
@@ -122,16 +97,13 @@ Review loop:
 2. Fix valid P0-P3 findings.
 3. Rerun the smallest meaningful verification.
 4. Repeat until clean or rejected findings are justified.
-5. Use one independent review of the PR diff for non-trivial PRs, then fix
-   valid P0-P3 findings and rerun targeted verification.
+5. For non-trivial PRs, one independent review of the PR diff, started only
+   once the branch's checks ran and the PR body records the checks, browser QA
+   and review findings listed below; then fix valid P0-P3 findings and rerun
+   targeted verification.
 
 After review fixes, rerun checks most likely to catch regressions. If UI/routing
 changed, repeat [[browser-qa]].
-
-Start the independent review from the artifact: a branch whose checks ran and
-a PR whose body records the checks, browser QA and review findings listed under
-PR And Merge. A report that says implemented, checks passed or PR opened points
-at those; it does not replace them.
 
 ## PR And Merge
 
@@ -162,18 +134,7 @@ preview. If QA finds defects, create follow-up issues and return to [[project-ma
 
 ## Phase Heads-Ups
 
-For visible long-running work, send compact updates at major transitions:
-
-- issue selected
-- branch created
-- behavior/test slice
-- implementation
-- self-verification
-- review
-- CI/PR gate
-- merge
-- post-merge QA
-- next issue/blocker
+For visible long-running work, send a compact update at each major transition:
 
 ```md
 Phase: #<issue> <phase>

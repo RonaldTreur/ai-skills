@@ -22,9 +22,7 @@
 - [ ] Edge cases are tested
 
 ### Convention Compliance
-- [ ] No framework imports (React/Vue/Angular)
-- [ ] Semantic CSS (no utility classes)
-- [ ] MPA architecture (no client-side routing)
+- [ ] Project conventions hold ([[developing-web-projects]] for web)
 - [ ] TypeScript strict mode compatible
 
 ## Next Steps

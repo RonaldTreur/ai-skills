@@ -5,12 +5,6 @@ description: "Manage GitHub-backed project lifecycle: repo setup, planning docs,
 
 # Project Manager
 
-Use this skill to keep a software project organized across its full lifecycle.
-
-Own project structure, issue hygiene, dependency ordering, status, and handoff.
-Do not own per-issue implementation; route active execution to
-[[implement-issue]].
-
 ## Ownership Boundary
 
 - [[start-new-project]]: brief, design, plan, decisions.
@@ -70,44 +64,28 @@ Ask before:
 - changing project scope, design direction, or product behavior
 - merging/releasing/deploying unless already covered by an invoked implementation workflow
 
+## Issue Shape
+
+Every issue carries: summary, acceptance criteria, linked docs, test and
+browser-QA scope, auth and test-data prerequisites, dependencies, out-of-scope
+notes, likely affected areas. Prefer independently mergeable slices.
+
 ## Repo Intake
 
-1. Inspect repository state:
-   - `git status -sb`
-   - `git remote -v`
-   - `git branch --show-current`
-2. Read local instructions:
-   - `AGENTS.md`
-   - `README.md`
-   - `.github/copilot-instructions.md`
-   - any other agent instruction file the repo carries
-3. Read project memory when present:
-   - `BRIEF.md`
-   - `DESIGN.md`
-   - `PLAN.md`
-   - `IMPLEMENTATION_PLAN.md`
-   - `TEST_PLAN.md`
-   - `DECISIONS.md`
-   - `docs/adr/**/*.md`
-   - `DELIVERY_STATE.md`
-   - `docs/**/*.md`
-   - `specs/**/*.md`
-   - `.github/workflows/**/*.yml`
-   - `package.json`
-4. Read relevant repo, issue, PR, and memory context before asking the user to
-   restate project state. Use current external research only when it can change
-   backlog, scope, priority, or setup decisions; otherwise rely on start-new-project
-   artifacts and GitHub truth.
-5. Extract:
-   - product goal
-   - current phase
-   - integration branch
-   - test/build commands
-   - local run or preview command
-   - issue dependency conventions
-   - QA/auth/test-data setup
-   - blocked decisions
-   - next ready issue candidates
+Read the repo's agent instructions, planning docs (brief, design, plan, test
+plan, decisions, ADRs, delivery state, specs), CI config and GitHub issues and
+PRs before asking the user to restate project state. Use external research only
+when it can change backlog, scope, priority or setup. Extract:
+
+- product goal
+- current phase
+- integration branch
+- test/build commands
+- local run or preview command
+- issue dependency conventions
+- QA/auth/test-data setup
+- blocked decisions
+- next ready issue candidates
 
 ## TODO Intake
 
@@ -115,14 +93,7 @@ When the user asks to turn a TODO list into issues and start work, treat that as
 authorization to draft or create the issues unless they explicitly ask for a
 proposal only. Do not turn TODO text into code tasks mechanically.
 
-1. Normalize each TODO into a backlog candidate:
-   - outcome
-   - user-visible behavior or internal contract
-   - acceptance criteria
-   - likely affected area
-   - test and browser-QA scope
-   - dependencies and blockers
-   - out-of-scope notes
+1. Normalize each TODO into an issue (see Issue Shape).
 2. Merge duplicates, split oversized TODOs into independently mergeable slices,
    and keep setup/readiness work ahead of dependent feature work.
 3. If a TODO hides a product decision, design decision, architecture decision,
@@ -135,22 +106,13 @@ proposal only. Do not turn TODO text into code tasks mechanically.
    invoke [[implement-issue]] for the first ready issue when the user asked to
    start processing.
 
-Compact prompt this skill should satisfy:
-
-```text
-Use project-manager to convert this TODO list into GitHub issues, order
-dependencies, identify ready vs blocked work, then start the first ready issue
-with implement-issue.
-```
-
 ## Feature Intake
 
 For an "add this feature" request on an existing project, inspect the repo,
 open issues and docs first, then classify:
 
 - a ready issue already exists: invoke [[implement-issue]], no duplicate;
-- one clear slice: one issue with acceptance criteria, test and QA scope,
-  dependencies and out-of-scope notes;
+- one clear slice: one issue (see Issue Shape);
 - separable setup, backend, frontend, test or QA work: the fewest independently
   mergeable issues;
 - unclear users, scope, product direction, visual design, architecture,
@@ -181,17 +143,7 @@ and exactly one issue is ready, invoke [[implement-issue]] on it.
 
    Missing readiness becomes setup issues before feature issues.
 3. **Issue decomposition:** create issues only after scope and testing strategy
-   are stable. Each issue needs:
-   - summary
-   - acceptance criteria
-   - linked docs
-   - test scope
-   - browser-QA/auth/test-data prerequisites
-   - dependencies
-   - out-of-scope notes
-   - likely affected areas
-
-   Prefer independently mergeable slices.
+   are stable, in the Issue Shape above.
    If an issue depends on an architectural choice that is not recorded, create
    or request an ADR via [[documentation-handoff]] before encoding the work.
 4. **Dependency ordering:** an issue is ready when open, unblocked, testable,
@@ -204,8 +156,6 @@ and exactly one issue is ready, invoke [[implement-issue]] on it.
    with a compact [[documentation-handoff]] packet; when another agent will do
    the work, read `references/delegation.md` for the packet, write scope,
    parallel safety and status contract.
-   When a delegate returns, judge readiness from the branch, PR and checks
-   before independent review; a report alone does not move the issue.
 6. **Status and recovery:** report:
    - phase
    - active issue/branch/PR

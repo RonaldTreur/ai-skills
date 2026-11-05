@@ -55,7 +55,7 @@ After return:
 3. Run or review the stated verification.
 4. Integrate or revise before reporting completion.
 
-A report is evidence, not proof; for implementation work, inspect the branch, checks and PR it points to before routing to an independent reviewer.
+A report is evidence, not proof.
 
 ## Prompt shape
 
