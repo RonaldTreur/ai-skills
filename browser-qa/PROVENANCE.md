@@ -178,3 +178,10 @@ Why:
 Skills stay harness-agnostic and describe the work and its gates, never who
 performs them (see `methodology/disciplines/role-script-removal-2026-11.md`).
 In this skill, the OpenClaw-managed browser profile sentence removed; the rule now names the harness's own controlled profile.
+
+## Local Integration Decision (2026-11-05, skill-review pass)
+
+Trimmed per `methodology/disciplines/skill-review-pass-2026-11.md`: rules
+stated once, environment facts the agent can look up removed, branch-only
+material moved behind gated references, harness-specific names removed. The
+findings and the fixes applied are listed there per skill.

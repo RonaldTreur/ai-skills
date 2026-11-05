@@ -152,3 +152,10 @@ Local adaptation:
 Skills stay harness-agnostic and describe the work and its gates, never who
 performs them (see `methodology/disciplines/role-script-removal-2026-11.md`).
 In this skill, OpenClaw research tools (`last30days`, `x_search`, `deep-research`, Brave search) and OpenClaw memory replaced by harness-neutral wording.
+
+## Local Integration Decision (2026-11-05, skill-review pass)
+
+Trimmed per `methodology/disciplines/skill-review-pass-2026-11.md`: rules
+stated once, environment facts the agent can look up removed, branch-only
+material moved behind gated references, harness-specific names removed. The
+findings and the fixes applied are listed there per skill.

@@ -1528,3 +1528,23 @@ credit_note: Delegation sources (SuperPowers, Compound Engineering, GStack, Matt
 reviewer: Claude (Fable 5.1), with Ronald
 next_review: None
 ```
+
+```yaml
+id: 2026-11-05-skill-review-pass-applied
+date: 2026-11-05
+discipline: skill meta (cross-cutting trim)
+status: adopted
+source: local (skill-review library pass over the November 2026 branch)
+source_url: none
+source_ref: commit 32ff821 (findings) and the three commits that applied them
+source_path: methodology/disciplines/skill-review-pass-2026-11.md
+license: repository-local
+local_target: 17 runtime skills; see the discipline review
+influence_type: behavioral
+summary: The rewritten skill-review checklist applied to every skill the branch touched: rules stated once, caches of the environment removed, branch-only material gated, no-ops deleted, two deleted phase files, five new gated references.
+local_adaptation: Judgment calls recorded under Applied in the discipline review.
+rationale: Ronald asked for all thirteen NEEDS WORK verdicts to be fixed before the PR.
+credit_note: The checklist itself credits Matt Pocock's writing-for-agents (MIT).
+reviewer: Claude (Fable 5.1), with Ronald
+next_review: After the second fresh-eyes pass in the same review
+```

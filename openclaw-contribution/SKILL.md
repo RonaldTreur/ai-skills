@@ -1,6 +1,6 @@
 ---
 name: openclaw-contribution
-description: Use when creating or updating OpenClaw GitHub issues or PRs. Read current templates and CONTRIBUTING first, then submit with gh or draft ready-to-paste text.
+description: Use when creating or updating OpenClaw GitHub issues or PRs.
 disable-model-invocation: true
 ---
 
@@ -29,10 +29,8 @@ Before drafting anything:
    - .github/pull_request_template.md
 4. Check whether gh is authenticated.
 
-If `gh` is not authenticated, produce a ready-to-paste draft instead of claiming
-submission.
-
-Load [references/openclaw-core.md](references/openclaw-core.md) for the current OpenClaw-specific requirements and canonical file paths.
+`references/openclaw-core.md` holds the canonical file paths and the
+contributing rules the templates do not state.
 
 ## Issues
 
@@ -49,9 +47,6 @@ Bug workflow:
 3. Write expected behavior from a known-good version, prior observation, or docs.
 4. Write actual behavior using only what was observed.
 5. Capture concrete impact: affected user, severity, frequency, consequence.
-6. Use NOT_ENOUGH_INFO exactly where required if evidence is incomplete.
-
-Never fill gaps with plausible guesses.
 
 Feature requests need summary, problem, proposed solution, alternatives, impact,
 and evidence/examples.
@@ -61,14 +56,6 @@ Prefer concrete use cases and tradeoffs over vague product language.
 If the upstream contribution guide indicates the change is simple enough for a direct PR without an issue, do that instead of opening a low-value issue.
 
 ## PR workflow
-
-For PRs, also use git-conventions.
-
-OpenClaw expects focused scope, Conventional Commit PR titles, linked issues
-when applicable, explicit boundaries, real behavior proof, AI-assisted
-disclosure when AI was used, and author-handled bot review conversations.
-
-Minimum PR workflow:
 
 1. Inspect branch state and keep the diff focused.
 2. Fill the current PR template, not a generic one.
@@ -86,8 +73,8 @@ OpenClaw PRs.
 ## Submission rules
 
 If gh is authenticated:
-- create the issue or PR with gh
-- keep the body in a temp file first so it can be reviewed before submission
+- write the body to a temp file, show it, and wait for the user's go-ahead
+- only then create the issue or PR with gh; it posts publicly to a third-party repo
 
 If gh is not authenticated:
 - produce a complete draft body

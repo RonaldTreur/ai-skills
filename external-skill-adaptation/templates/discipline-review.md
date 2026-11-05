@@ -13,31 +13,7 @@ Summarize how this discipline currently works in ai-skills.
 
 ## Source Comparison
 
-### GStack
-
-- Source ref:
-- Files reviewed:
-- Useful patterns:
-- Conflicts or risks:
-- Adoption recommendation:
-
-### SuperPowers
-
-- Source ref:
-- Files reviewed:
-- Useful patterns:
-- Conflicts or risks:
-- Adoption recommendation:
-
-### Compound Engineering
-
-- Source ref:
-- Files reviewed:
-- Useful patterns:
-- Conflicts or risks:
-- Adoption recommendation:
-
-### Matt Pocock Skills
+### <source>
 
 - Source ref:
 - Files reviewed:
@@ -57,16 +33,7 @@ Deferrals as `deferred`.
 
 ## Skill-Level Attribution
 
-For each local skill created or changed, create a source-influence artifact at
-`<skill>/PROVENANCE.md`.
-
-If repository structure makes that exact path impossible, record the exception
-and the chosen path here. Do not silently choose a different location.
-
-Keep attribution and rebuild notes out of runtime `SKILL.md` files unless the user
-explicitly asks for them there.
-
-Include:
+For each `<skill>/PROVENANCE.md` created or changed, include:
 
 - source URL, reviewed ref, reviewed paths, and license
 - what was taken from each source
@@ -83,5 +50,4 @@ Record rejected and deferred ideas with rationale.
 List checks run, diffs inspected, and remaining risks.
 
 Include the final `[[skill-review]]` result for every created or changed runtime
-`SKILL.md`. Ignore local `[[skill-name]]` references between repository skills
-during that review.
+`SKILL.md`.

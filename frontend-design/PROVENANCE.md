@@ -245,3 +245,10 @@ prompt-only output rule, and the stop when a new direction would be needed.
 Its "when to use" and "do not use for" lists were caches of this skill's own
 boundary and were dropped. See
 `methodology/disciplines/small-merges-2026-11.md`.
+
+## Local Integration Decision (2026-11-05, skill-review pass)
+
+Trimmed per `methodology/disciplines/skill-review-pass-2026-11.md`: rules
+stated once, environment facts the agent can look up removed, branch-only
+material moved behind gated references, harness-specific names removed. The
+findings and the fixes applied are listed there per skill.
