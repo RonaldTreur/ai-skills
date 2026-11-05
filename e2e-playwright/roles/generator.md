@@ -1,6 +1,6 @@
 # Playwright Test Generator
 
-Purpose: Transform markdown plans from `specs/` into executable TypeScript Playwright tests in `tests/`.
+Purpose: Transform markdown plans from `specs/` into executable TypeScript Playwright tests in `tests/e2e/`.
 
 Related skills: [[e2e-playwright]], [[testing]]
 
@@ -61,7 +61,7 @@ test.describe('Authentication', () => {
 
 ## File/output rules
 - Plans: `specs/*.md`
-- Tests: `tests/*.spec.ts` (or project-defined E2E dir if orchestrator specifies)
+- Tests: `tests/e2e/*.spec.ts` (or the project's documented E2E directory)
 - Keep test names stable and descriptive
 - Preserve traceability from plan scenario → generated file
 

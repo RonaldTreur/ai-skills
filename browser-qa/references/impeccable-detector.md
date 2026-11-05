@@ -1,7 +1,6 @@
 # Impeccable Detector Notes
 
-Use this reference only when browser QA or review needs concrete command
-examples for optional visual anti-pattern scanning.
+Command and report shapes for the detector rules in `visual-pass.md`.
 
 ## Command
 
@@ -32,18 +31,6 @@ Use a narrow target:
 
 Do not run broad repository scans by default. Do not block QA when the command
 cannot install or run.
-
-## Interpretation
-
-Treat detector output as evidence, not authority.
-
-- Confirm findings against rendered behavior, code, or the approved design
-  artifact before reporting them.
-- Product UIs may legitimately use familiar fonts, one font family, restrained
-  palettes, and standard patterns.
-- Brand surfaces have a higher distinctiveness bar and should treat generic
-  slop findings more seriously.
-- If the detector reports a false positive, say why and move on.
 
 ## Useful Report Shape
 

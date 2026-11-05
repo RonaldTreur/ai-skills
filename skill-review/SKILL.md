@@ -23,7 +23,7 @@ Every line spends one of two loads. **Context load** is paid every turn by anyth
 6. **Leading words.** Replace three adjectives with the one pretrained word they stand for (tight, red, seam). State the target behaviour positively; a prohibition earns its place only as a hard guardrail, paired with the positive form.
 7. **Specificity.** Broad guidance for judgment work, checklists for fragile workflows, scripts for deterministic repeated operations. Keep gates, commands, permissions and stop conditions as lists.
 8. **Hygiene and safety.** Only files the skill uses at runtime plus repository provenance, and runtime text links only the runtime files. Flag secrets, hidden external actions, broad tool grants, production-impacting steps, harness-specific tool names, and skills that claim unrelated workflows. Local `[[skill-name]]` links are intended integration points, not defects.
-9. **Behaviour.** One should-trigger, one should-not-trigger and one edge prompt, in fresh sessions where possible, without leaking the expected answer.
+9. **Behaviour.** One should-trigger, one should-not-trigger and one edge prompt, handed to the person to run in fresh sessions, without leaking the expected answer.
 
 ## Library audit
 

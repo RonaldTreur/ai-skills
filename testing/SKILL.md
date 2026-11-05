@@ -1,6 +1,6 @@
 ---
 name: testing
-description: Plan, sequence and enforce tests: TEST_PLAN.md, outside-in behavior slices, the authoring gate for every new test, safe auth and test data, CI parity and coverage thresholds. Use when planning, writing or wiring tests.
+description: Plan, sequence and enforce tests. Use when planning, writing or wiring tests, or setting coverage thresholds.
 ---
 
 # Testing
@@ -9,7 +9,7 @@ Owns test strategy, sequencing, the bar a test must clear, and the enforcement p
 
 ## Plan
 
-Create or update `TEST_PLAN.md` before broad test work, from `templates/test-plan.md`; fill every section or mark it not applicable. It names: E2E flows, happy paths, edge cases and error states; integration seams (API, persistence, queues, auth callbacks, external services); unit coverage per module; browser-QA scope; the safe non-production auth path, seed data, fixtures and reset steps; the install, build, typecheck, lint, unit, E2E, preview and coverage commands; coverage gaps; and explicit exclusions with rationale.
+Create or update `TEST_PLAN.md` before broad test work, from `templates/test-plan.md`; fill every section or mark it not applicable.
 
 Gates:
 
@@ -37,14 +37,7 @@ Before adding or changing a test, answer all four; a missing answer means the te
 3. Why does existing coverage not already catch that? Every contract has one primary owner test at its strongest boundary; another layer earns its own test only for a risk the owner cannot reach (transport, lifecycle, persistence). Extend a table-driven case or shared fixture before adding a near-duplicate.
 4. Does it need a production seam (export, flag, wrapper, injection hook) that no production caller needs? Then test at the real boundary instead.
 
-Then check it against the junk families; a match fails the gate unless the test names the contract it independently guards:
-
-- vacuous or circular: assertion-free probes, self-comparisons, expected values computed by the code under test, mocks that implement the asserted behavior;
-- duplicated or misplaced: copied fixtures or inventories, private call-shape tests that duplicate a real boundary, one scenario replayed at several layers;
-- coupled to implementation: source or import greps, tests that exist to keep a test-only export alive, flag tests that restate a declaration;
-- misleading: negative controls that pass for an unrelated reason, names that promise more than the input exercises.
-
-The full list with examples is `references/junk-patterns.md`. A test that breaks under behavior-preserving refactoring asserts implementation; rewrite it at the owning boundary.
+Then check it against the four junk families in `references/junk-patterns.md`: vacuous or circular (a mock that implements the asserted behavior), duplicated or misplaced (one scenario replayed at several layers), coupled to implementation (a source grep), misleading (a negative control that passes for an unrelated reason). A match fails the gate unless the test names the contract it independently guards. A test that breaks under behavior-preserving refactoring asserts implementation; rewrite it at the owning boundary.
 
 A bug regression test fails on the pre-fix code for the intended reason and passes after the fix at the owner boundary. One regression at the owner covers the bug.
 

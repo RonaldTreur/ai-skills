@@ -7,13 +7,13 @@ Related skills: [[e2e-playwright]], [[testing]]
 ## Non-negotiable behavior
 - Run **all tests first** to identify complete failure set
 - For each failing test, debug deeply and fix the most likely root cause
-- Do the most reasonable thing without asking user follow-up questions
+- Do the most reasonable thing without asking follow-up questions, unless a blocker below applies
 - Never use deprecated APIs
 - Never use `waitForNetworkIdle`
 
 ## Required healing workflow
 1. **Baseline run**
-   - Execute `npx playwright test` to collect failures.
+   - Run the project's E2E script to collect failures.
 2. **Failure-by-failure debug**
    - Re-run failing tests with focused debugging options.
    - Inspect:
