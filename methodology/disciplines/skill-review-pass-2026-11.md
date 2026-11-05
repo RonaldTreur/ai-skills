@@ -234,5 +234,53 @@ Every finding above was applied on 2026-11-05, with these judgment calls:
   the templates do not state.
 - `openclaw-contribution` had no `PROVENANCE.md`; one was created.
 
-A second fresh-eyes pass over the trimmed text follows in the same discipline
-review.
+## Second pass (2026-11-05)
+
+Three separate agents reviewed the trimmed text without this session's
+reading, hunting for damage from trimming. Verdicts before fixes:
+
+| Verdict | Skills |
+| --- | --- |
+| PASS | skill-review, retro, testing, test-audit, external-skill-adaptation, code-review, frontend-design, browser-qa, debugging, openclaw-contribution |
+| NEEDS WORK | gh-pipeline, project-manager, implement-issue, start-new-project, developing-web-projects, e2e-playwright, unit-vitest |
+
+No Critical finding. Important findings, all applied:
+
+- `gh-pipeline`: the "ask before creating labels" rule survived only in the
+  setup reference, gated on enabling a repo, so a run on an unlabelled repo
+  could create labels unasked. The labels section now routes to Setup first.
+- `project-manager` and `implement-issue` disagreed on whether every PR needs
+  an independent review; both now say non-trivial PRs.
+- `implement-issue`: the independent-review step sat in the review loop before
+  the PR existed and named no mechanism. It now sits under PR And Merge and
+  names a fresh `code-review` pass by another agent or the harness's helper.
+- `start-new-project` phase 3 still said "debate and merge plans" after the
+  competing-planners step was cut; it now drafts one plan and resolves a
+  critique. The critique was instructed three times with three triggers; it is
+  defined once under Independent Critique with pointers.
+- `developing-web-projects`: the Defaults block I added duplicated four
+  sections; removed, with the ask-rule folded into the opening line.
+- `e2e-playwright`: the healer banned `waitForNetworkIdle`, a Puppeteer API,
+  while the Playwright traps went unnamed; it now bans `waitForTimeout` and
+  `waitForLoadState('networkidle')`. Both tool skills' guide lists now carry a
+  "read when" gate per guide.
+- `unit-vitest`: the description promised `TEST_PLAN.md` coverage the trimmed
+  body no longer mentioned; clause dropped.
+
+Polish applied: frontend-design's two bypass pointers carry their file paths in
+Core Idea and the stub sections are gone (305 lines); duplicated finding
+formats removed from code-review's quality and security references; harness
+manifests (`agents/openai.yaml`) removed from browser-qa, so none remain;
+descriptions of retro and external-skill-adaptation carry a trigger clause.
+
+One defect of my own, caught by the harness's skill listing rather than a
+reviewer: the horizontal-rule cleanup in `developing-web-projects` also removed
+the closing frontmatter delimiter, which would have made the skill invisible to
+every harness. Repaired, and every `SKILL.md` frontmatter now parses. The audit
+script does not catch this; a frontmatter parse check belongs in it.
+
+After fixes: all 17 skills PASS the checklist as applied by the reviewers,
+subject to the behaviour probes they listed, which need fresh sessions.
+Repository state: 27 skills, 22 model-invoked, about 4,070 characters of
+always-loaded description text, about 21,400 words across all `SKILL.md`
+files (from about 28,700 at the start of the branch).

@@ -21,10 +21,6 @@ invoke [[implement-issue]] with a compact handoff.
 ## Core Principles
 
 - GitHub Issues are the durable backlog.
-- Repo-local docs are project memory; use [[documentation-handoff]] for artifact
-  roles and recoverable handoffs.
-- For new or fuzzy projects, [[start-new-project]] owns research and discovery
-  before issue decomposition.
 - Issues should be independently mergeable slices with explicit dependencies.
 - Project setup must make local verification, CI, test data, and browser QA
   practical before feature work depends on them.
@@ -39,8 +35,8 @@ An issue is ready to merge only when all three hold:
 
 - the branch carries the implementation and its tests, and the
   [[implement-issue]] verification ran on that branch;
-- an independent review ran on the PR diff, and valid P0-P3 findings are fixed
-  with targeted verification rerun;
+- for a non-trivial PR, an independent review ran on the PR diff, and valid
+  P0-P3 findings are fixed with targeted verification rerun;
 - the PR links the issue.
 
 Judge readiness from the branch, the PR and the checks, never from a report

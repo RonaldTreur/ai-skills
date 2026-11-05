@@ -1,6 +1,6 @@
 ---
 name: external-skill-adaptation
-description: Compare external agent skills, prompts, instructions, or methodology repos against this ai-skills repository, adapt useful local improvements, and maintain attribution/provenance.
+description: Compare external agent skills, prompts, instructions, or methodology repos against this ai-skills repository, adapt useful local improvements, and maintain attribution/provenance. Use when asked to compare, adopt or credit external skills or methodology repos.
 disable-model-invocation: true
 ---
 
@@ -52,7 +52,7 @@ Avoid broad questions like "What do you think?"
 
 ### 5. Adapt Locally
 
-When adopting an idea, fit it into the existing owner skill or create a focused skill only if no owner exists. Preserve local tone, remove external runtime assumptions, include the minimum procedural detail needed for reliable behavior, keep triggers conservative, and keep runtime `SKILL.md` text operational. Move rebuild notes and source-by-source attribution into the adjacent source-influence artifact.
+When adopting an idea, fit it into the existing owner skill or create a focused skill only if no owner exists. Preserve local tone, remove external runtime assumptions, include the minimum procedural detail needed for reliable behavior, keep triggers conservative, and keep runtime `SKILL.md` text operational. Move rebuild notes and source-by-source attribution into `<skill>/PROVENANCE.md` (step 6).
 
 ### 6. Add Skill-Level Attribution
 

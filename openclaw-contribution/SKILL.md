@@ -6,8 +6,6 @@ disable-model-invocation: true
 
 # OpenClaw Contribution
 
-Use this skill for contribution work against OpenClaw GitHub repositories.
-
 Defaults: core repo `openclaw/openclaw`; local clone `/Users/merlin/openclaw`
 when present.
 

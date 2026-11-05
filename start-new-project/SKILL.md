@@ -51,9 +51,6 @@ decomposition, long-running delivery, or active implementation.
 
 ## Grounding Before Shaping
 
-Use discovery when outside facts can change the brief, product direction, or
-plan. Do not turn this skill into a standing research report workflow.
-
 Use web or social search, a deep-research report, repo discovery, or the
 harness's memory and session history only when the result can change the
 brief, design direction or plan.
@@ -91,9 +88,7 @@ Before Phase 1, classify the project:
 - **Discord bot**: slash commands, embeds, interactions, modals, schedules.
 - **Both**: a bot/backend plus one or more companion frontends.
 - **Non-visual software**: backend service, API, CLI, worker, automation, data
-  pipeline, or other project with no user-facing visual UI.
-- **Other**: run Phase 1 and Phase 3; replace Phase 2 with relevant artifact or
-  interaction design.
+  pipeline, or any other project with no user-facing visual UI.
 
 If the type is unclear and cannot be inferred, ask one concise question before
 creating folders.
@@ -137,10 +132,8 @@ boundaries, constraints and open questions.
 
    Use a follow-up round only when an answer exposes a real product or design
    fork, or the user wants deeper shaping.
-3. For a large, fuzzy or high-stakes idea, obtain an independent critique
-   (questions, assumptions, scope risks from a product and an engineering
-   angle) and merge it before showing the user; post nothing duplicate or
-   generic.
+3. For a large, fuzzy or high-stakes idea, obtain the critique described under
+   Independent Critique and merge it before showing the user.
 4. Record each meaningful decision in `DECISIONS.md` as decision, why,
    rejected alternatives, user input. Capture what a future implementer would
    otherwise rediscover, not noise.
@@ -155,8 +148,9 @@ returns the approved `DESIGN.md`, the prototype under `src/` and the
 `DECISIONS.md` updates. For Discord bot work, use
 `phases/phase-2-design-discord.md`.
 
-For "both" projects, design non-visual interaction surfaces first, then run a
-separate [[frontend-design]] pass for each required visual interface.
+For non-visual projects, design the interaction or artifact contract here and
+record it in `DESIGN.md`. For "both" projects, design the non-visual surfaces
+first, then run a separate [[frontend-design]] pass for each visual interface.
 
 Goal: produce an approved `DESIGN.md` plus `src/` for frontend prototypes,
 `docs/` for bot interaction artifacts, or equivalent artifacts for non-visual
@@ -176,9 +170,11 @@ relevant ADR before handing off.
 
 ## Independent Critique
 
-Obtain an independent critique only when it materially improves the result: a
-large or fuzzy brief, divergent product or interaction concepts, a risky plan.
-A critique reads only `BRIEF.md`, `DESIGN.md` when available, `DECISIONS.md`
+Obtain an independent critique (questions, assumptions, scope risks, from a
+product and an engineering angle) only when it materially improves the result:
+a large or fuzzy brief, divergent product or interaction concepts, a risky
+plan. Merge it before showing the user; post nothing duplicate or generic. A
+critique reads only `BRIEF.md`, `DESIGN.md` when available, `DECISIONS.md`
 and the current context notes. When another agent provides it, use
 `references/delegation.md` under [[project-manager]].
 

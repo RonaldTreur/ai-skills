@@ -18,7 +18,7 @@ Before deleting selectors, inspect the rendered DOM and the states the CSS claim
 
 ## Detector evidence
 
-Run the project's pinned Impeccable command (a package script, checked-in dependency or repo-documented invocation) when one exists. Run an ad-hoc `npx impeccable` only with the user's explicit approval for external package execution or a repo allowlist; otherwise report detector coverage as skipped. Never block QA on detector installation, network access or broad scans.
+Run the project's pinned Impeccable command (an npm design anti-pattern detector: a package script, checked-in dependency or repo-documented invocation) when one exists. Run an ad-hoc `npx impeccable` only with the user's explicit approval for external package execution or a repo allowlist; otherwise report detector coverage as skipped. Never block QA on detector installation, network access or broad scans.
 
 Treat detector output as evidence, not authority: confirm each finding against rendered behavior, code or the approved design artifact before reporting it. Product UIs may legitimately use familiar fonts, one family, restrained palettes and standard patterns; brand surfaces carry a higher distinctiveness bar. Say why a false positive is one and move on.
 

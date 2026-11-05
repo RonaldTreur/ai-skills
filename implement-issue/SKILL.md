@@ -97,10 +97,6 @@ Review loop:
 2. Fix valid P0-P3 findings.
 3. Rerun the smallest meaningful verification.
 4. Repeat until clean or rejected findings are justified.
-5. For non-trivial PRs, one independent review of the PR diff, started only
-   once the branch's checks ran and the PR body records the checks, browser QA
-   and review findings listed below; then fix valid P0-P3 findings and rerun
-   targeted verification.
 
 After review fixes, rerun checks most likely to catch regressions. If UI/routing
 changed, repeat [[browser-qa]].
@@ -108,6 +104,11 @@ changed, repeat [[browser-qa]].
 ## PR And Merge
 
 Open or update a PR targeting the repo integration branch.
+
+For a non-trivial PR, once the branch's checks ran and the PR body below is
+filled, obtain one independent review of the PR diff: a fresh [[code-review]]
+pass by another agent or the harness's review helper, not the author's own
+loop. Fix valid P0-P3 findings and rerun targeted verification.
 
 PR body includes:
 

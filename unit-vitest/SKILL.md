@@ -1,13 +1,12 @@
 ---
 name: unit-vitest
-description: "Write and maintain Vitest unit/integration tests for TypeScript projects: behavior coverage, domain logic, API/Worker boundaries, mocks, factories, and TEST_PLAN.md coverage."
+description: "Write and maintain Vitest unit/integration tests for TypeScript projects: behavior coverage, domain logic, API/Worker boundaries, mocks, and factories."
 ---
 
 # Unit Testing with Vitest
 
-Use this skill for TypeScript unit tests with strict, behavior-focused coverage.
-
-Related workflow: [[testing]]
+Use this skill for TypeScript unit tests with strict, behavior-focused coverage;
+strategy and sequencing come from [[testing]].
 
 ## Core rules
 
@@ -33,8 +32,10 @@ Related workflow: [[testing]]
 
 ## Guides
 
-- `guides/patterns.md`
-- `guides/mocking.md`
-- `guides/edge-cases.md`
-- `guides/async.md`
-- `guides/cloudflare.md`, read when the target is a Cloudflare Worker
+Read the one the task needs:
+
+- `guides/patterns.md` when structuring a new test file or factory
+- `guides/mocking.md` when mocking a module or dependency
+- `guides/edge-cases.md` when covering boundaries and malformed input
+- `guides/async.md` when testing timers, promises or streams
+- `guides/cloudflare.md` when the target is a Cloudflare Worker
