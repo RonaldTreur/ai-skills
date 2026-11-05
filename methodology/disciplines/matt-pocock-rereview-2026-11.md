@@ -160,7 +160,7 @@ The runtime text that names agents or OpenClaw paths, with the line count to cut
 | `start-new-project/SKILL.md`, `browser-qa/SKILL.md` | 86, 50 | OpenClaw memory and browser tooling pointers | Say "the harness's memory" and "the harness's browser"; both exist here. |
 | `external-skill-adaptation/SKILL.md` | 44, 55 | OpenClaw conventions; a Merlin/Vectrix example question | Drop the names from the example. |
 | `e2e-playwright/roles/*.md` | headers | "OpenClaw adaptation" labels and tool pointers | Keep the roles (planner, generator, healer are work roles, not agent names); drop the OpenClaw framing. |
-| `openclaw-contribution/` | whole skill | Contribution workflow for the OpenClaw repo | Keep only if Ronald still contributes there; otherwise delete. |
+| `openclaw-contribution/` | whole skill | Contribution workflow for the OpenClaw repo | Decided 2026-11-05: keep. It serves the OpenClaw machine, is user-invoked, and no other skill reaches it. |
 
 Why the roles can go entirely. They existed to choreograph trust between agents that could not see each other's work. The desktop app now gives every participant the same diff, PR, CI result and review thread, so a report that lists "active skills used, tests run, review done" restates what the environment already shows. Pocock's cache rule applies: delete the restatement, keep the gate. The gates that survive are three sentences: no merge without an independent review of the PR diff; no review until tests ran on the branch; no "done" without the artifact that proves it.
 
