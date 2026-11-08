@@ -5,10 +5,8 @@ description: "Write and maintain durable Playwright E2E tests for web apps, incl
 
 # E2E Testing with Playwright
 
-Use this skill to validate real user behavior in browser flows.
-
-Related workflow: [[testing-orchestrator]]
-Related delegation workflow: [[agent-delegation]]
+Use this skill to validate real user behavior in browser flows; strategy and
+sequencing come from [[testing]].
 
 ## Role Pattern
 
@@ -16,10 +14,10 @@ Use the three specialized roles when generating or repairing durable
 scenario-driven E2E coverage:
 
 1. **Planner** → explores the live app and writes a structured markdown plan in `specs/`
-2. **Generator** → reads that plan and generates TypeScript Playwright tests in `tests/`
+2. **Generator** → reads that plan and generates TypeScript Playwright tests in `tests/e2e/`
 3. **Healer** → runs all tests, debugs failures, and repairs tests until stable
 
-For tiny issue-local changes, [[implement-issue]] or [[testing-orchestrator]]
+For tiny issue-local changes, [[implement-issue]] or [[testing]]
 may add one focused failing Playwright test directly. Do not force the full role
 sequence when it would add ceremony without improving confidence.
 
@@ -28,38 +26,25 @@ Role guides:
 - `roles/generator.md`
 - `roles/healer.md`
 
-These role files define **agent behavior**. The guides below remain your **reference knowledge** for implementation details.
-
-When the role files are assigned to separate agents, use [[agent-delegation]]
-for the task packet, write scope, status, and blocker reporting.
+When the role files are assigned to separate agents, use
+`references/delegation.md` under [[project-manager]] for the task packet,
+write scope, status, and blocker reporting.
 
 ## Golden rules
 - Prefer `getByRole()` locators first
 - Never use `waitForTimeout`
 - Isolate tests (no shared mutable state)
-- Set `baseURL` in Playwright config
-- Retries: `2` in CI, `0` locally
-- Traces on first retry
 - Prefer fixtures over globals
-- One behavior per test
 - Mock external services only
 - Test against built app (not ad-hoc dev state)
-- Keep auth, storage state, generated data, passwords, tokens, and cookies out
-  of git and out of reports
-- Do not use the user's personal browser session or production credentials as
-  the default E2E auth path
-- If a protected flow lacks safe test auth, seed data, or reset support, mark
-  the coverage blocked and route setup work through [[project-manager]]
+- Auth, storage state and test data follow [[testing]]; use storage state only
+  when the project documents how it is generated, refreshed and kept out of git
 
 ## Conventions
 - Framework-agnostic guidance only
 - Tests live in `tests/e2e/`
 - Use TypeScript test files (`*.spec.ts`)
 - Use `templates/seed.spec.ts` as the seed format for generator bootstrap
-- Prefer seeded users, fixtures, reset scripts, mocked external services, and
-  local/preview auth paths for deterministic state
-- Use storage state only when the project documents how it is generated,
-  refreshed, and excluded from git
 
 ## Recommended config defaults
 
@@ -77,10 +62,13 @@ export default defineConfig({
 ```
 
 ## Guides
-- `guides/locators.md`
-- `guides/assertions.md`
-- `guides/fixtures.md`
-- `guides/network.md`
-- `guides/data.md`
-- `guides/debugging.md`
-- `guides/ci.md`
+
+Read the one the task needs:
+
+- `guides/locators.md` when choosing or fixing a locator
+- `guides/assertions.md` when an assertion is flaky or weak
+- `guides/fixtures.md` when adding fixtures or auth setup
+- `guides/network.md` when mocking or waiting on requests
+- `guides/data.md` when seeding or resetting test data
+- `guides/debugging.md` when a test fails and the cause is unclear
+- `guides/ci.md` when wiring or fixing the CI run

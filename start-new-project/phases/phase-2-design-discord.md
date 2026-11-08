@@ -107,5 +107,5 @@ When the user picks a winner:
 3. Remove temporary design folders and stale context files.
 4. Update `DECISIONS.md` with interaction decisions and rejected alternatives.
 
-If the project later adds a web UI, run [[phases/phase-2-design]] separately
-for that interface.
+If the project later adds a web UI, run [[frontend-design]] separately for that
+interface.

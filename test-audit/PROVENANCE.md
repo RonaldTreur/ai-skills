@@ -14,3 +14,25 @@ Rebuild recipe: read the OpenClaw `test-audit` skill and its `CAMPAIGN.md` (belo
 - Deferred: automation for ledgers and mutation checks; a repository-level shrink-only line-cap gate (belongs to `test-ci-policy` if adopted).
 
 See `methodology/ADAPTATION_LOG.md` (entries dated 2026-10-04) and `methodology/disciplines/testing-test-audit.md`.
+
+## Local Integration Decision (2026-11-05)
+
+`test-audit` split in two. The authoring gate (the four questions, the
+regression-test rule) and the junk-pattern list moved to the model-invoked
+`testing` skill, because they must fire whenever tests are written. This skill
+keeps the audit sweep and the campaign, is user-invoked
+(`disable-model-invocation: true`) so its description costs nothing per turn,
+and reads the junk patterns from `references/junk-patterns.md` under `testing`.
+`CAMPAIGN.md` became `references/pruning-campaign.md`, trimmed from 798 to
+about 510 words: the ledger marks, the layer plan, the preservation review with
+one mutation per restored contract, and the control-run rule stayed; baseline,
+lanes, cutover and reconciliation shrank to a step each. The `test-ci-policy`
+references now point at `testing`. See
+`methodology/disciplines/testing-merge-2026-11.md`.
+
+## Local Integration Decision (2026-11-05, skill-review pass)
+
+Trimmed per `methodology/disciplines/skill-review-pass-2026-11.md`: rules
+stated once, environment facts the agent can look up removed, branch-only
+material moved behind gated references, harness-specific names removed. The
+findings and the fixes applied are listed there per skill.

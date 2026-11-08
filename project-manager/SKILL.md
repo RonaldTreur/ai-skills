@@ -1,27 +1,19 @@
 ---
 name: project-manager
-description: "Manage GitHub-backed project lifecycle: repo setup, planning docs, issue decomposition, dependency ordering, status recovery, and next-work selection."
+description: "Manage GitHub-backed project lifecycle: repo setup, planning docs, turning feature requests into issues, issue decomposition, dependency ordering, status recovery, and next-work selection."
 ---
 
 # Project Manager
 
-Use this skill to keep a software project organized across its full lifecycle.
-
-Own project structure, issue hygiene, dependency ordering, status, and handoff.
-Do not own per-issue implementation; route active execution to
-[[implement-issue]].
-
 ## Ownership Boundary
 
 - [[start-new-project]]: brief, design, plan, decisions.
-- `project-manager`: repo setup, planning docs, issue decomposition,
-  dependency graph, status, approval gates.
+- `project-manager`: repo setup, planning docs, feature requests into issues,
+  issue decomposition, dependency graph, status, approval gates.
 - [[implement-issue]]: active per-issue build execution.
-- [[test-planning]] / [[testing-orchestrator]]: test strategy and workflow.
+- [[testing]]: test strategy and workflow.
 - [[browser-qa]]: browser verification; ensure setup makes it possible.
 - [[documentation-handoff]]: durable docs, continuation state, handoffs.
-- [[agent-delegation]]: delegation packets, write scopes, status, parallel
-  safety.
 
 When this skill reaches "build this issue", stop orchestrating code details and
 invoke [[implement-issue]] with a compact handoff.
@@ -29,10 +21,6 @@ invoke [[implement-issue]] with a compact handoff.
 ## Core Principles
 
 - GitHub Issues are the durable backlog.
-- Repo-local docs are project memory; use [[documentation-handoff]] for artifact
-  roles and recoverable handoffs.
-- For new or fuzzy projects, [[start-new-project]] owns research and discovery
-  before issue decomposition.
 - Issues should be independently mergeable slices with explicit dependencies.
 - Project setup must make local verification, CI, test data, and browser QA
   practical before feature work depends on them.
@@ -41,25 +29,18 @@ invoke [[implement-issue]] with a compact handoff.
 - Agents may choose conservative implementation defaults inside approved scope.
 - Every handoff must be recoverable from files and GitHub state.
 
-## Default Agent Roles
+## Merge Gate
 
-For Ronald's OpenClaw projects, use this delivery split unless the user says
-otherwise:
+An issue is ready to merge only when all three hold:
 
-- Merlin/main coordinates project state, issue routing, verification, and merge
-  judgment.
-- Vectrix owns implementation and the first implementation review/fix loop for
-  ready build issues.
-- Claude-review is the independent read-only review gate before merge for
-  non-trivial PRs.
-- Vectrix fixes valid Claude-review P0-P3 findings and reruns targeted
-  verification before merge.
+- the branch carries the implementation and its tests, and the
+  [[implement-issue]] verification ran on that branch;
+- for a non-trivial PR, an independent review ran on the PR diff, and valid
+  P0-P3 findings are fixed with targeted verification rerun;
+- the PR links the issue.
 
-Merlin must not route a Vectrix implementation report to Claude-review until the
-report includes the [[implement-issue]] loop evidence: active skills used,
-tests-first or behavior-coverage decision, verification results, browser-QA
-applicability/result, code-review result, P0-P3 fix status, and `ready for
-independent review: yes`. A PR link or "checks passed" is not enough.
+Judge readiness from the branch, the PR and the checks, never from a report
+alone.
 
 ## Default Authority
 
@@ -79,44 +60,28 @@ Ask before:
 - changing project scope, design direction, or product behavior
 - merging/releasing/deploying unless already covered by an invoked implementation workflow
 
+## Issue Shape
+
+Every issue carries: summary, acceptance criteria, linked docs, test and
+browser-QA scope, auth and test-data prerequisites, dependencies, out-of-scope
+notes, likely affected areas. Prefer independently mergeable slices.
+
 ## Repo Intake
 
-1. Inspect repository state:
-   - `git status -sb`
-   - `git remote -v`
-   - `git branch --show-current`
-2. Read local instructions:
-   - `AGENTS.md`
-   - `README.md`
-   - `.github/copilot-instructions.md`
-   - `.codex/*`
-3. Read project memory when present:
-   - `BRIEF.md`
-   - `DESIGN.md`
-   - `PLAN.md`
-   - `IMPLEMENTATION_PLAN.md`
-   - `TEST_PLAN.md`
-   - `DECISIONS.md`
-   - `docs/adr/**/*.md`
-   - `DELIVERY_STATE.md`
-   - `docs/**/*.md`
-   - `specs/**/*.md`
-   - `.github/workflows/**/*.yml`
-   - `package.json`
-4. Read relevant repo, issue, PR, and memory context before asking the user to
-   restate project state. Use current external research only when it can change
-   backlog, scope, priority, or setup decisions; otherwise rely on start-new-project
-   artifacts and GitHub truth.
-5. Extract:
-   - product goal
-   - current phase
-   - integration branch
-   - test/build commands
-   - local run or preview command
-   - issue dependency conventions
-   - QA/auth/test-data setup
-   - blocked decisions
-   - next ready issue candidates
+Read the repo's agent instructions, planning docs (brief, design, plan, test
+plan, decisions, ADRs, delivery state, specs), CI config and GitHub issues and
+PRs before asking the user to restate project state. Use external research only
+when it can change backlog, scope, priority or setup. Extract:
+
+- product goal
+- current phase
+- integration branch
+- test/build commands
+- local run or preview command
+- issue dependency conventions
+- QA/auth/test-data setup
+- blocked decisions
+- next ready issue candidates
 
 ## TODO Intake
 
@@ -124,14 +89,7 @@ When the user asks to turn a TODO list into issues and start work, treat that as
 authorization to draft or create the issues unless they explicitly ask for a
 proposal only. Do not turn TODO text into code tasks mechanically.
 
-1. Normalize each TODO into a backlog candidate:
-   - outcome
-   - user-visible behavior or internal contract
-   - acceptance criteria
-   - likely affected area
-   - test and browser-QA scope
-   - dependencies and blockers
-   - out-of-scope notes
+1. Normalize each TODO into an issue (see Issue Shape).
 2. Merge duplicates, split oversized TODOs into independently mergeable slices,
    and keep setup/readiness work ahead of dependent feature work.
 3. If a TODO hides a product decision, design decision, architecture decision,
@@ -144,15 +102,26 @@ proposal only. Do not turn TODO text into code tasks mechanically.
    invoke [[implement-issue]] for the first ready issue when the user asked to
    start processing.
 
-Compact prompt this skill should satisfy:
+## Feature Intake
 
-```text
-Use project-manager to convert this TODO list into GitHub issues, order
-dependencies, identify ready vs blocked work, then start the first ready issue
-with Vectrix using implement-issue. Use the default roles: Merlin coordinates,
-Vectrix implements and self-reviews, Claude-review is the independent pre-merge
-review gate.
-```
+For an "add this feature" request on an existing project, inspect the repo,
+open issues and docs first, then classify:
+
+- a ready issue already exists: invoke [[implement-issue]], no duplicate;
+- one clear slice: one issue (see Issue Shape);
+- separable setup, backend, frontend, test or QA work: the fewest independently
+  mergeable issues;
+- unclear users, scope, product direction, visual design, architecture,
+  data/auth/deployment boundaries, or multiple phases: route to
+  [[start-new-project]].
+
+Prefer one issue until the work clearly needs more. When creating issues would
+encode a product or architecture decision, ask the smallest blocking question.
+Reuse the repo's labels, milestones and issue style; ask before creating many
+issues, labels or milestones. Skip issue creation only when the user explicitly
+asks for direct local implementation. Then run the ADR check of Issue
+decomposition and continue at Dependency ordering; if the user asked to start
+and exactly one issue is ready, invoke [[implement-issue]] on it.
 
 ## Lifecycle Flow
 
@@ -170,17 +139,7 @@ review gate.
 
    Missing readiness becomes setup issues before feature issues.
 3. **Issue decomposition:** create issues only after scope and testing strategy
-   are stable. Each issue needs:
-   - summary
-   - acceptance criteria
-   - linked docs
-   - test scope
-   - browser-QA/auth/test-data prerequisites
-   - dependencies
-   - out-of-scope notes
-   - likely affected areas
-
-   Prefer independently mergeable slices.
+   are stable, in the Issue Shape above.
    If an issue depends on an architectural choice that is not recorded, create
    or request an ADR via [[documentation-handoff]] before encoding the work.
 4. **Dependency ordering:** an issue is ready when open, unblocked, testable,
@@ -190,10 +149,9 @@ review gate.
 5. **Next-work proposal:** list ready and blocked issues, recommend the next one
    or two, identify safe parallel work, and ask only before changing backlog,
    scope, labels, or project state. When selected, invoke [[implement-issue]]
-   with a compact [[documentation-handoff]] packet.
-   When a delegate returns, reject incomplete implementation handoffs before
-   independent review: no loop evidence means the issue is still in
-   implementation.
+   with a compact [[documentation-handoff]] packet; when another agent will do
+   the work, read `references/delegation.md` for the packet, write scope,
+   parallel safety and status contract.
 6. **Status and recovery:** report:
    - phase
    - active issue/branch/PR
@@ -225,7 +183,6 @@ Use simple labels unless the repo already has its own taxonomy:
 - phase: `phase:kickoff`, `phase:design`, `phase:planning`,
   `phase:build`, `phase:review`, `phase:qa`
 - state: `needs-human`, `blocked`
-- agent: `agent:vectrix`, `agent:merlin`
 
 Do not create or mutate labels in bulk without approval.
 

@@ -1,12 +1,9 @@
 ---
 name: frontend-design
-description: "Explore and refine visual frontend direction for web apps, dashboards, landing pages, and UI-heavy features through concepts, variants, prototypes, and approval."
+description: "Explore and refine visual frontend direction for web apps, dashboards, landing pages, and UI-heavy features through concepts, variants, prototypes, and approval; export an approved direction as a prompt for an external UI generator."
 ---
 
 # Frontend Design
-
-Use this skill when a project has a visual frontend and needs a deliberate UI
-direction before implementation.
 
 This skill owns visual frontend exploration and approval. It does not own
 overall product kickoff, backend architecture, issue decomposition, or active
@@ -19,8 +16,8 @@ implementation.
 - [[developing-web-projects]] owns web stack and implementation conventions.
 - [[browser-qa]] owns real browser verification of prototypes.
 - [[project-manager]] consumes approved design artifacts later for issue slicing.
-- [[agent-delegation]] owns delegation mechanics when variant or critique agents
-  are used.
+- `references/delegation.md` under [[project-manager]] holds the packet and
+  status contract when variant or critique agents are used.
 
 ## Core Idea
 
@@ -38,25 +35,9 @@ The goal is not "two versions of the same page." The goal is to expose real
 tradeoffs in information architecture, density, hierarchy, tone, and visual
 language.
 
-## When To Use
-
-Use for:
-
-- landing pages
-- web apps
-- dashboards
-- admin panels
-- product websites
-- UI-heavy feature redesigns
-- companion web UIs for bot/backend projects
-
-Do not use for:
-
-- Discord bot-only interaction design
-- backend-only tools
-- API design
-- implementation after design approval
-- tiny copy or CSS tweaks where no design direction is being chosen
+Two requests bypass the variant workflow: one component inside a settled
+system (`references/component-scope.md`), and a prompt for an already settled
+direction (`references/prompt-export.md`).
 
 ## Context Detection
 
@@ -85,7 +66,7 @@ Classify the design situation:
 - **Existing system**: follow it; variants explore layout, flow, and emphasis.
 - **Partial system**: preserve known constraints; use variants to fill gaps.
 - **Greenfield**: variants should diverge strongly.
-- **Ambiguous**: ask one concise question with a recommended default.
+- **Ambiguous**: see Design Inputs.
 
 Classify the surface register:
 
@@ -116,41 +97,14 @@ so implementation agents can work from `DESIGN.md` later.
 - **Constraints**: existing palette, typography, accessibility target, data
   density, framework/project conventions, and hard boundaries.
 
-When the user has already provided an input, use it. When an input is missing
-but inferable from project context, record the inference in the variant thesis
-instead of asking.
-
-If multiple inputs are missing, group them into one design-discovery checkpoint
-with recommended defaults. Avoid low-value preference surveys; ask questions
-that change macrostructure, density, content hierarchy, interaction stance,
-visual tone, or non-goals.
-
-For greenfield or thin briefs, use one design-context checkpoint. Ask for:
-
-- **Audience**: who uses this and what they already know
-- **Use case**: the single job or primary action the surface should support
-- **Tone**: a concrete stance such as utilitarian, editorial, austere,
-  playful, technical, atmospheric, luxury, or brutal
-
-Answering is optional. If the user says to proceed, infer the missing values,
-state them in one sentence, and record them in the variant thesis so the user
-can redirect without another long questionnaire.
-
-Use TC-EBC as the compact input frame when preparing a design brief, variant
-brief, or prompt for a design worker:
-
-- **Task**: the exact page, component, layout, or flow.
-- **Context**: audience, product, brand, platform, and workflow frequency.
-- **Examples**: references, screenshots, sites, or styles to match or avoid.
-- **Behavior**: interactions, states, responsive behavior, permissions, and
-  motion.
-- **Constraints**: stack, accessibility, data shape, existing tokens, viewport,
-  and hard boundaries.
-
-When a worker or external tool needs a prompt, assemble it from these inputs
-plus the chosen macrostructure, visual thesis, content plan, and interaction
-plan. The prompt is an execution artifact; it does not replace `DESIGN.md` or
-human approval of the direction.
+One question rule: when an input is missing but inferable, infer it and record
+the inference in the variant thesis. Ask one grouped checkpoint with
+recommended defaults only when a missing input would change macrostructure,
+density, content hierarchy, interaction stance, visual tone or non-goals; for a
+greenfield or thin brief that checkpoint asks audience, use case and tone (a
+concrete stance such as utilitarian, editorial, austere, playful, technical,
+atmospheric, luxury or brutal). Answering is optional: on "proceed", infer,
+state the values in one sentence, and record them so the user can redirect.
 
 ## Visual Thesis
 
@@ -173,10 +127,7 @@ Macrostructure-first rule:
   **index-first** for navigation-heavy surfaces, **catalogue** for browse and
   compare, **long document** for editorial rhythm, **stat-led** for KPI-first
   scan order, **component playground** for state comparison, and
-  **manifesto/letter** for voice-led pages. Other useful shapes include
-  **bento grid**, **marquee hero**, **photographic**, **quote-led**,
-  **conversational FAQ**, **split studio**, **narrative workflow**,
-  **portfolio grid**, **map/diagram**, and **ecosystem index**.
+  **manifesto/letter** for voice-led pages.
 
 Anti-reflex check:
 
@@ -187,29 +138,6 @@ Anti-reflex check:
 - Across consecutive greenfield variants or pages for the same project, avoid
   repeating the same macrostructure unless `DESIGN.md` intentionally locks it as
   the system.
-
-## Component Scope
-
-If the request is for one component or element, do not run the full page design
-workflow.
-
-Component-scope signals include:
-
-- a named element such as button, input, card, modal, dropdown, tooltip, select,
-  checkbox, switch, tab strip, chip, badge, banner, snackbar, popover, slider,
-  date picker, or avatar
-- a short request that says "just", "only", "single", or names one component
-- a target file that is clearly one component
-
-For component scope:
-
-- preserve existing tokens, typography, sizing, and component vocabulary
-- skip page macrostructure, nav, footer, hero, and multi-section preview work
-- design all meaningful states: default, hover, focus-visible, active,
-  disabled, loading, error, and success when applicable
-- provide a small preview/demo artifact when useful so states can be inspected
-  side by side
-- keep production output aligned with the project's component conventions
 
 ## Divergent Variants
 
@@ -259,34 +187,8 @@ adding polish to a weak structure.
 
 ## Reference Study
 
-When the user provides a screenshot, website, or visual reference, study it for
-design DNA rather than cloning pixels.
-
-Extract:
-
-- structure and macrostructure
-- type roles and hierarchy
-- density and whitespace rhythm
-- color anchors and restraint
-- interaction stance such as playful, quiet, tactile, editorial, or operational
-
-Then state:
-
-- what to preserve
-- what to translate into the local product context
-- what to avoid copying literally
-
-Good adaptation preserves stance and structure while changing content,
-constraints, and implementation details to fit the actual project.
-
-Reference safety:
-
-- Study for DNA, not pixels.
-- Do not copy proprietary layouts, copy, images, or templates wholesale.
-- If the user asks to turn a reference into a reusable `DESIGN.md`, only do so
-  for their own project/brand or a public reference they are allowed to adapt.
-- For auth-walled, JS-only, or unreadable URLs, ask for a screenshot or a brief
-  description instead of guessing.
+When the user provides a screenshot, website or visual reference, read
+`references/reference-study.md`: study it for design DNA, not pixels.
 
 ## Prototype Shape
 
@@ -378,29 +280,8 @@ responsive behavior.
 
 ## Feedback Loop
 
-Capture user feedback in:
-
-```text
-<project>/context/round-N-feedback.md
-```
-
-Use this structure:
-
-```markdown
-# Round N Feedback
-
-## Keep
-[What should survive.]
-
-## Change
-[What needs to move.]
-
-## Reject
-[What should not return.]
-
-## Direction
-[The next-round thesis.]
-```
+Capture each round in `<project>/context/round-N-feedback.md` under four
+headings: Keep, Change, Reject, Direction (the next-round thesis).
 
 Iteration rules:
 

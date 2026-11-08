@@ -14,42 +14,10 @@ code-level choreography too early.
 - Current `DECISIONS.md`
 - [[developing-web-projects]] for web projects
 
-## Planning Philosophy
+## 1. Draft The Plan
 
-`PLAN.md` is a guardrail document:
-
-- what must be built
-- what decisions must be honored
-- what work units exist
-- what files or areas are likely involved
-- what dependencies and risks matter
-- what tests and browser QA must prove
-
-It is not an implementation script. Avoid exact code, imports, signatures,
-micro-steps, and shell choreography unless they are truly contractual.
-
-## 1. Independent Plan Drafts
-
-Use one or more independent planning perspectives when the project is large or
-risky:
-
-- engineering architecture
-- product scope and sequencing
-- design/UX implementation risk
-- testability and operations
-
-For small projects, one planner plus a critique pass is enough.
-
-Each planner should read:
-
-```text
-<project>/BRIEF.md
-<project>/DESIGN.md
-<project>/DECISIONS.md
-<project>/src/ or <project>/docs/
-```
-
-Ask for:
+Draft `PLAN.md` from `BRIEF.md`, `DESIGN.md`, `DECISIONS.md` and `src/` or
+`docs/`, covering:
 
 - architecture and platform fit
 - data model and integrations
@@ -60,17 +28,14 @@ Ask for:
 - risks, unknowns, and setup blockers
 - explicit non-goals
 
-## 2. Debate And Merge
+## 2. Critique And Resolve
 
-Compare plans by decision quality, not volume.
-
-Surface:
-
-- where planners agree
-- where they disagree
-- what the real tradeoff is
-- which recommendation you prefer and why
-- what user choice is still needed
+For a large or risky project, obtain the critique described under Independent
+Critique in `SKILL.md` (architecture and platform fit, scope and sequencing,
+design-to-implementation risk, testability and operations). Compare draft and
+critique by decision quality, not volume: where they agree, where they
+disagree, the real tradeoff, which recommendation you prefer and why, and what
+user choice is still needed.
 
 If a disagreement can be resolved from `BRIEF.md`, `DESIGN.md`, existing code,
 or [[developing-web-projects]], resolve it directly and record the decision.
@@ -109,7 +74,7 @@ Use this structure:
 [Repo, CI, scripts, safe auth/test data, seed/reset, preview, deployment.]
 
 ## Test Strategy
-[What [[test-planning]] should turn into TEST_PLAN.md.]
+[What [[testing]] should turn into TEST_PLAN.md.]
 
 ## Issue Decomposition Notes
 [How [[project-manager]] should slice issues and what must happen first.]
@@ -133,10 +98,5 @@ Record:
 
 The phase exits when the user approves `PLAN.md`.
 
-Do not hand directly to implementation. The next step is [[project-manager]]:
-
-- verify setup/readiness
-- create or update `TEST_PLAN.md` through [[test-planning]]
-- turn work units into GitHub issues
-- establish dependency order and labels
-- route the first issue to the selected implementer
+Do not hand directly to implementation; hand off to [[project-manager]] as in
+`SKILL.md`.

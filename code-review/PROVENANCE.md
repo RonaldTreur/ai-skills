@@ -209,3 +209,16 @@ The fuller methodology record lives in:
 - `methodology/sources/superpowers.md`
 - `methodology/sources/compound-engineering.md`
 - `methodology/sources/matt-pocock-skills.md`
+
+## Local Integration Decision (2026-11-03)
+
+Skills stay harness-agnostic and describe the work and its gates, never who
+performs them (see `methodology/disciplines/role-script-removal-2026-11.md`).
+In this skill, the Executable Helper section no longer names the OpenClaw `autoreview` executable or its `--parallel-tests` flag; it describes any automated review helper the harness or repo provides.
+
+## Local Integration Decision (2026-11-05, skill-review pass)
+
+Trimmed per `methodology/disciplines/skill-review-pass-2026-11.md`: rules
+stated once, environment facts the agent can look up removed, branch-only
+material moved behind gated references, harness-specific names removed. The
+findings and the fixes applied are listed there per skill.
